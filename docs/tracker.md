@@ -13,7 +13,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Programs — Stand for Art
 - [x] Programs — Abbara
 - [x] Publications
-- [ ] Mawred Network
+- [x] Mawred Network
 - [ ] News
 - [ ] About
 - [ ] Home
@@ -35,6 +35,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Mawred Network — directory + record (2026-08-31)
+
+**Done:** Six blocks (MN1–MN6) in `components/blocks/network/`. Shared primitives `Tabs`, `DirRow`/`Badge` in `components/wireframe/`; `Cover` gains a `label` prop, `Figs` a `wide` prop. Shells: `DirectoryPage` (client — owns wireframe state + entity-tab state) and `NetworkRecordPage` (client — reads `sparse`). Config in `lib/pages/network.ts`. Live routes at `/network` and `/network/record`; `stub: true` removed from both route entries. Render-checked: default directory, filtered + empty states, both entity tabs, record full and sparse.
+
+**Left undone:** Real content population is Task 2.
+
+**Decisions:** 66–68 logged in wireframe-passes (tab state in shell, shared Tabs/DirRow ahead of News, Cover label prop).
+
+**Flagged:** Shared record source with the program past-beneficiaries block (spec §B6 — data-architecture note, not designed). Long Programme / Country / Year facets need a design-stage revisit (searchable dropdown, grouping, type-ahead).
 
 ### Publications — series + detail (2026-08-31)
 

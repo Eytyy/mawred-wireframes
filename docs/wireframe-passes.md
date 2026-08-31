@@ -29,3 +29,11 @@ The decisions taken while wireframing each page-type. They bind later chats — 
 **64. `FilterBar` self-contained as a client component** — facet open/close state lives inside `FilterBar`, the same way `Accordion` owns its toggle. Page shells (`LibraryPage`, `SeriesPage`) remain the single wireframe-state boundary per decision 60. _Interactive primitives own their own UI state; the page shell only reads panel toggles._ → Set aside: lifting facet state into `LibraryPage` — one fewer `"use client"` file, but spreads interactivity up a tier.
 
 **65. Fixed embed footprints over aspect ratios** — audio and video embeds use fixed height boxes rather than aspect-ratio utilities; the SoundCloud embed has no meaningful aspect to preserve. _Footprint difference is the wireframe signal; aspect-ratio would imply precision the provider chrome doesn't support._ → Set aside: provider-specific aspect ratios — closer to live embeds but outside the lo-fi constraint and hard to maintain across providers.
+
+## Mawred Network
+
+**66. Entity-tab state in DirectoryPage** — the Individuals & Groups / Organizations & Initiatives tab index lives in `DirectoryPage`, not inside the `Tabs` primitive, because MN4 (count row) and MN5 (listing) both need the same value. _One source of truth at the shell; the tabs are navigation, not a wireframe-state toggle._ → Set aside: self-contained tab state inside `Tabs` — simpler primitive API, but MN4 would need a callback or duplicate state.
+
+**67. Tabs and DirRow as shared primitives** — `Tabs` and `DirRow`/`Badge` live in `components/wireframe/` ahead of the News unit, which reuses the same tab row and will need a row pattern for the post feed. _One primitive per pattern; the Network unit that first needed them owns them for the whole app (extends decision 62)._ → Set aside: Network-local copies — faster to ship but duplicates N1/N3 work later.
+
+**68. Cover label prop over a second cover component** — `Cover` takes an optional `label` prop (default `"cover"`) so MN6 can render `photo / logo` without a separate portrait/logo component. _Same footprint, same block treatment; one component per pattern._ → Set aside: a dedicated `PortraitCover` — clearer naming, but two components for the same box.

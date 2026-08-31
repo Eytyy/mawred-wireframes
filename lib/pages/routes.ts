@@ -135,7 +135,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Mawred Network",
     statesKey: "directory",
     crumb: "Home &rsaquo; Mawred Network",
-    stub: true,
     indexLabel: "Mawred Network",
     indexSublabel: "Directory listing — filtered index, split by entity type",
   },
@@ -146,7 +145,6 @@ export const ROUTES: RouteEntry[] = [
     statesKey: "record",
     crumb:
       'Home &rsaquo; <a href="/network">Mawred Network</a> &rsaquo; Record name',
-    stub: true,
     indexLabel: "Network record",
     indexSublabel: "Mawred Network — record detail",
   },

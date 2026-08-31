@@ -3,16 +3,17 @@ import type { ReactNode } from "react";
 
 type CoverProps = {
   tall?: boolean;
+  label?: string;
 };
 
-export function Cover({ tall }: CoverProps) {
+export function Cover({ tall, label = "cover" }: CoverProps) {
   return (
     <div
       className={`flex items-center justify-center border border-black bg-neutral-200 text-xs text-neutral-500 ${
         tall ? "h-[250px]" : "mb-2.25 h-[120px]"
       }`}
     >
-      cover
+      {label}
     </div>
   );
 }
