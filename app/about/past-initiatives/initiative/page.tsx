@@ -1,4 +1,4 @@
-import { PastInitiativeDetailPage } from "@/components/blocks/about/PastInitiativeDetailPage";
+import { PastInitiativeDetailPage } from "./PastInitiativeDetailPage";
 
 export default function PastInitiativeDetailRoute() {
   return <PastInitiativeDetailPage />;

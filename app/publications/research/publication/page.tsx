@@ -1,4 +1,4 @@
-import { PublicationDetailPage } from "@/components/blocks/publications/PublicationDetailPage";
+import { PublicationDetailPage } from "./PublicationDetailPage";
 
 export default function PublicationDetailRoute() {
   return <PublicationDetailPage />;

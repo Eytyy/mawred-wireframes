@@ -1,4 +1,4 @@
-import { WhoWeArePage } from "@/components/blocks/about/WhoWeArePage";
+import { WhoWeArePage } from "./WhoWeArePage";
 
 export default function WhoWeAreRoute() {
   return <WhoWeArePage />;

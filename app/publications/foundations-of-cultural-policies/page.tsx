@@ -1,4 +1,4 @@
-import { SeriesPage } from "@/components/blocks/publications/SeriesPage";
+import { SeriesPage } from "../SeriesPage";
 import { FOUNDATIONS } from "@/lib/pages/publications";
 
 export default function FoundationsPage() {

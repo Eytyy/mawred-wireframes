@@ -1,4 +1,4 @@
-import { ProgramPage } from "@/components/blocks/programs/ProgramPage";
+import { ProgramPage } from "../ProgramPage";
 import { WIJHAT } from "@/lib/pages/programs";
 
 export default function WijhatPage() {

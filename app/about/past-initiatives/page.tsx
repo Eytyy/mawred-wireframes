@@ -1,4 +1,4 @@
-import { PastInitiativesPage } from "@/components/blocks/about/PastInitiativesPage";
+import { PastInitiativesPage } from "./PastInitiativesPage";
 
 export default function PastInitiativesRoute() {
   return <PastInitiativesPage />;

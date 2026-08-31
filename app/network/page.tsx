@@ -1,4 +1,4 @@
-import { DirectoryPage } from "@/components/blocks/network/DirectoryPage";
+import { DirectoryPage } from "./DirectoryPage";
 
 export default function MawredNetworkPage() {
   return <DirectoryPage />;

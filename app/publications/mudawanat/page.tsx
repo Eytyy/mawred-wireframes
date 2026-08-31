@@ -1,4 +1,4 @@
-import { SeriesPage } from "@/components/blocks/publications/SeriesPage";
+import { SeriesPage } from "../SeriesPage";
 import { MUDAWANAT } from "@/lib/pages/publications";
 
 export default function MudawanatPage() {

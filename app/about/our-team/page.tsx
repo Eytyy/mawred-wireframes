@@ -1,4 +1,4 @@
-import { OurTeamPage } from "@/components/blocks/about/OurTeamPage";
+import { OurTeamPage } from "./OurTeamPage";
 
 export default function OurTeamRoute() {
   return <OurTeamPage />;

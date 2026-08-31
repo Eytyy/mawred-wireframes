@@ -1,4 +1,4 @@
-import { CareersPage } from "@/components/blocks/about/CareersPage";
+import { CareersPage } from "./CareersPage";
 
 export default function CareersRoute() {
   return <CareersPage />;

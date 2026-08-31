@@ -21,7 +21,7 @@ This repo is the source of truth. The Notion workspace it came from is a client-
 
 | Path                             | What it is                                                                           | When to read it                                                   |
 | -------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| `app/`                           | Routes. One directory per page; `page.tsx` is a thin shell composing blocks.         | The route for the page in hand.                                   |
+| `app/`                           | Routes. Each route directory has a thin `page.tsx` wrapper and a co-located `<Name>Page.tsx` shell that composes blocks from config. Shared shells (`ProgramPage`, `SeriesPage`) sit at the route-group level (`app/programs/`, `app/publications/`). | The route for the page in hand — read `page.tsx` and the co-located shell. |
 | `components/chrome/`             | Utility bar, header nav, page-header band, newsletter, footer. Shared by every page. | Only when changing global chrome.                                 |
 | `components/blocks/<page-type>/` | Block components. One file per block.                                                | The blocks for the page in hand.                                  |
 | `components/StatePanel.tsx`      | The wireframe state panel.                                                           | Only when adding or changing states.                              |

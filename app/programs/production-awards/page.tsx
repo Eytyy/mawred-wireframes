@@ -1,4 +1,4 @@
-import { ProgramPage } from "@/components/blocks/programs/ProgramPage";
+import { ProgramPage } from "../ProgramPage";
 import { PRODUCTION_AWARDS } from "@/lib/pages/programs";
 
 export default function ProductionAwardsPage() {

@@ -1,4 +1,4 @@
-import { ProgramPage } from "@/components/blocks/programs/ProgramPage";
+import { ProgramPage } from "../ProgramPage";
 import { STAND_FOR_ART } from "@/lib/pages/programs";
 
 export default function StandForArtPage() {

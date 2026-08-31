@@ -22,6 +22,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
 
+### Refactor — co-locate page shells (2026-08-31)
+
+**Done:** Moved all 16 page shells out of `components/blocks/<page-type>/` and co-located them with their routes — 14 single-route shells sit beside their `page.tsx`; `ProgramPage` and `SeriesPage` sit at `app/programs/` and `app/publications/` for shared use. Updated imports in all 21 route files to relative paths. `components/blocks/` now holds block components only. Build and lint clean; render-checked `/programs/wijhat`, `/publications/mudawanat`, `/about/careers`, `/about/who-we-are`; `/programs` and `/publications` still stub via catch-all.
+
+**Left undone:** Nothing — standalone refactor, not a Task 2 unit.
+
+**Decisions:** 83 logged in wireframe-passes.
+
+**Flagged:** None.
+
 ### Home — HM1–HM8 (2026-08-31)
 
 **Done:** Shared `Cells`/`Cell` primitive in `components/wireframe/Cells.tsx`; S4 and AB3 refactored onto it. Eight blocks (HM1–HM8) in `components/blocks/home/`; shell `HomePage` (client — reads `nocalls` / `twentieth` / `staticfb`). Config in `lib/pages/home.ts`. Live route at `/`; `stub: true` removed from `home`. Render-checked: default (all eight blocks, hero marker bar, mosaic grid, three open-call cards), `nocalls` empty state, `twentieth` campaign eyebrow/title, `staticfb` (marker bar omitted, mosaic replaced by Banner). Production Awards and Who We Are re-checked after the `Cells` refactor. Build clean. **Task 1 complete.**

@@ -1,4 +1,4 @@
-import { SupportersPage } from "@/components/blocks/about/SupportersPage";
+import { SupportersPage } from "./SupportersPage";
 
 export default function SupportersPartnersRoute() {
   return <SupportersPage />;
