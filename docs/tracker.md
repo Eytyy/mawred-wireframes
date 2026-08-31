@@ -10,7 +10,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Programs — Wijhat
 - [x] Programs — Stand for Art
 - [x] Programs — Abbara
-- [ ] Publications
+- [x] Publications
 - [ ] Mawred Network
 - [ ] News
 - [ ] About
@@ -21,6 +21,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Populate — Publications (2026-09-01)
+
+**Done:** Fifth Task 2 unit, and the first non-programme page-type. Content props added to `PB1SeriesIntro` (`text`, optional `heading` slot), `PC1PublicationRecord` (`record`), `PC2RelatedPublications` / `PA4ResultsGrid` (`records`), `PA3CountRow` (default total 30 → 33) and the shared `FilterBar` (`Facet.values`) — all optional with the previous render as the fallback (decision 84), so Network MN3 and News N1 still show `"value"`. `lib/pages/publications.ts` rewritten with the live library: six facets carrying the real lists (51 authors, 13 countries, 2 themes, 3 languages, 3 types, 14 years), 33 `{ title, languages }` records with the Lebanon Humanitarian Fund report first, that one record populated on the detail page (two-paragraph abstract, Language and Year, two download buttons, three related titles), and the three series intros compressed to the spec's own paragraph counts. `pub-detail` takes the real title and crumb; `indexLabel` stays "Publication detail". Type-check and lint clean; curl against the running dev server — all eight routes 200. Library default shows Achraf Maher…Ayman Masoud (six of 51), nine sampled cards, "Showing 33 of 33" and "… 33 items in the grid"; detail renders the real title, Language/Year values with the other four rows as fill bars, ↓ English and ↓ Arabic, and the three related titles; Mudawanat/Foundations/Talks render their intros with no headline fill; Network's open Programme facet still reads `value`; Production Awards C1/C5/C12 unchanged. Library `filtered` / `empty` / `slots` still branch in the shell on the same props as before.
+
+**Left undone:** Mawred Network is the next unit. PB2's four embed footprints and the per-item caption slot stay as they were — captions remain behind `slots`.
+
+**Decisions:** 104–109 logged in wireframe-passes (one populated record rather than 33; PC1 keeping unpublished rows as fill bars; one download per language; PB1's headline as a slot; PA4's overflow line; facet `values`).
+
+**Flagged:** The Year facet stops at 2024 while the Lebanon record is dated April 2026 — untagged or the facet list is stale. The detail page publishes none of the taxonomy the library filters on. The live author/date line renders as "Beirut in 2026-06-16T…April 16th, 2026", the same CMS artifact as the footer's "Beirut in". Foundations' intro promises per-episode reference links and a summary, which is PB2's optional caption slot; whether those surface is a client call. `Lybia` [sic] in the Country facet, and the global-footer Instagram artifact seen on every page so far.
 
 ### Populate — Abbara (2026-08-31)
 

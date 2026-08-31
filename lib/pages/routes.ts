@@ -96,10 +96,11 @@ export const ROUTES: RouteEntry[] = [
   {
     key: "pub-detail",
     path: "/publications/research/publication",
-    title: "Publication title",
+    title:
+      "Mawred's Initiative: Lebanon Humanitarian Fund Through Cultural Organizations",
     statesKey: "detail",
     crumb:
-      'Home &rsaquo; Publications &rsaquo; <a href="/publications/research">Research &amp; Publications</a> &rsaquo; Publication title',
+      'Home &rsaquo; Publications &rsaquo; <a href="/publications/research">Research &amp; Publications</a> &rsaquo; Mawred\'s Initiative: Lebanon Humanitarian Fund Through Cultural Organizations',
     indexLabel: "Publication detail",
     indexSublabel: "Publications — Structure C",
   },

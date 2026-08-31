@@ -7,6 +7,7 @@ import { Field } from "@/components/wireframe/Field";
 export type Facet = {
   n: string;
   v: number;
+  values?: string[];
 };
 
 type FilterBarProps = {
@@ -36,7 +37,7 @@ function FacetPanel({ facet, open }: { facet: Facet; open: boolean }) {
             className="flex items-center gap-1.5 text-xs text-neutral-500"
           >
             <i className="inline-block h-[11px] w-[11px] shrink-0 border border-black" />
-            value
+            {facet.values?.[index] ?? "value"}
           </span>
         ))}
       </div>

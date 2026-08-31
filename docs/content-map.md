@@ -119,3 +119,26 @@ Abbara has no S2 (no forms are published to download), no S5 (one application pa
 **Gaps, both English-side and neither filled.** The FAQ tab has no English content at all. And the English Guidelines tab has no contractual section: no installments, no signing or completion windows, no guarantors, no clawback, no citation or credit obligation. The audit flags this as a possible English content gap rather than a genuine absence — the programme plainly has contracts, since they are signed after the first workshop — so C10 states the two facts the page does carry and the rest is recorded for verification against the Arabic page, not borrowed from a sibling programme.
 
 **Flagged for the client:** the two summary headings render with the question mark at the front, the same CMS artifact as Wijhat; several beneficiary entries are named but unlinked (`href="#"` — Hassala films, Association l'Art Vivant, Stories film Lab, Damascus Theatre Lab), a migration QA item for the directory; and the global footer's empty Instagram embed with its stray `-->` appears here too, now seen on enough pages to be a global-footer fix.
+
+---
+
+## Publications
+
+Sources: `specs/publications.md` for structure and the three series intros; the live library (`mawred.org/research-publications/?lang=en`) for the 33 record titles, language lines and every facet value list; the live detail page (`mawred.org/research-publication/mawreds-initiative-lebanon-humanitarian-fund-through-cultural-organizations/?lang=en`) for the one populated record.
+
+**One record, not 33** (decision 104). The library publishes 33 titles; only the Lebanon Humanitarian Fund report was in scope for a detail page. PA4 samples the first nine cards and an overflow line names the rest.
+
+| Block | From | What happened to it |
+| --- | --- | --- |
+| **PA1** Intro line | — | Still an unused slot, behind the `slots` toggle. The live library has no intro. |
+| **PA2** Filter bar | Live listing facets | All six facets carry the live value lists: 51 authors (Achraf Maher … Wedad Salloum — the live count, against the spec's ~50), 13 countries, 2 themes, 3 languages, 3 types, 14 years (2006–2016, then 2021, 2023, 2024). Long facets still render six plus "Show all N", so Author shows six real names. `Lybia` [sic] is kept as published. |
+| **PA3** Count row | Live listing | Default total 30 → 33, matching the live grid. Filtered and empty states still chip Language: Arabic and Year: 2016 as wireframe stand-ins. |
+| **PA4** Results grid | Live listing | 33 `{ title, languages }` records, Lebanon report first, in live order. Nine sampled cards; the overflow line reads "… 33 items in the grid" so the sample cannot be misread as the set (decision 108). |
+| **PB1** Series intro | Spec §1.2–1.4, plus the live intros for length | Three series, compressed to the spec's own paragraph counts: Mudawanat three (living archive + British Council; two 2020 rounds; follow on SoundCloud), Foundations three (Cultural Policies programme since 2009; interview-video series; nine episodes by Marwa Helmy with per-episode reference links and a summary), Mawred Talks one (2021 talks series — the stray "." lines on the live page are dropped). The headline Fill becomes an unused `heading` slot; none of the three has a headline above the intro (decision 107). Outbound chips are the ones the port already carried. |
+| **PB2** Media listing | Spec §1.2–1.4 | Unchanged this unit — four embed footprints plus the overflow line naming 7 / 9 / 13 items. Per-item captions stay behind the `slots` toggle. **Client call:** Foundations' intro promises per-episode reference links and a summary, which is exactly that caption slot; whether those surface on the page is not settled here. |
+| **PC1** Publication record | Live Lebanon report | Title in the page-header band. Two-paragraph abstract compressed from the live single paragraph. Language `Arabic, English` and Year `2026` on the metadata table; Author, Country, Theme and Type stay fill bars because the live detail page publishes none of the taxonomy the library filters on (decision 105). Two primary buttons, English then Arabic, replacing the single "Open the document" (decision 106). |
+| **PC2** Related publications | Live library titles | Three neighbouring records so "related" reads as related: Insights into Cultural Policies in Lebanon, Study on legislation governing the culture sector in Lebanon, Cultural Ecosystem in the Arab Region. How "related" is determined remains a client/build call; these three only stand the slot up. |
+
+**Gaps, both real and both on the live detail page.** The Year facet stops at 2024 while the Lebanon record is dated April 2026 — the record is either untagged or the facet list is stale. And the detail page shows none of the taxonomy the library filters on, so four of PC1's six rows have nothing to carry.
+
+**Flagged for the client:** the author/date line on the live detail page renders as "Beirut in 2026-06-16T…April 16th, 2026" — the same CMS artifact as the footer's "Beirut in"; `Lybia` [sic] in the Country facet; and the global-footer Instagram artifact seen on every page so far.

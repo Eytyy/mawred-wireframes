@@ -10,7 +10,7 @@ export function SeriesPage({ config }: { config: SeriesConfig }) {
 
   return (
     <>
-      <PB1SeriesIntro paras={config.paras} links={config.links} />
+      <PB1SeriesIntro text={config.text} links={config.links} />
       <PB2MediaListing
         kind={config.kind}
         total={config.total}

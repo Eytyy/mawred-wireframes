@@ -13,7 +13,7 @@ type PA3CountRowProps = {
 export function PA3CountRow({
   empty,
   filtered,
-  total = 30,
+  total = 33,
 }: PA3CountRowProps) {
   const shown = empty ? 0 : filtered ? 6 : total;
 
