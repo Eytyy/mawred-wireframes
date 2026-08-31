@@ -53,7 +53,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Production Awards",
     crumb: "Home &rsaquo; Grants &amp; Opportunities &rsaquo; Production Awards",
     statesKey: "program",
-    stub: true,
     indexLabel: "Production Awards",
     indexSublabel: "Programme page — wireframed",
   },

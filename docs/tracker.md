@@ -7,8 +7,8 @@ Records what's been done. Task definitions are not kept here — a task is given
 **Task 1 — Port the wireframes to next js ← current**
 
 - [x] Chrome + state panel + app shell
-- [ ] Programs — block kit
-- [ ] Programs — Production Awards
+- [x] Programs — block kit
+- [x] Programs — Production Awards
 - [ ] Programs — Wijhat
 - [ ] Programs — Stand for Art
 - [ ] Programs — Abbara
@@ -35,6 +35,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Programs — block kit + Production Awards (2026-08-31)
+
+**Done:** 18 program blocks (C1–C12, S1–S6) in `components/blocks/programs/`, shared primitives (`KV`, `Figs`, `Accordion`), `ProgramPage` shell enforcing the three-tier scaffold, Production Awards config in `lib/pages/programs.ts`, live route at `/programs/production-awards`. Block codes, hint text and composition ported from the legacy file.
+
+**Left undone:** Wijhat, Stand for Art and Abbara remain stubs — each is its own unit. Real content population is Task 2. Pre-scaffold decisions 1–54 still not restored.
+
+**Decisions:** 59 (square timeline markers), 60 (single client boundary at ProgramPage), 61 (C3 flat/rounds as one component). Logged in wireframe-passes.
+
+**Flagged:** None.
 
 ### Chrome + state panel + app shell (2026-08-31)
 

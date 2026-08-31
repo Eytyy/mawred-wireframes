@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mawred — Lo-fi Wireframes (Programs)</title>
+<style>
+  :root{ --line:#000; --fill:#eee; --soft:#666; }
+  *{box-sizing:border-box}
+  body{margin:0;font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#000;background:#fff}
+  a{color:#000}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+
+  /* ---------- global chrome ---------- */
+  .utility{border-bottom:1px solid var(--line);font-size:12px}
+  .utility .wrap{display:flex;justify-content:flex-end;gap:8px;padding-top:6px;padding-bottom:6px}
+  header.site{border-bottom:2px solid var(--line)}
+  header.site .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+  .logo{border:1px solid var(--line);padding:8px 14px;font-weight:700;cursor:pointer}
+  nav.primary{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+  .navitem{position:relative}
+  .navitem>a{display:block;border:1px solid var(--line);padding:6px 10px;text-decoration:none;font-size:13px;background:#fff}
+  .navitem.optional>a{border-style:dashed}
+  .dropdown{display:none;position:absolute;top:100%;left:0;min-width:200px;border:1px solid var(--line);background:#fff;z-index:20}
+  .navitem:hover .dropdown,.navitem:focus-within .dropdown{display:block}
+  .dropdown a{display:block;padding:7px 10px;text-decoration:none;font-size:13px;border-bottom:1px solid var(--fill)}
+  .dropdown a:last-child{border-bottom:0}
+  .dropdown a:hover{background:var(--fill)}
+  .chip{border:1px solid var(--line);padding:4px 8px}
+
+  .pagehead{border-bottom:1px solid var(--line);padding:18px 0}
+  .crumb{font-size:12px;color:var(--soft);margin-bottom:8px}
+  h1{font-size:22px;margin:0;border:1px solid var(--line);display:inline-block;padding:8px 14px}
+
+  footer.site{border-top:2px solid var(--line);margin-top:48px}
+  .newsletter{border-bottom:1px solid var(--line);padding:18px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .field{border:1px solid var(--line);padding:8px 10px;min-width:220px;color:var(--soft)}
+  .btn{border:1px solid var(--line);padding:8px 14px;background:#fff;cursor:pointer;font:inherit}
+  .btn.primary{border-width:2px;font-weight:700}
+  .btn[disabled]{border-style:dashed;color:var(--soft);cursor:not-allowed}
+  .footcols{display:flex;gap:12px;flex-wrap:wrap;padding:18px 0}
+  .footcols>div{flex:1 1 180px;border:1px solid var(--line);padding:12px;min-height:80px}
+  .copy{border-top:1px solid var(--fill);padding:12px 0;font-size:12px;color:var(--soft)}
+
+  /* ---------- wireframe primitives ---------- */
+  .p{height:8px;background:var(--fill);margin:7px 0}
+  .blk{border:1px solid var(--line);padding:14px;margin:14px 0}
+  .blk.opt{border-style:dashed}
+  .blk.callout{border-width:3px}
+  .blkhead{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .code{font:11px/1 monospace;border:1px solid var(--line);padding:3px 5px}
+  body.codes-off .code{display:none}
+  .blklabel{font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+  .hint{font-size:11px;color:var(--soft);margin-top:8px;font-style:italic}
+
+  .toprow{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-top:8px}
+  .toprow .main{flex:2 1 380px}
+  .toprow .rail{flex:1 1 240px}
+
+  .figs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .fig{border:1px solid var(--line);padding:10px;text-align:center}
+  .fig b{display:block;font-size:20px}
+  .fig span{font-size:11px;color:var(--soft)}
+
+  .kv{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--fill)}
+  .kv span:first-child{font-size:12px}
+  .kv span:last-child{flex:0 0 40%;height:8px;background:var(--fill)}
+  .group{border:1px solid var(--fill);padding:10px;margin:8px 0}
+  .group h4{margin:0 0 6px;font-size:12px}
+
+  ol.steps{margin:0;padding-left:20px}
+  ol.steps li{margin-bottom:10px}
+
+  .rec{border:1px solid var(--line);padding:10px;margin:8px 0;display:flex;gap:12px;align-items:flex-start}
+  .rec .body{flex:1}
+  .rec .amt{border:1px solid var(--line);padding:4px 8px;font-size:11px;white-space:nowrap}
+
+  .tl{list-style:none;margin:0;padding:0}
+  .tl li{border-left:2px solid var(--line);padding:0 0 14px 14px;position:relative}
+  .tl li:before{content:"";position:absolute;left:-6px;top:2px;width:10px;height:10px;background:#000;border-radius:50%}
+  .tl li:last-child{border-left-color:transparent}
+  .tl .row{display:flex;justify-content:space-between;gap:10px;font-size:13px}
+  .tl .row em{font-size:11px;color:var(--soft);font-style:normal}
+
+  .filerow,.acchead{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);padding:9px 10px;margin:6px 0;cursor:pointer;background:#fff;width:100%;font:inherit;text-align:left}
+  .accbody{border:1px solid var(--line);border-top:0;padding:10px;margin:-6px 0 6px}
+  .accbody[hidden]{display:none}
+  .benrow{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--fill);font-size:13px}
+
+  .cells{display:flex;gap:0;flex-wrap:wrap}
+  .cells>div{flex:1 1 140px;border:1px solid var(--line);margin-right:-1px;margin-bottom:-1px;padding:10px}
+  .cells span{font-size:11px;color:var(--soft);display:block;margin-bottom:6px}
+
+  .path{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+  .path h4{margin:0 0 8px;font-size:13px;border-left:4px solid #000;padding-left:8px}
+
+  .stub{border:2px dashed var(--line);padding:40px 20px;text-align:center;margin:30px 0}
+  .stub h2{margin:0 0 8px;font-size:18px}
+  .stub p{color:var(--soft);margin:4px 0}
+
+  .index{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:20px 0}
+  .index a{border:1px solid var(--line);padding:14px;text-decoration:none;display:block}
+  .index a small{display:block;color:var(--soft);margin-top:6px}
+
+  /* ---------- publications primitives ---------- */
+  .dropdown .dgroup{display:block;padding:6px 10px;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--fill);background:#f7f7f7}
+
+  .filterbar{display:flex;gap:8px;flex-wrap:wrap}
+  .facet{display:flex;justify-content:space-between;gap:14px;border:1px solid var(--line);padding:8px 10px;background:#fff;font:inherit;cursor:pointer;flex:0 1 auto}
+  .facetpanel{border:1px solid var(--line);padding:10px;margin:8px 0}
+  .facetpanel[hidden]{display:none}
+  .vals{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:5px 12px}
+  .val{font-size:12px;display:flex;gap:6px;align-items:center;color:var(--soft)}
+  .val i{width:11px;height:11px;border:1px solid var(--line);display:inline-block;flex:0 0 auto}
+
+  .countrow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+            border-top:1px solid var(--fill);border-bottom:1px solid var(--fill);padding:9px 0;font-size:12px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .chipx{border:1px solid var(--line);padding:3px 7px;font-size:11px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+  .card{border:1px solid var(--line);padding:10px;text-decoration:none;display:block}
+  .cover{border:1px solid var(--line);background:var(--fill);height:120px;display:flex;align-items:center;
+         justify-content:center;font-size:11px;color:var(--soft);margin-bottom:9px}
+  .cover.tall{height:250px;margin-bottom:0}
+  .card small{display:block;color:var(--soft);font-size:11px;margin-top:5px}
+  .empty{border:1px dashed var(--line);padding:36px 16px;text-align:center}
+  .empty p{color:var(--soft);font-size:12px;margin:6px 0 12px}
+
+  .embedwrap{margin:12px 0}
+  .embed{border:1px solid var(--line);background:var(--fill);display:flex;align-items:center;justify-content:center;
+         font-size:11px;color:var(--soft);text-align:center;padding:0 10px}
+  .embed.video{height:190px}
+  .embed.audio{height:58px}
+  .cap{border:1px dashed var(--line);padding:6px 8px;font-size:11px;color:var(--soft);margin-top:6px}
+
+  .detail{display:flex;gap:16px;flex-wrap:wrap}
+  .detail .cov{flex:0 1 190px}
+  .detail .meta{flex:1 1 340px}
+
+  /* ---------- network primitives ---------- */
+  .figs.wide{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .searchrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .searchrow .field{flex:1 1 240px}
+
+  .tabs{display:flex;flex-wrap:wrap;margin-bottom:12px}
+  .tab{border:1px solid var(--line);padding:9px 14px;margin-right:-1px;background:#fff;font:inherit;cursor:pointer}
+  .tab.on{border-width:2px;font-weight:700}
+  .tab em{font-style:normal;font-size:11px;color:var(--soft);margin-left:7px}
+
+  .dirrow{display:flex;align-items:center;gap:12px;padding:9px 2px;border-bottom:1px solid var(--fill);text-decoration:none}
+  .dirrow .nm{flex:1 1 auto;font-size:13px;font-weight:700}
+  .dirrow .m{flex:0 0 auto;font-size:12px;color:var(--soft)}
+  .badge{border:1px solid var(--line);padding:2px 7px;font-size:11px}
+  .loadmore{text-align:center;margin-top:14px}
+
+  /* ---------- news primitives ---------- */
+  .tag{border:1px solid var(--line);padding:2px 6px;font-size:10px;letter-spacing:.07em;text-transform:uppercase;display:inline-block}
+  .pager{display:flex;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .pager button{border:1px solid var(--line);background:#fff;font:inherit;font-size:13px;padding:7px 12px;margin-right:-1px;cursor:pointer}
+  .pager button.on{border-width:2px;font-weight:700}
+  .pager button[disabled]{color:var(--soft);cursor:default}
+
+  .prevnext{display:flex;gap:12px}
+  .prevnext a{border:1px solid var(--line);padding:8px 10px;text-decoration:none;font-size:13px;flex:0 1 46%}
+  .prevnext a small{display:block;color:var(--soft);font-size:11px;margin-bottom:3px}
+  .prevnext .nx{margin-left:auto;text-align:right}
+
+  .banner{border:1px solid var(--line);background:var(--fill);height:210px;display:flex;align-items:center;
+          justify-content:center;font-size:11px;color:var(--soft)}
+  .metarow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--fill);
+           border-bottom:1px solid var(--fill);padding:9px 0;font-size:12px}
+  .keyline{border:3px solid var(--line);padding:11px 12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .sched{border:1px solid var(--line)}
+  .sched .r{display:flex;gap:12px;padding:9px 10px;border-bottom:1px solid var(--fill);flex-wrap:wrap}
+  .sched .r:last-child{border-bottom:0}
+  .sched .d{flex:0 0 100px;font-size:12px;font-weight:700}
+  .sched .v{flex:1 1 180px;font-size:12px;color:var(--soft)}
+  .sched .t{flex:0 0 70px;font-size:12px;color:var(--soft)}
+  .share{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:12px}
+  .share .t{border:1px solid var(--line);width:32px;height:32px;display:flex;align-items:center;
+            justify-content:center;font-size:11px;color:var(--soft)}
+
+  /* ---------- home primitives ---------- */
+  .hero{border:1px solid var(--line)}
+  .frame{background:var(--fill);height:300px;border-bottom:1px solid var(--line);padding:12px;
+         display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start}
+  .fnote{font-size:11px;color:var(--soft)}
+  .hcap{border:1px solid var(--line);background:#fff;padding:4px 8px;font-size:11px;color:var(--soft)}
+  .herobar{display:flex;gap:8px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line)}
+  .dot{width:9px;height:9px;border:1px solid var(--line);display:inline-block}
+  .dot.on{background:#000}
+  .heroline{padding:14px 12px}
+  .mosaic{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+  .tile{border:1px solid var(--line);background:var(--fill);height:92px;font-size:10px;color:var(--soft);
+        display:flex;align-items:flex-end;padding:6px}
+  .tile.w2{grid-column:span 2}
+  .statimg{border:1px solid var(--line);background:var(--fill);height:200px;display:flex;align-items:center;
+           justify-content:center;font-size:11px;color:var(--soft);margin-top:12px}
+  .spot{display:flex;gap:16px;flex-wrap:wrap}
+  .spot .im{flex:2 1 320px}
+  .spot .tx{flex:1 1 240px}
+  .eyebrow{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--soft)}
+
+  /* ---------- about primitives ---------- */
+  .quote{border:3px solid var(--line);padding:16px 18px}
+  .vcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+  .vcard{border:1px solid var(--line);padding:11px}
+  .vcard strong{display:block;font-size:13px;margin-bottom:6px}
+  .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:12px;align-items:start}
+  .person{border:1px solid var(--line);padding:10px}
+  .avatar{border:1px solid var(--line);background:var(--fill);height:105px;display:flex;align-items:center;
+          justify-content:center;font-size:11px;color:var(--soft);margin-bottom:9px}
+  .person strong{display:block;font-size:13px}
+  .person small{display:block;color:var(--soft);font-size:11px;margin-top:4px}
+  .person .acchead{margin:10px 0 0;padding:6px 8px;font-size:12px}
+  .person .accbody{margin:0}
+  .logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .logotile{border:1px solid var(--line);background:var(--fill);height:64px;display:flex;align-items:center;
+            justify-content:center;font-size:11px;color:var(--soft)}
+
+  /* ---------- state panel ---------- */
+  #states{position:fixed;right:12px;bottom:12px;border:2px solid var(--line);background:#fff;padding:10px 12px;font-size:12px;z-index:50;max-width:230px}
+  #states h5{margin:0 0 8px;font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+  #states label{display:block;margin:5px 0;cursor:pointer}
+  #states .flagnote{color:var(--soft);font-size:11px;margin-top:8px;border-top:1px solid var(--fill);padding-top:6px}
+  @media print{#states{display:none}}
+</style>
+</head>
+<body>
+
+<div class="utility"><div class="wrap"><span class="chip">Search</span><span class="chip">EN | AR</span></div></div>
+
+<header class="site"><div class="wrap">
+  <div class="logo" onclick="go('index')">MAWRED</div>
+  <nav class="primary">
+    <div class="navitem"><a href="#about-who">About Us &#9662;</a>
+      <div class="dropdown">
+        <a href="#about-who">Who We Are</a>
+        <a href="#about-team">Our Team</a>
+        <a href="#about-supporters">Supporters &amp; Partners</a>
+        <a href="#about-past">Past Initiatives</a>
+        <a href="#about-careers">Careers</a>
+      </div>
+    </div>
+    <div class="navitem"><a href="#pa">Grants &amp; Opportunities &#9662;</a>
+      <div class="dropdown">
+        <a href="#pa">Production Awards</a>
+        <a href="#wijhat">Wijhat</a>
+        <a href="#sfa">Stand for Art</a>
+        <a href="#abbara">Abbara</a>
+      </div>
+    </div>
+    <div class="navitem"><a href="#network">Mawred Network</a></div>
+    <div class="navitem"><a href="#pub-research">Publications &#9662;</a>
+      <div class="dropdown">
+        <span class="dgroup">Library</span>
+        <a href="#pub-research">Research &amp; Publications</a>
+        <span class="dgroup">Series</span>
+        <a href="#pub-mudawanat">Mudawanat Podcast</a>
+        <a href="#pub-foundations">Foundations of Cultural Policies</a>
+        <a href="#pub-talks">Mawred Talks</a>
+      </div>
+    </div>
+    <div class="navitem"><a href="#news">News</a></div>
+    <div class="navitem"><a href="#contact">Contact</a></div>
+    <div class="navitem optional"><a href="#twentieth">Mawred's 20th</a></div>
+  </nav>
+</div></header>
+
+<div class="pagehead"><div class="wrap">
+  <div class="crumb" id="crumb">Home</div>
+  <h1 id="title">Page title</h1>
+</div></div>
+
+<main class="wrap" id="app"></main>
+
+<footer class="site"><div class="wrap">
+  <div class="newsletter">
+    <strong>Newsletter</strong>
+    <span class="field">email address</span>
+    <button class="btn">Subscribe</button>
+  </div>
+  <div class="footcols">
+    <div>Footer links</div>
+    <div>Footer links</div>
+    <div>Contact<div class="p" style="width:70%"></div></div>
+    <div>Social row</div>
+  </div>
+  <div class="copy">&copy; copyright line</div>
+</div></footer>
+
+<div id="states"></div>
+
+<script>
+/* ---------------- primitives ---------------- */
+const P = (w) => '<div class="p" style="width:'+w+'%"></div>';
+const prose = (n) => { let o=''; const w=[100,96,88,92,72,84]; for(let i=0;i<n;i++) o+=P(w[i%w.length]); return o; };
+const blk = (code,label,inner,opt) =>
+  '<section class="blk'+(opt?' opt':'')+(code==='C6'?' callout':'')+'">'+
+  '<div class="blkhead"><span class="code">'+code+'</span><span class="blklabel">'+label+'</span></div>'+inner+'</section>';
+const hint = (t) => '<div class="hint">'+t+'</div>';
+
+const S = { codes:true, closed:false, offered:false, filtered:false, empty:false, slots:false,
+            orgs:false, sparse:false, cat:0, byline:false, structured:false, edge:false,
+            nocalls:false, twentieth:false, staticfb:false, onejob:false, nopositions:false };
+
+const rep = (n,f)=>{ let o=''; for(let i=0;i<n;i++) o += f(i); return o; };
+
+/* ---------------- kit blocks ---------------- */
+const B = {
+  C1: (d)=> blk('C1','Overview', P(30)+prose(4), false),
+
+  C2: (figs)=> blk('C2','Impact figures',
+      '<div class="figs">'+figs.map(f=>'<div class="fig"><b>00</b><span>'+f+'</span></div>').join('')+'</div>'),
+
+  C7: (dest, repeat)=> blk('C7','Apply'+(repeat?' (repeat)':''),
+      S.closed
+        ? '<button class="btn primary" disabled>Apply now</button>'+
+          '<div class="p" style="width:80%"></div>'+
+          hint('Closed state: button disabled, replaced by "applications closed &middot; next round [date]" + link to results in News.')
+        : '<button class="btn primary">Apply now</button>'+hint('Destination: '+dest)),
+
+  C3flat: (rows)=> blk('C3','At-a-glance facts',
+      rows.map(r=>'<div class="kv"><span>'+r+'</span><span></span></div>').join('')),
+
+  C3grouped: (groups)=> blk('C3','At-a-glance facts &mdash; rounds',
+      groups.map(g=>'<div class="group"><h4>'+g+'</h4>'+
+        '<div class="kv"><span>Deadline</span><span></span></div>'+
+        '<div class="kv"><span>Results</span><span></span></div></div>').join('')),
+
+  C4: (steps, withRepeat, nested)=> {
+      const inner = '<ol class="steps">'+steps.map(s=>'<li>'+s+P(70)+'</li>').join('')+'</ol>'+
+                    (withRepeat? '<button class="btn primary">Apply now</button>':'');
+      return nested ? inner : blk('C4','How to apply &mdash; steps', inner);
+  },
+
+  C5: (recs)=> blk('C5','Forms of support',
+      recs.map(r=>'<div class="rec"><div class="body"><strong>'+r.label+'</strong>'+P(85)+'</div>'+
+        (r.amt?'<div class="amt">amount</div>':'')+'</div>').join('')+
+      (recs.some(r=>!r.amt)? hint('Record without an amount renders with no chip &mdash; no empty column, no "N/A".'):'')),
+
+  C6: (label)=> blk('C6','Highlighted note', '<strong>'+label+'</strong>'+prose(2)),
+
+  C8: ()=> blk('C8','Conditions / exclusions', prose(2)+'<ul><li>'+P(60)+'</li><li>'+P(52)+'</li></ul>'),
+  C9: (label)=> blk('C9','How applicants are selected', '<strong>'+label+'</strong>'+prose(3)),
+  C10:(n)=> blk('C10','Contract terms &amp; obligations', prose(n)),
+
+  C11:()=> blk('C11','FAQs', [1,2,3,4].map((i)=>
+      '<button class="acchead" onclick="acc(this)"><span>Question '+i+'</span><span>+</span></button>'+
+      '<div class="accbody" hidden>'+prose(2)+'</div>').join('')+
+      hint('All collapsed by default. English FAQ content is a client call (spec Part 4.1).')),
+
+  C12:()=> blk('C12','Contact','<div class="kv"><span>Programme contact</span><span></span></div>'),
+
+  S1:(stages)=> blk('S1','Programme timeline',
+      '<ul class="tl">'+stages.map(s=>'<li><div class="row"><span>'+s.n+'</span><em>'+s.d+'</em></div>'+P(65)+'</li>').join('')+'</ul>'),
+
+  S2:(files)=> blk('S2','Downloadable forms / files',
+      files.map(f=>'<div class="filerow"><span>&#8681; '+f.n+'</span><span>'+f.t+'</span></div>').join('')),
+
+  S3:(groups,offered)=> blk('S3','Past beneficiaries',
+      groups.map((g,i)=>
+        '<button class="acchead" onclick="acc(this)"><span>'+g+'</span><span>'+(i===0?'&minus;':'+')+'</span></button>'+
+        '<div class="accbody"'+(i===0?'':' hidden')+'>'+
+          '<div class="benrow"><span>Name</span><span>Country &rarr;</span></div>'+
+          '<div class="benrow"><span>Name</span><span>Country &rarr;</span></div>'+
+          '<div class="benrow"><span>Name</span><span>Country &rarr;</span></div>'+
+        '</div>').join('')+
+      '<button class="btn">View all in Mawred Network</button>'+
+      hint('Shared record source with Mawred Network; "view all" deep-links pre-filtered to this programme.'+
+           (offered?' <b>Offered, not currently used.</b>':'')), offered),
+
+  S4:(cells)=> blk('S4','Page-top summary',
+      '<div class="cells">'+cells.map(c=>'<div><span>'+c+'</span>'+P(80)+'</div>').join('')+'</div>'),
+
+  S5:(paths)=> blk('S5','Application paths',
+      '<strong>Shared core</strong>'+prose(3)+
+      paths.map(p=>'<div class="path"><h4>'+p+'</h4>'+B.C4(['Step','Step','Step'],false,true)+'</div>').join('')+
+      hint('Stacked labelled sections, not tabs (decision 6).')),
+
+  S6:()=> blk('S6','Which round should I apply to?',
+      '<div class="kv"><span>If your travel is before [date]</span><span></span></div>'+
+      '<div class="kv"><span>If your travel is before [date]</span><span></span></div>'+
+      '<div class="kv"><span>If your travel is after [date]</span><span></span></div>'+
+      hint('Static guide, not an interactive date picker (decision 7).')),
+
+  /* ----- Publications: Structure A — Media Library ----- */
+  PA1:()=> S.slots
+      ? blk('PA1','Intro line &mdash; available slot', P(72)+
+          hint('Not present today. Available slot if the library should open with a line of context.'), true)
+      : '',
+
+  PA2:()=> blk('PA2','Filter bar',
+      filterBar(FACETS,0)+
+      hint('Six facets kept as-is: Author &middot; Country &middot; Theme &middot; Language &middot; Type &middot; Year. '+
+           'Author is shown open to demonstrate the long-facet treatment (decision 12): a facet over ~12 values gets a search field, '+
+           'the first six values and a &ldquo;show all&rdquo;; short facets list every value.')),
+
+  PA3:()=> blk('PA3','Result count / active filters',
+      '<div class="countrow"><span><strong>Showing '+(S.empty?'0':(S.filtered?'6':'30'))+'</strong> of 30 publications</span>'+
+      ((S.filtered||S.empty)
+        ? '<span class="chips"><span class="chipx">Language: Arabic &times;</span>'+
+          '<span class="chipx">Year: 2016 &times;</span><button class="btn">Clear all</button></span>'
+        : '<span class="chips"><span style="color:var(--soft)">no filters applied</span></span>')+
+      '</div>'+
+      hint('Count always present; active filters render as removable chips on the same row (decision 13).')),
+
+  PA4:()=> blk('PA4','Results grid',
+      S.empty
+        ? '<div class="empty"><strong>No publications match these filters</strong>'+
+          '<p>Remove a filter to widen the search.</p><button class="btn">Clear all filters</button></div>'+
+          hint('Empty state sits inside the grid slot &mdash; filter bar and count row stay put.')
+        : '<div class="cards">'+[1,2,3,4,5,6,7,8,9].map(pubCard).join('')+'</div>'+
+          hint('Card = cover &middot; title &middot; language line &rarr; publication detail. Reflows; no fixed column count.')),
+
+  /* ----- Publications: Structure B — Series Listing ----- */
+  PB1:(paras,links)=> blk('PB1','Series intro',
+      P(34)+prose(paras)+
+      (links.length? '<div style="margin-top:10px">'+links.map(l=>'<span class="chip">&#8599; '+l+'</span>').join(' ')+'</div>' : '')+
+      hint('Prose length flexes per series (1 paragraph &rarr; 3). Outbound links sit at the end of the intro.')),
+
+  PB2:(kind,total)=> blk('PB2','Media embed listing',
+      [1,2,3,4].map(()=>
+        '<div class="embedwrap"><div class="embed '+kind+'">'+
+        (kind==='video' ? 'video embed (YouTube) &mdash; provider chrome carries the title and thumbnail'
+                        : 'audio embed (SoundCloud) &mdash; provider chrome carries the title')+
+        '</div>'+(S.slots?'<div class="cap">optional per-item caption &mdash; available field, unused today</div>':'')+'</div>'
+      ).join('')+
+      '<div class="hint">&hellip; '+total+' items in this series, manual order, no filtering.</div>'+
+      hint('One embed per row at content width (decision 14). Audio and video differ only in embed footprint &mdash; '+
+           'no bespoke wrapper, since styling control over the provider chrome is limited.')),
+
+  /* ----- Publications: Structure C — Publication Detail ----- */
+  PC1:()=> blk('PC1','Publication record',
+      '<div class="detail"><div class="cov"><div class="cover tall">cover</div></div><div class="meta">'+
+      ['Author','Country','Theme','Type','Language','Year'].map(r=>'<div class="kv"><span>'+r+'</span><span></span></div>').join('')+
+      '<div style="margin:14px 0">'+prose(4)+'</div>'+
+      '<button class="btn primary">&#8681; Open the document</button></div></div>'+
+      hint('Title comes from the page-header band &mdash; no title block. A record missing a metadata field drops that row '+
+           '(no empty column, no &ldquo;N/A&rdquo;). Cover left, metadata + abstract right (decision 15).')),
+
+  PC2:()=> blk('PC2','Related publications',
+      '<div class="cards">'+[1,2,3].map(pubCard).join('')+'</div>'+
+      hint('Reuses the library card exactly. Which records count as related is a client/build call &mdash; the structure reserves the slot.')),
+
+  /* ----- Mawred Network: MN1–MN5 directory listing, MN6 record detail ----- */
+  MN1:()=> blk('MN1','Intro / purpose',
+      P(38)+prose(3)+
+      '<div class="kv"><span>To correct a profile &mdash; communications@mawred.org</span><span></span></div>'+
+      hint('The responsible-data commitment (consent &middot; privacy &middot; ownership) is permanent, first-class prose here, '+
+           'not a footnote at the page tail. The live &ldquo;under development&rdquo; notice is retired &mdash; not drawn.')),
+
+  MN2:()=> blk('MN2','Impact stat strip',
+      '<div class="figs wide">'+
+        ['records in the network','countries','programmes &amp; initiatives','years, 2004&ndash;2025']
+        .map(f=>'<div class="fig"><b>00</b><span>'+f+'</span></div>').join('')+'</div>'+
+      hint('Native figures counted from the directory&rsquo;s own facets &mdash; carries the impact job the dropped geo-map was doing. '+
+           'Degrades to plain numbers. Two more are available if a fuller strip is wanted (8 kinds of involvement, 22 disciplines); '+
+           'which figures lead is a client call.')),
+
+  MN3:()=> blk('MN3','Filter bank',
+      '<div class="searchrow"><span class="field">Search by name&hellip;</span><button class="btn">Search</button></div>'+
+      filterBar(NETFACETS,1)+
+      hint('Five facets: Involvement &middot; Programme &middot; Discipline &middot; Country &middot; Year. '+
+           'Entity Type is not a facet here &mdash; the listing tabs own it (decision 20). '+
+           'Programme is shown open to demonstrate the long-facet treatment: over ~12 values &rarr; search + first six + &ldquo;show all&rdquo; '+
+           '(decision 12) &mdash; also applies to Discipline (22), Country (55) and Year (22). '+
+           'The name search is an addition to the spec (decision 21).')),
+
+  MN4:()=> blk('MN4','Result count / active filters / sort',
+      '<div class="countrow">'+
+        '<span><strong>Showing '+(S.empty?'0':(S.filtered?'12':'40'))+'</strong> of '+
+        (S.orgs?'94 organizations &amp; initiatives':'318 individuals &amp; groups')+'</span>'+
+        '<span class="chips">'+
+        ((S.filtered||S.empty)
+          ? '<span class="chipx">Programme: Wijhat &times;</span><span class="chipx">Country: Egypt &times;</span>'+
+            '<button class="btn">Clear all</button>'
+          : '<span style="color:var(--soft)">no filters applied</span>')+
+        '<button class="btn">Sort: Name A&ndash;Z &#9662;</button></span>'+
+      '</div>'+
+      hint('Count is always present and is scoped to the open tab; active filters render as removable chips on the same row '+
+           '(decision 13). Filters stay applied when the tab is switched. Sort sits on the same row (name / year / country).')),
+
+  MN5:()=> blk('MN5','Directory listing &mdash; split by entity type',
+      '<div class="tabs">'+
+        '<button class="tab'+(S.orgs?'':' on')+'" onclick="setTab(0)">Individuals &amp; Groups <em>318</em></button>'+
+        '<button class="tab'+(S.orgs?' on':'')+'" onclick="setTab(1)">Organizations &amp; Initiatives <em>94</em></button>'+
+      '</div>'+
+      (S.empty
+        ? '<div class="empty"><strong>No records match these filters</strong>'+
+          '<p>Remove a filter, or check the other tab &mdash; filters apply to one entity type at a time.</p>'+
+          '<button class="btn">Clear all filters</button></div>'+
+          hint('Empty state sits inside the listing slot &mdash; tabs, count row and filter bank stay put.')
+        : dirRows(S.orgs)+'<div class="loadmore"><button class="btn">Load 40 more</button></div>'+
+          hint('Two tabs, not stacked sections: each group runs to hundreds of rows, so stacking would bury the second one '+
+               '(decision 19). Row = name &middot; country &middot; involvement &middot; discipline (decision 22) &rarr; record detail. '+
+               'Load-more rather than a numbered pager (decision 23).'))),
+
+  MN6:()=> blk('MN6','Record',
+      '<div class="detail"><div class="cov"><div class="cover tall">photo / logo</div></div><div class="meta">'+
+        '<strong>Descriptor / role</strong>'+
+        [['Country',true],['Discipline',true],['Involvement',true],['Programme',true],
+         ['Round',!S.sparse],['Year',true]].filter(r=>r[1])
+         .map(r=>'<div class="kv"><span>'+r[0]+'</span><span></span></div>').join('')+
+        '<div style="margin:14px 0"><strong>Project title</strong>'+
+          (S.sparse ? '' : prose(3))+'</div>'+
+        '<button class="btn">&larr; Back to the directory</button>'+
+      '</div></div>'+
+      hint('Name comes from the page-header band &mdash; no title block. Photo left, fields right, following the publication-detail '+
+           'precedent (decision 15). A record with no round and no project description drops those rows entirely &mdash; no empty rows, '+
+           'no &ldquo;N/A&rdquo; (toggle the sparse state). Programme &middot; Discipline &middot; Country values link back into the directory '+
+           'pre-filtered. Generic WordPress furniture &mdash; comment box, 8-target share bar, dead decorative icons &mdash; is dropped '+
+           '(decision 24).')),
+
+  /* ----- News: N1–N4 landing, N5–N13 post detail (one prefix, two views of one content type) ----- */
+  N1:()=> blk('N1','Category filter',
+      '<div class="tabs">'+CATS.map((c,i)=>
+        '<button class="tab'+(S.cat===i?' on':'')+'" onclick="setCat('+i+')">'+c.n+' <em>'+c.v+'</em></button>').join('')+'</div>'+
+      filterBar([{n:'Programme',v:4}],-1)+
+      hint('One primary dimension &mdash; category &mdash; as a tab row, with the optional &ldquo;by programme&rdquo; cut as a single '+
+           'facet trigger beside it (decision 27). Deliberately lighter than the six-facet bar on Publications and the Network. '+
+           'The real category list and the tagging model are a <b>client call</b>; these are the spec&rsquo;s starter facets.')),
+
+  N2:()=> blk('N2','Result count / active filters',
+      '<div class="countrow">'+
+        '<span><strong>Showing '+(S.empty?'0':'9')+'</strong> of '+CATS[S.cat].v+' posts'+
+        (S.cat? ' in '+CATS[S.cat].n : '')+'</span>'+
+        '<span class="chips">'+
+        ((S.filtered||S.empty)
+          ? '<span class="chipx">Programme: Wijhat &times;</span><button class="btn">Clear all</button>'
+          : '<span style="color:var(--soft)">no programme filter applied</span>')+
+        '</span></div>'+
+      hint('Count row per decision 13, scoped to the open tab. No sort control &mdash; reverse-chronological is the only '+
+           'meaningful order for a dated feed &mdash; and only the programme filter chips, since the active tab is already '+
+           'visible above (decision 28).')),
+
+  N3:()=> blk('N3','Post feed',
+      S.empty
+        ? '<div class="empty"><strong>No posts match this filter</strong>'+
+          '<p>Clear the programme filter, or switch back to All.</p><button class="btn">Clear all filters</button></div>'+
+          hint('Empty state sits inside the feed slot &mdash; tabs and count row stay put; the pager drops out entirely.')
+        : '<div class="cards">'+[1,2,3,4,5,6,7,8,9].map(()=>newsCard()).join('')+'</div>'+
+          hint('Card = image &middot; category tag &middot; title &middot; date (decision 30). The tag is new &mdash; it makes the '+
+               'kind of post legible on the card, which is the whole point of the taxonomy. Excerpt is an available slot, '+
+               'unused today. Nine per page, matching the current feed.')),
+
+  N4:()=> blk('N4','Pagination',
+      '<div class="pager"><button>&lsaquo; Prev</button><button class="on">1</button><button>2</button>'+
+      '<button>3</button><button disabled>&hellip;</button><button>26</button><button>Next &rsaquo;</button></div>'+
+      hint('Numbered pager, not load-more (decision 26): 26 pages of dated archive, page URLs already server-rendered and '+
+           'shareable, and reaching 2021 by load-more would take 25 clicks. The Network keeps load-more &mdash; a directory is '+
+           'narrowed, an archive is navigated.')),
+
+  N5:()=> blk('N5','Previous / next post',
+      '<div class="prevnext">'+
+        (S.edge? '' : '<a href="#news-detail"><small>&larr; Previous post</small>Title of the previous post</a>')+
+        '<a class="nx" href="#news-detail"><small>Next post &rarr;</small>Title of the next post</a></div>'+
+      hint('Sequential by date, kept, and kept in the spec&rsquo;s position above the featured image (decision 32). '+
+           'At either end of the archive the missing direction is omitted, not disabled &mdash; toggle the first-post state.')),
+
+  N6:()=> blk('N6','Featured image',
+      '<div class="banner">featured image &mdash; full content width</div>'+
+      hint('The current site repeats the title as an H2 under the image; dropped &mdash; the page-header band carries the title.')),
+
+  N7:()=> blk('N7','Post meta strip',
+      '<div class="metarow"><span>12 March 2026</span><span class="tag">Announcements</span>'+
+      (S.byline? '<span style="color:var(--soft)">by Author Name</span>' : '')+'</div>'+
+      hint('Replaces the trailing &ldquo;Mawred News, SliderEN, Comments Off&rdquo; line and moves above the body. '+
+           'The author byline is a <b>client call</b> &mdash; laid out both ways; the strip reads fine without it.')),
+
+  N8:()=> blk('N8','Key-detail line',
+      '<div class="keyline"><strong>Deadline &mdash; 19 October 2026</strong><span>results announced December 2026</span></div>'+
+      hint('Optional insert, fixed to the top of the body (decision 29): the one fact an announcement reader arrives for '+
+           'should never sit below the fold.'), true),
+
+  N9:()=> blk('N9','Body',
+      prose(6)+
+      hint('Free prose by default &mdash; most posts are prose only. The three structured inserts (key-detail &middot; schedule '+
+           '&middot; CTA) are available, never forced: toggle the announcement state to see them. The lightweight analogue of '+
+           'the programme kit.')),
+
+  N10:()=> blk('N10','Schedule / programme',
+      '<div class="sched">'+[1,2,3].map(()=>
+        '<div class="r"><span class="d">Date</span><span class="v">Venue &middot; detail</span><span class="t">Time</span></div>'
+      ).join('')+'</div>'+
+      hint('Dated rows &mdash; date &middot; venue &middot; time &middot; detail. Sits after the prose (decision 29).'), true),
+
+  N11:()=> blk('N11','CTA',
+      '<button class="btn primary">Register</button> <button class="btn">Detailed programme</button>'+
+      hint('One or more actions &mdash; registration form, detailed-programme link, apply-portal link. Last in the body '+
+           '(decision 29): the action follows the explanation.'), true),
+
+  N12:()=> blk('N12','Share',
+      '<div class="share"><span>Share</span>'+[1,2,3,4].map(()=>'<span class="t">&#9633;</span>').join('')+
+      '<button class="btn">Copy link</button></div>'+
+      hint('Trimmed from the current eight targets to four plus copy-link (decision 31), at the body tail above Related posts.')),
+
+  N13:()=> blk('N13','Related posts',
+      '<div class="cards">'+[1,2,3].map(()=>newsCard(true)).join('')+'</div>'+
+      hint('Reuses the feed card exactly. <b>Related, not most-recent</b>: by tag (same category / programme) where tags exist, '+
+           'falling back to posts published near this post&rsquo;s own date &mdash; so an old post surfaces its contemporaries '+
+           'rather than today&rsquo;s newest.')),
+
+  /* ----- Home: HM1–HM8. Home surfaces every inner page and restructures none. ----- */
+  HM1:()=> blk('HM1','Cinematic hero &mdash; image sequence + positioning line',
+      '<div class="hero">'+
+        '<div class="frame">'+
+          '<span class="fnote">'+(S.staticfb
+            ? 'single static image &mdash; motion fallback'
+            : 'full-bleed image frame &mdash; 1 of 5 &mdash; funded artist / work / organization')+'</span>'+
+          '<span class="hcap">caption &mdash; artist &middot; work &middot; programme</span>'+
+        '</div>'+
+        (S.staticfb ? '' :
+          '<div class="herobar"><span class="dot on"></span><span class="dot"></span><span class="dot"></span>'+
+          '<span class="dot"></span><span class="dot"></span>'+
+          '<span class="fnote">auto-advance &middot; click a marker to jump &middot; pauses on interaction</span></div>')+
+        '<div class="heroline"><strong>Positioning line &mdash; who Mawred is, in one sentence</strong>'+P(62)+
+          '<div style="margin-top:11px"><button class="btn primary">Grants &amp; Opportunities</button> '+
+          '<button class="btn">Mawred Network</button></div></div>'+
+      '</div>'+
+      hint('Full-bleed at build &mdash; drawn at content width here, since lo-fi shows order and hierarchy, not bleed. '+
+           'Auto-advance with frame markers, not scroll-driven (decision 35): a scroll-driven hero competes with HM2 '+
+           'directly beneath it for the same gesture, and hover-advance fails on touch. Captions sit persistently in the '+
+           'frame, not on hover (decision 36) &mdash; naming the artist is what makes the imagery read as impact rather than '+
+           'decoration. Imagery comes from the same Network record source as HM2. The wayfinding label '+
+           '&ldquo;Grants &amp; Opportunities&rdquo; vs &ldquo;Programs&rdquo; is a <b>client call</b>. '+
+           'Toggle the static state for the no-motion fallback.')),
+
+  HM2:()=> blk('HM2','Impact stat strip + faces-of-impact mosaic wall',
+      '<div class="figs wide">'+
+        ['grants since 2004','countries','years','organizations supported']
+        .map(f=>'<div class="fig"><b>00</b><span>'+f+'</span></div>').join('')+'</div>'+
+      (S.staticfb
+        ? '<div class="statimg">single static impact image &mdash; motion fallback</div>'
+        : '<div class="mosaic">'+
+            ['w2','','','','','w2','',''].map(c=>'<div class="tile '+c+'">tile</div>').join('')+
+          '</div>')+
+      hint('Replaces the dropped Data-Studio map. Figures sit as an adjacent band above the wall, not overlaid on it '+
+           '(decision 37) &mdash; numbers over arbitrary photography can&rsquo;t be guaranteed legible. Figures count up on '+
+           'scroll; degrade to plain numbers. Tiles are uncaptioned (decision 37): captioning eight tiles is noise at tile '+
+           'size, and the hero already names its material. Same record source as HM1, so both numbers and imagery come from '+
+           'real funded records. <b>Which figures lead is a client call</b>, as is confirming them against the Network counts. '+
+           'Hero and wall are two distinct blocks sharing material, not a continuous dissolve (decision 38).')),
+
+  HM3:()=> blk('HM3','Currently open opportunities',
+      (S.nocalls
+        ? '<div class="empty"><strong>No calls are open right now</strong>'+
+          '<p>The next round opens [date]. All four programmes stay browsable in the meantime.</p>'+
+          '<button class="btn">See all programmes</button></div>'+
+          hint('Never an empty slot: the block falls back to next-round timing plus a route into the programmes '+
+               '(spec &sect;3C). Same information as a programme page&rsquo;s closed apply state (decision 5).')
+        : '<div class="cards">'+['Open all year','Open all year','Deadline &middot; 19 Oct 2026'].map(oppCard).join('')+'</div>'+
+          hint('Card = call-status badge &middot; programme name &middot; one-line descriptor &rarr; programme page. '+
+               'Curated block, not a live query into the programme kit &mdash; the kit stays closed. Call-status is one '+
+               'shared source with three surfaces: this block, the News Announcements category, and the programme page&rsquo;s '+
+               'apply status (decision 5). Toggle the no-calls state for the fallback.'))),
+
+  HM4:()=> blk('HM4','Programmes overview &mdash; all four',
+      '<div class="cells">'+['Production Awards','Wijhat','Stand for Art','Abbara'].map(n=>
+        '<div><span>Programme</span><strong>'+n+'</strong>'+P(90)+'<small>Learn more &rarr;</small></div>').join('')+'</div>'+
+      hint('New vs the current Home, which only ever shows what&rsquo;s open. Renders as a compact text row, deliberately '+
+           'lighter than HM3&rsquo;s cards (decision 40), so the two don&rsquo;t read as duplicate strips. An open programme '+
+           'appears in both &mdash; different jobs: HM3 says act now, HM4 says here is the whole offer. Name + descriptor '+
+           'only, no kit dependency.')),
+
+  HM5:()=> blk('HM5','Featured / spotlight',
+      '<div class="spot">'+
+        '<div class="im"><div class="banner">feature image</div></div>'+
+        '<div class="tx"><span class="eyebrow">'+(S.twentieth?'Mawred&rsquo;s 20th':'Featured')+'</span>'+
+          '<strong style="display:block;margin:7px 0">'+(S.twentieth
+            ? 'Twenty years of Mawred &mdash; campaign title'
+            : 'Beneficiary story, publication, exhibition or milestone')+'</strong>'+
+          P(94)+P(70)+
+          '<div style="margin-top:11px"><button class="btn primary">Read more</button></div></div>'+
+      '</div>'+
+      hint('The homepage&rsquo;s one curation lever: an editor chooses what leads. Two-column, image left, following '+
+           'decision 15. The &ldquo;Mawred&rsquo;s 20th&rdquo; campaign is a <b>state on this block, not a block of its own</b> '+
+           '(decision 44) &mdash; so Home can carry the campaign without baking a temporary thing into permanent structure. '+
+           'Whether the 20th is permanent nav or a temporary campaign is a <b>client call</b>; this lays out either way. '+
+           'Toggle the 20th state.')),
+
+  HM6:()=> blk('HM6','Latest news',
+      '<div class="cards">'+[1,2,3,4].map(()=>newsCard(true)).join('')+'</div>'+
+      '<button class="btn">All news</button>'+
+      hint('Reuses the News feed card verbatim (decision 43) &mdash; image &middot; category tag &middot; title &middot; date. '+
+           'Four latest posts, curated to a strip; the full archive and its pager live on the News landing.')),
+
+  HM7:()=> blk('HM7','Latest from Publications',
+      '<div class="cards">'+[homeDocCard(),homeDocCard(),homeDocCard(),homeMediaCard()].join('')+'</div>'+
+      '<button class="btn">All publications</button>'+
+      hint('One combined strip, not a documents strip plus a media strip (decision 41) &mdash; two three-item strips for a '+
+           'taste of one section makes Home sprawl. Because the strip mixes two kinds, each card carries a type tag '+
+           '(Publication / Episode); otherwise it is the library card unchanged. The media item is a cover-style card linking '+
+           'into the series page, not a live embed &mdash; embeds carry provider chrome we can&rsquo;t restyle.')),
+
+  HM8:()=> blk('HM8','Identity lead-in',
+      P(30)+prose(3)+'<div style="margin-top:10px"><button class="btn">Who we are</button></div>'+
+      hint('Kept light (decision 42): one paragraph and a route into the merged Who We Are page. The hero already carries '+
+           'identity as a positioning line, so this is the editorial hand-off, not a second identity statement. Set aside: '+
+           'folding it into the footer, which leaves Home with no editorial route into About.')),
+
+  /* ----- About: AB1–AB13 across five sub-pages and two detail pages (decision 45).
+     About is its own visual world — these blocks are not the programme kit and share nothing with it. ----- */
+  AB1:()=> blk('AB1','Intro',
+      prose(3)+
+      hint('Stays prose &mdash; the anchor statement. Everything below it graduates out of prose into a styled treatment.')),
+
+  AB2:()=> blk('AB2','Vision',
+      '<div class="quote">'+P(88)+P(46)+'</div>'+
+      hint('One sentence set apart as an emphasised band, rather than a heading with a line of body text beneath it.')),
+
+  AB3:()=> blk('AB3','Mission',
+      '<div class="cells">'+rep(4,(i)=>'<div><span>0'+(i+1)+'</span>'+P(92)+P(64)+'</div>')+'</div>'+
+      hint('Four points as a compact cell row &mdash; the HM4 treatment (decision 40) reused rather than reinvented. '+
+           'Lighter than the values grid below, because mission points are short and carry no labels of their own.')),
+
+  AB4:()=> blk('AB4','Values',
+      '<div class="vcards">'+rep(6,()=>'<div class="vcard"><strong>Value label</strong>'+P(96)+P(72)+'</div>')+'</div>'+
+      hint('Six label + description pairs as a scannable grid, not bullets. A heavier treatment than the mission points '+
+           'because each value carries a label of its own.')),
+
+  AB5:()=> blk('AB5','History timeline',
+      prose(2)+
+      '<ul class="tl">'+[['2003','Founding'],['2004','First programmes'],['2005','Training programme and venue'],
+        ['2006','AFAC spin-off'],['2009','Cultural policy programme'],['2011&ndash;12','Abbara'],
+        ['2013','Action for Hope'],['2016&ndash;17','Cairo &rarr; Beirut'],['2018+','Later milestones']]
+        .map(e=>'<li><div class="row"><span><strong>'+e[0]+'</strong> &mdash; '+e[1]+'</span></div>'+P(72)+'</li>').join('')+
+      '</ul>'+
+      hint('The headline graduation: a wall of dated prose becomes an ordered timeline. Entry count and granularity are a '+
+           'copy call &mdash; nine drawn. Long nuance that will not fit a row lives in the short lead paragraph above, not in '+
+           'a row. Kept inline on this page rather than linked or anchored out (decision 46).')),
+
+  AB6:(optional)=> (optional && !S.slots) ? '' :
+      blk('AB6','Section intro'+(optional?' &mdash; available slot':''),
+      P(74)+
+      hint(optional
+        ? 'Not present today. One line of context above the listing if the client wants it; the page reads fine opening '+
+          'straight on the grid.'
+        : 'Net-new micro-copy: one line framing team and governance. Today that context exists only as a passing sentence '+
+          'on Who We Are.'),
+      optional),
+
+  AB7:(label,cards,total,note)=> blk('AB7','People group &mdash; '+label,
+      '<div class="people">'+cards+'</div>'+
+      (total? '<div class="loadmore"><button class="btn">Show all '+total+'</button></div>' : '')+
+      (note
+        ? hint('One card pattern across all three groups: photo &middot; name &middot; role where it applies &middot; country. '+
+               'A record with a bio carries a &ldquo;Read bio&rdquo; expander that opens in place; a record without one simply '+
+               'omits it &mdash; optional fields render by omission, so a static card is never dimmed or disabled '+
+               '(decision 48). Default-avatar cards are a normal state, not an error. Both kinds are drawn side by side here.')
+        : (total
+            ? hint('Over ~12 records, a group shows its first eight and a &ldquo;show all&rdquo; (decision 50) &mdash; the '+
+                   'assembly is the largest group and would otherwise be most of the page.')
+            : ''))),
+
+  AB8:(label,n,note)=> blk('AB8','Logo band &mdash; '+label,
+      '<div class="logos">'+rep(n,()=>'<div class="logotile">logo &rarr;</div>')+'</div>'+
+      (note
+        ? hint('One treatment, three labelled bands (decision 51) &mdash; the tier is the only thing that distinguishes them, '+
+               'and it signals relationship type. Every tile links out; no per-logo description. A band with a single logo '+
+               'renders as one tile in the same grid, not as a special case.')
+        : '')),
+
+  AB9:()=> blk('AB9','Initiative directory',
+      '<div class="cards">'+rep(12,initCard)+'</div>'+
+      hint('~30 entries in a plain card grid &mdash; no filter bar and no pagination (decision 52). The directory has no facets '+
+           'to filter on and 30 cards scroll fine. Card = image &middot; title &middot; one-line teaser &rarr; initiative detail.')),
+
+  AB10:()=> blk('AB10','Initiative record',
+      '<div class="banner">main image &mdash; full content width</div>'+
+      '<div style="margin-top:12px">'+prose(4)+'</div>'+
+      P(30)+prose(3)+'<ul><li>'+P(62)+'</li><li>'+P(54)+'</li></ul>'+
+      hint('One rich-text field with simple styling &mdash; headings, lists, links. The &ldquo;tabs&rdquo; on the live teasers '+
+           'were only body headings, not the programme tab system, so there is no tab structure here. Title comes from the '+
+           'page-header band.')),
+
+  AB11:()=> blk('AB11','Other past initiatives',
+      '<div class="cards">'+rep(3,initCard)+'</div>'+
+      hint('Reuses the directory card exactly. Which siblings count as related is a client/build call &mdash; the structure '+
+           'reserves the slot, following the publication-detail precedent (PC2).')),
+
+  AB12:()=> blk('AB12','Open positions',
+      S.nopositions
+        ? '<div class="empty"><strong>No open positions right now</strong>'+
+          '<p>New roles are posted here when they open.</p><button class="btn">Contact Mawred</button></div>'+
+          hint('The likeliest state of this page for most of the year &mdash; drawn as a first-class state, not an accident.')
+        : rep(S.onejob?1:4,()=>
+            '<a class="dirrow" href="#about-careers-detail"><span class="nm">Position title</span>'+
+            '<span class="m">Location &middot; Full time</span><span class="m">Apply by [date]</span></a>')+
+          hint('Text rows, not image cards (decision 53): a list of one to a few text records has no imagery to carry a grid, '+
+               'and the same row reads correctly at one item or at ten. Meta is optional per position and drops out when '+
+               'absent. Toggle the single and empty states.')),
+
+  AB13:()=> blk('AB13','Position',
+      prose(6)+P(30)+'<ul><li>'+P(64)+'</li><li>'+P(58)+'</li><li>'+P(70)+'</li></ul>'+
+      '<div style="margin-top:12px"><button class="btn primary">Apply</button></div>'+
+      '<div class="kv"><span>Or write to &mdash; [contact address]</span><span></span></div>'+
+      hint('Single rich-text body plus an optional apply action. Title comes from the page-header band.'))
+};
+
+/* ---------------- home helpers ---------------- */
+const oppCard = (status)=>
+  '<a class="card" href="#pa"><span class="badge">'+status+'</span>'+
+  '<strong style="display:block;margin-top:8px">Programme name</strong>'+P(92)+
+  '<small>Read more and apply &rarr;</small></a>';
+
+/* the library card (decision 43) plus a type tag, since the strip mixes documents and media */
+const homeDocCard = ()=>
+  '<a class="card" href="#pub-detail"><div class="cover">cover</div>'+
+  '<span class="tag">Publication</span>'+
+  '<strong style="display:block;margin-top:7px">Publication title</strong><small>Arabic, English</small></a>';
+
+const homeMediaCard = ()=>
+  '<a class="card" href="#pub-mudawanat"><div class="cover">episode thumbnail</div>'+
+  '<span class="tag">Episode</span>'+
+  '<strong style="display:block;margin-top:7px">Episode or series title</strong><small>Mudawanat Podcast</small></a>';
+
+/* ---------------- publications helpers ---------------- */
+const FACETS = [
+  {n:'Author', v:50}, {n:'Country', v:13}, {n:'Theme', v:2},
+  {n:'Language', v:3}, {n:'Type', v:3}, {n:'Year', v:14}
+];
+
+/* shared by Publications (Structure A) and Mawred Network — one filter-bar treatment,
+   decisions 11 + 12: horizontal facet triggers, full-width value panel beneath,
+   facets over ~12 values get search + first six + "show all". */
+function filterBar(list, openIdx){
+  return '<div class="filterbar">'+list.map((f,i)=>
+      '<button class="facet" id="fb'+i+'" onclick="fpanel('+i+')"><span>'+f.n+'</span>'+
+      '<span>'+(i===openIdx?'&minus;':'+')+'</span></button>').join('')+'</div>'+
+    list.map((f,i)=>facetPanel(f,i,i===openIdx)).join('');
+}
+
+function facetPanel(f,i,open){
+  const long = f.v > 12;
+  const shown = long ? 6 : f.v;
+  let vals = '';
+  for(let k=0;k<shown;k++) vals += '<span class="val"><i></i>value</span>';
+  return '<div class="facetpanel" id="fp'+i+'"'+(open?'':' hidden')+'>'+
+    (long? '<div class="field" style="display:block;margin-bottom:9px">search '+f.n.toLowerCase()+'&hellip;</div>' : '')+
+    '<div class="vals">'+vals+'</div>'+
+    (long? '<button class="btn" style="margin-top:10px">Show all '+f.v+'</button>' : '')+
+    '</div>';
+}
+
+const pubCard = ()=>
+  '<a class="card" href="#pub-detail"><div class="cover">cover</div>'+
+  '<strong>Publication title</strong><small>Arabic, English</small></a>';
+
+/* ---------------- network helpers ---------------- */
+/* Entity Type is deliberately absent — the listing tabs carry it (decision 20). */
+const NETFACETS = [
+  {n:'Type of Involvement', v:8}, {n:'Programme', v:38}, {n:'Discipline', v:22},
+  {n:'Country', v:55}, {n:'Year', v:22}
+];
+
+const dirRows = (orgs)=> [1,2,3,4,5,6,7,8].map(()=>
+  '<a class="dirrow" href="#network-record">'+
+  '<span class="nm">'+(orgs?'Organization or initiative name':'Person or group name')+'</span>'+
+  '<span class="m">Country</span><span class="badge">Involvement</span>'+
+  '<span class="m">Discipline</span></a>').join('');
+
+function setTab(i){ S.orgs = !!i; render(); }
+
+/* ---------------- news helpers ---------------- */
+const CATS = [{n:'All',v:231},{n:'Announcements',v:128},{n:'News &amp; Events',v:103}];
+
+/* bare = suppress the optional excerpt slot (used by the related strip) */
+const newsCard = (bare)=>
+  '<a class="card" href="#news-detail"><div class="cover">image</div>'+
+  '<span class="tag">Category</span>'+
+  '<strong style="display:block;margin-top:7px">Post title</strong><small>12 March 2026</small>'+
+  ((S.slots && !bare) ? '<div class="cap">optional excerpt &mdash; available field, unused today</div>' : '')+
+  '</a>';
+
+function setCat(i){ S.cat = i; render(); }
+
+/* ---------------- about helpers ---------------- */
+/* One card pattern for all three people groups. Bio is optional per record: with one, the card
+   carries a "Read bio" expander; without one, it simply omits it (decision 48). */
+const person = (o)=>
+  '<div class="person">'+
+  '<div class="avatar">'+(o.noimg?'default avatar':'photo')+'</div>'+
+  '<strong>Name</strong>'+
+  (o.role? '<small>Role</small>' : '')+
+  '<small>Country</small>'+
+  (o.bio
+    ? '<button class="acchead" onclick="acc(this)"><span>Read bio</span><span>+</span></button>'+
+      '<div class="accbody" hidden>'+prose(3)+'</div>'
+    : '')+
+  '</div>';
+
+const teamCards = ()=>
+  person({role:1,bio:1})+person({role:1,bio:1})+person({role:1})+person({role:1,noimg:1});
+
+const boardCards = ()=>
+  person({role:1,bio:1})+person({role:1,bio:1})+person({role:1,bio:1})+person({role:1})+
+  person({role:1,bio:1})+person({role:1})+person({role:1,noimg:1,bio:1});
+
+const assemblyCards = ()=>
+  person({bio:1})+person({})+person({})+person({bio:1})+
+  person({noimg:1})+person({})+person({bio:1})+person({noimg:1});
+
+const initCard = ()=>
+  '<a class="card" href="#about-past-detail"><div class="cover">image</div>'+
+  '<strong>Initiative title</strong><small>one-line teaser</small></a>';
+
+/* ---------------- page assembly ---------------- */
+function programPage(cfg){
+  let h = '';
+  if(cfg.hero) h += B.S4(cfg.hero);
+  h += '<div class="toprow"><div class="main">'+B.C1()+'</div><div class="rail">'+
+       (cfg.figs? B.C2(cfg.figs):'')+ B.C7(cfg.dest,false)+'</div></div>';
+  if(!cfg.figs) h += hint('No impact figures on this programme &mdash; the rail carries the apply action alone. By design, not a gap.');
+  h += cfg.free.join('');
+  h += B.C11() + B.C12();
+  return h;
+}
+
+const PAGES = {
+  index: { title:'Wireframe index', crumb:'Home', render:()=>
+    '<p>Lo-fi, English-only, black &amp; white. Structure per the project specs; nothing here re-opens a settled decision.</p>'+
+    '<div class="index">'+
+    '<a href="#pa"><b>Production Awards</b><small>Programme page &mdash; wireframed</small></a>'+
+    '<a href="#wijhat"><b>Wijhat</b><small>Programme page &mdash; wireframed</small></a>'+
+    '<a href="#sfa"><b>Stand for Art</b><small>Programme page &mdash; wireframed</small></a>'+
+    '<a href="#abbara"><b>Abbara</b><small>Programme page &mdash; wireframed</small></a>'+
+    '<a href="#pub-research"><b>Research &amp; Publications</b><small>Publications &mdash; Structure A (media library)</small></a>'+
+    '<a href="#pub-detail"><b>Publication detail</b><small>Publications &mdash; Structure C</small></a>'+
+    '<a href="#pub-mudawanat"><b>Mudawanat Podcast</b><small>Publications &mdash; Structure B (audio)</small></a>'+
+    '<a href="#pub-foundations"><b>Foundations of Cultural Policies</b><small>Publications &mdash; Structure B (video)</small></a>'+
+    '<a href="#pub-talks"><b>Mawred Talks</b><small>Publications &mdash; Structure B (thin intro)</small></a>'+
+    '<a href="#network"><b>Mawred Network</b><small>Directory listing &mdash; filtered index, split by entity type</small></a>'+
+    '<a href="#network-record"><b>Network record</b><small>Mawred Network &mdash; record detail</small></a>'+
+    '<a href="#news"><b>News</b><small>News landing &mdash; feed with category tabs</small></a>'+
+    '<a href="#news-detail"><b>News post</b><small>News &mdash; post detail</small></a>'+
+    '<a href="#home"><b>Home</b><small>Curated cross-page summary &mdash; wireframed</small></a>'+
+    '<a href="#about-who"><b>Who We Are</b><small>About &mdash; identity + history timeline</small></a>'+
+    '<a href="#about-team"><b>Our Team</b><small>About &mdash; team &middot; board &middot; general assembly</small></a>'+
+    '<a href="#about-supporters"><b>Supporters &amp; Partners</b><small>About &mdash; three logo bands</small></a>'+
+    '<a href="#about-past"><b>Past Initiatives</b><small>About &mdash; initiative directory</small></a>'+
+    '<a href="#about-past-detail"><b>Past initiative</b><small>About &mdash; initiative detail</small></a>'+
+    '<a href="#about-careers"><b>Careers</b><small>About &mdash; open positions</small></a>'+
+    '<a href="#about-careers-detail"><b>Position</b><small>About &mdash; position detail</small></a>'+
+    '<a href="#contact"><b>Contact</b><small>Blocked &mdash; not yet specced</small></a>'+
+    '</div>'+
+    '<p style="color:#666;font-size:13px">Use the panel bottom-right to toggle block codes and the two open states.</p>'
+  },
+
+  pa: { title:'Production Awards', crumb:'Home &rsaquo; Grants &amp; Opportunities &rsaquo; Production Awards', states:'program', render:()=>
+    programPage({
+      figs:['grants awarded','countries','years running'],
+      dest:'online application portal',
+      free:[
+        B.C3flat(['Deadline','Eligibility','Disciplines covered','Grant period']),
+        B.C4(['Create an account','Complete the form','Attach the required files','Submit before the deadline'], true),
+        B.C5([{label:'Discipline',amt:1},{label:'Discipline',amt:1},{label:'Discipline',amt:1},{label:'Discipline',amt:1}]),
+        B.C8(), B.C9('Jury'), B.C10(5),
+        B.S2([{n:'Application form',t:'DOCX'},{n:'Budget template',t:'XLSX'}]),
+        S.offered? B.S3(['Round 03','Round 02','Round 01'],true) : ''
+      ]
+    })
+  },
+
+  wijhat: { title:'Wijhat', crumb:'Home &rsaquo; Grants &amp; Opportunities &rsaquo; Wijhat', states:'program', render:()=>
+    programPage({
+      hero:['Who','What','Where','Support'],
+      figs:['travel grants','countries','years running'],
+      dest:'online application portal',
+      free:[
+        B.C3grouped(['Round 1','Round 2','Round 3']),
+        B.S6(),
+        B.S5(['Individual','Group']),
+        B.C8(), B.C9('Jury'), B.C10(5),
+        S.offered? B.S3(['2025','2024','2023'],true) : ''
+      ]
+    })
+  },
+
+  sfa: { title:'Stand for Art', crumb:'Home &rsaquo; Grants &amp; Opportunities &rsaquo; Stand for Art', states:'program', render:()=>
+    programPage({
+      figs:null,
+      dest:'private encrypted form (not the public portal)',
+      free:[
+        B.C6('Your request is confidential'),
+        B.C4(['Contact us through the secure form','A committee reviews the case','You are contacted directly'], true),
+        B.C5([{label:'Emergency fund',amt:1},{label:'Referral to a partner organisation',amt:0}]),
+        B.C8(), B.C9('Committee &mdash; also decides the level of support')
+      ]
+    })
+  },
+
+  abbara: { title:'Abbara', crumb:'Home &rsaquo; Grants &amp; Opportunities &rsaquo; Abbara', states:'program', render:()=>
+    programPage({
+      hero:['Who','What','Where','Support'],
+      figs:['organisations supported','still active','ceased operating','countries'],
+      dest:'online application portal',
+      free:[
+        B.C3flat(['Annual budget band','Years operating','Registration status','Country of operation']),
+        B.S1([{n:'Call opens',d:'date'},{n:'Deadline',d:'date'},{n:'Shortlisting',d:'date'},{n:'Interviews',d:'date'},
+              {n:'Selection',d:'date'},{n:'Year 1 support',d:'12 months'},{n:'Review',d:'date'},{n:'Year 2 support',d:'12 months'}]),
+        B.C4(['Check eligibility','Complete the form','Submit'], true),
+        B.C5([{label:'Core funding',amt:1},{label:'Training',amt:0},{label:'Technical assistance',amt:0},{label:'Networking',amt:0}]),
+        B.C6('What the funding does and does not cover'),
+        B.C8(), B.C9('Jury'), B.C10(2),
+        B.S3(['Cohort 03','Cohort 02','Cohort 01'],false)
+      ]
+    })
+  },
+
+  /* ---- Publications: Structure A ---- */
+  'pub-research': { title:'Research &amp; Publications', states:'library',
+    crumb:'Home &rsaquo; Publications &rsaquo; Research &amp; Publications', render:()=>
+      B.PA1()+B.PA2()+B.PA3()+B.PA4()+
+      hint('Structure A &mdash; Media Library. The only filtered structure in Publications; the three series pages use Structure B.')
+  },
+
+  /* ---- Publications: Structure C ---- */
+  'pub-detail': { title:'Publication title', states:'detail',
+    crumb:'Home &rsaquo; Publications &rsaquo; <a href="#pub-research">Research &amp; Publications</a> &rsaquo; Publication title', render:()=>
+      B.PC1()+B.PC2()+
+      hint('Structure C &mdash; Publication detail, one per library record.')
+  },
+
+  /* ---- Publications: Structure B ×3 ---- */
+  'pub-mudawanat': { title:'Mudawanat Podcast', states:'series',
+    crumb:'Home &rsaquo; Publications &rsaquo; Mudawanat Podcast', render:()=>
+      B.PB1(3,['Mudawanat programme page','British Council','SoundCloud'])+B.PB2('audio','~7')+
+      hint('Structure B &mdash; Series listing, audio instance. Same structure as Foundations and Mawred Talks.')
+  },
+
+  'pub-foundations': { title:'Foundations of Cultural Policies', states:'series',
+    crumb:'Home &rsaquo; Publications &rsaquo; Foundations of Cultural Policies', render:()=>
+      B.PB1(3,['Cultural Policies programme','YouTube playlist','Artistic Board'])+B.PB2('video','9')+
+      hint('Structure B &mdash; Series listing, video instance. Longest intro of the three (3 paragraphs).')
+  },
+
+  /* ---- Mawred Network: directory + record ---- */
+  network: { title:'Mawred Network', states:'directory',
+    crumb:'Home &rsaquo; Mawred Network', render:()=>
+      B.MN1()+B.MN2()+B.MN3()+B.MN4()+B.MN5()+
+      hint('Listing and record detail are two views of one record type &mdash; the listing is the filtered index, '+
+           'the record is the full entry. Same family as the Publications media library, different record type.')
+  },
+
+  'network-record': { title:'Record name', states:'record',
+    crumb:'Home &rsaquo; <a href="#network">Mawred Network</a> &rsaquo; Record name', render:()=>
+      B.MN6()+
+      hint('One record page serves both entity types &mdash; an organization uses the same fields with a logo in place of a portrait.')
+  },
+
+  /* ---- News: landing + post detail ---- */
+  news: { title:'News', states:'newslanding', crumb:'Home &rsaquo; News', render:()=>
+    B.N1()+B.N2()+B.N3()+(S.empty?'':B.N4())+
+    hint('Landing and post detail are two views of one content type &mdash; the feed is the index, the post is the entry. '+
+         'The Announcements category carries the same information the programme pages show as call-status and results, and '+
+         'that Home surfaces as open opportunities: one shared source, three surfaces (noted, not designed).')
+  },
+
+  'news-detail': { title:'Post title', states:'newsdetail',
+    crumb:'Home &rsaquo; <a href="#news">News</a> &rsaquo; Post title', render:()=>
+      B.N5()+B.N6()+B.N7()+
+      (S.structured? B.N8():'')+B.N9()+(S.structured? B.N10()+B.N11():'')+
+      B.N12()+B.N13()+
+      hint('Body shape flexes by post kind: editorial posts are prose only (the default here), announcement and event posts '+
+           'opt into the structured inserts. Nothing is forced &mdash; toggle the announcement state to see all three.')
+  },
+
+  /* ---- Home: no page-header band (decision 33) ---- */
+  home: { title:'Home', crumb:'Home', states:'home', nohead:true, render:()=>
+    B.HM1()+B.HM2()+B.HM3()+B.HM4()+B.HM5()+B.HM6()+B.HM7()+B.HM8()+
+    hint('Block I of the spec &mdash; newsletter &middot; contact &middot; social &middot; footer &mdash; is the global chrome '+
+         'below, not a Home block, so it carries no code. Home has no breadcrumb and no H1 band: it opens on the hero '+
+         '(decision 33). Order follows the spec, impact (HM2) before opportunities (HM3) &mdash; the story earns the ask '+
+         '(decision 39). Every block here surfaces a page specced elsewhere; nothing on Home changes an inner spec.')
+  },
+
+  /* ---- About: five sub-pages (nav dropdown, no landing) + two detail pages ---- */
+  'about-who': { title:'Who We Are', states:'aboutwho',
+    crumb:'Home &rsaquo; About Us &rsaquo; Who We Are', render:()=>
+      B.AB1()+B.AB2()+B.AB3()+B.AB4()+B.AB5()+
+      hint('Who We Are and History merged into one page (spec &sect;3.1): identity first, origin story below it. '+
+           'About is its own visual world &mdash; the AB blocks are not the programme kit and share nothing with it '+
+           '(decision 45). No About landing page: the dropdown links straight to the five sub-pages and Home&rsquo;s '+
+           'identity lead-in routes here (decision 54).')
+  },
+
+  'about-team': { title:'Our Team', states:'aboutteam',
+    crumb:'Home &rsaquo; About Us &rsaquo; Our Team', render:()=>
+      B.AB6(false)+
+      B.AB7('Team', teamCards(), 0, true)+
+      B.AB7('Artistic Board', boardCards(), 0, false)+
+      B.AB7('General Assembly', assemblyCards(), 35, false)+
+      hint('Three stacked labelled groups, not tabs (decision 49): the largest runs to ~35 records, nowhere near the '+
+           'hundreds that justified tabs on the Network (decision 19), and the groups read as one team with sub-groups '+
+           'rather than three co-equal categories. Team content is net-new &mdash; Mawred supplies it. '+
+           'The page name (&ldquo;Our Team&rdquo; recommended) is a <b>client call</b>.')
+  },
+
+  'about-supporters': { title:'Supporters &amp; Partners', states:'supporters',
+    crumb:'Home &rsaquo; About Us &rsaquo; Supporters &amp; Partners', render:()=>
+      B.AB6(true)+B.AB8('Donors',5,true)+B.AB8('Supporters',1,false)+B.AB8('Partners',12,false)+
+      hint('Three bands drawn at their real relative weights &mdash; 5 donors, 1 supporter, ~25 partners (12 drawn). '+
+           'The single-logo band is the state worth checking: it holds its label and its grid rather than collapsing.')
+  },
+
+  'about-past': { title:'Past Initiatives', states:'pastlisting',
+    crumb:'Home &rsaquo; About Us &rsaquo; Past Initiatives', render:()=>
+      B.AB6(true)+B.AB9()+
+      hint('Retired initiatives are confirmed <b>not</b> structurally like active programme pages &mdash; image + rich text, '+
+           'not the kit. Nothing here depends on the archived-programme template.')
+  },
+
+  'about-past-detail': { title:'Initiative title',
+    crumb:'Home &rsaquo; About Us &rsaquo; <a href="#about-past">Past Initiatives</a> &rsaquo; Initiative title', render:()=>
+      B.AB10()+B.AB11()+
+      hint('Listing and detail are two views of one record type, the same pairing used for publications and network records.')
+  },
+
+  'about-careers': { title:'Careers', states:'careers',
+    crumb:'Home &rsaquo; About Us &rsaquo; Careers', render:()=>
+      B.AB6(true)+B.AB12()+
+      hint('Structurally the same family as the News and Publications listings, but spec&rsquo;d standalone &mdash; no shared '+
+           'block commitment. Whether this page has content to launch with is a <b>client call</b>; all three states are '+
+           'laid out so it can ship either way.')
+  },
+
+  'about-careers-detail': { title:'Position title',
+    crumb:'Home &rsaquo; About Us &rsaquo; <a href="#about-careers">Careers</a> &rsaquo; Position title', render:()=>
+      B.AB13()
+  },
+
+  'pub-talks': { title:'Mawred Talks', states:'series',
+    crumb:'Home &rsaquo; Publications &rsaquo; Mawred Talks', render:()=>
+      B.PB1(1,[])+B.PB2('video','~13')+
+      hint('Structure B &mdash; Series listing, video instance. Shortest intro (1 paragraph), no outbound links: '+
+           'the same block at its thin end.')
+  }
+};
+
+const STUBS = {
+  contact:['Contact','Blocked &mdash; no structure spec yet'],
+  twentieth:["Mawred's 20th",'Client call &mdash; permanent nav item vs temporary campaign']
+};
+
+/* ---------------- router ---------------- */
+function acc(btn){
+  const body = btn.nextElementSibling;
+  body.hidden = !body.hidden;
+  btn.lastElementChild.innerHTML = body.hidden ? '+' : '&minus;';
+}
+function fpanel(i){
+  const p = document.getElementById('fp'+i), b = document.getElementById('fb'+i);
+  p.hidden = !p.hidden;
+  b.lastElementChild.innerHTML = p.hidden ? '+' : '&minus;';
+}
+/* Fragment links are intercepted and routed in JS rather than left to real
+   #hash navigation, which is blocked inside a sandboxed preview iframe
+   (about:srcdoc) and killed every nav link when the file was viewed embedded
+   instead of downloaded. Hash still updates when it can, so URLs stay shareable. */
+let CUR = 'index';
+function go(k){
+  CUR = k;
+  try { if(location.hash.slice(1) !== k) location.hash = k; } catch(e){}
+  render();
+}
+document.addEventListener('click', function(e){
+  const a = e.target.closest && e.target.closest('a[href^="#"]');
+  if(!a) return;
+  e.preventDefault();
+  go(a.getAttribute('href').slice(1));
+});
+
+/* state panel is per page-type: block codes always, plus only that page-type's states */
+const STATES = {
+  program:{ list:[['closed','Applications closed'],['offered','Show "offered" blocks']],
+            note:'Closed state = open decision 5 (not yet confirmed).' },
+  library:{ list:[['filtered','Filters applied'],['empty','Filtered to no results'],['slots','Show available-but-unused slots']],
+            note:'Slot = the optional intro line above the filters.' },
+  series: { list:[['slots','Show available-but-unused slots']],
+            note:'Slot = the optional per-item caption.' },
+  detail: { list:[], note:'No page-specific states on this screen.' },
+  directory:{ list:[['filtered','Filters applied'],['empty','Filtered to no results']],
+            note:'The entity tabs switch in the page itself &mdash; they are navigation, not a wireframe state.' },
+  record: { list:[['sparse','Record missing optional fields']],
+            note:'Sparse = no round, no project description. Optional fields render by omission.' },
+  newslanding:{ list:[['filtered','Programme filter applied'],['empty','Filtered to no results'],
+                      ['slots','Show available-but-unused slots']],
+            note:'Slot = the optional card excerpt. The category tabs switch in the page itself &mdash; navigation, not a state.' },
+  home:   { list:[['nocalls','No calls open (fallback)'],['twentieth','Feature slot = Mawred&rsquo;s 20th'],
+                  ['staticfb','Static fallback (no motion)']],
+            note:'Static = hero and mosaic degraded to single images if motion is cut at build.' },
+  aboutwho:{ list:[], note:'No page-specific states &mdash; every block on this page is always present.' },
+  aboutteam:{ list:[], note:'Cards with and without a bio are drawn together in the grid &mdash; a mix, not a toggle. '+
+                           'Expanding a bio happens in the page itself.' },
+  supporters:{ list:[['slots','Show available-but-unused slots']],
+            note:'Slot = the optional one-line intro above the bands.' },
+  pastlisting:{ list:[['slots','Show available-but-unused slots']],
+            note:'Slot = the optional one-line intro above the directory.' },
+  careers:{ list:[['slots','Show available-but-unused slots'],['onejob','Single open position'],
+                  ['nopositions','No open positions']],
+            note:'Careers content-readiness is a <b>client call</b> &mdash; laid out empty, single and multiple.' },
+  newsdetail:{ list:[['structured','Announcement post (structured inserts)'],['byline','Show author byline'],
+                     ['edge','First post in the archive (no previous)']],
+            note:'Byline is a client call &mdash; laid out both ways. Default post is editorial: prose only.' }
+};
+function statepanel(key){
+  const g = (PAGES[key] && PAGES[key].states) ? STATES[PAGES[key].states] : null;
+  let h = '<h5>Wireframe states</h5>'+
+          '<label><input type="checkbox" data-s="codes"'+(S.codes?' checked':'')+'> Show block codes</label>';
+  if(g){
+    h += g.list.map(s=>'<label><input type="checkbox" data-s="'+s[0]+'"'+(S[s[0]]?' checked':'')+'> '+s[1]+'</label>').join('');
+    h += '<div class="flagnote">'+g.note+'</div>';
+  }
+  const el = document.getElementById('states');
+  el.innerHTML = h;
+  el.querySelectorAll('input').forEach(i=> i.addEventListener('change', e=>{
+    const k = e.target.dataset.s;
+    S[k] = e.target.checked;
+    if(k==='empty' && S.empty) S.filtered = true;
+    if(k==='filtered' && !S.filtered) S.empty = false;
+    document.body.classList.toggle('codes-off', !S.codes);
+    render();
+  }));
+}
+
+function render(){
+  const key = CUR;
+  const app = document.getElementById('app');
+  const head = document.querySelector('.pagehead');
+  head.style.display = (PAGES[key] && PAGES[key].nohead) ? 'none' : '';
+  if(PAGES[key]){
+    document.getElementById('title').innerHTML = PAGES[key].title;
+    document.getElementById('crumb').innerHTML = PAGES[key].crumb;
+    app.innerHTML = PAGES[key].render();
+  } else if(STUBS[key]){
+    document.getElementById('title').innerHTML = STUBS[key][0];
+    document.getElementById('crumb').innerHTML = 'Home &rsaquo; '+STUBS[key][0];
+    app.innerHTML = '<div class="stub"><h2>Not yet wireframed</h2><p>'+STUBS[key][1]+'</p>'+
+      '<p>Global chrome above and below is final; the page body belongs to its own wireframe chat.</p></div>';
+  } else { go('index'); return; }
+  statepanel(key);
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange', function(){
+  let k = 'index';
+  try { k = (location.hash||'#index').slice(1); } catch(e){}
+  if(k !== CUR) go(k);
+});
+try { if(location.hash.length > 1) CUR = location.hash.slice(1); } catch(e){}
+render();
+</script>
+</body>
+</html>
