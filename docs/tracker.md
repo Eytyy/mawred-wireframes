@@ -15,7 +15,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Publications
 - [x] Mawred Network
 - [ ] News
-- [ ] About — Who We Are + Our Team done; Supporters, Past Initiatives, Careers remain
+- [x] About
 - [ ] Home
 
 **Task 2 — Populate the wireframes with real content**
@@ -35,6 +35,36 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### About — Careers + position detail (2026-08-31)
+
+**Done:** AB12–AB13 in `components/blocks/about/`. `EmptyState` gains optional `action` prop (default unchanged); `KV` gains optional `fill` prop for label-only rows. Shells `CareersPage` (client — reads `slots`, `onejob`, `nopositions`) and `PositionPage` (server). Live routes at `/about/careers` and `/about/careers/position`; `stub: true` removed from both. Render-checked: default four-position list, single-position toggle, empty state with Contact Mawred action, position detail with Apply + contact row.
+
+**Left undone:** Real content population is Task 2. Whether Careers has content to launch with remains a client call — all three states are laid out.
+
+**Decisions:** 73–74 logged in wireframe-passes (`EmptyState` action prop, `KV` fill prop).
+
+**Flagged:** None.
+
+### About — Past Initiatives + detail (2026-08-31)
+
+**Done:** Shared `Banner` primitive in `components/wireframe/` (extends decisions 62/67). AB9–AB11 in `components/blocks/about/`; `InitiativeCard` exported from AB9 for AB11 reuse. Shells `PastInitiativesPage` (client — reads `slots`) and `PastInitiativeDetailPage` (server). Live routes at `/about/past-initiatives` and `/about/past-initiatives/initiative`; `stub: true` removed from both. Render-checked: 12-card directory grid, optional AB6 intro via `slots`, detail banner + prose + sibling cards.
+
+**Left undone:** Real content population is Task 2.
+
+**Decisions:** 72 logged in wireframe-passes (shared Banner).
+
+**Flagged:** None.
+
+### About — Supporters & Partners (2026-08-31)
+
+**Done:** AB8 logo band in `components/blocks/about/`. Shell `SupportersPage` (client — reads `slots` for optional AB6 intro). `LOGO_BANDS` config in `lib/pages/about.ts` (Donors 5 with note, Supporters 1, Partners 12 of ~25). Live route at `/about/supporters-partners`; `stub: true` removed from `about-supporters`. Render-checked: three bands at relative weights, single-logo Supporters band holds label and grid, `slots` toggle reveals AB6 intro.
+
+**Left undone:** Real content population is Task 2.
+
+**Decisions:** None — band treatment is decision 51.
+
+**Flagged:** None.
 
 ### About — block kit AB1–AB7 + Who We Are + Our Team (2026-08-31)
 

@@ -60,3 +60,18 @@ export const PEOPLE_GROUPS: PeopleGroup[] = [
   { label: "Artistic Board", people: BOARD },
   { label: "General Assembly", people: ASSEMBLY, total: 35 },
 ];
+
+export type LogoBand = {
+  label: string;
+  count: number;
+  note?: boolean;
+};
+
+export const LOGO_BANDS: LogoBand[] = [
+  { label: "Donors", count: 5, note: true },
+  { label: "Supporters", count: 1 },
+  { label: "Partners", count: 12 },
+];
+
+export const PAST_INITIATIVE_DETAIL_HREF = "/about/past-initiatives/initiative";
+export const CAREERS_POSITION_HREF = "/about/careers/position";
