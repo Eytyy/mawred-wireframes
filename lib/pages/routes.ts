@@ -163,7 +163,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Post title",
     statesKey: "newsdetail",
     crumb: 'Home &rsaquo; <a href="/news">News</a> &rsaquo; Post title',
-    stub: true,
     indexLabel: "News post",
     indexSublabel: "News — post detail",
   },

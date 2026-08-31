@@ -13,3 +13,6 @@ export const NEWS_TOTAL_PAGES = 26;
 
 export const NEWS_LANDING_HREF = "/news";
 export const NEWS_DETAIL_HREF = "/news/post";
+
+export const NEWS_SHARE_TARGETS = 4;
+export const NEWS_RELATED_COUNT = 3;

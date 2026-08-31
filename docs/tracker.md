@@ -14,7 +14,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Programs — Abbara
 - [x] Publications
 - [x] Mawred Network
-- [ ] News
+- [x] News
 - [x] About
 - [ ] Home
 
@@ -35,6 +35,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### News — post detail N5–N13 (2026-08-31)
+
+**Done:** Nine blocks (N5–N13) in `components/blocks/news/`; `NewsDetailPage` shell (client — reads `structured` / `byline` / `edge`). N6 uses shared `Banner`; N13 reuses exported `NewsCard` with `bare`. Config extended in `lib/pages/news.ts` (`NEWS_SHARE_TARGETS`, `NEWS_RELATED_COUNT`). Live route at `/news/post`; `stub: true` removed from `news-detail`. Render-checked: default editorial (prose only), structured inserts via panel toggle, byline on/off, first-post edge (prev omitted). Build clean. News page-type complete for Task 1.
+
+**Left undone:** Real content population is Task 2.
+
+**Decisions:** 79 logged in wireframe-passes (`NewsDetailPage` client boundary).
+
+**Flagged:** None.
 
 ### News — landing feed N1–N4 (2026-08-31)
 
