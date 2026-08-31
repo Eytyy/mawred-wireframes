@@ -18,8 +18,8 @@ export function MN3FilterBank() {
         Entity Type is not a facet here — the listing tabs own it (decision 20).
         Programme is shown open to demonstrate the long-facet treatment: over ~12
         values → search + first six + &ldquo;show all&rdquo; (decision 12) —
-        also applies to Discipline (22), Country (55) and Year (22). The name
-        search is an addition to the spec (decision 21).
+        also applies to Discipline (22), Country (55) and Year (21, 2004–2025
+        with no 2006). The name search is an addition to the spec (decision 21).
       </Hint>
     </Block>
   );

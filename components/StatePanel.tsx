@@ -13,7 +13,6 @@ const BOOLEAN_KEYS = new Set<keyof WireframeState>([
   "empty",
   "slots",
   "orgs",
-  "sparse",
   "byline",
   "structured",
   "edge",

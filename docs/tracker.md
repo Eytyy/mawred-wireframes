@@ -11,7 +11,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Programs — Stand for Art
 - [x] Programs — Abbara
 - [x] Publications
-- [ ] Mawred Network
+- [x] Mawred Network
 - [ ] News
 - [ ] About
 - [ ] Home
@@ -21,6 +21,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Populate — Mawred Network (2026-09-01)
+
+**Done:** Sixth Task 2 unit, both routes. `lib/pages/network.ts` rewritten with the live content: five facets carrying their real value lists (Involvement 8, Programme 38, Discipline 22, Country 55, Year **21** — the port had 22, and 2006 has no entry), figures carrying 55 countries / 38 programmes / 21 years tagged, the two-paragraph responsible-data intro with `communications@mawred.org`, four sampled records two per entity tab, per-tab filter chips the sample actually satisfies, and Al Kasaba Theatre and Cinematheque as `NETWORK_RECORD`. Content props added to MN1 (`heading`, `text`, `contact` — the headline Fill is now an unused slot, decision 113) and MN6 (`record`); MN4 and MN5 now read the sampled rows, MN5 renders one badge per engagement and takes `filtered` so the narrowed state shows one real row, and `Tabs.count` is optional so the tabs can carry no total. MN2 and MN3 needed no code change — `Figs` and `FilterBar` already accept values. MN6 restructured: Country and Discipline stay record-level and the involvement/programme/round/year/project fields become a group repeated once per engagement (decision 111). `sparse` retired everywhere — out of the `record` states key, out of `WireframeState`, and `NetworkRecordPage` is a server shell again (decision 114). Record route title and crumb now name Al Kasaba. Type-check and lint clean; curl against the running dev server — `/network`, `/network/record`, `/publications/research` and `/news` all 200. Directory default renders both intro paragraphs, `00 · 55 · 38 · 21`, Programme open on Abbara→Circairo with "Show all 38", "Showing 2 records in Individuals & Groups" with no denominator, and Hiba Taim / Nour Shantout. The three client branches were render-checked through a throwaway route (since removed): filtered narrows to one row per tab with matching chips (Student/Morocco, All Around Culture/Palestine), the orgs tab shows Al Kasaba and Editions Motifs with two badges each, empty keeps tabs and count row with the count at 0, and MN6 given no record still renders the six placeholder KV rows and project fill bars. News tabs still carry their counts (231) after the `Tabs` change, and the library still reads "Showing 33 of 33" with Achraf Maher in the open Author facet.
+
+**Left undone:** Three of the four records are directory rows only — Editions Motifs, Hiba Taim and Nour Shantout have no detail page, and all four rows link to Al Kasaba's. News is the next unit.
+
+**Decisions:** 110–114 logged in wireframe-passes (four sampled records with one populated detail; MN6's repeating engagement group with Round generalised to round/track; unpublished totals left unpublished; MN1's headline retired and the data-access ask surfaced as a client call; the emptied `record` states key). Decision 109 revised in place — Network's facets now carry real values, so News is the only kit still rendering `"value"`.
+
+**Flagged:** The spec's record field set is wrong, and the port inherited it: §B5 describes one involvement per record, but Al Kasaba and Editions Motifs are each Participant **and** Grantee on the same All Around Culture project, and the "Round" slot holds a track name rather than a round number. Corrected in the wireframe, not in the spec. Three gaps: no record count exists for the network or either entity tab, so MN2's first rail and MN4's denominator are both open; the Year facet has no 2006; and the live listing returns **no directory rows at all** in its HTML — the several-hundred-record list is JS-rendered, which matters for an index meant to be found and cited. For the client: whether the retired notice's `resources@mawred.org` data-access invitation is permanent content; `Entrepeneurship` [sic] in the Discipline facet; `Libya` spelled correctly here against `Lybia` in the Publications Country facet, so two facet lists disagree; and on the participant pages, the same `Beirut in <timestamp>` artifact, the dead decorative `Asset-2/3/4.svg` links already in spec §A4, and Previous/Next record navigation the wireframe doesn't reproduce.
 
 ### Populate — Publications (2026-09-01)
 

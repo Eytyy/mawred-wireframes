@@ -143,10 +143,10 @@ export const ROUTES: RouteEntry[] = [
   {
     key: "network-record",
     path: "/network/record",
-    title: "Record name",
+    title: "Al Kasaba Theatre and Cinematheque",
     statesKey: "record",
     crumb:
-      'Home &rsaquo; <a href="/network">Mawred Network</a> &rsaquo; Record name',
+      'Home &rsaquo; <a href="/network">Mawred Network</a> &rsaquo; Al Kasaba Theatre and Cinematheque',
     indexLabel: "Network record",
     indexSublabel: "Mawred Network — record detail",
   },

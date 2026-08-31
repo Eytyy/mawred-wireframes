@@ -53,8 +53,9 @@ export const STATES: Record<StatesKey, StateConfig> = {
       "The entity tabs switch in the page itself — they are navigation, not a wireframe state.",
   },
   record: {
-    list: [{ key: "sparse", label: "Record missing optional fields" }],
-    note: "Sparse = no round, no project description. Optional fields render by omission.",
+    list: [],
+    note:
+      "No toggle for missing optional fields: the populated record shows the omission natively — an organisation with no descriptor, and an engagement with a project title and no description.",
   },
   newslanding: {
     list: [

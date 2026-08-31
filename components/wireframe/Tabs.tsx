@@ -2,7 +2,7 @@
 
 type TabItem = {
   label: string;
-  count: number;
+  count?: number;
 };
 
 type TabsProps = {
@@ -26,7 +26,11 @@ export function Tabs({ items, activeIdx, onSelect }: TabsProps) {
             onClick={() => onSelect(idx)}
           >
             {item.label}
-            <span className="ml-1.75 text-xs text-neutral-500">{item.count}</span>
+            {item.count !== undefined ? (
+              <span className="ml-1.75 text-xs text-neutral-500">
+                {item.count}
+              </span>
+            ) : null}
           </button>
         );
       })}
