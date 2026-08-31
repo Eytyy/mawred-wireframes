@@ -9,9 +9,9 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Chrome + state panel + app shell
 - [x] Programs — block kit
 - [x] Programs — Production Awards
-- [ ] Programs — Wijhat
-- [ ] Programs — Stand for Art
-- [ ] Programs — Abbara
+- [x] Programs — Wijhat
+- [x] Programs — Stand for Art
+- [x] Programs — Abbara
 - [ ] Publications
 - [ ] Mawred Network
 - [ ] News
@@ -35,6 +35,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Programs — Wijhat, Stand for Art, Abbara (2026-08-31)
+
+**Done:** Config-only port of the three remaining program pages — `WIJHAT`, `STAND_FOR_ART` and `ABBARA` in `lib/pages/programs.ts`, thin route shells at `/programs/wijhat`, `/programs/stand-for-art` and `/programs/abbara`, `stub: true` removed from routes. Transcribed from legacy lines 966–1010. First render check for S1 (Abbara eight-stage timeline), S5 (Wijhat nested paths), S6 (Wijhat round guide) and C6 (Stand for Art confidentiality note, Abbara funding coverage). Stand for Art figure-less rail and hint verified.
+
+**Left undone:** Real content population is Task 2. Production Awards block-kit log entry still lists the three as stubs — superseded by this entry.
+
+**Decisions:** Batched as one unit per plan override — block kit was complete, nothing new to build. No new wireframe-pass entries; transcription only.
+
+**Flagged:** None.
 
 ### Programs — block kit + Production Awards (2026-08-31)
 
