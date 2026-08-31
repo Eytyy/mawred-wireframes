@@ -4,21 +4,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
-**Task 1 — Port the wireframes to next js ← current**
-
-- [x] Chrome + state panel + app shell
-- [x] Programs — block kit
-- [x] Programs — Production Awards
-- [x] Programs — Wijhat
-- [x] Programs — Stand for Art
-- [x] Programs — Abbara
-- [x] Publications
-- [x] Mawred Network
-- [x] News
-- [x] About
-- [ ] Home
-
-**Task 2 — Populate the wireframes with real content**
+**Task 2 — Populate the wireframes with real content ← current**
 
 - [ ] Programs — Production Awards
 - [ ] Programs — Wijhat
@@ -35,6 +21,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Home — HM1–HM8 (2026-08-31)
+
+**Done:** Shared `Cells`/`Cell` primitive in `components/wireframe/Cells.tsx`; S4 and AB3 refactored onto it. Eight blocks (HM1–HM8) in `components/blocks/home/`; shell `HomePage` (client — reads `nocalls` / `twentieth` / `staticfb`). Config in `lib/pages/home.ts`. Live route at `/`; `stub: true` removed from `home`. Render-checked: default (all eight blocks, hero marker bar, mosaic grid, three open-call cards), `nocalls` empty state, `twentieth` campaign eyebrow/title, `staticfb` (marker bar omitted, mosaic replaced by Banner). Production Awards and Who We Are re-checked after the `Cells` refactor. Build clean. **Task 1 complete.**
+
+**Left undone:** Real content population is Task 2. Wayfinding label ("Grants & Opportunities" vs "Programs"), which figures lead, and whether the 20th is permanent nav or a temporary campaign remain client calls — all surfaced in hint text.
+
+**Decisions:** 80–82 logged in wireframe-passes; decision 70 revised in place (superseded by 80).
+
+**Flagged:** None.
 
 ### News — post detail N5–N13 (2026-08-31)
 
@@ -160,4 +156,16 @@ Newest first. One entry per page-type completed: what was done, what was left as
 
 ## Completed tasks
 
-_Nothing yet._
+### Task 1 — Port the wireframes to Next.js (2026-08-31)
+
+- [x] Chrome + state panel + app shell
+- [x] Programs — block kit
+- [x] Programs — Production Awards
+- [x] Programs — Wijhat
+- [x] Programs — Stand for Art
+- [x] Programs — Abbara
+- [x] Publications
+- [x] Mawred Network
+- [x] News
+- [x] About
+- [x] Home

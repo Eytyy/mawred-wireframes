@@ -35,7 +35,6 @@ export const ROUTES: RouteEntry[] = [
     crumb: "Home",
     statesKey: "home",
     suppressPageHead: true,
-    stub: true,
     indexLabel: "Home",
     indexSublabel: "Curated cross-page summary — wireframed",
   },

@@ -1,6 +1,5 @@
-import { StubPage } from "@/components/StubPage";
-import { ROUTES_BY_KEY } from "@/lib/pages/routes";
+import { HomePage } from "@/components/blocks/home/HomePage";
 
-export default function HomePage() {
-  return <StubPage route={ROUTES_BY_KEY.home} />;
+export default function Page() {
+  return <HomePage />;
 }
