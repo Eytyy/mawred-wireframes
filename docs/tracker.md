@@ -9,7 +9,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Programs — Production Awards
 - [x] Programs — Wijhat
 - [x] Programs — Stand for Art
-- [ ] Programs — Abbara
+- [x] Programs — Abbara
 - [ ] Publications
 - [ ] Mawred Network
 - [ ] News
@@ -21,6 +21,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Populate — Abbara (2026-08-31)
+
+**Done:** Fourth Task 2 unit, and the last of the four programme pages. Three more content props added to shared blocks, all optional with the previous render as the fallback (decision 84): `S1Timeline` takes a `lead` above the rail, `C1Overview` takes an `items` list under the prose, and `S3PastBeneficiaries` takes a `label` (default "Past beneficiaries") plus a widened `groups` prop — a group is now either a plain string, which renders the three placeholder `Name / Country` rows exactly as before, or `{ title, records }` with each record a name and an optional country. `ABBARA` rewritten with real content: two hero cells with the live above-tab bullets, a three-paragraph C1 with the three programme goals as `items`, four C2 rails all carrying figures for the first time (87 supported · 60 active · 27 ceased · 8 rounds), seven C3 eligibility rows, eight chronological S1 stages for the Abbara 08 round, three portal steps in C4 with the save-each-section and last-hours cautions as its note, four C5 records with only Financial support carrying a chip (€22,000), the core-funding exclusion as C6, six C8 application requirements, C9's five-member jury with its three criteria, C10 held in its near-empty mode with the two contract facts the English page states, and S3 publishing all eight rounds and 56 organisations unconditionally. New `programDirectory` states key carrying the `closed` toggle only, pointed at from the `abbara` route. Type-check clean; verified by curl against the running dev server — the four programme routes all 200, Abbara renders the seven C3 rows, eight S1 stages, €22,000 chip, all eight round groups with eleven records open in Abbara 08, and the English-FAQ hint; Production Awards and Wijhat still render their dashed `offered` S3 with the three placeholder rows and the "Past beneficiaries" label after the `groups` widening; Stand for Art unchanged, including C5's no-amount hint.
+
+**Left undone:** The beneficiary geo-map is not wireframed — the register drops it from the proposal and logs a rebuild as a client-revisit option, with C2 carrying the impact instead. Publications is the next unit; Task 2's programme pages are complete.
+
+**Decisions:** 96–103 logged in wireframe-passes (map not wireframed with the directory at page end; two hero cells rather than four; eligibility in C3 with the application terms staying in C8; chronological S1 with a lead naming the round; S3 records and label; C10's near-empty mode; C1 goals as `items`; the `programDirectory` states key).
+
+**Flagged:** Two gaps, both real and both English-side. The FAQ tab is an empty shell pointing at the Arabic page, so C11 is back to its placeholder render — Stand for Art stays the only exception. And there is no contractual section at all on the English Guidelines tab: no installments, signing or completion windows, guarantors, clawback or credit obligation. Recorded as a suspected English content gap to verify against the Arabic page rather than as a genuine absence, since the programme plainly has contracts. Also for the client: the two summary headings render with the question mark at the front ("?Who is Abbara for") — the same CMS artifact flagged on Wijhat, dropped here rather than reproduced; several beneficiary entries are named but unlinked (`href="#"` — Hassala films, Association l'Art Vivant, Stories film Lab, Damascus Theatre Lab); and the global footer's empty Instagram embed with its stray comment terminator appears here too, now seen on enough pages to be a global-footer fix.
 
 ### Populate — Stand for Art (2026-08-31)
 

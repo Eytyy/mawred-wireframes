@@ -66,7 +66,7 @@ function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
         <C10ContractTerms key="C10" lines={block.lines} items={block.items} />
       );
     case "S1":
-      return <S1Timeline key="S1" stages={block.stages} />;
+      return <S1Timeline key="S1" stages={block.stages} lead={block.lead} />;
     case "S2":
       return <S2Downloads key="S2" files={block.files} />;
     case "S3":
@@ -77,6 +77,7 @@ function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
         <S3PastBeneficiaries
           key="S3"
           groups={block.groups}
+          label={block.label}
           offered={block.offered}
         />
       );
@@ -111,7 +112,11 @@ export function ProgramPage({ config }: { config: ProgramConfig }) {
 
       <div className="mt-2 flex flex-wrap items-start gap-3.5">
         <div className="flex-[2_1_380px]">
-          <C1Overview title={config.overview?.title} text={config.overview?.text} />
+          <C1Overview
+            title={config.overview?.title}
+            text={config.overview?.text}
+            items={config.overview?.items}
+          />
         </div>
         <div className="flex-[1_1_240px]">
           {config.figs ? <C2ImpactFigures labels={config.figs} /> : null}

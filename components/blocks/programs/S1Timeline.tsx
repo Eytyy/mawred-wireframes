@@ -8,11 +8,13 @@ type TimelineStage = {
 
 type S1TimelineProps = {
   stages: TimelineStage[];
+  lead?: string;
 };
 
-export function S1Timeline({ stages }: S1TimelineProps) {
+export function S1Timeline({ stages, lead }: S1TimelineProps) {
   return (
     <Block code="S1" label="Programme timeline">
+      {lead ? <p className="mb-2">{lead}</p> : null}
       <Timeline
         items={stages.map((stage) => ({
           key: stage.n,

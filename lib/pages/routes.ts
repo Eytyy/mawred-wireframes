@@ -1,6 +1,7 @@
 export type StatesKey =
   | "program"
   | "programRolling"
+  | "programDirectory"
   | "library"
   | "series"
   | "detail"
@@ -79,7 +80,7 @@ export const ROUTES: RouteEntry[] = [
     path: "/programs/abbara",
     title: "Abbara",
     crumb: "Home &rsaquo; Grants &amp; Opportunities &rsaquo; Abbara",
-    statesKey: "program",
+    statesKey: "programDirectory",
     indexLabel: "Abbara",
     indexSublabel: "Programme page — wireframed",
   },

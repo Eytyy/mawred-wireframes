@@ -4,6 +4,7 @@ import type {
 } from "@/components/blocks/programs/C3AtAGlance";
 import type { ApplyStep } from "@/components/blocks/programs/C4ApplySteps";
 import type { FaqItem } from "@/components/blocks/programs/C11Faqs";
+import type { BeneficiaryGroup } from "@/components/blocks/programs/S3PastBeneficiaries";
 import type { HeroCell } from "@/components/blocks/programs/S4HeroSummary";
 import type { ApplicationPath } from "@/components/blocks/programs/S5ApplicationPaths";
 import type { WhichRoundRow } from "@/components/blocks/programs/S6WhichRound";
@@ -48,15 +49,21 @@ export type ProgramBlockConfig =
       criteria?: string[];
     }
   | { type: "C10"; lines?: number; items?: string[] }
-  | { type: "S1"; stages: TimelineStageConfig[] }
+  | { type: "S1"; stages: TimelineStageConfig[]; lead?: string }
   | { type: "S2"; files: DownloadFileConfig[] }
-  | { type: "S3"; groups: string[]; offered?: boolean; offeredOnly?: boolean }
+  | {
+      type: "S3";
+      groups: BeneficiaryGroup[];
+      label?: string;
+      offered?: boolean;
+      offeredOnly?: boolean;
+    }
   | { type: "S5"; paths: ApplicationPath[]; core?: string | string[] }
   | { type: "S6"; lead?: string; rows?: WhichRoundRow[]; notes?: string[] };
 
 export type ProgramConfig = {
   hero?: HeroCell[];
-  overview?: { title?: string; text?: string | string[] };
+  overview?: { title?: string; text?: string | string[]; items?: string[] };
   figs?: FigItem[] | null;
   dest: string;
   rolling?: boolean;
@@ -538,59 +545,297 @@ export const STAND_FOR_ART: ProgramConfig = {
 };
 
 export const ABBARA: ProgramConfig = {
-  hero: ["Who", "What", "Where", "Support"],
-  figs: [
-    "organisations supported",
-    "still active",
-    "ceased operating",
-    "countries",
+  hero: [
+    {
+      label: "Who is Abbara for",
+      items: [
+        "Independent, non-governmental artistic and cultural initiatives and organisations in the Arab region",
+        "Arab artistic and cultural initiatives and organisations abroad whose work serves artistic and cultural production in Arabic",
+      ],
+    },
+    {
+      label: "What kind of support does the programme offer",
+      items: [
+        "Financial support of €22,000 per initiative or organisation",
+        "Training in strategic planning and organisational management",
+        "Technical assistance — governance, financial management, resources and fundraising, communications",
+        "Networking and collaborations",
+      ],
+    },
   ],
-  dest: "online application portal",
+  overview: {
+    title: "What is the Abbara program?",
+    text: [
+      "Abbara was launched in 2011 to support independent cultural initiatives and organisations as key actors in building a cultural sector that means something to their societies. Across the eight rounds held since, it has supported 87 initiatives and organisations from the Arab region. The team has continued to accompany them: 27 have since ceased operating, and 60 are still active.",
+      "The sector has taken a decade of warfare and strife, occupation and intervention, and political and economic crisis — on top of the absence of government support for arts and culture in most Arab countries, no measures to soften the impact of crises on cultural actors, and very few funders offering unrestricted core funding.",
+      "Abbara is the response: it helps cultural entities build the capacities that make them administratively viable, so they can sustain themselves and evolve independently, on their own local terms. It also asks the organisations in each round to exchange knowledge and experience and to try working together.",
+    ],
+    items: [
+      "Support collective cultural work — training, equipping and guiding independent initiatives and organisations so they can devise the structures that work in their own social, political and cultural contexts.",
+      "Develop the sector by testing models and approaches to organisational sustainability, and financial sustainability in particular.",
+      "Address the challenges common to independent cultural work across the region by helping organisations forge links and mutual-support frameworks, share learning and expertise, and lay the foundations for a cultural ecosystem that can change its own context.",
+    ],
+  },
+  figs: [
+    { label: "organisations supported", value: "87" },
+    { label: "still active", value: "60" },
+    { label: "ceased operating", value: "27" },
+    { label: "rounds since 2011", value: "8" },
+  ],
+  dest: "apply.mawred.org — the applications platform",
+  contact: "abbara@mawred.org",
   blocks: [
     {
       type: "C3flat",
       rows: [
-        { label: "Annual budget band" },
-        { label: "Years operating" },
-        { label: "Registration status" },
-        { label: "Country of operation" },
+        {
+          label: "Who can apply",
+          value:
+            "Independent, non-governmental initiatives and organisations founded and directed by artists or cultural actors from an Arab country, regardless of ethnic origin or citizenship",
+        },
+        {
+          label: "Disciplines covered",
+          value:
+            "Cinema · Performing arts · Literature · Publishing · Archiving · Visual arts · Music · Podcasts · Cultural management · Cultural policies · Cultural heritage · Research",
+        },
+        {
+          label: "Where they work",
+          value:
+            "Mainly the Arab region — organisations abroad are considered where their work serves artistic and cultural production in Arabic",
+        },
+        {
+          label: "Budget band",
+          value:
+            "Small or midsize — total expenditure or income between US$50,000 and US$500,000",
+        },
+        {
+          label: "Years operating",
+          value:
+            "At least three years' experience in arts and culture, as an entity or in its members",
+        },
+        {
+          label: "Registration",
+          value:
+            "Unregistered initiatives and groups may be considered, provided they work within established and transparent legal frameworks",
+        },
+        {
+          label: "Previous beneficiaries",
+          value: "A previous Abbara beneficiary may not apply",
+        },
       ],
     },
     {
       type: "S1",
+      lead: "A round runs 24–30 months, depending on what each organisation needs. The dates below are the current round, Abbara 08.",
       stages: [
-        { n: "Call opens", d: "date" },
-        { n: "Deadline", d: "date" },
-        { n: "Shortlisting", d: "date" },
-        { n: "Interviews", d: "date" },
-        { n: "Selection", d: "date" },
-        { n: "Year 1 support", d: "12 months" },
-        { n: "Review", d: "date" },
-        { n: "Year 2 support", d: "12 months" },
+        { n: "Open call", d: "2 June 2025" },
+        { n: "Deadline for applications", d: "17 July 2025, 16:00 Beirut" },
+        { n: "Results announced", d: "End of September 2025" },
+        {
+          n: "First workshop — strategic planning and organisational management",
+          d: "Week of 9–15 November 2025",
+        },
+        { n: "Agreements signed with beneficiaries", d: "February 2026" },
+        {
+          n: "Second workshop — financial planning and financial management",
+          d: "During 2026",
+        },
+        { n: "Technical-assistance programme", d: "2026–2027" },
+        { n: "End of contracting period", d: "February 2028" },
       ],
     },
     {
       type: "C4",
       steps: [
-        { label: "Check eligibility" },
-        { label: "Complete the form" },
-        { label: "Submit" },
+        {
+          label: "Register on the applications platform",
+          detail: "Fill in the registration details asked for.",
+        },
+        {
+          label: "Activate your account",
+          detail: "An activation link is sent to the address you registered.",
+        },
+        {
+          label: "Log in and fill in the form online",
+          detail:
+            "The application is in Arabic, except for the blanks that require English.",
+        },
       ],
+      note: "Save each section before you move to the next, and don't leave the attachments to the last hours before the deadline — heavy traffic on the site can stop an upload.",
       withRepeat: true,
     },
     {
       type: "C5",
       records: [
-        { label: "Core funding", amt: true },
-        { label: "Training" },
-        { label: "Technical assistance" },
-        { label: "Networking" },
+        {
+          label: "Financial support",
+          amount: "€22,000",
+          items: [
+            "Core funding for organisational costs — staffing, setting up and maintaining a space or premises, and running costs",
+            "Runs for no more than 24 months",
+          ],
+        },
+        {
+          label: "Training",
+          items: [
+            "Two physical workshops led by experts — strategic planning and organisational management, then financial planning and financial management",
+            "Two representatives from each organisation attend each workshop",
+            "Online peer-learning sessions on current themes in cultural management",
+          ],
+        },
+        {
+          label: "Technical assistance",
+          items: [
+            "Tailored to each organisation on the basis of a needs assessment after the first or second workshop",
+            "Governance, financial management, resources and fundraising, communications and related fields",
+          ],
+        },
+        {
+          label: "Networking",
+          items: [
+            "Exchange of working visits between the organisations in the round",
+            "Contact with Culture Resource continues after the programme, and sometimes becomes a partnership",
+          ],
+        },
       ],
     },
-    { type: "C6", label: "What the funding does and does not cover" },
-    { type: "C8" },
-    { type: "C9", label: "Jury" },
-    { type: "C10", lines: 2 },
-    { type: "S3", groups: ["Cohort 03", "Cohort 02", "Cohort 01"] },
+    {
+      type: "C6",
+      label: "The €22,000 is core funding — it does not cover programme activities",
+      text: "It covers the cost of running the organisation: staffing, setting up and maintaining a space or premises, and running costs. It funds no programme or project activity, and it lasts no more than 24 months.",
+    },
+    {
+      type: "C8",
+      text: "Abbara funds organisations and initiatives, not individuals. An application that misses the eligibility criteria or arrives without the required attachments is eliminated before the jury stage.",
+      items: [
+        "Every blank in the form is filled in, and every attachment marked with an asterisk is included.",
+        "The form is completed in Arabic, apart from the blanks that require English.",
+        "Documents required in Arabic must be in Arabic — another language is not accepted.",
+        "Attachments sent by WeTransfer are not accepted.",
+        "Budget and funding figures are stated in Euro.",
+        "The application and all supporting documents are submitted before the deadline.",
+      ],
+    },
+    {
+      type: "C9",
+      label: "Jury — five members, formed anew for each round",
+      text: "Once the call closes, the Abbara team screens the applications and eliminates those that don't meet the eligibility criteria. The rest go to a jury of five independent experts in culture and the arts, formed for that round: each member assesses every application individually, then the jury meets to discuss its results and select the organisations.",
+      criteria: [
+        "Future vision, goals and potential impact",
+        "Organisational structure, capacities and skills",
+        "The motives for applying to Abbara",
+      ],
+    },
+    {
+      type: "C10",
+      items: [
+        "Contracts are signed with the beneficiary organisations after the first workshop, on the basis of the first draft of their strategic plan.",
+        "The funding component runs for no more than 24 months, inside a contracting period that ends in February 2028 for the current round.",
+      ],
+    },
+    {
+      type: "S3",
+      label: "Abbara organisations by round",
+      groups: [
+        {
+          title: "Abbara 08",
+          records: [
+            { name: "Amalgam Studio — Dance Circus Theatre (DCT)" },
+            { name: "AMME — The Moroccan Association of Electronic Music" },
+            { name: "Damascus Theatre Lab (DTL)" },
+            { name: "The Fiction Council" },
+            {
+              name: "Hewar Company for Independent Theater and Performing Arts",
+            },
+            { name: "Mayasem Association for Culture and Arts" },
+            { name: "Mouhit Space — Association Culturelle Espace Créatif" },
+            { name: "Studio Collective" },
+            { name: "Studio 8" },
+            { name: "Waziz" },
+            { name: "Yemen Art Base (YAB)" },
+          ],
+        },
+        {
+          title: "Abbara 07",
+          records: [
+            { name: "B'sarya for Arts" },
+            { name: "Khrarif" },
+            { name: "Piccolo Teatro Di Bizerta" },
+            { name: "Beirut Synthesizer Center" },
+            { name: "Dancers Citizens South (DCS)" },
+            { name: "The Muse multi studios" },
+            { name: "Stereo Contemporary Arts" },
+            { name: "Aden Again Cultural Foundation" },
+            { name: "4S Fest" },
+            { name: "Stories film Lab" },
+          ],
+        },
+        {
+          title: "Abbara 06",
+          records: [
+            { name: "Badira Culture Communication and Development" },
+            { name: "Khazaen" },
+            { name: "Sakiya" },
+            { name: "The City-Artists Network Association — MEDEARTS" },
+            { name: "Douzan Art & Culture" },
+            { name: "Temporary Art Platform" },
+            { name: "Interference" },
+            { name: "Cairotronica" },
+          ],
+        },
+        {
+          title: "Abbara 05",
+          records: [
+            { name: "Ma3azef" },
+            { name: "Collectif Kahraba" },
+            { name: "Teranim Pour les Arts Populaires" },
+            { name: "ANYA" },
+            { name: "L'Atelier de l'Observatoire" },
+            { name: "Khashabi Theater" },
+            { name: "Filmlab Palestine" },
+            { name: "Nawras" },
+          ],
+        },
+        {
+          title: "Abbara 04",
+          records: [
+            { name: "Fanni Raghman Anni" },
+            { name: "Basement Cultural Foundation" },
+          ],
+        },
+        {
+          title: "Abbara 03",
+          records: [
+            { name: "Mashhed Cultural association" },
+            { name: "Tunisian Federation of Film Societies" },
+            { name: "Megawra" },
+            { name: "El Madina for Performing and Digital Arts" },
+            { name: "Dawar El Fnoon" },
+            { name: "Darak for Cultural and Artistic development" },
+            { name: "School of Dramatic Arts" },
+            { name: "Association l'Art Vivant" },
+          ],
+        },
+        {
+          title: "Abbara 02",
+          records: [
+            { name: "Studio Janaklees" },
+            { name: "Arete Foundation for Arts and Culture" },
+            { name: "Cultural Media Center" },
+            { name: "Massart Association for an Alternative Culture" },
+          ],
+        },
+        {
+          title: "Abbara 01",
+          records: [
+            { name: "Medrar for Contemporary Art" },
+            { name: "Friends of Ahmad Bahaa Al-Din Association" },
+            { name: "Ettijahat — Independent Culture" },
+            { name: "Association l'Art Rue" },
+            { name: "Hassala films" },
+          ],
+        },
+      ],
+    },
   ],
 };

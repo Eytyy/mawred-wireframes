@@ -23,6 +23,11 @@ export const STATES: Record<StatesKey, StateConfig> = {
     note:
       "Rolling intake — applications are always open, so there is no closed state. No past-beneficiaries listing either: naming beneficiaries would contradict the confidentiality the programme runs on.",
   },
+  programDirectory: {
+    list: [{ key: "closed", label: "Applications closed" }],
+    note:
+      "The beneficiary directory is published content on this programme, not an offered block, so there is nothing for the \u201coffered\u201d toggle to reveal.",
+  },
   library: {
     list: [
       { key: "filtered", label: "Filters applied" },
