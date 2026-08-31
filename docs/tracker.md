@@ -12,7 +12,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Programs — Wijhat
 - [x] Programs — Stand for Art
 - [x] Programs — Abbara
-- [ ] Publications
+- [x] Publications
 - [ ] Mawred Network
 - [ ] News
 - [ ] About
@@ -35,6 +35,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Publications — series + detail (2026-08-31)
+
+**Done:** Four route shells — publication detail at `/publications/research/publication`, series pages at `/publications/mudawanat`, `/publications/foundations-of-cultural-policies` and `/publications/mawred-talks`. `stub: true` removed from all four route entries. Series instances wired from `MUDAWANAT`, `FOUNDATIONS` and `MAWRED_TALKS` in `lib/pages/publications.ts`. Render-checked: Mawred Talks thin intro (1 paragraph, no links) and per-item caption slot on any series page via the `slots` state toggle.
+
+**Left undone:** Real content population is Task 2. Nav-label split (library vs media series) remains a client call — flagged in Unit 1, not wireframed around.
+
+**Decisions:** No new wireframe-pass entries — config and routing only; kit built in Unit 1.
+
+**Flagged:** Same as Unit 1 — "Publications" nav parent holds two structurally different page types.
 
 ### Publications — block kit + Research library (2026-08-31)
 
