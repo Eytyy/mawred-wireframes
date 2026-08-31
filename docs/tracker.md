@@ -15,7 +15,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Publications
 - [x] Mawred Network
 - [ ] News
-- [ ] About
+- [ ] About — Who We Are + Our Team done; Supporters, Past Initiatives, Careers remain
 - [ ] Home
 
 **Task 2 — Populate the wireframes with real content**
@@ -35,6 +35,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### About — block kit AB1–AB7 + Who We Are + Our Team (2026-08-31)
+
+**Done:** Seven blocks (AB1–AB7) in `components/blocks/about/`. Shared `Timeline` primitive extracted to `components/wireframe/`, with `S1Timeline` refactored onto it. Shells `WhoWeArePage` and `OurTeamPage` (both server — neither page has wireframe states). Config in `lib/pages/about.ts` (`HISTORY_ENTRIES`, `PEOPLE_GROUPS`, mission/value counts). Live routes at `/about/who-we-are` and `/about/our-team`; `stub: true` removed from both. Render-checked: nine-row history timeline, 3px vision band, the three people groups with cards that carry a role and cards that don't, default-avatar cards, bio expanders present on some records and absent on others, "Show all 35" on the assembly group only. Abbara re-checked after the S1 refactor.
+
+**Left undone:** About unit 2 — AB8–AB13 and five routes (Supporters & Partners, Past Initiatives + detail, Careers + position). Real content population is Task 2.
+
+**Decisions:** 69–71 logged in wireframe-passes (shared Timeline, AB3 cells left unextracted, AccordionItem reused for bios).
+
+**Flagged:** Page name for Our Team is a client call, surfaced in the page hint and unresolved. Team-section content is net-new — Mawred supplies it, so those cards stand for content that doesn't exist yet.
 
 ### Mawred Network — directory + record (2026-08-31)
 

@@ -1,0 +1,73 @@
+import { AccordionItem } from "@/components/wireframe/Accordion";
+import { Block } from "@/components/wireframe/Block";
+import { Btn } from "@/components/wireframe/Btn";
+import { Hint } from "@/components/wireframe/Hint";
+import { Prose } from "@/components/wireframe/Prose";
+import type { PersonRecord } from "@/lib/pages/about";
+
+function Person({ record }: { record: PersonRecord }) {
+  return (
+    <div className="border border-black p-2.5">
+      <div className="mb-2.25 flex h-[105px] items-center justify-center border border-black bg-neutral-200 text-xs text-neutral-500">
+        {record.noimg ? "default avatar" : "photo"}
+      </div>
+      <strong className="block text-sm">Name</strong>
+      {record.role ? (
+        <small className="mt-1 block text-xs text-neutral-500">Role</small>
+      ) : null}
+      <small className="mt-1 block text-xs text-neutral-500">Country</small>
+      {record.bio ? (
+        <div className="mt-2.5">
+          <AccordionItem title="Read bio">
+            <Prose lines={3} />
+          </AccordionItem>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+type AB7PeopleGroupProps = {
+  label: string;
+  people: PersonRecord[];
+  total?: number;
+  cardNote?: boolean;
+};
+
+export function AB7PeopleGroup({
+  label,
+  people,
+  total,
+  cardNote,
+}: AB7PeopleGroupProps) {
+  return (
+    <Block code="AB7" label={`People group — ${label}`}>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(165px,1fr))] items-start gap-3">
+        {people.map((record) => (
+          <Person key={record.key} record={record} />
+        ))}
+      </div>
+      {total ? (
+        <div className="mt-3.5 text-center">
+          <Btn>{`Show all ${total}`}</Btn>
+        </div>
+      ) : null}
+      {cardNote ? (
+        <Hint>
+          One card pattern across all three groups: photo · name · role where it
+          applies · country. A record with a bio carries a &ldquo;Read
+          bio&rdquo; expander that opens in place; a record without one simply
+          omits it — optional fields render by omission, so a static card is
+          never dimmed or disabled (decision 48). Default-avatar cards are a
+          normal state, not an error. Both kinds are drawn side by side here.
+        </Hint>
+      ) : total ? (
+        <Hint>
+          Over ~12 records, a group shows its first eight and a &ldquo;show
+          all&rdquo; (decision 50) — the assembly is the largest group and would
+          otherwise be most of the page.
+        </Hint>
+      ) : null}
+    </Block>
+  );
+}
