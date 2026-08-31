@@ -1,8 +1,8 @@
 import { Block } from "@/components/wireframe/Block";
-import { Figs } from "@/components/wireframe/Figs";
+import { Figs, type FigItem } from "@/components/wireframe/Figs";
 
 type C2ImpactFiguresProps = {
-  labels: string[];
+  labels: readonly FigItem[];
 };
 
 export function C2ImpactFigures({ labels }: C2ImpactFiguresProps) {

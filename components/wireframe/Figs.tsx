@@ -1,5 +1,7 @@
+export type FigItem = string | { label: string; value?: string };
+
 type FigsProps = {
-  labels: string[];
+  labels: readonly FigItem[];
   wide?: boolean;
 };
 
@@ -12,12 +14,17 @@ export function Figs({ labels, wide }: FigsProps) {
           : "grid grid-cols-2 gap-2.5"
       }
     >
-      {labels.map((label) => (
-        <div key={label} className="border border-black p-2.5 text-center">
-          <b className="block text-xl">00</b>
-          <span className="text-xs text-neutral-500">{label}</span>
-        </div>
-      ))}
+      {labels.map((item) => {
+        const { label, value } =
+          typeof item === "string" ? { label: item, value: undefined } : item;
+
+        return (
+          <div key={label} className="border border-black p-2.5 text-center">
+            <b className="block text-xl">{value ?? "00"}</b>
+            <span className="text-xs text-neutral-500">{label}</span>
+          </div>
+        );
+      })}
     </div>
   );
 }

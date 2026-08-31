@@ -5,6 +5,9 @@ import { Hint } from "@/components/wireframe/Hint";
 
 type SupportRecord = {
   label: string;
+  body?: string;
+  items?: string[];
+  amount?: string;
   amt?: boolean;
 };
 
@@ -13,7 +16,9 @@ type C5FormsOfSupportProps = {
 };
 
 export function C5FormsOfSupport({ records }: C5FormsOfSupportProps) {
-  const hasNoAmount = records.some((record) => !record.amt);
+  const hasNoAmount = records.some(
+    (record) => !record.amt && record.amount === undefined,
+  );
 
   return (
     <Block code="C5" label="Forms of support">
@@ -24,9 +29,25 @@ export function C5FormsOfSupport({ records }: C5FormsOfSupportProps) {
         >
           <div className="flex-1">
             <strong>{record.label}</strong>
-            <Fill width={85} />
+            {record.body ? (
+              <p className="mt-1 text-neutral-500">{record.body}</p>
+            ) : null}
+            {record.items ? (
+              <ul className="m-0 mt-1 pl-5">
+                {record.items.map((item) => (
+                  <li key={item} className="mb-1.5">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {!record.body && !record.items ? <Fill width={85} /> : null}
           </div>
-          {record.amt ? <Chip>amount</Chip> : null}
+          {record.amount !== undefined ? (
+            <Chip>{record.amount}</Chip>
+          ) : record.amt ? (
+            <Chip>amount</Chip>
+          ) : null}
         </div>
       ))}
       {hasNoAmount ? (

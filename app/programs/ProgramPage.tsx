@@ -26,29 +26,45 @@ import type { ReactNode } from "react";
 function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
   switch (block.type) {
     case "C3flat":
-      return <C3AtAGlance key={block.rows.join("-")} mode="flat" rows={block.rows} />;
+      return <C3AtAGlance key="C3" mode="flat" rows={block.rows} />;
     case "C3rounds":
-      return (
-        <C3AtAGlance key={block.groups.join("-")} mode="rounds" groups={block.groups} />
-      );
+      return <C3AtAGlance key="C3" mode="rounds" groups={block.groups} />;
     case "C4":
       return (
         <C4ApplySteps
-          key={block.steps.join("-")}
+          key="C4"
           steps={block.steps}
+          documents={block.documents}
+          note={block.note}
           withRepeat={block.withRepeat}
         />
       );
     case "C5":
       return <C5FormsOfSupport key="C5" records={block.records} />;
     case "C6":
-      return <C6HighlightedNote key={block.label} label={block.label} />;
+      return (
+        <C6HighlightedNote
+          key={block.label}
+          label={block.label}
+          text={block.text}
+        />
+      );
     case "C8":
-      return <C8Conditions key="C8" />;
+      return <C8Conditions key="C8" text={block.text} items={block.items} />;
     case "C9":
-      return <C9Selection key={block.label} label={block.label} />;
+      return (
+        <C9Selection
+          key={block.label}
+          label={block.label}
+          text={block.text}
+          process={block.process}
+          criteria={block.criteria}
+        />
+      );
     case "C10":
-      return <C10ContractTerms key="C10" lines={block.lines} />;
+      return (
+        <C10ContractTerms key="C10" lines={block.lines} items={block.items} />
+      );
     case "S1":
       return <S1Timeline key="S1" stages={block.stages} />;
     case "S2":
@@ -65,9 +81,22 @@ function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
         />
       );
     case "S5":
-      return <S5ApplicationPaths key="S5" paths={block.paths} />;
+      return (
+        <S5ApplicationPaths
+          key="S5"
+          paths={block.paths}
+          core={block.core}
+        />
+      );
     case "S6":
-      return <S6WhichRound key="S6" />;
+      return (
+        <S6WhichRound
+          key="S6"
+          lead={block.lead}
+          rows={block.rows}
+          notes={block.notes}
+        />
+      );
     default:
       return null;
   }
@@ -82,11 +111,14 @@ export function ProgramPage({ config }: { config: ProgramConfig }) {
 
       <div className="mt-2 flex flex-wrap items-start gap-3.5">
         <div className="flex-[2_1_380px]">
-          <C1Overview />
+          <C1Overview title={config.overview?.title} text={config.overview?.text} />
         </div>
         <div className="flex-[1_1_240px]">
           {config.figs ? <C2ImpactFigures labels={config.figs} /> : null}
-          <C7ApplyButton dest={config.dest} closed={state.closed} />
+          <C7ApplyButton
+            dest={config.dest}
+            closed={config.rolling ? false : state.closed}
+          />
         </div>
       </div>
 
@@ -101,8 +133,8 @@ export function ProgramPage({ config }: { config: ProgramConfig }) {
         <div key={`${block.type}-${index}`}>{renderBlock(block, state.offered)}</div>
       ))}
 
-      <C11Faqs />
-      <C12Contact />
+      <C11Faqs items={config.faqs} />
+      <C12Contact contact={config.contact} />
     </>
   );
 }

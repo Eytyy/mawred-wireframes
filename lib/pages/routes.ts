@@ -1,5 +1,6 @@
 export type StatesKey =
   | "program"
+  | "programRolling"
   | "library"
   | "series"
   | "detail"
@@ -69,7 +70,7 @@ export const ROUTES: RouteEntry[] = [
     path: "/programs/stand-for-art",
     title: "Stand for Art",
     crumb: "Home &rsaquo; Grants &amp; Opportunities &rsaquo; Stand for Art",
-    statesKey: "program",
+    statesKey: "programRolling",
     indexLabel: "Stand for Art",
     indexSublabel: "Programme page — wireframed",
   },

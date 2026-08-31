@@ -18,6 +18,11 @@ export const STATES: Record<StatesKey, StateConfig> = {
     ],
     note: "Closed state = open decision 5 (not yet confirmed).",
   },
+  programRolling: {
+    list: [],
+    note:
+      "Rolling intake — applications are always open, so there is no closed state. No past-beneficiaries listing either: naming beneficiaries would contradict the confidentiality the programme runs on.",
+  },
   library: {
     list: [
       { key: "filtered", label: "Filters applied" },

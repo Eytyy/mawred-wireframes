@@ -6,9 +6,9 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 **Task 2 — Populate the wireframes with real content ← current**
 
-- [ ] Programs — Production Awards
-- [ ] Programs — Wijhat
-- [ ] Programs — Stand for Art
+- [x] Programs — Production Awards
+- [x] Programs — Wijhat
+- [x] Programs — Stand for Art
 - [ ] Programs — Abbara
 - [ ] Publications
 - [ ] Mawred Network
@@ -21,6 +21,46 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Populate — Stand for Art (2026-08-31)
+
+**Done:** Third Task 2 unit, and the first page whose FAQ block could be populated at all. Content props added to four shared blocks, all optional with the previous render as the fallback (decision 84): `C11Faqs` takes `items` (question plus one-or-more-paragraph answer) and, given them, swaps the placeholder hint for one naming the live tab's six Q&As; `C4ApplySteps` takes `documents` and now owns the "Documents to include" render that `S5ApplicationPaths` was hand-rolling, with S5 delegating each path's list down to the nested C4; `C5FormsOfSupport` records take `items`; `C9Selection` takes `process`, rendered as an ordered list. `ProgramConfig` gains `faqs` and `rolling`. `STAND_FOR_ART` rewritten with real content: three-paragraph C1, the confidentiality C6 first on the page, C4's three steps with the five required documents and the non-resumable-form note, C5's two records with their own cost and referral lists and a "Set case by case" chip, five C8 items, C9's committee lead plus the five-step process, the six English FAQs, the JotForm destination named as not `apply.mawred.org`, and artists@mawred.org. New `programRolling` states key with no toggles, pointed at from the `sfa` route. Build and lint clean; render-checked all four programme pages — Wijhat's per-path document lists come out with the same classes, same order and the same 6 and 5 items after the delegation, Production Awards' C4/C5/C9/C11 are untouched, and Abbara still shows C5's no-amount hint and C11's fill bars.
+
+**Left undone:** Abbara is the last programme unit, then Publications onward. The English FAQ gap stands on Production Awards and Wijhat — Stand for Art is the exception, not the fix.
+
+**Decisions:** 90–95 logged in wireframe-passes (C4 owning the documents list; the two privacy notes split across C4 and C6 with C6 ahead of the apply flow; C9 carrying the whole selection process because there is no C10; C5 record `items` and the case-by-case chip; "individuals only" promoted from FAQ to C8; the rolling-intake states key).
+
+**Flagged:** The contact mismatch on the live page — visible text `artist@mawred.org`, mailto `artists@mawred.org`. C12 carries the plural the link resolves to. This is the second contact-link bug in two pages after Wijhat's abbara@ footer mailto, so it is now a site-wide contact-link QA pass for the client rather than a one-off. The global footer's Instagram embed is empty with a stray `-->` comment visible — a recurring artifact worth a sitewide check. No content gaps on this page: the audit and the live page agree line for line, and nothing was invented — in particular no support figure or range, because the programme states it has none.
+
+### Populate — Wijhat (2026-08-31)
+
+**Done:** Second Task 2 unit, and the one that needed the last three unpopulated blocks. Content props added to `S4HeroSummary` (cells take a label, an optional lead and a bullet list), `S5ApplicationPaths` (`core` prose, per-path `steps` and `documents`), `S6WhichRound` (`lead`, `rows`, `notes`) and `C6HighlightedNote` (`text`) — all optional, all defaulting to the render they had before, so Stand for Art and Abbara are untouched. `WIJHAT` in `lib/pages/programs.ts` rewritten with real content: the four-cell page-top summary, three-paragraph C1, four C2 rails, the three rounds with real dates, S6's when-to-apply logic, both application tracks with their own steps and document lists, a new C6 for the visa letter, eleven C8 items, C9, nine C10 items, `apply.mawred.org` and wijhat@mawred.org. Live page checked against the audit before writing, not after. Build and lint clean; render-checked `/programs/wijhat` in default, `closed` and `offered` states, plus `/programs/production-awards`, `/programs/stand-for-art` and `/programs/abbara` — Abbara's S4 still renders four bare labels over fill bars, both C6 uses still render label plus fill bars, C5's no-amount hint still shows on Abbara and Stand for Art.
+
+**Left undone:** Stand for Art and Abbara are the next two units.
+
+**Decisions:** 86–89 logged in wireframe-passes (covered-costs list in S4 rather than a single-record C5; the visa letter as a C6 after S5; S5's shared core holding what both tracks share; schedule rules in S6 rather than C8 or C3).
+
+**Flagged:** The round dates carry no year anywhere on the live page — Wijhat runs a fixed repeating calendar, so C3 states them year-less rather than inferring one. Two gaps in C2: no cumulative grant total and no country count exists, so those rails keep `00`. S3 beneficiary names still come from Network records (spec §B6). Same English FAQ gap as Production Awards. Three content-integrity issues for the client: the live clawback clause carries unresolved editor comments in published copy, the footer contact mailto points at abbara@mawred.org while the visible text reads wijhat@, and the group document list omits the CV line the individual list has — rendered as sourced rather than repaired, since adding it would invent a requirement.
+
+### Populate — Production Awards, source check (2026-08-31)
+
+**Done:** Verified the populated page block by block against the live page. Dates, figures, grant amounts, jury structure, contact and block structure all checked out. Corrected in `PRODUCTION_AWARDS`: the re-application rule now names both live conditions (previous grant closed, two rounds passed) instead of pointing at the guidelines — it had been recorded as a gap when the live Guidelines tab states it in full; C5 chips read "Up to €X" because the live amounts are ceilings; C5 coverage lines widened to the live scope; four over-stated items pulled back to the source (reproduction exclusion, two selection criteria, the second installment's reports trigger, the 45-day cancellation consequence); accepted file formats added to C8; the extension's 30-day notice and the guarantors' co-signing and expertise conditions added to C10; discipline order in C1/C3 and download order in S2 aligned to the live page; C4 step 1 no longer claims one account covers every programme; C7 names `apply.mawred.org`.
+
+**Left undone:** Nothing from this check. The other three programmes are still their own units.
+
+**Decisions:** None new — no structure changed, only content accuracy.
+
+**Flagged:** Two gaps stand, both real: no country count for the C2 rail, and S3 beneficiary names come from Network records (spec §B6). English FAQ content still doesn't exist on the live site.
+
+### Populate — Production Awards (2026-08-31)
+
+**Done:** First Task 2 unit. Content-carrying props added to the shared primitives (`Prose.text`, `KV.value`, `Figs` item values) and to eight program blocks (C1, C3, C4, C5, C8, C9, C10, C12) — every one optional, defaulting to the existing placeholder render. `PRODUCTION_AWARDS` in `lib/pages/programs.ts` rewritten with real content from the audit plus the 2026 round's dates; `ProgramConfig` gains `overview` and `contact` for the two blocks `ProgramPage` renders outside the block list. `WIJHAT`, `STAND_FOR_ART` and `ABBARA` got the mechanical shape migration only (bare strings to `{ label }`) — no content, no visual change. New `docs/content-map.md` records the block-by-block sourcing. Build and lint clean; render-checked `/programs/production-awards` in default, `closed` and `offered` states, plus `/programs/abbara`, `/programs/wijhat`, `/programs/stand-for-art`, `/about/who-we-are` and `/network/record` — all unpopulated pages still render their fill bars unchanged.
+
+**Left undone:** The other three programmes are their own units. C7's destination hint still names the kind of destination rather than `apply.mawred.org`.
+
+**Decisions:** 84–85 logged in wireframe-passes (optional content props with placeholder fallback; the C8 eligibility merge).
+
+**Flagged:** Three gaps, all recorded in the content map — no country count exists for the C2 rail, so it keeps `00`; ~~the re-application waiting period isn't in the audit, so C8 points at the guidelines instead of naming it~~ (not a gap — the live Guidelines tab states the rule; corrected in the source-check entry above); S3 beneficiary rows stay placeholder because names come from Network records (spec §B6). English FAQ content doesn't exist on the live site at all — supplying it is a client call, now said plainly in the C11 hint.
 
 ### Refactor — co-locate page shells (2026-08-31)
 
