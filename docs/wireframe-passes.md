@@ -19,3 +19,13 @@ The decisions taken while wireframing each page-type. They bind later chats — 
 **60. Single client boundary at ProgramPage** — wireframe state (`closed`, `offered`) is read once in `ProgramPage` and passed down as props; block components stay server-renderable except where a child primitive requires interactivity (`Accordion`). _One boundary is easier to trace than scattering `"use client"` across C7 and S3._ → Set aside: per-block client components — each block self-contained, but duplicates the state channel.
 
 **61. C3 flat and rounds as one component** — `C3AtAGlance` takes a `mode` prop (`"flat"` | `"rounds"`) rather than the legacy's two separate functions. _Same treatment, same block code; one component per block is the component-discipline rule._ → Set aside: two components (`C3flat`, `C3grouped`) — mirrors the legacy literally, but splits one block into two files.
+
+## Publications
+
+**62. Shared wireframe primitives over Publications-local ones** — `FilterBar`, `CountRow`, `Card`/`Cover`, `Embed` and `EmptyState` live in `components/wireframe/` because Mawred Network and News will reuse them. _One primitive per pattern; the unit that first needs a primitive owns it for the whole app._ → Set aside: Publications-local copies — faster to ship but duplicates MN3/MN4 and N1–N3 work later.
+
+**63. `Chip` reused for removable filter chips** — active filter chips carry the `×` in the label rather than a separate `.chipx` size variant. _Decision 58 already collapsed the legacy size difference; one chip component is enough._ → Set aside: a dedicated removable-chip variant — mirrors legacy markup literally but adds a one-off size fork.
+
+**64. `FilterBar` self-contained as a client component** — facet open/close state lives inside `FilterBar`, the same way `Accordion` owns its toggle. Page shells (`LibraryPage`, `SeriesPage`) remain the single wireframe-state boundary per decision 60. _Interactive primitives own their own UI state; the page shell only reads panel toggles._ → Set aside: lifting facet state into `LibraryPage` — one fewer `"use client"` file, but spreads interactivity up a tier.
+
+**65. Fixed embed footprints over aspect ratios** — audio and video embeds use fixed height boxes rather than aspect-ratio utilities; the SoundCloud embed has no meaningful aspect to preserve. _Footprint difference is the wireframe signal; aspect-ratio would imply precision the provider chrome doesn't support._ → Set aside: provider-specific aspect ratios — closer to live embeds but outside the lo-fi constraint and hard to maintain across providers.

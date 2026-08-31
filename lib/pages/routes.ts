@@ -89,7 +89,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Research &amp; Publications",
     statesKey: "library",
     crumb: "Home &rsaquo; Publications &rsaquo; Research &amp; Publications",
-    stub: true,
     indexLabel: "Research &amp; Publications",
     indexSublabel: "Publications — Structure A (media library)",
   },
