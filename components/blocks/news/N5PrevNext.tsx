@@ -37,8 +37,9 @@ export function N5PrevNext({ edge }: N5PrevNextProps) {
       <Hint>
         Sequential by date, kept, and kept in the spec&rsquo;s position above
         the featured image (decision 32). At either end of the archive the
-        missing direction is omitted, not disabled &mdash; toggle the
-        first-post state.
+        missing direction is omitted, not disabled. Titles stay placeholder: a
+        post&rsquo;s neighbours are whichever posts sit either side of it in the
+        26-page archive, which a three-post sample can&rsquo;t supply.
       </Hint>
     </Block>
   );

@@ -103,11 +103,15 @@ export const STATES: Record<StatesKey, StateConfig> = {
   },
   newsdetail: {
     list: [
-      { key: "structured", label: "Announcement post (structured inserts)" },
       { key: "byline", label: "Show author byline" },
       { key: "edge", label: "First post in the archive (no previous)" },
     ],
     note:
-      "Byline is a client call — laid out both ways. Default post is editorial: prose only.",
+      "No structured toggle: the rosters and quotes are this post's published content, not a state. The archive edge is still a toggle — prev/next come from the whole 26-page archive, which the three-post sample can't reach.",
+  },
+  newseditorial: {
+    list: [{ key: "byline", label: "Show author byline" }],
+    note:
+      "An event post is prose plus its one key detail — no roster, no schedule, no CTA. Byline is a client call, and every live post is authored \u201cMawred\u201d.",
   },
 };

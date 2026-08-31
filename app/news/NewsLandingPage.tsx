@@ -6,22 +6,32 @@ import { N2CountRow } from "@/components/blocks/news/N2CountRow";
 import { N3PostFeed } from "@/components/blocks/news/N3PostFeed";
 import { N4Pagination } from "@/components/blocks/news/N4Pagination";
 import { Hint } from "@/components/wireframe/Hint";
+import { filterNewsPosts, NEWS_POSTS } from "@/lib/pages/news";
 import { useWireframeState } from "@/lib/wireframe-state";
 
 export function NewsLandingPage() {
   const { state } = useWireframeState();
   const [activeIdx, setActiveIdx] = useState(0);
 
+  const visiblePosts = filterNewsPosts(
+    NEWS_POSTS,
+    activeIdx,
+    state.filtered,
+    state.empty,
+  );
+  const noResults = visiblePosts.length === 0;
+
   return (
     <>
       <N1CategoryFilter activeIdx={activeIdx} onSelect={setActiveIdx} />
       <N2CountRow
         activeIdx={activeIdx}
-        empty={state.empty}
+        empty={noResults}
         filtered={state.filtered}
+        shown={visiblePosts.length}
       />
-      <N3PostFeed empty={state.empty} slots={state.slots} />
-      {!state.empty ? <N4Pagination /> : null}
+      <N3PostFeed empty={noResults} slots={state.slots} posts={visiblePosts} />
+      {!noResults ? <N4Pagination /> : null}
       <Hint>
         Landing and post detail are two views of one content type &mdash; the
         feed is the index, the post is the entry. The Announcements category

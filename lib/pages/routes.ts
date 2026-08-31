@@ -9,6 +9,7 @@ export type StatesKey =
   | "record"
   | "newslanding"
   | "newsdetail"
+  | "newseditorial"
   | "home"
   | "aboutwho"
   | "aboutteam"
@@ -162,11 +163,22 @@ export const ROUTES: RouteEntry[] = [
   {
     key: "news-detail",
     path: "/news/post",
-    title: "Post title",
+    title: "Results of Production Awards 2026",
     statesKey: "newsdetail",
-    crumb: 'Home &rsaquo; <a href="/news">News</a> &rsaquo; Post title',
-    indexLabel: "News post",
-    indexSublabel: "News — post detail",
+    crumb:
+      'Home &rsaquo; <a href="/news">News</a> &rsaquo; Results of Production Awards 2026',
+    indexLabel: "News post — announcement",
+    indexSublabel: "News — post detail with rosters and jury quotes",
+  },
+  {
+    key: "news-editorial",
+    path: "/news/editorial-post",
+    title: "Opening of Made With Your Magic Exhibition in Beirut",
+    statesKey: "newseditorial",
+    crumb:
+      'Home &rsaquo; <a href="/news">News</a> &rsaquo; Opening of Made With Your Magic Exhibition in Beirut',
+    indexLabel: "News post — event",
+    indexSublabel: "News — post detail, prose and one key detail",
   },
   {
     key: "about-who",

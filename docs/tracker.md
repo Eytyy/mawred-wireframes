@@ -12,15 +12,29 @@ Records what's been done. Task definitions are not kept here — a task is given
 - [x] Programs — Abbara
 - [x] Publications
 - [x] Mawred Network
-- [ ] News
-- [ ] About
+- [x] News
+- [ ] About — Who We Are
+- [ ] About — Our Team
+- [ ] About — Past Initiatives (+ initiative detail)
 - [ ] Home
+
+Skipped: **About — Supporters & Partners** and **About — Careers** (+ position detail). Supporters is three logo bands over an optional intro; Careers is a position list, an empty state and a detail page whose content Mawred hasn't written. Neither has prose to source, and the ported structure already carries what there is. Revisit Careers only if real positions arrive.
 
 ---
 
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Populate — News (2026-09-01)
+
+**Done:** Seventh Task 2 unit, three routes and two new blocks. `lib/pages/news.ts` carries the sample: three real posts newest first (the Made With Your Magic exhibition opening 27 July, the second-round Wijhat grantees 20 July, the Production Awards 2026 results 6 May), the four programmes as the Programme facet's real values, and the two populated posts in full. The tab counts the port invented (231 / 128 / 103) are gone, and with the facet values in place no kit renders `"value"` any more — decision 109's closing note revised accordingly. Two new blocks: `N14Roster`, one block for both the grantee and the jury roster, with the project title and description rendering by omission on a juror; and `N15Quotes`, attributed 3px blockquotes attached to the jury roster above them rather than to the post. `N6FeaturedImage` gains a caption slot carrying the image credit the live page prints at the very end of the body. Content props added to N7 (`date`, `category`, `author`), N8 (`detail`, `aside`), N9 (`text`) and N13 (`posts`) — all optional with the previous render as the fallback (decision 84). `/news/post` is now the Production Awards results post — real title, crumb and index labels, Cinema in full (five grantees, three jurors, two quotes), Literature's roster and jury with no quotes, and the remaining three disciplines in one overflow line naming the 29 grantees. New route `/news/editorial-post` with its own `EditorialPostPage` shell and `newseditorial` states key: N5 · N6 with no credit · N7 · N8 · N9's five paragraphs · N12 · N13. The `structured` toggle is retired and out of `WireframeState` (decision 122). Type-check and lint clean; curl against the running dev server — `/news`, `/news/post`, `/news/editorial-post`, `/network`, `/publications/research`, `/programs/production-awards` and `/wireframes` all 200. Render-checked both posts in full and every landing branch through a throwaway route (since removed): tabs give All 3 / Announcements 2 / News & Events 1, the Wijhat chip narrows to one real row, the empty state keeps tabs and count row with the count at 0, `slots` shows the excerpt caption on every card, `edge` drops the previous card, `byline` reads "by Mawred", and N6 / N13 / N14 / N15 given nothing still render their placeholder fallbacks.
+
+**Left undone:** N10 and N11 render nowhere now — they want the multi-date-programme-plus-registration shape of the Living Fabric forum and no such post was in scope. Blocks kept, absence recorded as a sampling gap. N5's neighbour titles stay placeholder (decision 123). About — Who We Are is the next unit.
+
+**Decisions:** 115–124 logged in wireframe-passes (three sampled posts driving the tabs; invented counts retired and the facet's real values; N14 as one block for grantees and jury; N15 as its own block attached to its roster; two detail routes with a states key each; the sampling inside the announcement; N6's caption; the retired `structured` toggle with `edge` kept; N5 left placeholder; zero results computed rather than toggled). Decision 109's note revised in place.
+
+**Flagged:** One bug found and fixed while render-checking — opening the News & Events tab with the programme chip active yields no posts, and the landing was passing the panel's `empty` toggle through instead of the real result count, so that branch rendered an empty grid with an archive overflow line and a pager under it. `noResults` is now derived from the list (decision 124). For the client: the country spread in the results post is published in no particular order and reads as a list wanting one — kept as sourced; both posts repeat the title as an H2 under the featured image, which the page-header band already carries; every post is authored "Mawred", which is worth knowing before the byline call is made; and spec §A4's inventory flags stand — one post parented under `/uncategorized/`, "Gallery" artifacts in the live Related strip, and the internal `Mawred News` / `SliderEN` categories doing no user-facing work. The global-footer Instagram artifact appears here too.
 
 ### Populate — Mawred Network (2026-09-01)
 

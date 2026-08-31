@@ -2,15 +2,19 @@ import { Block } from "@/components/wireframe/Block";
 import { Hint } from "@/components/wireframe/Hint";
 import { Prose } from "@/components/wireframe/Prose";
 
-export function N9Body() {
+type N9BodyProps = {
+  text?: string[];
+};
+
+export function N9Body({ text }: N9BodyProps) {
   return (
     <Block code="N9" label="Body">
-      <Prose lines={6} />
+      {text ? <Prose text={text} /> : <Prose lines={6} />}
       <Hint>
-        Free prose by default &mdash; most posts are prose only. The three
-        structured inserts (key-detail &middot; schedule &middot; CTA) are
-        available, never forced: toggle the announcement state to see them. The
-        lightweight analogue of the programme kit.
+        Free prose by default &mdash; most posts are prose only. The inserts
+        around it (key-detail &middot; roster &middot; quotes &middot; schedule
+        &middot; CTA) are available, never forced: each post carries the ones
+        its content has. The lightweight analogue of the programme kit.
       </Hint>
     </Block>
   );

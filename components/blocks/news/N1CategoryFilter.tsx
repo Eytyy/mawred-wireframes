@@ -13,10 +13,7 @@ export function N1CategoryFilter({ activeIdx, onSelect }: N1CategoryFilterProps)
   return (
     <Block code="N1" label="Category filter">
       <Tabs
-        items={NEWS_CATEGORIES.map((category) => ({
-          label: category.label,
-          count: category.count,
-        }))}
+        items={NEWS_CATEGORIES.map((category) => ({ label: category.label }))}
         activeIdx={activeIdx}
         onSelect={onSelect}
       />

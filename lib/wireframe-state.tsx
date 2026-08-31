@@ -20,7 +20,6 @@ export type WireframeState = {
   orgs: boolean;
   cat: number;
   byline: boolean;
-  structured: boolean;
   edge: boolean;
   nocalls: boolean;
   twentieth: boolean;
@@ -39,7 +38,6 @@ const DEFAULT_STATE: WireframeState = {
   orgs: false,
   cat: 0,
   byline: false,
-  structured: false,
   edge: false,
   nocalls: false,
   twentieth: false,
