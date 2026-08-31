@@ -51,3 +51,13 @@ The decisions taken while wireframing each page-type. They bind later chats — 
 **73. `EmptyState` action prop** — `EmptyState` takes an optional `action` string (default `"Clear all filters"`) so AB12 can pass `"Contact Mawred"` without a Careers-local empty component. _One empty-state primitive per pattern; the button label is the only variable._ → Set aside: a second empty-state variant — clearer intent in the type name, but two components for the same dashed box.
 
 **74. `KV` fill prop** — `KV` takes an optional `fill` boolean (default `true`) so AB13's "Or write to — [contact address]" row renders label-only with no value bar. _Same row component; the value column is optional per field, matching publication metadata omission._ → Set aside: a label-only row hand-rolled in AB13 — works, but forks the row pattern for one field.
+
+## News
+
+**75. `Tag` as a shared primitive distinct from `Badge`** — the uppercase tracked label box lives in `components/wireframe/Tag.tsx`, separate from `DirRow`'s `Badge`. _Under the collapsed type scale (decision 58) the only surviving difference is `uppercase` + `tracking`, and that difference is the whole signal for category labels on cards and N7's meta strip._ → Set aside: reusing `Badge` with an uppercase class — one component, but loses the semantic split between directory row labels and taxonomy tags.
+
+**76. `Caption` extracted as a shared primitive** — the dashed optional-field box moves to `components/wireframe/Caption.tsx`; PB2 is refactored onto it so the news card excerpt is not a second copy. _One primitive per pattern (extends decisions 62/67); the legacy `.cap` rule was already duplicated inline in PB2._ → Set aside: hand-rolling the dashed box in each block — mirrors the legacy literally but forks on the second consumer.
+
+**77. `Card` footer prop** — `Card` takes an optional `footer` ReactNode rendered after the subtitle, so the news card's excerpt slot sits below the date without overloading `children`. _Category tag stays in `children` beside `Cover`; the excerpt is structurally below title and date, matching the legacy card order._ → Set aside: putting the excerpt in `children` after the title — simpler API, but breaks the date-then-excerpt sequence.
+
+**78. Category-tab state in NewsLandingPage** — the All / Announcements / News & Events tab index lives in `NewsLandingPage`, not inside `Tabs`, because N2 (count row) scopes its count to the open tab (extends decision 66). _One source of truth at the shell; the tabs are navigation, not a wireframe-state toggle._ → Set aside: self-contained tab state inside `Tabs` — simpler primitive API, but N2 would need a callback or duplicate state.

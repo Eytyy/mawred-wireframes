@@ -23,9 +23,10 @@ type CardProps = {
   title: string;
   subtitle?: string;
   children?: ReactNode;
+  footer?: ReactNode;
 };
 
-export function Card({ href, title, subtitle, children }: CardProps) {
+export function Card({ href, title, subtitle, children, footer }: CardProps) {
   return (
     <Link href={href} className="block border border-black p-2.5 no-underline">
       {children ?? <Cover />}
@@ -33,6 +34,7 @@ export function Card({ href, title, subtitle, children }: CardProps) {
       {subtitle ? (
         <small className="mt-1.25 block text-xs text-neutral-500">{subtitle}</small>
       ) : null}
+      {footer}
     </Link>
   );
 }

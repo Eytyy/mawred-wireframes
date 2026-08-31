@@ -36,6 +36,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
 
+### News — landing feed N1–N4 (2026-08-31)
+
+**Done:** Shared primitives `Tag`, `Caption` in `components/wireframe/`; `Card` gains optional `footer` prop; PB2 refactored onto `Caption`. Four blocks (N1–N4) in `components/blocks/news/`; `NewsCard` exported from N3 for N13/HM6 reuse. Shell `NewsLandingPage` (client — reads `filtered` / `empty` / `slots`, owns category-tab index). Config in `lib/pages/news.ts`. Live route at `/news`; `stub: true` removed from `news`. Render-checked: default nine-card feed with pager, filtered chips, empty state (tabs and count row stay, pager gone), excerpt slot via `slots`, Mudawanat series page after PB2 refactor. Build clean.
+
+**Left undone:** News unit 2 — N5–N13 and post detail at `/news/post`. Real content population is Task 2.
+
+**Decisions:** 75–78 logged in wireframe-passes (`Tag`, `Caption`, `Card` footer, category-tab state in shell).
+
+**Flagged:** None.
+
 ### About — Careers + position detail (2026-08-31)
 
 **Done:** AB12–AB13 in `components/blocks/about/`. `EmptyState` gains optional `action` prop (default unchanged); `KV` gains optional `fill` prop for label-only rows. Shells `CareersPage` (client — reads `slots`, `onejob`, `nopositions`) and `PositionPage` (server). Live routes at `/about/careers` and `/about/careers/position`; `stub: true` removed from both. Render-checked: default four-position list, single-position toggle, empty state with Contact Mawred action, position detail with Apply + contact row.

@@ -154,7 +154,6 @@ export const ROUTES: RouteEntry[] = [
     title: "News",
     statesKey: "newslanding",
     crumb: "Home &rsaquo; News",
-    stub: true,
     indexLabel: "News",
     indexSublabel: "News landing — feed with category tabs",
   },

@@ -1,4 +1,5 @@
 import { Block } from "@/components/wireframe/Block";
+import { Caption } from "@/components/wireframe/Caption";
 import { Embed } from "@/components/wireframe/Embed";
 import { Hint } from "@/components/wireframe/Hint";
 
@@ -15,9 +16,7 @@ export function PB2MediaListing({ kind, total, slots = false }: PB2MediaListingP
         <div key={index} className="my-3">
           <Embed kind={kind} />
           {slots ? (
-            <div className="mt-1.5 border border-dashed border-black px-2 py-1.5 text-xs text-neutral-500">
-              optional per-item caption — available field, unused today
-            </div>
+            <Caption>optional per-item caption — available field, unused today</Caption>
           ) : null}
         </div>
       ))}
