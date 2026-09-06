@@ -20,7 +20,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
               <SiteHeader />
               <SiteFooter />
             </div>
-            <main className="min-w-0 flex-1 p-4 lg:p-10 max-w-360 mx-auto">{children}</main>
+            <main className="min-w-0 flex-1 p-4 lg:p-10 max-w-300 mx-auto">{children}</main>
           </div>
           <StatePanel />
         </WireframeStateProvider>

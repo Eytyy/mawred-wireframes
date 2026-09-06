@@ -4,13 +4,121 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
-**Current task:** none. Production Awards dropped C3; live→wireframe inventory is in the content map.
+**Current task:** none. Programs — S1 last in Overview is closed. Units 1–2 of the S4 plan landed (Wijhat S4/C5; Abbara + C3 retired). Production Awards S4 was tried and rolled back. Stand for Art was taken without its S4 — duplicates removed instead. S4 is Wijhat and Abbara only. S4 cards hug content (flex wrap, one type size). S1 is last in Overview wherever it exists.
 
 ---
 
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Programs — S1 last in Overview (2026-09-06)
+
+**Done:** Programme timeline sits at the bottom of Overview on every programme that has one. `ProgramPage` pulls S1 out of the overview bucket and mounts it after C5 (and after Abbara's C6, which still qualifies C5). Production Awards: C1–C2–C5–S1. Wijhat: C1–C2–S4–C5–S1. Abbara: C1–C2–S4–C5–C6–S1. Stand for Art has no S1 — rolling intake, no dates — so Overview stays C1–C5. Config arrays match the new order. Decision **162** logged; **153** revised in place.
+
+**Left undone:** Nothing from this brief.
+
+**Decisions:** 162. S1 sits last in Overview.
+
+**Flagged:** None.
+
+**Verified:** Headless Chrome against the running dev server. `/programs/production-awards` codes C1–C2–C5–S1 then C7–C4–C8–C9–C10–S2 then C11–C12; headings H1 → Overview (sr-only) → Available grants → Programme timeline → Application. `/programs/wijhat` C1–C2–S4–C5–S1 then C7–S6–S5–C6–C8–C9–C10 then C11–C12; Forms of support then Programme timeline. `/programs/abbara` C1–C2–S4–C5–C6–S1 then C7–C4–C8–C9–C10 then S3 then C11–C12; Forms of support then Programme timeline. `/programs/stand-for-art` still C1–C5 then C7–C4–C8–C9 then C11–C12 — no S1.
+
+### Programs — S4 cards hug content (2026-09-06)
+
+**Done:** S4 items leave the equal-width `minmax(210px)` grid. Each row is `flex flex-wrap`; each card is `w-fit max-w-full shrink-0` with the same `border border-black p-2.5` chrome and body type. Two sit on one line when they fit; otherwise they wrap. The term-row `Chip` exception is gone — Abbara's twelve disciplines are the same cards as Who is Abbara for / Where they work. Shared component, so Wijhat's three rows follow. Decision **160** revised in place.
+
+**Left undone:** Nothing from this brief. C4 and C5 chips are unchanged.
+
+**Decisions:** 160 revised — S4 items hug content; no chip size fork.
+
+**Flagged:** None.
+
+**Verified:** Headless Chrome at 1280px against the running dev server. `/programs/abbara` S4: flex wrap, every card `14px` / `10px` padding. Who is Abbara for — two cards wrap (659px then 801px, different tops). Disciplines covered — twelve cards, Cinema 71px wide, same type as the long cards, wrap onto a second line. Where they work — two cards share a line (125px + 549px). No `text-xs` Cinema chip. `/programs/wijhat` same chrome: Who is it for two-then-one; For what purpose four-then-one (Fairs 53px); From where to where three on one line. Production Awards and Stand for Art still have no S4. C4 grid and C5 amount chips untouched.
+
+### Programs — Stand for Art, no S4, duplicates removed (2026-09-06)
+
+**Done:** Unit 4 of the S4 plan, taken without the S4. Stand for Art gets no scope summary — the planned Who it's for / What counts as a risk / Where would have restated C1's risk list and two C8 items one screen higher, which is what the Production Awards rollback settled. Four restatements come out instead: C1's second paragraph drops its closing sentence (the two ways an applicant can be at risk, already in paragraph one — the five risk types stay); C4 drops "Complete it in Arabic" as a step, so it is two steps and the rule stays as C8's condition; C9's label loses ", and it sets the form of support", which the lead says in full; C11's organisations answer keeps only the redirect, since C8 carries the individuals-only clause verbatim. Config-only — no component change, since Stand for Art has no `hero`. Decision **161** logged; **94**, **139** and **160** revised in place. The plan is closed: S4 is Wijhat and Abbara only.
+
+**Left undone:** Nothing from this plan. The cross-programme version of the same problem is not touched — see Flagged.
+
+**Decisions:** 161. Stand for Art gets no S4; the page's restated facts are removed instead.
+
+**Flagged:** The Arabic-except-English rule is stated twice on **Wijhat** (both S5 path steps and a C8 item) and on **Abbara** (C4's step detail and a C8 item). Production Awards states it once. Whether that rule's home across the kit is the apply step or the C8 condition is a unit of its own, not a call to make inside a Stand for Art pass.
+
+**Verified:** Curl against the running dev server. `/programs/stand-for-art` headings: H1 → Overview (sr-only) → Forms of support → Application → How to apply → Conditions / exclusions → How applicants are selected → Frequently Asked Questions → Contact. Codes C1–C5 then C7–C4–C8–C9 then C11–C12 — no S4. C1's second paragraph ends at "legal or illegal means"; "expression and production" is gone. C4 has two step cards, no "Complete it in Arabic", with the documents list, highlight and note intact. C8 five items, still including the Arabic rule. C9 label "Steering committee — six members". The organisations FAQ answer is the redirect only. Wijhat (C1–C2–S4–S1–C5 …) and Abbara (C1–C2–S4–S1–C5–C6 …) still own S4; Production Awards still has none. Type-check clean.
+
+### Programs — Production Awards S4 rolled back (2026-09-06)
+
+**Done:** Production Awards S4 is gone. Who-submits and funds-in-the-region return to C8 (six items → eight). Under 35 and Arab origin stay in C1. Birth-year range stays omitted. Overview is C1–C2–S1–C5 again. Decisions **85**, **139**, **158**, **160** revised in place to record the rollback.
+
+**Left undone:** Unit 4 of the same plan (Stand for Art S4) is not started. Production Awards does not get another S4 pass — the reserved shape is closed as not belonging on this page.
+
+**Decisions:** 158 rolled back — the reserved "Who is eligible" S4 restated facts that already live in C1 and C8.
+
+**Flagged:** None new.
+
+**Verified:** Curl against the running dev server. `/programs/production-awards` headings: H1 → Overview (sr-only) → Programme timeline → Available grants → Application → How to apply → Conditions → Selection → Contract → Downloads → FAQs → Contact. Codes C1–C2–S1–C5 then C7–C4–C8–C9–C10–S2 then C11–C12. No S4, no Who can apply / Who submits / Where the funds are spent, no January 1992. C8 eight items again, including funds-in-the-region and who-submits. Wijhat and Abbara still own S4.
+
+### Programs — Production Awards S4 (2026-09-06)
+
+**Done:** Production Awards gains S4 — the titled "Who is eligible" shape decision 158 reserved. Three stacked rows after C1 + C2: Who can apply (Arab origin wherever they live; under 35; born January 1992 – December 2011); Who submits the application (five roles by discipline); Where the funds are spent (in, or for the benefit of, the Arab region). No disciplines cell — C5 already lists the five grants. C8 loses the who-submits line and the funds-in-the-region item (eight items → six). Under-18 extra documents stay in C8. C1 keeps "under 35" and "of Arab origin" as prose. Overview is C1–C2–S4–S1–C5. Decisions **85**, **139**, **158**, **160** revised in place.
+
+**Left undone:** Unit 4 of the same plan (Stand for Art S4). Stand for Art still has no S4.
+
+**Decisions:** 158 closed — the reserved S4 is on the page as three untitled rows, not a fourth section. 85, 139, 160 revised.
+
+**Flagged:** Whether the birth-year range should be published at all, given it shifts every round. Recorded in the content map as a finding.
+
+**Verified:** Curl against the running dev server. `/programs/production-awards` headings: H1 → Overview (sr-only) → Who can apply · Who submits the application · Where the funds are spent → Programme timeline → Available grants → Application → How to apply → Conditions → Selection → Contract → Downloads → FAQs → Contact. Codes C1–C2–S4–S1–C5 then C7–C4–C8–C9–C10–S2 then C11–C12. Nine S4 cards (3 + 5 + 1), no chips, no Disciplines covered, no At-a-glance, no `grid-cols-2`. Birth-year present. C8 six items — no who-submits line, no funds-in-the-region; under-18 stays. C5 still five grants. `/programs/wijhat` unchanged (three S4 rows + Travel grant C5). `/programs/abbara` unchanged (Who is Abbara for · Disciplines covered chips · Where they work). `/programs/stand-for-art` still has no S4.
+
+### Programs — Abbara S4/C3 retire (2026-09-06)
+
+**Done:** Abbara's S4 drops the support cell (pure C5 duplicate) and gains Disciplines covered (twelve chips) and Where they work (two cards) from C3. Who-can-apply is dropped — it restated "Who is Abbara for". C3's remaining three facts move into C8: budget band fused with years operating as the live page has it, plus registration and previous-beneficiary. C8 goes from six items to nine. `C3AtAGlance`, the `C3flat` config arm, and the ProgramPage cases are deleted. The C3 code is not reused. Overview is C1–C2–S4–S1–C5–C6. Decisions **85**, **97**, **98**, **140**, **158** revised in place; **61**, **139**, **145**, **153**, **160** also revised so they are not silently contradicted.
+
+**Left undone:** Units 3–4 of the same plan (Production Awards S4; Stand for Art S4). Production Awards' titled "Who is eligible" S4 is still reserved.
+
+**Decisions:** 85, 97, 98, 140, 158 revised — C3 retires; S4 is Abbara's scope summary; C5 is what you get; C8 takes the rules.
+
+**Flagged:** Whether the US$50,000–500,000 gate should be stated somewhere prominent — it is a hard eligibility bar published only inside a prose bullet on a secondary tab. Recorded in the content map as a finding. The `?Who is Abbara for` CMS artifact stays dropped.
+
+**Verified:** Curl against the running dev server. `/programs/abbara` headings: H1 → Overview (sr-only) → Who is Abbara for · Disciplines covered · Where they work → Programme timeline → Forms of support → Application → How to apply → Conditions → Selection → Contract → Abbara organisations by round → FAQs → Contact. Codes C1–C2–S4–S1–C5–C6 then C7–C4–C8–C9–C10 then S3 then C11–C12. No At-a-glance, no Who can apply, no support cell, no Budget band label, no `grid-cols-2`. Twelve discipline chips (Cinema … Research). C8 nine items, fused budget+years first. C5 still four records with €22,000. `/programs/wijhat` unchanged (three S4 rows + Travel grant C5). Production Awards and Stand for Art still have no S4 and no C3.
+
+### Programs — Wijhat S4/C5 (2026-09-06)
+
+**Done:** S4 is stacked full-width rows: `h3` label, optional lead, items as wrapping cards reusing C3's chrome. A row whose items are single terms renders as chips. The string `HeroCell` variant and its Fill fallback are gone. Wijhat's "The grant" cell leaves S4 for a single-record C5 (Travel grant, Up to €7,000, five covered costs). Remaining S4 rows — Who is it for, For what purpose (keeps "To take part in:"), From where to where — unchanged in content. Overview is C1–C2–S4–S1–C5. Decision **160** revised; **86** overturned in place; **80** revised; **140** noted.
+
+**Left undone:** Units 2–4 of the same plan (Abbara + C3 retire; Production Awards S4; Stand for Art S4). Abbara's S4 picks up the stacked-card layout from the shared component; its content is unchanged this unit.
+
+**Decisions:** 160 revised — S4 rows are stacked, items as cards, taxonomy as chips. 86 overturned — Wijhat gets a single-record C5.
+
+**Flagged:** None.
+
+**Verified:** Curl against the running dev server. `/programs/wijhat` — S4 is three stacked rows (Who is it for · For what purpose · From where to where), items as `minmax(210px)` cards, "To take part in:" lead kept, no "The grant" cell, no `grid-cols-2`. C5 after S1: "Forms of support" / Travel grant / Up to €7,000 / five covered costs; no no-amount hint. `/programs/abbara` — same stacked-card S4, two rows, content unchanged. Production Awards and Stand for Art have no S4 and no Wijhat C5. Headless Chrome dump-dom hung; markup confirmed from the served HTML.
+
+### Programs — S4 2-up titled cells (2026-09-06)
+
+**Done:** S4 leaves shared `Cells`. Cells are a `grid-cols-2` with `gap-8` and no card borders. Each label is an `h3` at `text-lg font-bold` (same size as programme block titles); lists and leads inherit body type. Same on Wijhat (four cells, two rows) and Abbara (two cells, one row). HM4 stays on Cells. Decision **160** logged; **80** and **149** revised in place.
+
+**Left undone:** Nothing from this brief.
+
+**Decisions:** 160. S4 is a 2-up gapped grid; cell labels are h3s.
+
+**Flagged:** None.
+
+**Verified:** Skipped — review in the app.
+
+### Programs — C7 on the Application heading (2026-09-06)
+
+**Done:** C7 floats right of the Application h2 and is `sticky top-4`, so the button shares that row and stays in view after the heading scrolls away, through Past / FAQs / Contact. Same on all four programmes. C4 drops `withRepeat` — one Apply now. C7's Block is `flush` so codes-off margin does not drop it off the heading line. Decision **159** logged; **137**, **141**, **153** revised in place.
+
+**Left undone:** Nothing from this brief.
+
+**Decisions:** 159. C7 sits on the Application heading row and stays sticky.
+
+**Flagged:** None.
+
+**Verified:** Headless Chrome, 1440×900, all four programme routes, codes-off. One "Apply now" on each (C4 repeat gone). Application h2 and C7 share a row (same top); heading text left, button at the right of main. After scrolling past the heading, C7 sticks at `top: 16px` while the h2 is offscreen; still there at FAQs / Contact.
 
 ### Production Awards — drop C3 + live map (2026-09-06)
 
@@ -539,6 +647,51 @@ Newest first. One entry per page-type completed: what was done, what was left as
 ---
 
 ## Completed tasks
+
+### Programs — Stand for Art, no S4 (2026-09-06)
+
+- [x] S4 skipped — the planned scope summary would restate C1 and C8 (as on Production Awards)
+- [x] Remove the page's duplicates — C1's repeated either/or, C4's Arabic step, C9's label clause, the organisations FAQ's individuals-only clause
+- [x] Docs — wireframe-passes 161 (94/139/160 revised), content-map, tracker
+- [x] Verify — no S4; C4 two steps; C8 five items; Wijhat / Abbara / Production Awards unchanged
+
+**Plan closed.** S4 is Wijhat and Abbara only. C3 is retired from the kit.
+
+### Programs — Production Awards S4 (2026-09-06) — rolled back
+
+- [x] Add S4, then roll it back — eligibility stays in C1 and C8
+- [x] Restore C8 who-submits and funds-in-the-region (six → eight)
+- [x] Docs — wireframe-passes 85/139/158/160 revised for the rollback, content-map, tracker
+- [x] Verify — Production Awards has no S4; C8 eight items; Wijhat / Abbara unchanged
+
+### Programs — Abbara S4/C3 retire (2026-09-06)
+
+- [x] Drop S4 support cell (C5 duplicate) and C3 who-can-apply card
+- [x] Add Disciplines covered (chips) and Where they work to S4; move budget+years, registration, previous-beneficiary to C8
+- [x] Delete C3AtAGlance, C3flat config arm, ProgramPage cases; C3 code not reused
+- [x] Docs — wireframe-passes 85/97/98/140/158 (61/139/145/153/160 also revised), content-map, tracker
+- [x] Verify — Abbara S4 three rows + chips; C8 nine items; no C3 on any programme
+
+### Programs — Wijhat S4/C5 (2026-09-06)
+
+- [x] S4 stacked rows; items as cards; taxonomy rows as chips; drop string HeroCell
+- [x] Wijhat: drop "The grant" from S4; add single-record C5 (Travel grant, Up to €7,000, five costs)
+- [x] Docs — wireframe-passes 160/86/80 (140 noted), content-map, tracker
+- [x] Verify — Wijhat S4 three rows + C5; Abbara S4 layout only
+
+### Programs — S4 2-up titled cells (2026-09-06)
+
+- [x] Cell labels as h3 at `text-lg font-bold`; list items at body type
+- [x] Drop cell borders; `gap-8`; two cards per row
+- [x] Docs — wireframe-passes 160 (80/149 revised), content-map, tracker
+- [ ] Verify — skipped; review in the app
+
+### Programs — C7 on the Application heading (2026-09-06)
+
+- [x] C7 inline with Application h2, right-aligned, sticky after that row
+- [x] Remove C4's repeat Apply now on Production Awards / Stand for Art / Abbara
+- [x] Docs — wireframe-passes 159 (137/141/153 revised), content-map, tracker
+- [x] Verify — all four programmes, one button, same row, sticky through FAQs/Contact
 
 ### Production Awards — drop C3 + live map (2026-09-06)
 

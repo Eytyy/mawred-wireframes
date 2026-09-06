@@ -10,18 +10,18 @@ export function Figs({ labels, wide }: FigsProps) {
     <div
       className={
         wide
-          ? "grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2.5"
-          : "grid grid-cols-2 gap-2.5"
+          ? 'grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2.5'
+          : 'grid grid-cols-2 gap-2.5'
       }
     >
       {labels.map((item) => {
         const { label, value } =
-          typeof item === "string" ? { label: item, value: undefined } : item;
+          typeof item === 'string' ? { label: item, value: undefined } : item;
 
         return (
-          <div key={label} className="border border-black p-2.5 text-center">
-            <b className="block text-4xl">{value ?? "00"}</b>
-            <span className="text-xs text-neutral-500">{label}</span>
+          <div key={label} className="p-2.5 text-center">
+            <b className="block text-4xl xl:text-6xl">{value ?? '00'}</b>
+            <span className="text-xs text-neutral-500 capitalize">{label}</span>
           </div>
         );
       })}

@@ -2,7 +2,6 @@
 
 import { C1Overview } from "@/components/blocks/programs/C1Overview";
 import { C2ImpactFigures } from "@/components/blocks/programs/C2ImpactFigures";
-import { C3AtAGlance } from "@/components/blocks/programs/C3AtAGlance";
 import { C4ApplySteps } from "@/components/blocks/programs/C4ApplySteps";
 import { C5FormsOfSupport } from "@/components/blocks/programs/C5FormsOfSupport";
 import { C6HighlightedNote } from "@/components/blocks/programs/C6HighlightedNote";
@@ -29,7 +28,6 @@ type ProgramSectionId = "overview" | "application" | "past";
 
 function sectionFor(block: ProgramBlockConfig): ProgramSectionId {
   switch (block.type) {
-    case "C3flat":
     case "S1":
     case "C5":
       return "overview";
@@ -56,8 +54,6 @@ function SectionHeading({ children }: { children: ReactNode }) {
 
 function renderBlock(block: ProgramBlockConfig): ReactNode {
   switch (block.type) {
-    case "C3flat":
-      return <C3AtAGlance key="C3" rows={block.rows} />;
     case "C4":
       return (
         <C4ApplySteps
@@ -66,7 +62,6 @@ function renderBlock(block: ProgramBlockConfig): ReactNode {
           documents={block.documents}
           note={block.note}
           highlight={block.highlight}
-          withRepeat={block.withRepeat}
         />
       );
     case "C5":
@@ -157,6 +152,8 @@ export function ProgramPage({ config }: { config: ProgramConfig }) {
   }
 
   const showPast = past !== undefined && !(past.offeredOnly && !state.offered);
+  const timeline = overview.find((block) => block.type === "S1");
+  const overviewBody = overview.filter((block) => block.type !== "S1");
 
   return (
     <>
@@ -176,38 +173,45 @@ export function ProgramPage({ config }: { config: ProgramConfig }) {
           </Hint>
         )}
         {config.hero ? <S4HeroSummary cells={config.hero} /> : null}
-        {overview.map((block, index) => (
+        {overviewBody.map((block, index) => (
           <div key={`${block.type}-${index}`}>{renderBlock(block)}</div>
         ))}
+        {timeline ? <div key="S1">{renderBlock(timeline)}</div> : null}
       </section>
 
-      <section>
-        <SectionHeading>Application</SectionHeading>
-        <C7ApplyButton
-          dest={config.dest}
-          closed={config.rolling ? false : state.closed}
-        />
-        {application.map((block, index) => (
-          <div key={`${block.type}-${index}`}>{renderBlock(block)}</div>
-        ))}
-      </section>
-
-      {showPast && past ? (
+      <div>
+        <div className="sticky top-4 z-10 float-right ml-4 bg-white">
+          <C7ApplyButton
+            dest={config.dest}
+            closed={config.rolling ? false : state.closed}
+          />
+        </div>
         <section>
-          <SectionHeading>{past.label ?? "Past beneficiaries"}</SectionHeading>
-          {renderBlock(past)}
+          <SectionHeading>Application</SectionHeading>
+          {application.map((block, index) => (
+            <div key={`${block.type}-${index}`}>{renderBlock(block)}</div>
+          ))}
         </section>
-      ) : null}
 
-      <section>
-        <SectionHeading>Frequently Asked Questions</SectionHeading>
-        <C11Faqs items={config.faqs} />
-      </section>
+        {showPast && past ? (
+          <section>
+            <SectionHeading>
+              {past.label ?? "Past beneficiaries"}
+            </SectionHeading>
+            {renderBlock(past)}
+          </section>
+        ) : null}
 
-      <section>
-        <SectionHeading>Contact</SectionHeading>
-        <C12Contact contact={config.contact} />
-      </section>
+        <section>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
+          <C11Faqs items={config.faqs} />
+        </section>
+
+        <section>
+          <SectionHeading>Contact</SectionHeading>
+          <C12Contact contact={config.contact} />
+        </section>
+      </div>
     </>
   );
 }

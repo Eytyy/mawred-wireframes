@@ -1,4 +1,3 @@
-import type { C3Row } from '@/components/blocks/programs/C3AtAGlance';
 import type { ApplyHighlight, ApplyStep } from '@/components/blocks/programs/C4ApplySteps';
 import type { FaqItem } from '@/components/blocks/programs/C11Faqs';
 import type { BeneficiaryGroup } from '@/components/blocks/programs/S3PastBeneficiaries';
@@ -26,14 +25,12 @@ export type DownloadFileConfig = {
 };
 
 export type ProgramBlockConfig =
-  | { type: 'C3flat'; rows: C3Row[] }
   | {
       type: 'C4';
       steps: ApplyStep[];
       documents?: string[];
       note?: string;
       highlight?: ApplyHighlight;
-      withRepeat?: boolean;
     }
   | { type: 'C5'; records: SupportRecordConfig[]; heading?: string }
   | {
@@ -90,14 +87,6 @@ export const PRODUCTION_AWARDS: ProgramConfig = {
   contact: 'awards@mawred.org',
   blocks: [
     {
-      type: 'S1',
-      stages: [
-        { n: 'Open call', d: '17 August 2026' },
-        { n: 'Deadline', d: '19 October 2026, 16:00 Beirut' },
-        { n: 'Results', d: 'End of March 2027' },
-      ],
-    },
-    {
       type: 'C5',
       heading: 'Available grants',
       records: [
@@ -129,6 +118,14 @@ export const PRODUCTION_AWARDS: ProgramConfig = {
       ],
     },
     {
+      type: 'S1',
+      stages: [
+        { n: 'Open call', d: '17 August 2026' },
+        { n: 'Deadline', d: '19 October 2026, 16:00 Beirut' },
+        { n: 'Results', d: 'End of March 2027' },
+      ],
+    },
+    {
       type: 'C4',
       steps: [
         {
@@ -149,7 +146,6 @@ export const PRODUCTION_AWARDS: ProgramConfig = {
         },
       ],
       note: 'Read the application guidelines in full before you start.',
-      withRepeat: true,
     },
     {
       type: 'C8',
@@ -221,7 +217,6 @@ export const WIJHAT: ProgramConfig = {
     },
     {
       label: 'For what purpose',
-      lead: 'To take part in:',
       items: [
         'Fairs',
         'Residencies',
@@ -236,17 +231,6 @@ export const WIJHAT: ProgramConfig = {
         'From one Arab country to another',
         'From outside the Arab region into it',
         'From the Arab region to outside it',
-      ],
-    },
-    {
-      label: 'The grant',
-      lead: 'Up to €7,000, to cover:',
-      items: [
-        'Travel tickets',
-        'Visa costs',
-        'Accommodation',
-        'Partial living expenses',
-        'Internal transport',
       ],
     },
   ],
@@ -266,6 +250,22 @@ export const WIJHAT: ProgramConfig = {
   dest: 'apply.mawred.org — the applications platform',
   contact: 'wijhat@mawred.org',
   blocks: [
+    {
+      type: 'C5',
+      records: [
+        {
+          label: 'Travel grant',
+          amount: 'Up to €7,000',
+          items: [
+            'Travel tickets',
+            'Visa costs',
+            'Accommodation',
+            'Partial living expenses',
+            'Internal transport',
+          ],
+        },
+      ],
+    },
     {
       type: 'S1',
       lead: 'Applications are accepted year-round against a repeating three-round calendar. Dates carry no year — the same deadlines and announcement dates run every year.',
@@ -402,7 +402,7 @@ export const STAND_FOR_ART: ProgramConfig = {
   overview: {
     text: [
       'Stand for Art supports artists and cultural actors from the Arab region who face a risk to their safety or security — whether because of the work they make and the activities they take part in, or because of an unsafe environment around them, at home or abroad. It was launched in 2016, after a study of the risks in the region and of the support available to meet them.',
-      'The risks the programme prioritises are kidnapping or detention, imprisonment, threats of physical harm, violence and abuse, and prosecution — whether by legal or illegal means. An applicant may be in danger because of their artistic or cultural expression and production, or because of the environment they live and work in.',
+      'The risks the programme prioritises are kidnapping or detention, imprisonment, threats of physical harm, violence and abuse, and prosecution — whether by legal or illegal means.',
       'The aim is to safeguard the right to free expression and the right to live and work in safety and dignity, and the support offered towards that is temporary. Applications are accepted all year — there are no rounds and no deadlines.',
     ],
   },
@@ -421,7 +421,7 @@ export const STAND_FOR_ART: ProgramConfig = {
     },
     {
       q: 'Can an organisation at risk of closure or bankruptcy apply?',
-      a: "No — the programme supports individuals only, whether they are affiliated with an organisation or working independently. Organisational support sits with Culture Resource's other programmes.",
+      a: "No. Organisational support sits with Culture Resource's other programmes.",
     },
     {
       q: 'Does the support cover family members?',
@@ -445,10 +445,6 @@ export const STAND_FOR_ART: ProgramConfig = {
           detail: 'The form is hosted outside the applications platform, on JotForm.',
         },
         {
-          label: 'Complete it in Arabic',
-          detail: 'Except for the fields marked English.',
-        },
-        {
           label: 'Attach the required documents',
           detail: 'The five documents listed below.',
         },
@@ -465,7 +461,6 @@ export const STAND_FOR_ART: ProgramConfig = {
         text: 'The application form is encrypted. All the information you send is confidential and is used internally by the Stand for Art team only.',
       },
       note: 'The encrypted form cannot be saved and reopened, so it is completed in one sitting — have your documents to hand before you start.',
-      withRepeat: true,
     },
     {
       type: 'C5',
@@ -503,7 +498,7 @@ export const STAND_FOR_ART: ProgramConfig = {
     },
     {
       type: 'C9',
-      label: 'Steering committee — six members, and it sets the form of support',
+      label: 'Steering committee — six members',
       text: 'The committee is made up of artists and cultural managers with expertise in the field, aware of developments in the Arab region and in exile, gender-diverse and geographically distributed. It both decides on a case and sets the form and level of support, against how grave the case is.',
       process: [
         'The application is checked for eligibility, completeness and documents.',
@@ -526,12 +521,27 @@ export const ABBARA: ProgramConfig = {
       ],
     },
     {
-      label: 'What kind of support does the programme offer',
+      label: 'Disciplines covered',
       items: [
-        'Financial support of €22,000 per initiative or organisation',
-        'Training in strategic planning and organisational management',
-        'Technical assistance — governance, financial management, resources and fundraising, communications',
-        'Networking and collaborations',
+        'Cinema',
+        'Performing arts',
+        'Literature',
+        'Publishing',
+        'Archiving',
+        'Visual arts',
+        'Music',
+        'Podcasts',
+        'Cultural management',
+        'Cultural policies',
+        'Cultural heritage',
+        'Research',
+      ],
+    },
+    {
+      label: 'Where they work',
+      items: [
+        'The Arab region',
+        'Organisations abroad whose work serves artistic and cultural production in Arabic',
       ],
     },
   ],
@@ -557,64 +567,6 @@ export const ABBARA: ProgramConfig = {
   contact: 'abbara@mawred.org',
   blocks: [
     {
-      type: 'C3flat',
-      rows: [
-        {
-          label: 'Who can apply',
-          value:
-            'Independent, non-governmental initiatives and organisations founded and directed by artists or cultural actors from an Arab country, regardless of ethnic origin or citizenship',
-        },
-        {
-          label: 'Disciplines covered',
-          value:
-            'Cinema · Performing arts · Literature · Publishing · Archiving · Visual arts · Music · Podcasts · Cultural management · Cultural policies · Cultural heritage · Research',
-        },
-        {
-          label: 'Where they work',
-          value:
-            'Mainly the Arab region — organisations abroad are considered where their work serves artistic and cultural production in Arabic',
-        },
-        {
-          label: 'Budget band',
-          value: 'Small or midsize — total expenditure or income between US$50,000 and US$500,000',
-        },
-        {
-          label: 'Years operating',
-          value:
-            "At least three years' experience in arts and culture, as an entity or in its members",
-        },
-        {
-          label: 'Registration',
-          value:
-            'Unregistered initiatives and groups may be considered, provided they work within established and transparent legal frameworks',
-        },
-        {
-          label: 'Previous beneficiaries',
-          value: 'A previous Abbara beneficiary may not apply',
-        },
-      ],
-    },
-    {
-      type: 'S1',
-      lead: 'A round runs 24–30 months, depending on what each organisation needs. The dates below are the current round, Abbara 08.',
-      stages: [
-        { n: 'Open call', d: '2 June 2025' },
-        { n: 'Deadline for applications', d: '17 July 2025, 16:00 Beirut' },
-        { n: 'Results announced', d: 'End of September 2025' },
-        {
-          n: 'First workshop — strategic planning and organisational management',
-          d: 'Week of 9–15 November 2025',
-        },
-        { n: 'Agreements signed with beneficiaries', d: 'February 2026' },
-        {
-          n: 'Second workshop — financial planning and financial management',
-          d: 'During 2026',
-        },
-        { n: 'Technical-assistance programme', d: '2026–2027' },
-        { n: 'End of contracting period', d: 'February 2028' },
-      ],
-    },
-    {
       type: 'C4',
       steps: [
         {
@@ -631,7 +583,6 @@ export const ABBARA: ProgramConfig = {
         },
       ],
       note: "Save each section before you move to the next, and don't leave the attachments to the last hours before the deadline — heavy traffic on the site can stop an upload.",
-      withRepeat: true,
     },
     {
       type: 'C5',
@@ -675,9 +626,32 @@ export const ABBARA: ProgramConfig = {
       text: 'It covers the cost of running the organisation: staffing, setting up and maintaining a space or premises, and running costs. It funds no programme or project activity, and it lasts no more than 24 months.',
     },
     {
+      type: 'S1',
+      lead: 'A round runs 24–30 months, depending on what each organisation needs. The dates below are the current round, Abbara 08.',
+      stages: [
+        { n: 'Open call', d: '2 June 2025' },
+        { n: 'Deadline for applications', d: '17 July 2025, 16:00 Beirut' },
+        { n: 'Results announced', d: 'End of September 2025' },
+        {
+          n: 'First workshop — strategic planning and organisational management',
+          d: 'Week of 9–15 November 2025',
+        },
+        { n: 'Agreements signed with beneficiaries', d: 'February 2026' },
+        {
+          n: 'Second workshop — financial planning and financial management',
+          d: 'During 2026',
+        },
+        { n: 'Technical-assistance programme', d: '2026–2027' },
+        { n: 'End of contracting period', d: 'February 2028' },
+      ],
+    },
+    {
       type: 'C8',
       text: 'Abbara funds organisations and initiatives, not individuals. An application that misses the eligibility criteria or arrives without the required attachments is eliminated before the jury stage.',
       items: [
+        "A small or midsize initiative or organisation — total expenditure or income between US$50,000 and US$500,000 — with at least three years' experience in arts and culture, as an entity or in its members.",
+        'Unregistered initiatives and groups may be considered, provided they work within established and transparent legal frameworks.',
+        'A previous Abbara beneficiary may not apply.',
         'Every blank in the form is filled in, and every attachment marked with an asterisk is included.',
         'The form is completed in Arabic, apart from the blanks that require English.',
         'Documents required in Arabic must be in Arabic — another language is not accepted.',

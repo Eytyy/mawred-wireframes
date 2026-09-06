@@ -11,7 +11,7 @@ type C7ApplyButtonProps = {
 
 export function C7ApplyButton({ dest, repeat, closed }: C7ApplyButtonProps) {
   return (
-    <Block code="C7" label={`Apply${repeat ? " (repeat)" : ""}`}>
+    <Block code="C7" label={`Apply${repeat ? " (repeat)" : ""}`} flush>
       {closed ? (
         <>
           <Btn primary disabled>

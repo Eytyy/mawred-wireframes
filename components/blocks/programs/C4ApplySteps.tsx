@@ -1,5 +1,4 @@
 import { Block } from "@/components/wireframe/Block";
-import { Btn } from "@/components/wireframe/Btn";
 import { Fill } from "@/components/wireframe/Fill";
 import { Prose } from "@/components/wireframe/Prose";
 
@@ -18,7 +17,6 @@ type C4ApplyStepsProps = {
   documents?: string[];
   note?: string;
   highlight?: ApplyHighlight;
-  withRepeat?: boolean;
   nested?: boolean;
 };
 
@@ -27,7 +25,6 @@ export function C4ApplySteps({
   documents,
   note,
   highlight,
-  withRepeat,
   nested,
 }: C4ApplyStepsProps) {
   const inner = (
@@ -69,11 +66,6 @@ export function C4ApplySteps({
         </>
       ) : null}
       {note ? <p className="mt-3 font-bold">{note}</p> : null}
-      {withRepeat ? (
-        <Btn primary className="mt-3">
-          Apply now
-        </Btn>
-      ) : null}
     </>
   );
 

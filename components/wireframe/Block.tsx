@@ -7,6 +7,7 @@ type BlockProps = {
   optional?: boolean;
   heading?: string;
   headingAs?: "h2" | "h3";
+  flush?: boolean;
 };
 
 export function Block({
@@ -16,13 +17,16 @@ export function Block({
   optional,
   heading,
   headingAs: HeadingTag = "h2",
+  flush,
 }: BlockProps) {
   const borderClass = optional
     ? "border border-dashed border-black"
     : "border border-black";
 
   return (
-    <section className={`my-3.5 p-3.5 ${borderClass} block-frame`}>
+    <section
+      className={`p-3.5 ${flush ? "block-flush" : "my-3.5"} ${borderClass} block-frame`}
+    >
       <div className="block-label mb-2.5 flex items-center gap-2">
         <span className="code border border-black px-1 py-0.5 font-mono text-xs">
           {code}

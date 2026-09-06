@@ -31,6 +31,10 @@ body.codes-off .block-frame {
   margin-block: 2rem;
 }
 
+body.codes-off .block-frame.block-flush {
+  margin-block: 0;
+}
+
 main > .block-frame:first-child {
   margin-top: 0;
   padding-block: 0;
