@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en">
-      <body>
+      <body className="codes-off">
         <WireframeStateProvider>
           <div className="flex items-start">
             <div className="sticky top-0 flex h-screen w-64 shrink-0 flex-col justify-between p-4 lg:p-10">

@@ -29,7 +29,7 @@ export type WireframeState = {
 };
 
 const DEFAULT_STATE: WireframeState = {
-  codes: true,
+  codes: false,
   closed: false,
   offered: false,
   filtered: false,

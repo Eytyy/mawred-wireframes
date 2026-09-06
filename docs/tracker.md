@@ -4,13 +4,23 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
-**Current task:** none. State panel cog unit is done.
+**Current task:** none. Review chrome defaults off.
 
 ---
 
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Chrome — review chrome off by default (2026-09-06)
+
+**Done:** `codes` defaults `false`. `<body>` carries `codes-off` in layout so the first paint is the client view. Panel toggle still turns review chrome on. Headless Chrome: Who We Are load — `body.codes-off`, badges/labels/hints `display: none`, Vision heading `block`, frames 0px; panel checkbox unchecked; checking it restores badges and hides headings. Production Awards fresh load is codes-off again (At-a-glance facts heading visible).
+
+**Left undone:** Nothing from this brief.
+
+**Decisions:** 156. Review chrome is off by default. 134 and 155 revised in place.
+
+**Flagged:** None.
 
 ### Chrome — state panel cog (2026-09-06)
 
@@ -507,6 +517,12 @@ Newest first. One entry per page-type completed: what was done, what was left as
 ---
 
 ## Completed tasks
+
+### Review chrome off by default (2026-09-06)
+
+- [x] `codes` default false; `body` starts `codes-off`
+- [x] Docs — wireframe-passes 156 (134/155 revised), standing-constraints, tracker
+- [x] Verify — Who We Are load + toggle on; Production Awards fresh load
 
 ### State panel cog (2026-09-06)
 
