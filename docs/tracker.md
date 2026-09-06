@@ -4,13 +4,153 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
-**Current task:** none. Programs — S1 last in Overview is closed. Units 1–2 of the S4 plan landed (Wijhat S4/C5; Abbara + C3 retired). Production Awards S4 was tried and rolled back. Stand for Art was taken without its S4 — duplicates removed instead. S4 is Wijhat and Abbara only. S4 cards hug content (flex wrap, one type size). S1 is last in Overview wherever it exists.
+**Current task:** none. Header chrome updated to Figma 309:392 notes (spacing, Search + EN / ع, +/− and black hover/active). Home rework remains closed.
+
+---
+
+## Header — Figma 309:392 notes
+
+- [x] Header chrome matches the annotated spacing and hover/active treatment
+
+---
+
+## Home rework — five blocks, real hierarchy
+
+- [x] Unit 1 — HM1 reads as a hero; HM8 retires
+- [x] Unit 2 — HM2 is the stat strip only
+- [x] Unit 3 — HM3 folds into HM4
+- [x] Unit 4 — HM6 as rows, no images
+- [x] Unit 5 — HM7 out
+- [x] Unit 6 — HM5 owns the 20th; nav item out
+- [x] Unit 7 — HM1 as an overlapping collage, not a single frame **(added mid-session; rolled back)**
+
+**Unit 7, as briefed.** Replace HM1's one full-bleed frame with roughly five images at varied sizes, placed off the grid and allowed to overlap, as a composed hero rather than a sequence. Three things to settle when it's picked up, all of them consequences rather than open client calls: (1) **placement is hand-authored, not computed** — `Math.random()` at render would hydrate differently on server and client, and a wireframe wants a composition that reviews the same twice; the offsets belong in `HOME_HERO_FRAMES` beside the captions. (2) **Whether any motion survives.** A collage that doesn't move has no sequence, which finishes what decision 35's revision started — and with plan Unit 2 removing HM2's `staticfb` consumer, `staticfb` would then have no consumer at all and should retire from `lib/wireframe-state.tsx`, `components/StatePanel.tsx` and `lib/pages/states.ts`. If frames do cycle in place, it stays. (3) **Where the positioning line goes.** It is the largest type on a page with no H1 (decision 164) and currently sits bottom-left inside the single frame; over an irregular collage it needs a corner the composition leaves clear, or it moves out of the images entirely. Decisions **35**, **36**, **81** and **164** all get revised again.
 
 ---
 
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Header — Figma 309:392 notes (2026-09-07)
+
+**Done:** SiteHeader and UtilityBar follow the annotated header notes. Rail top inset is 60px to the logo; 40px logo to Search / EN / ع; 60px utility to nav; 28px between top-level items; 18px parent to first child; 12px between children. Search is a bordered control; language is two boxes (EN filled, ع bordered). Expandable triggers prefix `+` and switch to `-` when open. Hover, the current route, and an open parent are a black fill with white text that hugs the label. About is labelled About. Decision **154** revised in place; standing constraint 2 and the AGENTS chrome lines match.
+
+**Left undone:** Search and language still do not switch anything — English-only this phase.
+
+**Decisions:** 154 revised — spacing, lang boxes, +/− prefix, and black hover/active.
+
+**Flagged:** The Figma hover example only lists three About children and shows Publications without a `+`. The live IA stays: five About links, and Publications' Library / Series groups (decision 154). The red notes are spacing and state, not a nav cut.
+
+**Verified:** Type-check and eslint clean. Headless Chrome against the running dev server: `/` spacing is 60 / 40 / 60 / 28. Open About: parent fill black, `- About`, 18px to first child, 12px between children, 28px to Grants. `/about/who-we-are` — About and Who We Are black with white text; Our Team not filled. `/news` — News black, white text. `/publications/research` — Publications open, parent and Research filled. Search / EN / ع present. No "About Us" in the rail. No "EN | AR" chip.
+
+### Home — overlapping collage rolled back (2026-09-07)
+
+**Done:** Unit 7 of the Home rework is rolled back. HM1 is again one full-bleed frame (`aspect-[16/9]`, `min-h-[360px]`) with the positioning line inside it, bottom-left, and the frame-count note top-left. Placement fields leave `HOME_HERO_FRAMES`. `staticfb` returns — hero-only, switching the frame note. Decision **165** rolled back in place; **35**, **36**, **38**, **81**, **82** and **164** restored to their pre-collage revisions. The Positioning line Unit 7 added to AGENTS.md and standing constraint 1 is gone.
+
+**Left undone:** Nothing from this rollback. Units 1–6 of the Home rework stand.
+
+**Decisions:** 165 rolled back — the collage is gone. 35, 36, 38, 81, 82, 164 restored.
+
+**Flagged:** Same as Unit 1: whether a funded work is credited in the frame, under it, or not at all; the Grants & Opportunities wayfinding link still points at Production Awards.
+
+**Verified:** Type-check and eslint clean. Curl against the running dev server: `/` 200. One full-bleed frame (`1 of 5`), not five overlapping boxes. Positioning line present. No "overlapping collage".
+
+### Home — HM1 as an overlapping collage (2026-09-07)
+
+**Done:** Unit 7 of the Home rework, and the last unit in the plan. HM1's single `aspect-[16/9]` fill becomes a `relative` composition area holding five `absolute` fill boxes. Overlap is the point: each box keeps a 1px black border; `z` is explicit. Placement (`top` / `left` / `width` / `height` / `z`) lives on `HOME_HERO_FRAMES` beside the captions, so it is content, not component — not `Math.random()`. Nothing moves, so there is no sequence: `staticfb` retires from `lib/wireframe-state.tsx`, `components/StatePanel.tsx` and `lib/pages/states.ts`. The positioning line stays bottom-left of the composition, on the white plate at `z-50`, over a corner the frames leave clear (decision 164 revised rather than undone). The note top-left names the composition, not a count in a sequence. Captions still do not render — five overlapping frames cannot each carry a chip. Decision **165** logged; **35**, **36**, **38**, **81**, **82** and **164** revised in place. AGENTS.md permitted set and standing constraint 1 name `relative` / `absolute` / `z-*` where overlap is the point.
+
+**Left undone:** Nothing from this plan. Flagged items below stay out of scope.
+
+**Decisions:** 165. HM1 is an overlapping collage, not a sequence. 35 revised — no sequence at all. 36 revised — still no caption. 38 and 82 revised — `staticfb` retires. 81 revised — composition area, not a single fill. 164 revised — the line stays bottom-left over a reserved corner.
+
+**Flagged:** Whether a funded work is credited at all remains open — captions stay in config, unrendered. HM1's first wayfinding link still points at `/programs/production-awards` because there is no programmes index. Block order is hero → stats → programmes → feature → news; the feature slot is Home's only editorial voice sitting fourth. HM2 has no heading.
+
+**Verified:** Type-check and eslint clean. Curl against the running dev server: `/` 200. Codes HM1–HM2–HM4–HM5–HM6. Five overlapping fill boxes. Positioning line present. News as `DirRow`s (three titles, `border-b`). Status chips on Production Awards / Wijhat / Stand for Art; Abbara present without a chip. No "Currently open opportunities", no "Latest from Publications", no "All publications". Rail has no Mawred's 20th item. `staticfb` is not a panel toggle.
+
+### Home — HM5 owns the 20th; nav item out (2026-09-07)
+
+**Done:** Unit 6 of the Home rework. "Mawred's 20th" leaves the rail. `NavGroup.optional` and the dashed-border branch retire with it — it was the only optional item. `/mawreds-20th` stays as the campaign destination reached from HM5's `twentieth` branch; its stub message names the content gap rather than the nav question. HM5's hint now says this slot is the 20th's only home. Decision **44** restored-and-revised; **133** and **154** revised in place.
+
+**Left undone:** Unit 7 of the same plan — HM1 as an overlapping collage. That unit decides whether `staticfb` still has a consumer.
+
+**Decisions:** 44 revised — the rail item is gone; HM5 is the 20th's only home. 133 revised — same. 154 revised — the optional 20th item no longer stays.
+
+**Flagged:** The permanent-vs-temporary question stays the client's; the structure no longer depends on the answer. Carried forward: HM1's first wayfinding link still points at `/programs/production-awards`; block order is hero → stats → programmes → feature → news.
+
+**Verified:** Type-check and eslint deferred to Unit 7.
+
+### Home — HM7 out (2026-09-07)
+
+**Done:** Unit 5 of the Home rework. `HM7LatestPublications` is deleted and unmounted from `HomePage`; the HM7 code is not reused. `PubStripItem`, `HOME_PUB_STRIP` and `HOME_ALL_PUBLICATIONS_HREF` leave `lib/pages/home.ts`, and Home no longer reads from `lib/pages/publications.ts`. Publications has no Home surface — the library and the three series stay reachable from the rail. Spec §5's "every inner section is represented" no longer holds; logged as a client-visible departure. Decision **41** restored-and-revised; **129** caught up so it no longer names "All publications".
+
+**Left undone:** Units 6–7 of the same plan. HM5's nav item and Unit 7 (HM1 as a collage) are untouched.
+
+**Decisions:** 41 revised — the combined strip retires with the block.
+
+**Flagged:** Publications now has no Home surface. Carried forward: HM1's first wayfinding link still points at `/programs/production-awards`; block order after the remaining cuts is hero → stats → programmes → feature → news.
+
+**Verified:** Type-check and eslint deferred to the remaining units of this session.
+
+### Home — HM6 as rows, no images (2026-09-07)
+
+**Done:** Unit 4 of the Home rework. HM6 leaves `NewsCard` / `CardGrid` for the shared `DirRow` — title, date and category as `Badge`s, no image. Three real posts from the News sample still each link to their own route. N13 still reuses the feed card verbatim. Decision **43** restored-and-revised (it was in the missing 1–54 set, restored in the same form decision 33 uses); standing constraint 4 revised in place.
+
+**Left undone:** Units 5–7 of the same plan. HM7, HM5's nav item and Unit 7 (HM1 as a collage) are untouched.
+
+**Decisions:** 43 revised — Home is the exception to the verbatim-card rule; the News landing and N13 keep the feed card.
+
+**Flagged:** None new. Carried forward: HM1's first wayfinding link still points at `/programs/production-awards`; block order after the remaining cuts is hero → stats → programmes → feature → news.
+
+**Verified:** Type-check and eslint deferred to the remaining units of this session.
+
+### Home — HM3 folds into HM4 (2026-09-07)
+
+**Done:** Unit 3 of the Home rework. `HM3OpenOpportunities` is deleted and unmounted from `HomePage`; the HM3 code is not reused. HM4 takes the open-call card: shared `Card` + `CardGrid`, `Badge` holding `programme.status` when present, descriptor in the footer. The `Programme` eyebrow and the `Cells` row are gone. `OpenCall` / `HOME_OPEN_CALLS` deleted from `lib/pages/home.ts`. `nocalls` retires from `lib/wireframe-state.tsx`, `components/StatePanel.tsx` and `lib/pages/states.ts` — with status on the card, "nothing open" is four cards with no chips, so spec §3C's empty is dissolved rather than unwired. HM4 was the last `Cells` consumer, so `components/wireframe/Cells.tsx` is deleted and the stale HM4 note in AB3 is gone. Decisions **39** and **40** restored-and-revised (both were in the missing 1–54 set, restored in the same form decision 33 uses); **80**, **130** and **132** revised in place (149, 160 and 82 caught up so they do not silently contradict).
+
+**Left undone:** Units 4–7 of the same plan. HM6, HM7 and HM5's nav item are untouched; Unit 7 (HM1 as a collage) is still queued, and that unit decides whether `staticfb` still has a consumer once the hero's sequence is reconsidered.
+
+**Decisions:** 39 revised — impact still sits above the programmes grid; HM3 retires. 40 revised — HM4 takes the cards; the two-strip distinction is gone. 80 revised — Cells retires, no consumers. 130 revised — `nocalls` retired. 132 revised — `HOME_PROGRAMMES` is the only surface.
+
+**Flagged:** HM1's first wayfinding link still points at `/programs/production-awards` because there is no programmes index, and with HM4 now carrying all four programmes on the page that link probably wants an in-page target or a real index route — its own unit, carried forward from Unit 1. Also carried forward from the plan, unfixed here: block order after the remaining cuts is hero → stats → programmes → feature → news, and the feature slot is Home's only editorial voice sitting fourth.
+
+**Verified:** Type-check and eslint clean. Curl against the running dev server: `/` 200. HM3 is gone. HM4 is four cards (Production Awards, Wijhat, Stand for Art, Abbara) with status badges on the first three and none on Abbara; no `Programme` eyebrow; no Cells row. `nocalls` is not a panel toggle. `/about/who-we-are` AB3 still four numbered cards.
+
+### Home — HM2 is the stat strip only (2026-09-07)
+
+**Done:** Unit 2 of the Home rework. HM2 drops the mosaic grid and the `staticfb` `Banner` fallback; `<Figs wide />` is the whole block. `HOME_MOSAIC` and `MosaicTile` are deleted from `lib/pages/home.ts`. The `00` grants awarded since 2003 rail moves last in `HOME_FIGURES` so the strip does not open on a blank; the gap stays visible (decision 131 unchanged). `staticfb` stays — it is now hero-only, switching HM1's frame note, and the panel note in `states.ts` says so. HM1's hint no longer claims the two blocks share imagery. Decisions **37** and **38** restored-and-revised (both were in the missing 1–54 set, restored in the same form decision 33 uses).
+
+**Left undone:** Units 3–7 of the same plan. HM3, HM6, HM7 and HM5's nav item are untouched; Unit 7 (HM1 as a collage) is still queued, and that unit decides whether `staticfb` still has a consumer once the hero's sequence is reconsidered.
+
+**Decisions:** 37 revised — the wall retires; HM2 is the figures only. 38 revised — the hero is the only place the faces-of-impact material appears; `staticfb` is hero-only.
+
+**Flagged:** HM2 has no heading. Four large numbers under the hero may want one; left headingless for now. Which figures lead remains a client call — the `00` rail sits last as presentation, not a ranking of the sourced three. Also carried forward from the plan, unfixed here: block order after the remaining cuts is hero → stats → programmes → feature → news, and the feature slot is Home's only editorial voice sitting fourth.
+
+**Verified:** Type-check and eslint clean. Curl against the running dev server: `/` 200. HM2 is the four figures in order (`55` countries · `38` programmes & initiatives · `23` years since 2003 · `00` grants awarded since 2003), labelled "Impact stat strip", with no mosaic grid and no static-fallback banner. HM1's hint no longer claims the two blocks share imagery. `staticfb` remains a client toggle on HM1 only.
+
+### Home — HM1 reads as a hero; HM8 retires (2026-09-07)
+
+**Done:** Unit 1 of the Home rework. HM1's marker bar is gone — the nine-pixel squares and the "auto-advance · click a marker to jump · pauses on interaction" line went with it, so nothing in the block reads as a slider control. The frame leaves its fixed `h-[300px]` for `aspect-[16/9]` with a `min-h-[360px]` floor, so it scales with the column and can't collapse. The positioning line moves off the row under the frame and into the frame, bottom-left, at `text-2xl font-bold` on a white plate, and is the only thing in that corner — the frame caption is not drawn. `HOME_HERO_FRAMES` keeps its five sourced captions, since they are what makes the frame count count something real, but HM1 doesn't render them. The row below the frame is now the wayfinding buttons only, and gains a third link — **Who we are** → `/about/who-we-are`. `HM8IdentityLeadIn` is deleted and unmounted from `HomePage`; `HOME_IDENTITY_TEXT`, `HOME_WHO_WE_ARE_HREF` and the `WHO_WE_ARE_INTRO` import are out of `lib/pages/home.ts`, so Home no longer reads from `lib/pages/about.ts`. The HM8 code is not reused. `staticfb` stays — it still switches HM1's frame note to the no-motion label and HM2 is still a consumer. Decision **164** logged; **35**, **36** and **42** restored-and-revised (all three were in the missing 1–54 set, restored in the same form decision 33 uses) and **81** revised in place.
+
+**Left undone:** Units 2–6 of the same plan. HM2 still carries the mosaic and the `staticfb` banner fallback; HM3, HM6, HM7 and HM5's nav item are untouched.
+
+**Decisions:** 164. The positioning line sits inside the hero frame. 35 revised — no marker bar, no controls. 36 revised — no caption is drawn. 42 revised — the identity lead-in retires into the hero. 81 revised — frame still local, new proportion.
+
+**Flagged:** Whether a funded work is credited in the frame, under it, or not at all is now open — the captions are sourced and kept in config but not drawn, so restoring them is a one-line change if the credit turns out to be needed. The plan's "frame-count note stays top-left as review chrome only — a label, not a control" is read as a role change, not a visibility one: the note stays visible in client view, as every other placeholder-box label does (`Banner`, `Cover`). Hiding it would also leave the `staticfb` branch with no client-visible difference now that the marker bar is gone. Also carried forward from the plan, unfixed here: HM1's first wayfinding link still points at `/programs/production-awards` because there is no programmes index, and with HM4 carrying all four programmes on the page that link probably wants an in-page target or a real index route — its own unit.
+
+**Verified:** Type-check and eslint clean. Render check deferred to the user in the app.
+
+### Site — 16px body type (2026-09-06)
+
+**Done:** Body is `1rem` (16px), not the port's `0.875rem` / `text-sm`. `text-sm` is remapped to `1rem` so chrome, cards and buttons that were matching the old body follow. `text-xs` stays 12px. Decision **163** logged; **58** revised in place.
+
+**Left undone:** Nothing from this brief.
+
+**Decisions:** 163. Body type is 16px.
+
+**Flagged:** None.
+
+**Verified:** Headless Chrome computed styles on `/programs/wijhat`. Body and C1 prose `16px`. Nav `text-sm` (`About Us +`) `16px`. `text-xs` labels still `12px`. H1 still `48px`. Compiled CSS has no `0.875rem`; `--text-sm` is `1rem`.
 
 ### Programs — S1 last in Overview (2026-09-06)
 
@@ -647,6 +787,18 @@ Newest first. One entry per page-type completed: what was done, what was left as
 ---
 
 ## Completed tasks
+
+### Home rework — five blocks, real hierarchy (2026-09-07)
+
+- [x] Unit 1 — HM1 reads as a hero; HM8 retires
+- [x] Unit 2 — HM2 is the stat strip only
+- [x] Unit 3 — HM3 folds into HM4
+- [x] Unit 4 — HM6 as rows, no images
+- [x] Unit 5 — HM7 out
+- [x] Unit 6 — HM5 owns the 20th; nav item out
+- [x] Unit 7 — overlapping collage landed, then rolled back
+
+**Plan closed.** Home is HM1 → HM2 → HM4 → HM5 → HM6. HM3, HM7 and HM8 retired; their codes are not reused. HM1 is the Unit 1 single-frame hero, not a collage.
 
 ### Programs — Stand for Art, no S4 (2026-09-06)
 

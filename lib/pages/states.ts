@@ -68,12 +68,11 @@ export const STATES: Record<StatesKey, StateConfig> = {
   },
   home: {
     list: [
-      { key: "nocalls", label: "No calls open (fallback)" },
       { key: "twentieth", label: "Feature slot = Mawred's 20th" },
       { key: "staticfb", label: "Static fallback (no motion)" },
     ],
     note:
-      "nocalls is a template branch (spec §3C), not a reachable state — Stand for Art is open all year. twentieth keeps the campaign slot; no campaign copy is sourced and /mawreds-20th is still a stub. Static = hero and mosaic degraded to single images if motion is cut at build.",
+      "nocalls is retired — with status on the HM4 card, nothing open is four cards with no chips (decision 130 revised). twentieth keeps the campaign slot; no campaign copy is sourced and /mawreds-20th is still a stub. Static is hero-only: it switches HM1's frame note to the no-motion label if motion is cut at build. The mosaic that used to share this toggle is gone.",
   },
   aboutwho: {
     list: [],

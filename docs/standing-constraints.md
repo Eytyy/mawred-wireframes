@@ -19,7 +19,7 @@ A Next.js app styled with Tailwind. Blocks are React components; each page is a 
 ## 2. Language and chrome
 
 - **English only this phase.** RTL is deferred.
-- **Global chrome is a sticky right rail, drawn once and inherited:** logo, search + EN|AR, vertical nav, newsletter link (popup), social, copyright. Not a stacked utility bar / header / newsletter / footer. [154]
+- **Global chrome is a sticky right rail, drawn once and inherited:** logo, search + EN / ع, vertical nav, newsletter link (popup), social, copyright. Not a stacked utility bar / header / newsletter / footer. [154]
 - **The page-header band (breadcrumb + H1) is scaffold, not a block.** It is composed in the page shell, not in layout. Home is the only page that omits it — it opens on HM1. Every other page mounts `<PageHeaderBand />`. `suppressPageHead` is gone. Blocks do not render crumb or page title. [33, 137, 147, 152]
 - **Programme pages are four always-on sections plus optional S3.** After the band: Overview, Application, optional Past (S3), FAQs, Contact. Overview's h2 is always in the DOM and visually hidden (`sr-only`) — document outline only, hidden in both views, never `.block-heading`. Visible section h2s use `.block-heading` so review chrome hides them; client view shows them at `text-2xl font-bold`. Programme block titles under those sections are `h3` at `text-lg`. No extra section boxes. [135, 153]
 - **Copy is being rewritten, not migrated.** Lay out for rewritten copy that fits the blocks; don't reproduce today's wrong-tab content or artifacts.
@@ -35,7 +35,7 @@ A Next.js app styled with Tailwind. Blocks are React components; each page is a 
 
 - **Filtered listings always carry a result count row.** Active filters render as removable chips on that row with "Clear all". The row also carries the sort control where a listing has one, and the count is scoped to the active view. A control already visible above (e.g. an active category tab) is not chipped again. [13, 28]
 - **Pagination is decided per page-type by browse pattern:** load-more for filterable directories that get narrowed (Network), a numbered pager for dated archives that get navigated (News). Surfaced strips on Home need neither. [23, 26]
-- **When one page-type surfaces another's content, it reuses that page-type's card verbatim.** A type tag is the only permitted addition, and only where a strip mixes kinds. [43]
+- **When one page-type surfaces another's content, it reuses that page-type's card verbatim** — except Home, which is a summary index. HM6 uses the shared `DirRow` (title · date · category) rather than the News feed card; the hero already carries the imagery, so repeating the cover five blocks down is the wrong thing to repeat. A type tag is still the only permitted addition where a strip mixes kinds. [43]
 
 ## 5. Embeds and colour
 

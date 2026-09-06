@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Logo from '../Logo';
 import { UtilityBar } from './UtilityBar';
 
@@ -10,7 +13,6 @@ type NavLink = {
 type NavGroup = {
   href: string;
   label: string;
-  optional?: boolean;
   dropdown?: NavLink[];
   groups?: { label: string; links: NavLink[] }[];
 };
@@ -18,7 +20,7 @@ type NavGroup = {
 const NAV: NavGroup[] = [
   {
     href: '/about/who-we-are',
-    label: 'About Us',
+    label: 'About',
     dropdown: [
       { href: '/about/who-we-are', label: 'Who We Are' },
       { href: '/about/our-team', label: 'Our Team' },
@@ -69,50 +71,69 @@ const NAV: NavGroup[] = [
   },
   { href: '/news', label: 'News' },
   { href: '/contact', label: 'Contact' },
-  { href: '/mawreds-20th', label: "Mawred's 20th", optional: true },
 ];
 
-function NavItem({ item }: { item: NavGroup }) {
-  const triggerClass = item.optional
-    ? 'block border border-dashed border-black px-1.5 py-0.5 text-sm no-underline'
-    : 'block text-sm no-underline';
+function pathMatches(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function childHrefs(item: NavGroup): string[] {
+  return [
+    ...(item.dropdown?.map((link) => link.href) ?? []),
+    ...(item.groups?.flatMap((group) => group.links.map((link) => link.href)) ??
+      []),
+  ];
+}
+
+function navItemClass(active: boolean) {
+  return [
+    'inline-block w-fit px-2 py-1 text-sm no-underline',
+    active ? 'bg-black text-white' : 'hover:bg-black hover:text-white',
+  ].join(' ');
+}
+
+function NavItem({ item, pathname }: { item: NavGroup; pathname: string }) {
+  const hrefs = [item.href, ...childHrefs(item)];
+  const isSectionActive = hrefs.some((href) => pathMatches(pathname, href));
   const hasMenu = Boolean(item.dropdown || item.groups);
 
   if (!hasMenu) {
     return (
-      <Link href={item.href} className={triggerClass}>
+      <Link href={item.href} className={navItemClass(isSectionActive)}>
         {item.label}
       </Link>
     );
   }
 
   return (
-    <details name="site-nav">
+    <details className="group" name="site-nav">
       <summary
-        className={`${triggerClass} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}
+        className={`${navItemClass(isSectionActive)} cursor-pointer list-none group-open:bg-black group-open:text-white [&::-webkit-details-marker]:hidden`}
       >
-        {item.label} +
+        <span className="font-bold group-open:hidden">+ </span>
+        <span className="hidden font-bold group-open:inline">- </span>
+        {item.label}
       </summary>
-      <div className="mb-4">
+      <div className="mt-4.5 flex flex-col gap-3 pl-4">
         {item.dropdown?.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="block px-2.5 py-1.5 text-sm no-underline hover:bg-neutral-200"
+            className={navItemClass(pathMatches(pathname, link.href))}
           >
             {link.label}
           </Link>
         ))}
         {item.groups?.map((group) => (
-          <div key={group.label}>
-            <span className="block bg-neutral-200 px-2.5 py-1.5 text-xs tracking-widest text-neutral-500 uppercase">
+          <div key={group.label} className="flex flex-col gap-3">
+            <span className="bg-neutral-200 px-2 py-1 text-xs tracking-widest text-neutral-500 uppercase">
               {group.label}
             </span>
             {group.links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-2.5 py-1.5 text-sm no-underline hover:bg-neutral-200"
+                className={navItemClass(pathMatches(pathname, link.href))}
               >
                 {link.label}
               </Link>
@@ -125,15 +146,19 @@ function NavItem({ item }: { item: NavGroup }) {
 }
 
 export function SiteHeader() {
+  const pathname = usePathname();
+
   return (
-    <header className="flex flex-col gap-4">
+    <header className="flex flex-col">
       <Link href="/" className="block font-bold no-underline">
         <Logo />
       </Link>
-      <UtilityBar />
-      <nav className="flex flex-col gap-2">
+      <div className="mt-10">
+        <UtilityBar />
+      </div>
+      <nav className="mt-15 flex flex-col gap-7">
         {NAV.map((item) => (
-          <NavItem key={item.href} item={item} />
+          <NavItem key={item.href} item={item} pathname={pathname} />
         ))}
       </nav>
     </header>

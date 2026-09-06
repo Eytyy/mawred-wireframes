@@ -21,7 +21,6 @@ export type WireframeState = {
   cat: number;
   byline: boolean;
   edge: boolean;
-  nocalls: boolean;
   twentieth: boolean;
   staticfb: boolean;
   onejob: boolean;
@@ -39,7 +38,6 @@ const DEFAULT_STATE: WireframeState = {
   cat: 0,
   byline: false,
   edge: false,
-  nocalls: false,
   twentieth: false,
   staticfb: false,
   onejob: false,

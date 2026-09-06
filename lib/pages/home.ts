@@ -1,16 +1,10 @@
 import type { FigItem } from "@/components/wireframe/Figs";
-import { WHO_WE_ARE_INTRO } from "@/lib/pages/about";
 import {
   MADE_WITH_YOUR_MAGIC,
   NEWS_EDITORIAL_HREF,
   NEWS_POSTS,
   type NewsPost,
 } from "@/lib/pages/news";
-import {
-  LIBRARY_RECORDS,
-  MUDAWANAT,
-  PUBLICATION_DETAIL_HREF,
-} from "@/lib/pages/publications";
 
 export const HOME_POSITIONING =
   "Culture Resource is a regional organisation founded in 2003 to support artistic creativity in the Arab region, cultural exchange within it and beyond, and artists' right to freedom of expression.";
@@ -43,29 +37,14 @@ export const HOME_HERO_FRAMES: HeroFrame[] = [
 export const HOME_WAYFINDING = [
   { label: "Grants & Opportunities", href: "/programs/production-awards" },
   { label: "Mawred Network", href: "/network" },
+  { label: "Who we are", href: "/about/who-we-are" },
 ] as const;
 
 export const HOME_FIGURES: FigItem[] = [
-  { label: "grants awarded since 2003" },
   { label: "countries", value: "55" },
   { label: "programmes & initiatives", value: "38" },
   { label: "years since 2003", value: "23" },
-];
-
-export type MosaicTile = {
-  key: string;
-  wide?: boolean;
-};
-
-export const HOME_MOSAIC: MosaicTile[] = [
-  { key: "tile-1", wide: true },
-  { key: "tile-2" },
-  { key: "tile-3" },
-  { key: "tile-4" },
-  { key: "tile-5" },
-  { key: "tile-6", wide: true },
-  { key: "tile-7" },
-  { key: "tile-8" },
+  { label: "grants awarded since 2003" },
 ];
 
 export type ProgrammeOverview = {
@@ -105,23 +84,6 @@ export const HOME_PROGRAMMES: ProgrammeOverview[] = [
   },
 ];
 
-export type OpenCall = {
-  status: string;
-  programme: string;
-  descriptor: string;
-  href: string;
-};
-
-export const HOME_OPEN_CALLS: OpenCall[] = HOME_PROGRAMMES.filter(
-  (programme): programme is ProgrammeOverview & { status: string } =>
-    programme.status != null,
-).map((programme) => ({
-  status: programme.status,
-  programme: programme.name,
-  descriptor: programme.descriptor,
-  href: programme.href,
-}));
-
 export type HomeFeature = {
   title: string;
   text: string;
@@ -138,30 +100,4 @@ export const HOME_NEWS_POSTS: NewsPost[] = NEWS_POSTS;
 
 export const HOME_NEWS_COUNT = HOME_NEWS_POSTS.length;
 
-export type PubStripItem = {
-  kind: "Publication" | "Episode";
-  title: string;
-  subtitle: string;
-  href: string;
-};
-
-export const HOME_PUB_STRIP: PubStripItem[] = [
-  ...LIBRARY_RECORDS.slice(0, 3).map((record) => ({
-    kind: "Publication" as const,
-    title: record.title,
-    subtitle: record.languages,
-    href: PUBLICATION_DETAIL_HREF,
-  })),
-  {
-    kind: "Episode",
-    title: "Mudawanat",
-    subtitle: `Podcast series · ${MUDAWANAT.total} episodes`,
-    href: "/publications/mudawanat",
-  },
-];
-
 export const HOME_ALL_NEWS_HREF = "/news";
-export const HOME_ALL_PUBLICATIONS_HREF = "/publications/research";
-export const HOME_WHO_WE_ARE_HREF = "/about/who-we-are";
-
-export const HOME_IDENTITY_TEXT = WHO_WE_ARE_INTRO[1];

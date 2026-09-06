@@ -257,9 +257,9 @@ export const ROUTES: RouteEntry[] = [
     title: "Mawred's 20th",
     crumb: "Home &rsaquo; Mawred's 20th",
     stub: true,
-    stubMessage: "Client call — permanent nav item vs temporary campaign",
+    stubMessage: "Campaign destination — no campaign copy is sourced",
     indexLabel: "Mawred's 20th",
-    indexSublabel: "Client call — permanent nav item vs temporary campaign",
+    indexSublabel: "Campaign destination — no campaign copy is sourced",
   },
 ];
 

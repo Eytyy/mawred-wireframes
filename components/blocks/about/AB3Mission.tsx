@@ -16,8 +16,9 @@ export function AB3Mission({ points }: { points: string[] }) {
       </div>
       <Hint>
         Four numbered cards with gap, matching the values grid below. The 01–04
-        eyebrow stays so four short points read as one set. HM4 stays a tight
-        shared-border row; S4 left Cells (decision 160).
+        eyebrow stays so four short points read as one set. Shared{" "}
+        <code>Cells</code> is gone &mdash; HM4 left it for a card grid
+        (decision 80 revised).
       </Hint>
     </Block>
   );

@@ -52,11 +52,12 @@ export function HM5FeaturedSpotlight({
         <code>/news/editorial-post</code>. Two-column, image left, following
         decision 15. The &ldquo;Mawred&rsquo;s 20th&rdquo; campaign is a{" "}
         <b>state on this block, not a block of its own</b> (decision 44), and
-        it stays structural: <code>/mawreds-20th</code> is still a stub and no
+        this slot is now its only home &mdash; the rail item is gone (decision
+        44 revised). <code>/mawreds-20th</code> is still a stub and no
         campaign content is sourced, so the title and fills in that branch are
-        a <b>gap</b>, not unpublished copy. Whether the 20th is permanent nav or
-        a temporary campaign is a <b>client call</b>; this lays out either way.
-        Toggle the 20th state.
+        a <b>gap</b>, not unpublished copy. Whether the 20th is a temporary
+        campaign or something else is still a <b>client call</b>; the
+        structure no longer depends on the answer. Toggle the 20th state.
       </Hint>
     </Block>
   );
