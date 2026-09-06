@@ -18,7 +18,11 @@ export function PC2RelatedPublications({
   records = PLACEHOLDERS,
 }: PC2RelatedPublicationsProps) {
   return (
-    <Block code="PC2" label="Related publications">
+    <Block
+      code="PC2"
+      label="Related publications"
+      heading="Related publications"
+    >
       <CardGrid>
         {records.map((record, index) => (
           <Card

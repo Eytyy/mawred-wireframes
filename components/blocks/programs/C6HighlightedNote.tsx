@@ -8,9 +8,11 @@ type C6HighlightedNoteProps = {
 
 export function C6HighlightedNote({ label, text }: C6HighlightedNoteProps) {
   return (
-    <Block code="C6" label="Highlighted note" callout>
-      <strong>{label}</strong>
-      <Prose lines={2} text={text} />
+    <Block code="C6" label="Highlighted note">
+      <div className="bg-neutral-200 p-3.5">
+        <strong>{label}</strong>
+        <Prose lines={2} text={text} />
+      </div>
     </Block>
   );
 }

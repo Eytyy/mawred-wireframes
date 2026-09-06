@@ -51,7 +51,7 @@ export function S3PastBeneficiaries({
   offered,
 }: S3PastBeneficiariesProps) {
   return (
-    <Block code="S3" label={label} optional={offered}>
+    <Block code="S3" label={label} heading={label} optional={offered}>
       <Accordion
         items={groups.map((group, index) => ({
           title: typeof group === "string" ? group : group.title,

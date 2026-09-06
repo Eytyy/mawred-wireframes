@@ -1,16 +1,23 @@
 import { Block } from "@/components/wireframe/Block";
 import { Btn } from "@/components/wireframe/Btn";
 import { Fill } from "@/components/wireframe/Fill";
+import { Prose } from "@/components/wireframe/Prose";
 
 export type ApplyStep = {
   label: string;
   detail?: string;
 };
 
+export type ApplyHighlight = {
+  label: string;
+  text?: string | string[];
+};
+
 type C4ApplyStepsProps = {
   steps: ApplyStep[];
   documents?: string[];
   note?: string;
+  highlight?: ApplyHighlight;
   withRepeat?: boolean;
   nested?: boolean;
 };
@@ -19,29 +26,40 @@ export function C4ApplySteps({
   steps,
   documents,
   note,
+  highlight,
   withRepeat,
   nested,
 }: C4ApplyStepsProps) {
   const inner = (
     <>
-      <ol className="m-0 list-decimal pl-5">
+      {highlight ? (
+        <div className="mb-3 bg-neutral-200 p-3.5">
+          <strong>{highlight.label}</strong>
+          <Prose lines={2} text={highlight.text} />
+        </div>
+      ) : null}
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-2.5">
         {steps.map((step, index) => (
-          <li key={`${step.label}-${index}`} className="mb-2.5">
+          <div
+            key={`${step.label}-${index}`}
+            className="min-w-0 border border-black p-2.5"
+          >
+            <div className="mb-1 text-xl font-bold">{index + 1}</div>
             {step.label}
             {step.detail ? (
-              <div className="text-xs text-neutral-500">{step.detail}</div>
+              <div className="mt-1 text-xs text-neutral-500">{step.detail}</div>
             ) : (
               <Fill width={70} />
             )}
-          </li>
+          </div>
         ))}
-      </ol>
+      </div>
       {documents ? (
         <>
-          <span className="mt-2 block text-xs text-neutral-500">
+          <span className="mt-3 block text-xs text-neutral-500">
             Documents to include
           </span>
-          <ul className="m-0 mt-1 pl-5">
+          <ul className="m-0 mt-1 list-disc pl-5">
             {documents.map((doc) => (
               <li key={doc} className="mb-1.5 text-xs">
                 {doc}
@@ -50,9 +68,9 @@ export function C4ApplySteps({
           </ul>
         </>
       ) : null}
-      {note ? <p className="mt-2 font-bold">{note}</p> : null}
+      {note ? <p className="mt-3 font-bold">{note}</p> : null}
       {withRepeat ? (
-        <Btn primary className="mt-2">
+        <Btn primary className="mt-3">
           Apply now
         </Btn>
       ) : null}
@@ -64,7 +82,7 @@ export function C4ApplySteps({
   }
 
   return (
-    <Block code="C4" label="How to apply — steps">
+    <Block code="C4" label="How to apply — steps" heading="How to apply">
       {inner}
     </Block>
   );

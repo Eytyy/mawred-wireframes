@@ -21,7 +21,7 @@ const PLACEHOLDER_CARDS = 3;
 
 export function N14Roster({ label, records, overflow }: N14RosterProps) {
   return (
-    <Block code="N14" label={label} optional>
+    <Block code="N14" label={label} heading={label} optional>
       <CardGrid>
         {records
           ? records.map((record) => (

@@ -6,27 +6,39 @@ type AccordionItemProps = {
   title: string;
   children: ReactNode;
   defaultOpen?: boolean;
+  plain?: boolean;
 };
 
 export function AccordionItem({
   title,
   children,
   defaultOpen = false,
+  plain = false,
 }: AccordionItemProps) {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div>
+    <div className={plain ? "mb-3" : undefined}>
       <button
         type="button"
-        className="flex w-full cursor-pointer justify-between gap-2.5 border border-black bg-white px-2.5 py-2 text-left text-sm"
+        className={
+          plain
+            ? "flex w-full cursor-pointer justify-between gap-2.5 py-3 text-left text-base font-bold"
+            : "flex w-full cursor-pointer justify-between gap-2.5 border border-black bg-white px-2.5 py-2 text-left text-sm"
+        }
         onClick={() => setOpen((current) => !current)}
       >
         <span>{title}</span>
         <span>{open ? "−" : "+"}</span>
       </button>
       {open ? (
-        <div className="-mt-1.5 mb-1.5 border border-black border-t-0 p-2.5">
+        <div
+          className={
+            plain
+              ? "pb-3"
+              : "-mt-1.5 mb-1.5 border border-black border-t-0 p-2.5"
+          }
+        >
           {children}
         </div>
       ) : null}
@@ -40,9 +52,10 @@ type AccordionProps = {
     content: ReactNode;
     defaultOpen?: boolean;
   }>;
+  plain?: boolean;
 };
 
-export function Accordion({ items }: AccordionProps) {
+export function Accordion({ items, plain }: AccordionProps) {
   return (
     <div>
       {items.map((item) => (
@@ -50,6 +63,7 @@ export function Accordion({ items }: AccordionProps) {
           key={item.title}
           title={item.title}
           defaultOpen={item.defaultOpen}
+          plain={plain}
         >
           {item.content}
         </AccordionItem>

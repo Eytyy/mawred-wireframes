@@ -18,7 +18,11 @@ const PLACEHOLDER_LABELS = [
 
 export function S6WhichRound({ lead, rows, notes }: S6WhichRoundProps) {
   return (
-    <Block code="S6" label="Which round should I apply to?">
+    <Block
+      code="S6"
+      label="Which round should I apply to?"
+      heading="Which round should I apply to?"
+    >
       {lead ? <p className="mb-2">{lead}</p> : null}
       {rows
         ? rows.map((row) => (
@@ -28,7 +32,7 @@ export function S6WhichRound({ lead, rows, notes }: S6WhichRoundProps) {
             <KV key={`${label}-${index}`} label={label} />
           ))}
       {notes ? (
-        <ul className="m-0 mt-2 pl-5">
+        <ul className="m-0 mt-2 list-disc pl-5">
           {notes.map((note) => (
             <li key={note} className="mb-1.5 text-xs">
               {note}

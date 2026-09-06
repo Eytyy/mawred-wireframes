@@ -1,8 +1,8 @@
+import type { C3Row } from "@/components/blocks/programs/C3AtAGlance";
 import type {
-  C3Row,
-  C3RoundGroup,
-} from "@/components/blocks/programs/C3AtAGlance";
-import type { ApplyStep } from "@/components/blocks/programs/C4ApplySteps";
+  ApplyHighlight,
+  ApplyStep,
+} from "@/components/blocks/programs/C4ApplySteps";
 import type { FaqItem } from "@/components/blocks/programs/C11Faqs";
 import type { BeneficiaryGroup } from "@/components/blocks/programs/S3PastBeneficiaries";
 import type { HeroCell } from "@/components/blocks/programs/S4HeroSummary";
@@ -30,15 +30,15 @@ export type DownloadFileConfig = {
 
 export type ProgramBlockConfig =
   | { type: "C3flat"; rows: C3Row[] }
-  | { type: "C3rounds"; groups: C3RoundGroup[] }
   | {
       type: "C4";
       steps: ApplyStep[];
       documents?: string[];
       note?: string;
+      highlight?: ApplyHighlight;
       withRepeat?: boolean;
     }
-  | { type: "C5"; records: SupportRecordConfig[] }
+    | { type: "C5"; records: SupportRecordConfig[]; heading?: string }
   | { type: "C6"; label: string; text?: string | string[] }
   | { type: "C8"; text?: string | string[]; items?: string[] }
   | {
@@ -63,7 +63,7 @@ export type ProgramBlockConfig =
 
 export type ProgramConfig = {
   hero?: HeroCell[];
-  overview?: { title?: string; text?: string | string[]; items?: string[] };
+  overview?: { text?: string | string[]; items?: string[] };
   figs?: FigItem[] | null;
   dest: string;
   rolling?: boolean;
@@ -74,7 +74,6 @@ export type ProgramConfig = {
 
 export const PRODUCTION_AWARDS: ProgramConfig = {
   overview: {
-    title: "What is the Production Awards Program?",
     text: [
       "Launched in 2004, the Production Awards support artists and writers of Arab origin who are under 35, wherever they live, to produce a new work in one of five disciplines: literature, visual arts, music and sound art, performing arts, and cinema.",
       "Up to 25 grants are awarded each year, five per discipline. Around 400 projects have been supported since the programme began.",
@@ -89,11 +88,16 @@ export const PRODUCTION_AWARDS: ProgramConfig = {
   contact: "awards@mawred.org",
   blocks: [
     {
+      type: "S1",
+      stages: [
+        { n: "Open call", d: "17 August 2026" },
+        { n: "Deadline", d: "19 October 2026, 16:00 Beirut" },
+        { n: "Results", d: "End of March 2027" },
+      ],
+    },
+    {
       type: "C3flat",
       rows: [
-        { label: "Open call", value: "17 August 2026" },
-        { label: "Deadline", value: "19 October 2026, 16:00 Beirut" },
-        { label: "Results", value: "End of March 2027" },
         {
           label: "Eligibility",
           value: "Artists and writers of Arab origin, under 35",
@@ -133,6 +137,7 @@ export const PRODUCTION_AWARDS: ProgramConfig = {
     },
     {
       type: "C5",
+      heading: "Available grants",
       records: [
         {
           label: "Performing Arts",
@@ -261,7 +266,6 @@ export const WIJHAT: ProgramConfig = {
     },
   ],
   overview: {
-    title: "What is Wijhat?",
     text: [
       "Artists and cultural actors in the Arab region travel to take part in fairs, residencies, forums and workshops, but travel funding is scarce, visas are difficult, and the networks that make the travel worth making are hard to reach. Wijhat answers that with grants of up to €7,000 for travel within the Arab region and beyond it.",
       "Between 25 and 30 grants are awarded a year, across three rounds. The grant is travel support rather than a living allowance — it covers living expenses only in part.",
@@ -278,23 +282,15 @@ export const WIJHAT: ProgramConfig = {
   contact: "wijhat@mawred.org",
   blocks: [
     {
-      type: "C3rounds",
-      groups: [
-        {
-          title: "Round 1 — February",
-          deadline: "16 January, 16:00 Beirut",
-          results: "28 February",
-        },
-        {
-          title: "Round 2 — June",
-          deadline: "29 May, 16:00 Beirut",
-          results: "1 July",
-        },
-        {
-          title: "Round 3 — October",
-          deadline: "17 September, 16:00 Beirut",
-          results: "31 October",
-        },
+      type: "S1",
+      lead: "Applications are accepted year-round against a repeating three-round calendar. Dates carry no year — the same deadlines and announcement dates run every year.",
+      stages: [
+        { n: "Round 1 deadline", d: "16 January, 16:00 Beirut" },
+        { n: "Round 1 results", d: "28 February" },
+        { n: "Round 2 deadline", d: "29 May, 16:00 Beirut" },
+        { n: "Round 2 results", d: "1 July" },
+        { n: "Round 3 deadline", d: "17 September, 16:00 Beirut" },
+        { n: "Round 3 results", d: "31 October" },
       ],
     },
     {
@@ -425,7 +421,6 @@ export const WIJHAT: ProgramConfig = {
 
 export const STAND_FOR_ART: ProgramConfig = {
   overview: {
-    title: "What is Stand for Art?",
     text: [
       "Stand for Art supports artists and cultural actors from the Arab region who face a risk to their safety or security — whether because of the work they make and the activities they take part in, or because of an unsafe environment around them, at home or abroad. It was launched in 2016, after a study of the risks in the region and of the support available to meet them.",
       "The risks the programme prioritises are kidnapping or detention, imprisonment, threats of physical harm, violence and abuse, and prosecution — whether by legal or illegal means. An applicant may be in danger because of their artistic or cultural expression and production, or because of the environment they live and work in.",
@@ -464,11 +459,6 @@ export const STAND_FOR_ART: ProgramConfig = {
   ],
   blocks: [
     {
-      type: "C6",
-      label: "Your request is confidential",
-      text: "The application form is encrypted. All the information you send is confidential and is used internally by the Stand for Art team only.",
-    },
-    {
       type: "C4",
       steps: [
         {
@@ -492,6 +482,10 @@ export const STAND_FOR_ART: ProgramConfig = {
         "Two recommendation letters from people or organisations aware of the risk situation, with their contact details",
         "An official invitation from a host entity, if you have one",
       ],
+      highlight: {
+        label: "Your request is confidential",
+        text: "The application form is encrypted. All the information you send is confidential and is used internally by the Stand for Art team only.",
+      },
       note: "The encrypted form cannot be saved and reopened, so it is completed in one sitting — have your documents to hand before you start.",
       withRepeat: true,
     },
@@ -564,7 +558,6 @@ export const ABBARA: ProgramConfig = {
     },
   ],
   overview: {
-    title: "What is the Abbara program?",
     text: [
       "Abbara was launched in 2011 to support independent cultural initiatives and organisations as key actors in building a cultural sector that means something to their societies. Across the eight rounds held since, it has supported 87 initiatives and organisations from the Arab region. The team has continued to accompany them: 27 have since ceased operating, and 60 are still active.",
       "The sector has taken a decade of warfare and strife, occupation and intervention, and political and economic crisis — on top of the absence of government support for arts and culture in most Arab countries, no measures to soften the impact of crises on cultural actors, and very few funders offering unrestricted core funding.",

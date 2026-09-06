@@ -5,7 +5,11 @@ import { Hint } from "@/components/wireframe/Hint";
 
 export function AB11OtherInitiatives() {
   return (
-    <Block code="AB11" label="Other past initiatives">
+    <Block
+      code="AB11"
+      label="Other past initiatives"
+      heading="Other past initiatives"
+    >
       <CardGrid>
         {Array.from({ length: 3 }, (_, index) => (
           <InitiativeCard key={index} />

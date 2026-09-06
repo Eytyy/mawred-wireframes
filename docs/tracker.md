@@ -4,27 +4,183 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
-**Task 2 — Populate the wireframes with real content ← current**
-
-- [x] Programs — Production Awards
-- [x] Programs — Wijhat
-- [x] Programs — Stand for Art
-- [x] Programs — Abbara
-- [x] Publications
-- [x] Mawred Network
-- [x] News
-- [ ] About — Who We Are
-- [ ] About — Our Team
-- [ ] About — Past Initiatives (+ initiative detail)
-- [ ] Home
-
-Skipped: **About — Supporters & Partners** and **About — Careers** (+ position detail). Supporters is three logo bands over an optional intro; Careers is a position list, an empty state and a detail page whose content Mawred hasn't written. Neither has prose to source, and the ported structure already carries what there is. Revisit Careers only if real positions arrive.
+**Current task:** Polish About — complete. Waiting for the next brief.
 
 ---
 
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Polish — About Our Team cards (2026-09-06)
+
+**Done:** Unit 3 of the About presentation pass, and the last unit in that plan. AB7 drops the card’s outer `border border-black`; the photo box keeps its own border, and name / role / country sit under it with no frame. The “Read bio” AccordionItem is gone. Records with a bio get a disclosure arrow next to the name (`▸` / `▾`); the name row toggles the bio in place. Records without a bio stay static — no arrow, no click (decision 48). AB7 is a client block owning open/closed state (same pattern as Accordion / S5). Default Accordion stays boxed — S3 and C11 unchanged. Headless Chrome: `/about/our-team` — Team first card is photo (bordered) + Name `▸` button, no outer frame, no “Read bio”; third card is photo + static Name, no button; ten name-row arrows across the three groups. `body.codes-off` hides AB7 labels and hints; Team / Artistic Board / General Assembly headings and the Name `▸` row stay. `/about/who-we-are` still has AB1 crumb+H1 then intro. `/about/supporters-partners` default is AB8 only; AB6 remains behind `slots` in that shell. `/programs/abbara` S3 accordion still boxed.
+
+**Left undone:** Nothing from this plan. Supporters, Past Initiatives, Careers, position/initiative detail, populating Our Team, and writing the 2018–2026 history stay out of scope.
+
+**Decisions:** 151 logged in wireframe-passes. Decisions 71 and 142 revised in place.
+
+**Flagged:** None.
+
+### Polish — About Who We Are blocks (2026-09-06)
+
+**Done:** Unit 2 of the About presentation pass. AB2 drops the 3px border for an inner `bg-neutral-200` padded band holding the Vision heading and the sentence (same fill as C6, heading inside the wrapper so it survives `codes-off`). AB3 leaves shared `Cells` for a wrapping gapped card grid matching AB4; the `01`–`04` eyebrow stays; S4 and HM4 stay a tight shared-border row. AB5 puts `mt-4` on the Timeline under the lead and stops passing `fill: 72`; the last row stays labelled `2018–2026` — “Not covered by the published history”, with no grey bar. N8 and N15 stay 3px. Standing constraint 2 already notes the two About routes from Unit 1 — no catch-up. Headless Chrome: `/about/who-we-are` — AB2 grey fill with heading inside (hidden under review chrome, visible `codes-off`); four AB3 cards with gap, numbered 01–04; AB5 lead then rail; last row named 2018–2026 with no fill; `/programs/abbara` S1 still date-only with no fills; `/programs/wijhat` S4 still a tight cell row.
+
+**Left undone:** Unit 3 of the same plan (AB7 cards). Supporters, Past Initiatives, Careers, position/initiative detail stay out of scope.
+
+**Decisions:** 148–150 logged in wireframe-passes. Decisions 57, 80, 126, 128, 134 and 144 revised in place.
+
+**Flagged:** None.
+
+### Polish — About opening (2026-09-06)
+
+**Done:** Unit 1 of the About presentation pass. `about-who` and `about-team` set `suppressPageHead`. AB1 takes crumb and page H1 from the route registry, then the three intro paragraphs — no inner heading, no page-header band a block away. Our Team drops AB6 (the fill for net-new micro-copy) and renders crumb + H1 in the shell, then the AB7 groups. AB6 stays on Supporters / Past Initiatives / Careers behind `slots`. Standing constraint 2 notes these two About routes alongside Home and programmes. Headless Chrome: `/about/who-we-are` — one H1 in main (not in the band), crumb then AB1 then the three paragraphs; codes off hides AB1's label and hint, H1 and intro stay. `/about/our-team` — crumb then H1 then three AB7 groups, no AB6. `/about/supporters-partners` — band H1 still there, AB8 only until `slots` is on, then AB6 ("Section intro — available slot") then the three bands.
+
+**Left undone:** Units 2–3 of the same plan (AB2/AB3/AB5; AB7 cards). Supporters, Past Initiatives, Careers, position/initiative detail stay out of scope.
+
+**Decisions:** 147 logged in wireframe-passes.
+
+**Flagged:** None.
+
+### Polish — schedule and tabs, docs + verify (2026-09-06)
+
+**Done:** Docs half of the follow-up unit. Wireframe-passes 145–146 logged with 57 / 61 / 126 / 140 revised in place; content-map records Wijhat C3→S1 and Production Awards' date rows C3→S1. Standing-constraints has no 2px-active-tabs mention, so no catch-up (decision 57's tab revision lives in 146 and AGENTS.md). Headless Chrome against the running dev server: `/programs/wijhat` — S1 six year-less round stages, no fills, no C3, S6 then S5, Individual/Group as a light tab strip with a connected panel (`border-t-0 border-neutral-200`), Group click swaps the nested C4 (individual form → group form), codes on (S1/S5 badges visible, headings hidden) and codes off (`codes-off`: badges `display:none`, Programme timeline / Application paths headings `display:block`, S1 stages and the S5 panel still there); `/programs/production-awards` — S1 Open call / Deadline / Results then three-card C3 (Eligibility, Disciplines covered, Grant period), no S1 fills; `/programs/abbara` — seven-card C3 then eight-stage S1 with no fills; `/programs/stand-for-art` still has neither S1 nor C3; `/news` — All / Announcements / News & Events on the same 1px `neutral-200` row, no 2px active weight, no panel; News & Events click activates that tab only; `/network` — Individuals & Groups / Organizations & Initiatives same strip, no panel; Organizations click activates that tab only.
+
+**Left undone:** About polish plan stays last and is not started.
+
+**Decisions:** None new — 145–146 and the in-place revisions already stand.
+
+**Flagged:** None.
+
+### Polish — tab strip (2026-09-05)
+
+**Done:** Follow-up unit, tabs half. Shared `Tabs` drops overlap and the 2px active weight. The row sits on a 1px `border-neutral-200` bottom rule; active is `font-bold` with a 1px light box whose white bottom covers the rule; inactive is `text-neutral-500` with no box. Optional `children` render in a 1px light panel with no top border. S5 passes the nested C4 as children (Individual/Group is tabs + one panel). N1 and MN5 pass nothing — tab row over filters/listing.
+
+**Left undone:** About polish plan stays last and is not started.
+
+**Decisions:** 146 logged in wireframe-passes. Decision 57 revised in place for active tabs only; 143 noted.
+
+**Flagged:** None.
+
+### Polish — programme schedule on S1 (2026-09-05)
+
+**Done:** Follow-up unit, schedule half. Wijhat's `C3rounds` becomes `S1`: six chronological stages (Round 1–3 deadline then results), year-less dates, short lead that intake is year-round against a repeating calendar. S6 stays immediately after; Wijhat has no C3. Production Awards pulls Open call / Deadline / Results into an `S1` above the remaining three-card C3 (Eligibility, Disciplines covered, Grant period). `C3AtAGlance` is flat-only — no `mode` union, no `C3RoundGroup`; `C3rounds` dropped from the config union and `ProgramPage`. `Timeline` renders `text` if present, else Fill only when `fill` is passed, else omits the body — Abbara/Wijhat/PA S1 stages are date-only with no fills; AB5's 2018–2026 gap row still passes `fill: 72`.
+
+**Left undone:** Tabs half of the same follow-up (S5 / N1 / MN5 tab-row treatment). About polish plan stays last and is not started.
+
+**Decisions:** 145 logged in wireframe-passes. Decisions 61, 126 and 140 revised in place.
+
+**Flagged:** None.
+
+### Polish — C6 grey fill + Stand for Art confidentiality (2026-09-05)
+
+**Done:** Unit 6 of the Grants & Opportunities presentation pass, and the last unit in that plan. C6 drops the 3px `callout` border for an inner `bg-neutral-200` padded band with no border, so the fill survives `codes-off` (the Block wrapper is a `block-frame` again). `Block.callout` is unused and removed. N8, AB2 and N15 stay 3px. Stand for Art no longer has a page-level C6: confidentiality is C4's optional `highlight` (label + text) at the top of the apply steps, same grey treatment; the non-resumable-form `note` stays at the bottom. Wijhat (visa letter) and Abbara (core-funding exclusion) keep C6.
+
+**Left undone:** Nothing from this plan. About, Home, News, Publications, Network, and global chrome beyond programme `suppressPageHead` stay out of scope.
+
+**Decisions:** 144 logged in wireframe-passes. Decisions 57 and 91 revised in place; 134 noted.
+
+**Flagged:** None.
+
+### Polish — S5 Individual/Group tabs (2026-09-05)
+
+**Done:** Unit 5 of the Grants & Opportunities presentation pass. `S5ApplicationPaths` is a client block that owns its tab index (same pattern as Accordion / FilterBar). Shared core stays above; Individual / Group are tabs; the nested C4 cards render in the active panel. The "stacked labelled sections, not tabs (decision 6)" hint is dropped. Standing constraint 3 notes the exception: S5 is two short tracks, not a long option list. Decision 6 revised in place.
+
+**Left undone:** Unit 6 of the same plan (C6 highlight + Stand for Art confidentiality). About, Home, News, Publications, Network, and global chrome beyond programme `suppressPageHead` stay out of scope.
+
+**Decisions:** 143 logged in wireframe-passes. Decision 6 revised in place; 60 and 88 noted.
+
+**Flagged:** None.
+
+### Polish — C11 FAQ rows (2026-09-05)
+
+**Done:** Unit 4 of the Grants & Opportunities presentation pass. `Accordion` gains a `plain` variant used only by `C11Faqs`: no item borders, question at `text-base font-bold`, rows spaced with `py-3` / `mb-3`. Default Accordion stays boxed — S3 beneficiary groups and AB7 bios are unchanged. Both the populated Stand for Art Q&As and the placeholder English-gap render on the other three programmes pick up the treatment.
+
+**Left undone:** Unit 6 of the same plan (C6 highlight + Stand for Art confidentiality). About, Home, News, Publications, Network, and global chrome beyond programme `suppressPageHead` stay out of scope.
+
+**Decisions:** 142 logged in wireframe-passes.
+
+**Flagged:** None.
+
+### Polish — C4 numbered step cards (2026-09-05)
+
+**Done:** Unit 3 of the Grants & Opportunities presentation pass. `C4ApplySteps` drops the ordered list for a wrapping row of numbered cards — large index, step label, detail — using the same card chrome as C3 (decision 140). Documents, note, and the repeat apply button stay below the card row. Nested use still returns a fragment, so Wijhat's S5 paths pick up the cards without a second Block wrap.
+
+**Left undone:** Units 4–6 of the same plan (C11 FAQ rows, S5 tabs, C6 highlight + Stand for Art confidentiality). About, Home, News, Publications, Network, and global chrome beyond programme `suppressPageHead` stay out of scope.
+
+**Decisions:** 141 logged in wireframe-passes.
+
+**Flagged:** None.
+
+### Polish — C3 card grid (2026-09-04)
+
+**Done:** Unit 2 of the Grants & Opportunities presentation pass. Both modes of `C3AtAGlance` drop full-width KV rows for a wrapping card grid (`border border-black p-2.5`). Flat (Production Awards' six facts, Abbara's seven eligibility facts): muted `text-xs` label, value as body, long Abbara copy wrapping inside the card. Rounds (Wijhat's three): one card per round — title, deadline, results — in a 3-up grid. Missing values still render a Fill (decision 84). Decision 61's one-component split is unchanged; both modes now share the card treatment.
+
+**Left undone:** Units 3–6 of the same plan (C4 step cards, C11 FAQ rows, S5 tabs, C6 highlight + Stand for Art confidentiality). About, Home, News, Publications, Network, and global chrome beyond programme `suppressPageHead` stay out of scope.
+
+**Decisions:** 140 logged in wireframe-passes. Decision 61 noted in place.
+
+**Flagged:** None.
+
+### Polish — programme opening (2026-09-04)
+
+**Done:** Unit 1 of the Grants & Opportunities presentation pass. The four programme routes set `suppressPageHead` (same flag Home uses). C1 owns the crumb and the page H1; `ProgramPage` puts C7 on the H1 row, far right, as its own block; C2 is a full-width `wide` Figs row under that; S4 (Wijhat, Abbara) renders after the opening, not before C1. The inner C1 heading ("What is the … Program?") is no longer passed from any of the four configs — the H1 is the heading, and a missing inner title is omission rather than a Fill. Standing constraint 2 revised: the band may be suppressed when the opening block owns the H1, not only on Home.
+
+**Left undone:** Units 2–6 of the same plan (C3 cards, C4 step cards, C11 FAQ rows, S5 tabs, C6 highlight + Stand for Art confidentiality). About, Home, News, Publications, Network, and global chrome beyond programme `suppressPageHead` stay out of scope.
+
+**Decisions:** 137–139 logged in wireframe-passes. Decision 135's note that C1 titles itself via an inner h3 revised in place.
+
+**Flagged:** None.
+
+### List markers — unordered lists (2026-09-04)
+
+**Done:** Tailwind Preflight zeros `list-style` on `ul`, so content lists (C1, C4 documents, C5, C8, C9 criteria, C10, S4, S6) were indented with `pl-5` and had no bullets. Added `list-disc` on those lists (same restore `list-decimal` already did for `<ol>`) and a `@layer base` `list-style: disc` fallback. Layout lists stay `list-none`. Decision 136 logged.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 136 logged in wireframe-passes.
+
+**Flagged:** None.
+
+### Client view — section headings (2026-09-04)
+
+**Done:** Presentation pass so section titles actually show when review chrome is off. `.block-heading` is hidden only under `body:not(.codes-off)`; the h2 is `text-lg font-bold`; `.block-frame` gets `margin-block: 2rem` in client view. C5 takes an optional `heading`; Production Awards passes "Available grants", Stand for Art and Abbara keep the default. Decision 135 logged. Headless Chrome: Production Awards codes on — labels and boxes, headings `display: none`, no duplicated h2s; codes off — C3 At-a-glance facts, C4 How to apply, C5 Available grants, then C8 / C9 / C10 / S2 / C11 / C12 as visible h2s with 32px gaps; C1's inner title, C2, C7 stay untitled (no C6 or S4 on this page; S3 stays behind `offered`). Home and Who We Are: larger heading + spacing still reads; HM1/HM2/HM5/HM8 and AB1 stay untitled.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 135 logged in wireframe-passes.
+
+**Flagged:** None.
+
+### Client view — review chrome (2026-09-04)
+
+**Done:** Panel copy "Show block codes" → "Show review chrome"; `codes` key and default-on unchanged. Standing constraint [10] revised in place: off hides codes, labels, block wrapper borders, and hints; headings that belong to the page stay. Decision 134 logged — labels are reviewer names, `heading` is the client-visible title, codes-off is review chrome rather than codes only.
+
+**Left undone:** Nothing from this unit. The presentation pass is closed.
+
+**Decisions:** 134 logged in wireframe-passes.
+
+**Flagged:** None.
+
+### Populate — Home (2026-09-03)
+
+**Done:** Ninth and last in-scope Task 2 unit. Home consolidates content already sourced on the other populated page-types and writes back to none of them. `lib/pages/home.ts` rewritten: positioning line tightened from `WHO_WE_ARE_INTRO[0]`; five hero-frame captions from the Production Awards 2026 roster and the Network sample; `HOME_FIGURES` re-cut to `00` grants awarded since 2003 · `55` countries · `38` programmes & initiatives · `23` years since 2003; `HOME_PROGRAMMES` as the single source of the four C1-compressed descriptors, with `HOME_OPEN_CALLS` derived from the three that carry a `status`; default feature Made With Your Magic, Beirut, linking to `/news/editorial-post`; the three real news posts; the first three `LIBRARY_RECORDS` plus a Mudawanat series card; identity paragraph from `WHO_WE_ARE_INTRO[1]`. HM1–HM8 take those props; leftover headline Fills in HM1 and HM8 retire (decisions 107/113). `Btn` gains an optional `href` (decision 129); only Home passes it. Type-check and eslint clean. Curl against the running dev server — `/`, the four programme routes, `/news`, `/news/post`, `/news/editorial-post`, `/publications/research`, `/publications/mudawanat`, `/network` and `/about/who-we-are` all 200. Render-checked `/` in default and the three panel branches: default shows the positioning line, frame-1 caption, five markers, `00 · 55 · 38 · 23`, three open-call cards (Abbara absent), four HM4 cells, the exhibition feature, three news cards each on its own route, three library cards plus Mudawanat, and the identity paragraph; `nocalls` swaps HM3 for the empty state while HM4 still shows all four programmes; `twentieth` swaps HM5 to the campaign eyebrow and title over fill bars, linking to the `/mawreds-20th` stub; `staticfb` drops the marker bar and mosaic for single-image banners, caption remaining. Inner pages re-checked after the `Btn` change — Production Awards, the editorial post, the library, the Network directory and Who We Are are unchanged.
+
+**Left undone:** Task 2 is complete for the units in scope. Our Team, Past Initiatives, Supporters & Partners and Careers remain deferred, as recorded in the completed-task entry. No next unit is queued.
+
+**Decisions:** 129–133 logged in wireframe-passes (`Btn` `href`; `nocalls` kept as a template branch; the unpublished grant total left as `00`; `HOME_PROGRAMMES` as the single source; the 20th kept as a state with campaign content a gap).
+
+**Flagged:** Three gaps, all kept visible rather than filled: no Mawred-wide grant total, so HM2's first rail stays `00`; no 20th-anniversary campaign copy, so the `twentieth` branch is fill bars on a stub route; no Mudawanat episode titles, so HM7's media card is the series, not an episode. For the client: the wayfinding label ("Grants & Opportunities" vs "Programs"), which figures lead, graduating the hero positioning line, and whether the 20th is permanent nav or a temporary campaign — all still open calls, all still in the hints. The live Home's "Wijhat is open all year" is wrong against the populated Wijhat page and is not reproduced. The `nocalls` empty state's "See all programmes" action is still a button without an href — `EmptyState` takes a label only (decision 73), the branch is unreachable, and widening the primitive was out of this unit.
+
+### Populate — About, Who We Are (2026-09-01)
+
+**Done:** Eighth Task 2 unit, and the first About page. `lib/pages/about.ts` carries the merged page (spec §3.1): `WHO_WE_ARE_INTRO`'s three paragraphs, `VISION` as one sentence, `MISSION_POINTS` widened from a count of 4 to the four real bullets, `VALUES` from a count of 6 to six `{ label, text }` pairs, a new two-paragraph `HISTORY_LEAD`, and `HISTORY_ENTRIES` rewritten — the port's nine guessed rows become eleven real dated entries, 2003 to 2017, each with a paragraph, plus a twelfth row spanning 2018–2026 that carries no text. AB1–AB5 take content **directly**, with no fill-bar fallback: each has exactly one consumer, so decision 84's reason doesn't reach them and a fallback would be unreachable (decision 125). `Timeline` gains an optional `text` per item with the fill bar as the fallback (decision 126), which is the one shared primitive this unit touched. Type-check and eslint clean; curl against the running dev server — `/about/who-we-are` and `/programs/abbara` both 200. Read the rendered page in full: AB1's three paragraphs, AB2's sentence inside the 3px band, AB3's four numbered cells, AB4's six labelled cards, AB5's two lead paragraphs and twelve rail rows — eleven with prose, the twelfth a fill bar with the rail terminating there. Abbara's S1, the primitive's other consumer, still renders its eight label-and-date stages as eight fill bars.
+
+**Left undone:** ~~Our Team is the next unit~~ — **superseded 2026-09-01: Our Team and Past Initiatives were deferred so Home could close Task 2** (see the completed-task entry). The inheritance still holds whenever Our Team is picked up: it takes AB1's third paragraph — the governance sentence (35-member general assembly including Belgium, seven-member artistic board) which spec §3.2 says is the only existing context for that page. It stays on Who We Are as well; whether it should be stated twice is a copy call, not a structural one. Supporters & Partners and Careers remain skipped.
+
+**Decisions:** 125–128 logged in wireframe-passes (single-consumer About blocks take content directly; `Timeline`'s optional `text`; eleven dated entries with the undated passage in the lead and the closing paragraph dropped; the 2018–2026 fill-bar row).
+
+**Flagged:** One gap, and it is the largest content gap found so far — **the published history stops at 2017.** Nine years are unwritten: the master's programme past its first class, the Lebanon crises, All Around Culture, the 20th anniversary. The rail renders that as a labelled fill-bar row rather than ending at 2017, because a rail that ends at 2017 reads as finished (decision 128). Synthesising the years from the news archive was available and not taken. For the client: the first value's label renders as `inclusiveness:we believe` on the live page — a missing space after the colon, dropped here rather than reproduced, and a sign the values were pasted rather than authored in the field; the history is one unbroken wall of dated prose with no headings at all, which is why the spec names the timeline as its headline graduation; the closing "stories still to be told" paragraph is dropped as voice rather than content; and the global-footer Instagram artifact appears here too, as on every page audited.
 
 ### Populate — News (2026-09-01)
 
@@ -249,6 +405,32 @@ Newest first. One entry per page-type completed: what was done, what was left as
 ---
 
 ## Completed tasks
+
+### Polish — About (2026-09-06)
+
+- [x] Opening — `suppressPageHead` on Who We Are / Our Team; AB1 owns crumb+H1; AB6 omitted on Our Team
+- [x] Who We Are blocks — AB2 grey fill, AB3 gapped cards, AB5 spaced rail and labelled gap row
+- [x] Our Team cards — no outer frame; name-row bio disclosure (`▸` / `▾`); Accordion stays boxed for S3/C11
+
+### Fix programme schedule and tabs (2026-09-06)
+
+- [x] Dates on S1 — Wijhat six round stages, Production Awards open/deadline/results, C3 rounds mode dropped
+- [x] Tab strip — 1px `neutral-200` row; S5 connected panel; N1/MN5 tab row only
+- [x] Docs + verify — tracker, wireframe-passes 145–146 (57/61/126/140 revised), content-map C3→S1; four programme routes plus News/Network tabs
+
+### Task 2 — Populate the wireframes with real content (2026-09-03)
+
+- [x] Programs — Production Awards
+- [x] Programs — Wijhat
+- [x] Programs — Stand for Art
+- [x] Programs — Abbara
+- [x] Publications
+- [x] Mawred Network
+- [x] News
+- [x] About — Who We Are
+- [x] Home
+
+Not populated this pass: **Our Team**, **Past Initiatives** (+ initiative detail), **Supporters & Partners** and **Careers** (+ position detail). Our Team's team-section content is net-new and Mawred hasn't supplied it; Past Initiatives needs its twelve initiatives sourced one by one. Supporters is three logo bands over an optional intro; Careers is a position list, an empty state and a detail page whose content Mawred hasn't written. All four keep their ported structure.
 
 ### Task 1 — Port the wireframes to Next.js (2026-08-31)
 

@@ -12,7 +12,7 @@ A Next.js app styled with Tailwind. Blocks are React components; each page is a 
 - **Clickable end to end.** Nav and dropdowns work; the chrome wraps every page; page-types not yet built render as "not yet wireframed" stubs inside the real chrome.
 - **Routing is the App Router.** Real routes, real URLs. Supersedes the intercepted-click-handler approach the single file needed — see revised decision 17.
 - **A block is one component**, used everywhere that block appears; one edit propagates. Content comes in as props from `lib/pages/`, never hardcoded in the component.
-- **A fixed state panel, bottom right:** "Show block codes" (badges like C1/S4, on by default for review, off for a clean client view), plus a toggle for each meaningful state the current page has. Per page-type — a page contributes only its own states. [10]
+- **A fixed state panel, bottom right:** "Show review chrome" (key `codes`, on by default for review). Off hides code badges, Block labels, block wrapper borders, and Hint notes; headings that belong to the page stay. Plus a toggle for each meaningful state the current page has. Per page-type — a page contributes only its own states. [10, 134]
 - **Block codes carry a per-page-type prefix** — C/S (programs), PA/PB/PC (Publications), MN (Network), N (News), HM (Home), AB (About) — so no code can be misread as belonging to another kit. [9, 18, 25, 34, 45]
 - **Delivery is undecided** — possibly a deployed URL signed off as the deliverable, possibly a source for Figma conversion. Keep markup semantic and naming consistent; don't build for either route yet.
 
@@ -20,12 +20,12 @@ A Next.js app styled with Tailwind. Blocks are React components; each page is a 
 
 - **English only this phase.** RTL is deferred.
 - **Global chrome is drawn once and inherited, never redrawn:** utility bar (search, EN|AR), header nav with dropdowns, breadcrumb + H1 page-header band, newsletter, footer.
-- **The page-header band (breadcrumb + H1) is scaffold, not a block.** No page-type's kit supplies a title block. A page-type may _suppress_ the band where it would fight the page's own opening block (Home) — that's a router flag, not a change to the chrome. [33]
+- **The page-header band (breadcrumb + H1) is scaffold, not a block.** A page-type may _suppress_ the band when its opening owns the H1 (Home's HM1; programmes' C1; Who We Are's AB1; Our Team's shell) — that's a router flag, not a change to the chrome. [33, 137, 147]
 - **Copy is being rewritten, not migrated.** Lay out for rewritten copy that fits the blocks; don't reproduce today's wrong-tab content or artifacts.
 
 ## 3. Grouping and lists
 
-- **Long option lists render as stacked labelled sections, not tabs.** Tabs are warranted only where each group runs to hundreds of rows, stacking would bury the later group, and a single count/pagination control can't serve both. [19]
+- **Long option lists render as stacked labelled sections, not tabs.** Tabs are warranted only where each group runs to hundreds of rows, stacking would bury the later group, and a single count/pagination control can't serve both. [19] S5 is not that case: two short application tracks (Individual / Group) render as tabs, with the shared core above. Stacking is the wrong treatment for a choose-one-of-two, not a long option list. [6 revised, 143]
 - **Accordion groups:** most recent open, older collapsed above three. A single group renders flat, with no accordion.
 - **Long lists get a truncated view.** A facet over ~12 values renders as search + first six + "show all N"; a people group over ~12 records shows its first eight + "show all N". Shorter lists render in full. [12, 50]
 - **Optional fields render by omission** — no empty columns, no "N/A" placeholders, no dimming or special-casing of records that lack an optional field. [48]

@@ -1,6 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import { Block } from "@/components/wireframe/Block";
-import { Hint } from "@/components/wireframe/Hint";
 import { Prose } from "@/components/wireframe/Prose";
+import { Tabs } from "@/components/wireframe/Tabs";
 import { C4ApplySteps, type ApplyStep } from "./C4ApplySteps";
 
 export type ApplicationPath =
@@ -19,29 +22,41 @@ type S5ApplicationPathsProps = {
   steps?: ApplyStep[];
 };
 
+function pathLabel(path: ApplicationPath): string {
+  return typeof path === "string" ? path : path.label;
+}
+
 export function S5ApplicationPaths({
   paths,
   core,
   steps = DEFAULT_STEPS,
 }: S5ApplicationPathsProps) {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const active = paths[activeIdx] ?? paths[0];
+  const pathSteps =
+    active === undefined
+      ? steps
+      : typeof active === "string"
+        ? steps
+        : (active.steps ?? steps);
+  const documents =
+    active === undefined || typeof active === "string"
+      ? undefined
+      : active.documents;
+
   return (
-    <Block code="S5" label="Application paths">
+    <Block code="S5" label="Application paths" heading="Application paths">
       <strong>Shared core</strong>
       <Prose lines={3} text={core} />
-      {paths.map((path) => {
-        const label = typeof path === "string" ? path : path.label;
-        const pathSteps =
-          typeof path === "string" ? steps : (path.steps ?? steps);
-        const documents = typeof path === "string" ? undefined : path.documents;
-
-        return (
-          <div key={label} className="mt-3 border-t border-black pt-3">
-            <h4 className="mb-2 border-l-4 border-black pl-2 text-sm">{label}</h4>
-            <C4ApplySteps steps={pathSteps} documents={documents} nested />
-          </div>
-        );
-      })}
-      <Hint>Stacked labelled sections, not tabs (decision 6).</Hint>
+      <Tabs
+        items={paths.map((path) => ({ label: pathLabel(path) }))}
+        activeIdx={activeIdx}
+        onSelect={setActiveIdx}
+      >
+        {active ? (
+          <C4ApplySteps steps={pathSteps} documents={documents} nested />
+        ) : null}
+      </Tabs>
     </Block>
   );
 }

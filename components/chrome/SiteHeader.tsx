@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 type NavLink = {
   href: string;
@@ -15,70 +15,68 @@ type NavGroup = {
 
 const NAV: NavGroup[] = [
   {
-    href: "/about/who-we-are",
-    label: "About Us",
+    href: '/about/who-we-are',
+    label: 'About Us',
     dropdown: [
-      { href: "/about/who-we-are", label: "Who We Are" },
-      { href: "/about/our-team", label: "Our Team" },
+      { href: '/about/who-we-are', label: 'Who We Are' },
+      { href: '/about/our-team', label: 'Our Team' },
       {
-        href: "/about/supporters-partners",
-        label: "Supporters & Partners",
+        href: '/about/supporters-partners',
+        label: 'Supporters & Partners',
       },
-      { href: "/about/past-initiatives", label: "Past Initiatives" },
-      { href: "/about/careers", label: "Careers" },
+      { href: '/about/past-initiatives', label: 'Past Initiatives' },
+      { href: '/about/careers', label: 'Careers' },
     ],
   },
   {
-    href: "/programs/production-awards",
-    label: "Grants & Opportunities",
+    href: '/programs/production-awards',
+    label: 'Grants & Opportunities',
     dropdown: [
-      { href: "/programs/production-awards", label: "Production Awards" },
-      { href: "/programs/wijhat", label: "Wijhat" },
-      { href: "/programs/stand-for-art", label: "Stand for Art" },
-      { href: "/programs/abbara", label: "Abbara" },
+      { href: '/programs/production-awards', label: 'Production Awards' },
+      { href: '/programs/wijhat', label: 'Wijhat' },
+      { href: '/programs/stand-for-art', label: 'Stand for Art' },
+      { href: '/programs/abbara', label: 'Abbara' },
     ],
   },
-  { href: "/network", label: "Mawred Network" },
+  { href: '/network', label: 'Mawred Network' },
   {
-    href: "/publications/research",
-    label: "Publications",
+    href: '/publications/research',
+    label: 'Publications',
     groups: [
       {
-        label: "Library",
+        label: 'Library',
         links: [
           {
-            href: "/publications/research",
-            label: "Research & Publications",
+            href: '/publications/research',
+            label: 'Research & Publications',
           },
         ],
       },
       {
-        label: "Series",
+        label: 'Series',
         links: [
-          { href: "/publications/mudawanat", label: "Mudawanat Podcast" },
+          { href: '/publications/mudawanat', label: 'Mudawanat Podcast' },
           {
-            href: "/publications/foundations-of-cultural-policies",
-            label: "Foundations of Cultural Policies",
+            href: '/publications/foundations-of-cultural-policies',
+            label: 'Foundations of Cultural Policies',
           },
-          { href: "/publications/mawred-talks", label: "Mawred Talks" },
+          { href: '/publications/mawred-talks', label: 'Mawred Talks' },
         ],
       },
     ],
   },
-  { href: "/news", label: "News" },
-  { href: "/contact", label: "Contact" },
-  { href: "/mawreds-20th", label: "Mawred's 20th", optional: true },
+  { href: '/news', label: 'News' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/mawreds-20th', label: "Mawred's 20th", optional: true },
 ];
 
 function NavItem({ item }: { item: NavGroup }) {
-  const triggerClass = item.optional
-    ? "block border border-dashed border-black bg-white px-2.5 py-1.5 text-sm no-underline"
-    : "block border border-black bg-white px-2.5 py-1.5 text-sm no-underline";
+  const triggerClass = item.optional ? 'block text-sm no-underline' : 'block text-sm no-underline';
 
   return (
     <div className="group relative">
       <Link href={item.href} className={triggerClass}>
-        {item.label} {item.dropdown || item.groups ? "▾" : ""}
+        {item.label} {item.dropdown || item.groups ? '▾' : ''}
       </Link>
       {(item.dropdown || item.groups) && (
         <div className="absolute left-0 top-full z-20 hidden min-w-[200px] border border-black bg-white group-focus-within:block group-hover:block">
@@ -115,15 +113,12 @@ function NavItem({ item }: { item: NavGroup }) {
 
 export function SiteHeader() {
   return (
-    <header className="border-b-2 border-black">
+    <header>
       <div className="mx-auto flex max-w-[1040px] flex-wrap items-center gap-4 px-4 py-3">
-        <Link
-          href="/wireframes"
-          className="border border-black px-3.5 py-2 font-bold no-underline"
-        >
+        <Link href="/" className="font-bold no-underline">
           MAWRED
         </Link>
-        <nav className="ml-auto flex flex-wrap gap-1.5">
+        <nav className="ml-auto flex flex-wrap gap-5">
           {NAV.map((item) => (
             <NavItem key={item.href} item={item} />
           ))}

@@ -12,7 +12,7 @@ type N13RelatedPostsProps = {
 
 export function N13RelatedPosts({ posts }: N13RelatedPostsProps) {
   return (
-    <Block code="N13" label="Related posts">
+    <Block code="N13" label="Related posts" heading="Related posts">
       <CardGrid>
         {posts
           ? posts.map((post) => (

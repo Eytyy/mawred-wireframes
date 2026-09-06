@@ -9,9 +9,13 @@ type C8ConditionsProps = {
 
 export function C8Conditions({ text, items }: C8ConditionsProps) {
   return (
-    <Block code="C8" label="Conditions / exclusions">
+    <Block
+      code="C8"
+      label="Conditions / exclusions"
+      heading="Conditions / exclusions"
+    >
       <Prose lines={2} text={text} />
-      <ul className="m-0 pl-5">
+      <ul className="m-0 list-disc pl-5">
         {items ? (
           items.map((item) => (
             <li key={item} className="mb-1.5">

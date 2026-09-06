@@ -5,6 +5,7 @@ export type TimelineItem = {
   key: string;
   label: ReactNode;
   meta?: ReactNode;
+  text?: ReactNode;
   fill?: number;
 };
 
@@ -28,7 +29,11 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
               <em className="text-xs not-italic text-neutral-500">{item.meta}</em>
             ) : null}
           </div>
-          <Fill width={item.fill ?? 65} />
+          {item.text ? (
+            <p className="my-2">{item.text}</p>
+          ) : item.fill !== undefined ? (
+            <Fill width={item.fill} />
+          ) : null}
         </li>
       ))}
     </ul>

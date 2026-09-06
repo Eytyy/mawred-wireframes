@@ -7,7 +7,7 @@ type C12ContactProps = {
 
 export function C12Contact({ contact }: C12ContactProps) {
   return (
-    <Block code="C12" label="Contact">
+    <Block code="C12" label="Contact" heading="Contact">
       <KV label="Programme contact" value={contact} />
     </Block>
   );

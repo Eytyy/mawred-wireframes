@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 type BtnProps = {
@@ -6,6 +7,7 @@ type BtnProps = {
   disabled?: boolean;
   type?: "button" | "submit";
   className?: string;
+  href?: string;
 };
 
 export function Btn({
@@ -14,6 +16,7 @@ export function Btn({
   disabled,
   type = "button",
   className = "",
+  href,
 }: BtnProps) {
   const classes = [
     "cursor-pointer border border-black bg-white px-3.5 py-2 text-sm",
@@ -23,6 +26,14 @@ export function Btn({
   ]
     .filter(Boolean)
     .join(" ");
+
+  if (href && !disabled) {
+    return (
+      <Link href={href} className={`${classes} no-underline`}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <button type={type} className={classes} disabled={disabled}>

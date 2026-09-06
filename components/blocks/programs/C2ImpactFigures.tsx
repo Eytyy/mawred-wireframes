@@ -8,7 +8,7 @@ type C2ImpactFiguresProps = {
 export function C2ImpactFigures({ labels }: C2ImpactFiguresProps) {
   return (
     <Block code="C2" label="Impact figures">
-      <Figs labels={labels} />
+      <Figs labels={labels} wide />
     </Block>
   );
 }

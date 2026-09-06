@@ -1,12 +1,21 @@
-import { AB6SectionIntro } from "@/components/blocks/about/AB6SectionIntro";
 import { AB7PeopleGroup } from "@/components/blocks/about/AB7PeopleGroup";
 import { Hint } from "@/components/wireframe/Hint";
 import { PEOPLE_GROUPS } from "@/lib/pages/about";
+import { ROUTES_BY_KEY } from "@/lib/pages/routes";
+
+const route = ROUTES_BY_KEY["about-team"];
 
 export function OurTeamPage() {
   return (
     <>
-      <AB6SectionIntro />
+      <div
+        className="mb-2 text-xs text-neutral-500"
+        dangerouslySetInnerHTML={{ __html: route.crumb }}
+      />
+      <h1
+        className="inline-block py-2 text-4xl font-bold"
+        dangerouslySetInnerHTML={{ __html: route.title }}
+      />
       {PEOPLE_GROUPS.map((group) => (
         <AB7PeopleGroup
           key={group.label}

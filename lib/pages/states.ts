@@ -73,7 +73,7 @@ export const STATES: Record<StatesKey, StateConfig> = {
       { key: "staticfb", label: "Static fallback (no motion)" },
     ],
     note:
-      "Static = hero and mosaic degraded to single images if motion is cut at build.",
+      "nocalls is a template branch (spec §3C), not a reachable state — Stand for Art is open all year. twentieth keeps the campaign slot; no campaign copy is sourced and /mawreds-20th is still a stub. Static = hero and mosaic degraded to single images if motion is cut at build.",
   },
   aboutwho: {
     list: [],

@@ -13,7 +13,7 @@ export function AB12OpenPositions({ onejob, nopositions }: AB12OpenPositionsProp
   const count = onejob ? 1 : 4;
 
   return (
-    <Block code="AB12" label="Open positions">
+    <Block code="AB12" label="Open positions" heading="Open positions">
       {nopositions ? (
         <>
           <EmptyState

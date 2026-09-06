@@ -9,7 +9,7 @@ type AB8LogoBandProps = {
 
 export function AB8LogoBand({ label, count, note }: AB8LogoBandProps) {
   return (
-    <Block code="AB8" label={`Logo band — ${label}`}>
+    <Block code="AB8" label={`Logo band — ${label}`} heading={label}>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2.5">
         {Array.from({ length: count }, (_, index) => (
           <div

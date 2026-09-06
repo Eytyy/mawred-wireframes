@@ -3,20 +3,30 @@ import { Block } from "@/components/wireframe/Block";
 import { Btn } from "@/components/wireframe/Btn";
 import { CardGrid } from "@/components/wireframe/Card";
 import { Hint } from "@/components/wireframe/Hint";
-import { HOME_NEWS_COUNT } from "@/lib/pages/home";
+import type { NewsPost } from "@/lib/pages/news";
 
-export function HM6LatestNews() {
+type HM6LatestNewsProps = {
+  posts: NewsPost[];
+  allHref: string;
+};
+
+export function HM6LatestNews({ posts, allHref }: HM6LatestNewsProps) {
   return (
-    <Block code="HM6" label="Latest news">
+    <Block code="HM6" label="Latest news" heading="Latest news">
       <CardGrid>
-        {Array.from({ length: HOME_NEWS_COUNT }, (_, index) => (
-          <NewsCard key={index} bare />
+        {posts.map((post) => (
+          <NewsCard key={post.title} post={post} bare />
         ))}
       </CardGrid>
-      <Btn className="mt-3">All news</Btn>
+      <Btn className="mt-3" href={allHref}>
+        All news
+      </Btn>
       <Hint>
-        Reuses the News feed card verbatim (decision 43) &mdash; image · category
-        tag · title · date. Four latest posts, curated to a strip; the full
+        Reuses the News feed card verbatim (decision 43) &mdash; image ·
+        category tag · title · date &mdash; each linking to its own route. Three
+        real posts from the News sample (decision 115): Made With Your Magic
+        (27 July), Wijhat second-round grantees (20 July), Production Awards
+        2026 results (6 May). The port&rsquo;s four-card strip is gone; the full
         archive and its pager live on the News landing.
       </Hint>
     </Block>

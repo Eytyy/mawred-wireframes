@@ -5,7 +5,7 @@ import { NEWS_SHARE_TARGETS } from "@/lib/pages/news";
 
 export function N12Share() {
   return (
-    <Block code="N12" label="Share">
+    <Block code="N12" label="Share" heading="Share">
       <div className="flex flex-wrap items-center gap-1.75 text-xs">
         <span>Share</span>
         {Array.from({ length: NEWS_SHARE_TARGETS }, (_, index) => (

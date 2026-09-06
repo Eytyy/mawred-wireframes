@@ -15,7 +15,11 @@ export function C9Selection({
   criteria,
 }: C9SelectionProps) {
   return (
-    <Block code="C9" label="How applicants are selected">
+    <Block
+      code="C9"
+      label="How applicants are selected"
+      heading="How applicants are selected"
+    >
       <strong>{label}</strong>
       <Prose lines={3} text={text} />
       {process ? (
@@ -28,7 +32,7 @@ export function C9Selection({
         </ol>
       ) : null}
       {criteria ? (
-        <ul className="m-0 pl-5">
+        <ul className="m-0 list-disc pl-5">
           {criteria.map((criterion) => (
             <li key={criterion} className="mb-1.5">
               {criterion}

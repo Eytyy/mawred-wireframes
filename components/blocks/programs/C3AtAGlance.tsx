@@ -1,41 +1,30 @@
 import { Block } from "@/components/wireframe/Block";
-import { KV } from "@/components/wireframe/KV";
+import { Fill } from "@/components/wireframe/Fill";
 
 export type C3Row = {
   label: string;
   value?: string;
 };
 
-export type C3RoundGroup = {
-  title: string;
-  deadline?: string;
-  results?: string;
+type C3AtAGlanceProps = {
+  rows: C3Row[];
 };
 
-type C3AtAGlanceProps =
-  | { mode: "flat"; rows: C3Row[] }
-  | { mode: "rounds"; groups: C3RoundGroup[] };
+function FactValue({ value }: { value?: string }) {
+  return value !== undefined ? <>{value}</> : <Fill />;
+}
 
-export function C3AtAGlance(props: C3AtAGlanceProps) {
-  if (props.mode === "flat") {
-    return (
-      <Block code="C3" label="At-a-glance facts">
-        {props.rows.map((row) => (
-          <KV key={row.label} label={row.label} value={row.value} />
-        ))}
-      </Block>
-    );
-  }
-
+export function C3AtAGlance({ rows }: C3AtAGlanceProps) {
   return (
-    <Block code="C3" label="At-a-glance facts — rounds">
-      {props.groups.map((group) => (
-        <div key={group.title} className="my-2 border border-neutral-200 p-2.5">
-          <h4 className="mb-1.5 text-xs">{group.title}</h4>
-          <KV label="Deadline" value={group.deadline} />
-          <KV label="Results" value={group.results} />
-        </div>
-      ))}
+    <Block code="C3" label="At-a-glance facts" heading="At-a-glance facts">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-2.5">
+        {rows.map((row) => (
+          <div key={row.label} className="min-w-0 border border-black p-2.5">
+            <div className="mb-1 text-xs text-neutral-500">{row.label}</div>
+            <FactValue value={row.value} />
+          </div>
+        ))}
+      </div>
     </Block>
   );
 }

@@ -11,7 +11,11 @@ type S2DownloadsProps = {
 
 export function S2Downloads({ files }: S2DownloadsProps) {
   return (
-    <Block code="S2" label="Downloadable forms / files">
+    <Block
+      code="S2"
+      label="Downloadable forms / files"
+      heading="Downloadable forms / files"
+    >
       {files.map((file) => (
         <div
           key={file.n}

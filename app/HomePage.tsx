@@ -9,7 +9,22 @@ import { HM6LatestNews } from "@/components/blocks/home/HM6LatestNews";
 import { HM7LatestPublications } from "@/components/blocks/home/HM7LatestPublications";
 import { HM8IdentityLeadIn } from "@/components/blocks/home/HM8IdentityLeadIn";
 import { Hint } from "@/components/wireframe/Hint";
-import { HOME_PUB_STRIP } from "@/lib/pages/home";
+import {
+  HOME_ALL_NEWS_HREF,
+  HOME_ALL_PUBLICATIONS_HREF,
+  HOME_FEATURE,
+  HOME_FIGURES,
+  HOME_HERO_FRAMES,
+  HOME_IDENTITY_TEXT,
+  HOME_MOSAIC,
+  HOME_NEWS_POSTS,
+  HOME_OPEN_CALLS,
+  HOME_POSITIONING,
+  HOME_PROGRAMMES,
+  HOME_PUB_STRIP,
+  HOME_WAYFINDING,
+  HOME_WHO_WE_ARE_HREF,
+} from "@/lib/pages/home";
 import { useWireframeState } from "@/lib/wireframe-state";
 
 export function HomePage() {
@@ -17,21 +32,37 @@ export function HomePage() {
 
   return (
     <>
-      <HM1CinematicHero staticfb={state.staticfb} />
-      <HM2ImpactStrip staticfb={state.staticfb} />
-      <HM3OpenOpportunities nocalls={state.nocalls} />
-      <HM4ProgrammesOverview />
-      <HM5FeaturedSpotlight twentieth={state.twentieth} />
-      <HM6LatestNews />
-      <HM7LatestPublications items={[...HOME_PUB_STRIP]} />
-      <HM8IdentityLeadIn />
+      <HM1CinematicHero
+        staticfb={state.staticfb}
+        positioning={HOME_POSITIONING}
+        frames={HOME_HERO_FRAMES}
+        wayfinding={HOME_WAYFINDING}
+      />
+      <HM2ImpactStrip
+        staticfb={state.staticfb}
+        figures={HOME_FIGURES}
+        mosaic={HOME_MOSAIC}
+      />
+      <HM3OpenOpportunities nocalls={state.nocalls} calls={HOME_OPEN_CALLS} />
+      <HM4ProgrammesOverview programmes={HOME_PROGRAMMES} />
+      <HM5FeaturedSpotlight twentieth={state.twentieth} feature={HOME_FEATURE} />
+      <HM6LatestNews posts={HOME_NEWS_POSTS} allHref={HOME_ALL_NEWS_HREF} />
+      <HM7LatestPublications
+        items={[...HOME_PUB_STRIP]}
+        allHref={HOME_ALL_PUBLICATIONS_HREF}
+      />
+      <HM8IdentityLeadIn
+        text={HOME_IDENTITY_TEXT}
+        href={HOME_WHO_WE_ARE_HREF}
+      />
       <Hint>
-        Block I of the spec &mdash; newsletter · contact · social · footer &mdash;
-        is the global chrome below, not a Home block, so it carries no code. Home
-        has no breadcrumb and no H1 band: it opens on the hero (decision 33).
-        Order follows the spec, impact (HM2) before opportunities (HM3) &mdash; the
-        story earns the ask (decision 39). Every block here surfaces a page
-        specced elsewhere; nothing on Home changes an inner spec.
+        Block I of the spec &mdash; newsletter · contact · social · footer
+        &mdash; is the global chrome below, not a Home block, so it carries no
+        code. Home has no breadcrumb and no H1 band: it opens on the hero
+        (decision 33). Order follows the spec, impact (HM2) before
+        opportunities (HM3) &mdash; the story earns the ask (decision 39).
+        Every block here surfaces a page specced elsewhere; nothing on Home
+        changes an inner spec.
       </Hint>
     </>
   );

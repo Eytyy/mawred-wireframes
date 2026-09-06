@@ -27,7 +27,7 @@ export function S4HeroSummary({ cells }: S4HeroSummaryProps) {
                   {cell.lead ? (
                     <p className="mb-1 text-xs font-bold">{cell.lead}</p>
                   ) : null}
-                  <ul className="m-0 pl-5">
+                  <ul className="m-0 list-disc pl-5">
                     {cell.items.map((item) => (
                       <li key={item} className="mb-1.5 text-xs">
                         {item}

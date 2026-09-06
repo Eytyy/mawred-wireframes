@@ -20,15 +20,15 @@ import { S5ApplicationPaths } from "@/components/blocks/programs/S5ApplicationPa
 import { S6WhichRound } from "@/components/blocks/programs/S6WhichRound";
 import { Hint } from "@/components/wireframe/Hint";
 import type { ProgramBlockConfig, ProgramConfig } from "@/lib/pages/programs";
+import { getRouteByPath } from "@/lib/pages/routes";
 import { useWireframeState } from "@/lib/wireframe-state";
+import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
 function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
   switch (block.type) {
     case "C3flat":
-      return <C3AtAGlance key="C3" mode="flat" rows={block.rows} />;
-    case "C3rounds":
-      return <C3AtAGlance key="C3" mode="rounds" groups={block.groups} />;
+      return <C3AtAGlance key="C3" rows={block.rows} />;
     case "C4":
       return (
         <C4ApplySteps
@@ -36,11 +36,18 @@ function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
           steps={block.steps}
           documents={block.documents}
           note={block.note}
+          highlight={block.highlight}
           withRepeat={block.withRepeat}
         />
       );
     case "C5":
-      return <C5FormsOfSupport key="C5" records={block.records} />;
+      return (
+        <C5FormsOfSupport
+          key="C5"
+          records={block.records}
+          heading={block.heading}
+        />
+      );
     case "C6":
       return (
         <C6HighlightedNote
@@ -105,21 +112,19 @@ function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
 
 export function ProgramPage({ config }: { config: ProgramConfig }) {
   const { state } = useWireframeState();
+  const pathname = usePathname();
+  const route = getRouteByPath(pathname);
 
   return (
     <>
-      {config.hero ? <S4HeroSummary cells={config.hero} /> : null}
-
-      <div className="mt-2 flex flex-wrap items-start gap-3.5">
-        <div className="flex-[2_1_380px]">
-          <C1Overview
-            title={config.overview?.title}
-            text={config.overview?.text}
-            items={config.overview?.items}
-          />
-        </div>
-        <div className="flex-[1_1_240px]">
-          {config.figs ? <C2ImpactFigures labels={config.figs} /> : null}
+      <div className="flex flex-wrap items-start justify-between gap-x-3.5">
+        <C1Overview
+          crumb={route?.crumb}
+          pageTitle={route?.title}
+          text={config.overview?.text}
+          items={config.overview?.items}
+        />
+        <div className="shrink-0">
           <C7ApplyButton
             dest={config.dest}
             closed={config.rolling ? false : state.closed}
@@ -127,12 +132,14 @@ export function ProgramPage({ config }: { config: ProgramConfig }) {
         </div>
       </div>
 
-      {!config.figs ? (
+      {config.figs ? <C2ImpactFigures labels={config.figs} /> : (
         <Hint>
           No impact figures on this programme — the rail carries the apply action
           alone. By design, not a gap.
         </Hint>
-      ) : null}
+      )}
+
+      {config.hero ? <S4HeroSummary cells={config.hero} /> : null}
 
       {config.blocks.map((block, index) => (
         <div key={`${block.type}-${index}`}>{renderBlock(block, state.offered)}</div>

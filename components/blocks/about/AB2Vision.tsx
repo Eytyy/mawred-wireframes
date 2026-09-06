@@ -1,17 +1,16 @@
 import { Block } from "@/components/wireframe/Block";
-import { Fill } from "@/components/wireframe/Fill";
 import { Hint } from "@/components/wireframe/Hint";
 
-export function AB2Vision() {
+export function AB2Vision({ text }: { text: string }) {
   return (
     <Block code="AB2" label="Vision">
-      <div className="border-[3px] border-black px-4.5 py-4">
-        <Fill width={88} />
-        <Fill width={46} />
+      <div className="bg-neutral-200 p-3.5">
+        <h2 className="block-heading mb-2.5 text-lg font-bold">Vision</h2>
+        <p className="m-0 text-lg">{text}</p>
       </div>
       <Hint>
-        One sentence set apart as an emphasised band, rather than a heading with
-        a line of body text beneath it.
+        Heading and sentence in a grey fill, same treatment as C6. Not a
+        quotation — N8 and N15 keep 3px.
       </Hint>
     </Block>
   );

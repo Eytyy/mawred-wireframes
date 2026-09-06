@@ -16,7 +16,7 @@ const PLACEHOLDER_QUOTES = 1;
 
 export function N15Quotes({ label = "Quotes", quotes }: N15QuotesProps) {
   return (
-    <Block code="N15" label={label} optional>
+    <Block code="N15" label={label} heading={label} optional>
       <div className="flex flex-col gap-3">
         {quotes
           ? quotes.map((quote) => (

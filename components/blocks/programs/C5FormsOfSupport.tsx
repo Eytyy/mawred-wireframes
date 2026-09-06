@@ -13,15 +13,19 @@ type SupportRecord = {
 
 type C5FormsOfSupportProps = {
   records: SupportRecord[];
+  heading?: string;
 };
 
-export function C5FormsOfSupport({ records }: C5FormsOfSupportProps) {
+export function C5FormsOfSupport({
+  records,
+  heading = "Forms of support",
+}: C5FormsOfSupportProps) {
   const hasNoAmount = records.some(
     (record) => !record.amt && record.amount === undefined,
   );
 
   return (
-    <Block code="C5" label="Forms of support">
+    <Block code="C5" label="Forms of support" heading={heading}>
       {records.map((record) => (
         <div
           key={record.label}
@@ -33,7 +37,7 @@ export function C5FormsOfSupport({ records }: C5FormsOfSupportProps) {
               <p className="mt-1 text-neutral-500">{record.body}</p>
             ) : null}
             {record.items ? (
-              <ul className="m-0 mt-1 pl-5">
+              <ul className="m-0 mt-1 list-disc pl-5">
                 {record.items.map((item) => (
                   <li key={item} className="mb-1.5">
                     {item}

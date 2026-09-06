@@ -38,7 +38,7 @@ export function StatePanel() {
           checked={state.codes}
           onChange={(event) => setToggle("codes", event.target.checked)}
         />
-        Show block codes
+        Show review chrome
       </label>
       {config?.list.map((toggle) => {
         const key = toggle.key as keyof WireframeState;

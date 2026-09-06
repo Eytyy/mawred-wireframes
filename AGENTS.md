@@ -64,7 +64,7 @@ These are wireframes, not a design. Tailwind makes it very easy to accidentally 
 **Allowed**
 
 - Layout and spacing: flex, grid, gap, padding, margin, width, max-width, aspect
-- Borders: `border`, `border-dashed`, `border-black` — 1px default; **2px** on header rule, primary buttons and active tabs; **3px** on callout blocks (C6, N8, AB2); **2px dashed** on stubs and the state panel (decision 57)
+- Borders: `border`, `border-dashed`, `border-black` — 1px default; **2px** on header rule and primary buttons; **3px** on callout blocks (N8, N15); **2px dashed** on stubs and the state panel (decision 57). Active tabs are 1px `border-neutral-200` on a light strip (decision 146). C6 and AB2 highlights are `bg-neutral-200` padding, no border (decisions 144, 148)
 - Colour: `black`, `white`, `neutral-200` (placeholder fill), `neutral-500` (secondary text). Nothing else.
 - Type: one font stack for the whole app; `text-xs` through `text-2xl`; `font-normal` and `font-bold` only
 - Interaction states where they carry meaning (open/closed, active tab)
@@ -89,7 +89,7 @@ Solid 1px borders mark fixed/always-present elements; dashed marks optional/cond
 - **A block is one component**, used by every page that has that block. A block that looks different on two pages is a bug, not a variant — unless a logged decision says otherwise.
 - **Content lives in `lib/pages/`, not in components.** A block component takes props; it does not hardcode a program's grant amount.
 - **Block codes stay.** Each component carries its code (C1, PA3, MN2, HM5, AB7) in its name or a constant, and the state panel's "show block codes" toggle renders them as badges. The prefixes are per page-type and can't be reused across kits.
-- **Chrome is composed once** in `app/layout.tsx` and inherited. A page may suppress the page-header band (Home does) via a route-level flag — never by redrawing chrome.
+- **Chrome is composed once** in `app/layout.tsx` and inherited. A page may suppress the page-header band (Home, programmes, Who We Are, Our Team) via a route-level flag — never by redrawing chrome.
 
 ## Content sources by page-type
 
