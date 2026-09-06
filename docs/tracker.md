@@ -4,13 +4,35 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
-**Current task:** none. Review chrome defaults off.
+**Current task:** none. Production Awards dropped C3; live→wireframe inventory is in the content map.
 
 ---
 
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Production Awards — drop C3 + live map (2026-09-06)
+
+**Done:** `PRODUCTION_AWARDS` no longer mounts C3. Overview is C1–C2–S1–C5. The leftover three cards (eligibility, disciplines, grant period) repeated C1, C5 and C10. `C3AtAGlance` stays; Abbara is the remaining consumer. Content-map now has a live-tab → wireframe inventory (About / Guidelines / FAQs) recording every move, compression and omission — source for a later client note. Decision **158** logged; **85**, **140**, **145** revised in place.
+
+**Left undone:** A titled "Who is eligible" section (S4 is the reserved shape). Birth-year range, ethnicity/citizenship, the five who-submits roles, and the three under-18 files stay compressed or omitted until that section exists.
+
+**Decisions:** 158. Production Awards drops C3.
+
+**Flagged:** The live Guidelines "Who is eligible" section is the largest compression on the page — it has no titled home. The inventory names what was cut so a client note can be written from the content map without re-reading the live tabs.
+
+**Verified:** Curl against the running dev server. Production Awards headings: H1 → Overview (sr-only) → Programme timeline → Available grants → Application → How to apply → Conditions → How applicants are selected → Contract → Downloads → FAQs → Contact. No "At-a-glance", no "Disciplines covered", no "Grant period". Abbara still has "At-a-glance facts" / "Who can apply" / "Disciplines covered". Wijhat still has no C3.
+
+### Figs — value type size (2026-09-06)
+
+**Done:** `Figs` value (`<b>`) is `text-4xl` (was `text-xl`, then `text-2xl`). Shared by C2, HM2, MN2. Labels unchanged.
+
+**Left undone:** Nothing from this brief.
+
+**Decisions:** 157 revised — Figs values are `text-4xl`.
+
+**Flagged:** None.
 
 ### Chrome — review chrome off by default (2026-09-06)
 
@@ -517,6 +539,13 @@ Newest first. One entry per page-type completed: what was done, what was left as
 ---
 
 ## Completed tasks
+
+### Production Awards — drop C3 + live map (2026-09-06)
+
+- [x] Remove C3 from `PRODUCTION_AWARDS`; component stays for Abbara
+- [x] Live-tab → wireframe inventory in content-map (source for a later client note)
+- [x] Docs — wireframe-passes 158 (85/140/145 revised), tracker
+- [x] Verify — Production Awards has no At-a-glance; Abbara C3 still there
 
 ### Review chrome off by default (2026-09-06)
 

@@ -90,20 +90,6 @@ export const PRODUCTION_AWARDS: ProgramConfig = {
   contact: 'awards@mawred.org',
   blocks: [
     {
-      type: 'C3flat',
-      rows: [
-        {
-          label: 'Eligibility',
-          value: 'Artists and writers of Arab origin, under 35',
-        },
-        {
-          label: 'Disciplines covered',
-          value: 'Literature · Visual arts · Music & sound art · Performing arts · Cinema',
-        },
-        { label: 'Grant period', value: '18 months from signing' },
-      ],
-    },
-    {
       type: 'S1',
       stages: [
         { n: 'Open call', d: '17 August 2026' },

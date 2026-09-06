@@ -12,23 +12,87 @@ Sources: `content/programs/audit-production-awards.md` for substance; the live p
 
 | Block | From | What happened to it |
 | --- | --- | --- |
-| **C1** Overview | Audit tab 1 items 1–2 | The page H1 is the programme name from the route registry; the live "What is the Production Awards Program?" inner heading is dropped (decision 138). The intro paragraph and the scale line are compressed into two short paragraphs: launch year, the under-35 and Arab-origin conditions, the five disciplines in the live intro's order; then 25 grants a year, five per discipline, ~400 since 2004. The live page states the eligible birth-year range explicitly — dropped, because it changes every round and C3 carries the eligibility line. |
-| **C2** Impact figures | Audit tab 1 item 2 | Two of the three rails carry real figures — ~400 grants since 2004, 25 grants per year. Labels were re-cut to match what the audit actually sources: "years running" became "grants per year". **Gap:** no country count exists in the audit or on the live page, so that rail keeps its `00` placeholder. |
-| **S1** Programme timeline | Audit tab 1 item 3 | Open call / Deadline / Results leave C3 for S1, above the remaining fact cards so dates stay first in the scan (decision 145): 17 August 2026 · 19 October 2026, 16:00 Beirut · End of March 2027. Date-only stages — no fill under the rail (decision 126 revised). |
-| **C3** At-a-glance | Audit tab 1 item 3, plus tabs 1–2 | Eligibility, disciplines and grant period stay as the wrapping card grid (decision 140). The three date rows that used to lead this block are S1. |
-| **C4** How to apply | Audit tab 1 item 6 | The four portal steps as numbered cards in a wrapping row (decision 141), each with a one-line detail taken from the live step text. The bold "read the guidelines first" warning becomes the block's `note`, below the cards rather than above them, because it is a caution about the process and not a step in it. The repeat apply button stays below the note. Sits in Application after C7 (decision 153). |
+| **C1** Overview | Audit tab 1 items 1–2 | The page H1 is the programme name from the route registry; the live "What is the Production Awards Program?" inner heading is dropped (decision 138). The intro paragraph and the scale line are compressed into two short paragraphs: launch year, the under-35 and Arab-origin conditions, the five disciplines in the live intro's order; then 25 grants a year, five per discipline, ~400 since 2004. The live birth-year range (January 1992–December 2011) is dropped — it changes every round. After C3 left this page (decision 158) that range has no scan card; it is only implied by C1's "under 35". |
+| **C2** Impact figures | Audit tab 1 item 2 | Two of the three rails carry real figures — ~400 grants since 2004, 25 grants per year. Labels were re-cut to match what the audit actually sources: "years running" became "grants per year". **Gap:** no country count exists in the audit or on the live page, so that rail keeps its `00` placeholder. Live puts these numbers in the overview prose, not a figures strip. |
+| **S1** Programme timeline | Audit tab 1 item 3 | Open call / Deadline / Results leave C3 for S1 (decision 145): 17 August 2026 · 19 October 2026, 16:00 Beirut · End of March 2027. Date-only stages — no fill under the rail (decision 126 revised). The live lead "accepted and evaluated once a year as per the dates below" is implied by the rail, not restated. |
+| **C3** At-a-glance | — | **Dropped on this page (decision 158).** The three leftover cards — eligibility, disciplines, grant period — repeated C1, C5 and C10. The component stays; Abbara is the remaining consumer. |
+| **C4** How to apply | Audit tab 1 item 6 | The four portal steps as numbered cards in a wrapping row (decision 141), each with a one-line detail taken from the live step text. Arabic-except-English (Guidelines terms) lands on step 3; incomplete-not-reviewed lands on step 4. The bold "read the guidelines first" warning becomes the block's `note`, below the cards rather than above them. The repeat apply button stays below the note. Sits in Application after C7 (decision 153). |
 | **C5** Forms of support | Audit tab 1 item 7 | Five discipline records replacing four generic ones, each with a coverage line carrying the live scope (visual arts and music in particular list many more forms than a one-liner holds) and the real ceiling in the amount chip. Amounts are as audited and read "Up to €8,500" etc., because the live page states them as maxima, not fixed grants (Performing Arts, Visual Arts and Music & Sound Art €8,500; Literature €6,500; Cinema €13,000). Every record now carries an amount, so C5's "record without an amount" hint no longer shows on this page — it still shows on Abbara and Stand for Art. Sits in Overview after S1 (decision 153). |
-| **C8** Conditions / exclusions | Audit tab 1 item 8 **and** tab 2 items 1–2 | The judgement call of this unit. Three live passages fold into one block: the exclusions list, the application terms, and the eligibility detail from the Guidelines tab (re-application rule, who submits per discipline, under-18 documents). Eligibility has no block of its own and C3 carries only the one-line version, so the detail lands here rather than bloating the facts table. Eight items, shortened from running prose. The re-application rule names both live conditions — previous grant closed, and two rounds passed, so the third round after the award. |
-| **C9** Selection | Audit tab 2 item 3 | Jury structure in the block label and lead sentence — independent, three members per discipline, changed yearly. The four selection criteria become the list, in the live page's own terms (quality and relevance, originality, practicability of the projected budget, feasibility of completion by the deadline). |
-| **C10** Contract terms | Audit tab 2 item 4 | Eight items from one long prose passage: the 70/30 installments with the reports-and-documentation trigger on the second, cancellation if the agreement isn't signed within 45 days, 18-month completion, the one-time extension (six months, one year for cinema, requested 30 days ahead), the IP-rights document, the two co-signing guarantors, cancellation and clawback with the withheld final installment, and the logo and credit obligation. Cancellation and clawback were merged into one item; the live page treats them as separate clauses. |
-| **S2** Downloads | Audit tab 1 items 4–5 | Five per-discipline application form previews in the live page's order plus the required-documents list, all PDF. Replaces the invented DOCX form and XLSX budget template from the port. |
+| **C8** Conditions / exclusions | Audit tab 1 item 8 **and** tab 2 items 1–2 | Three live passages fold into one block: the About-tab exclusions, the Guidelines application terms, and the Guidelines eligibility detail (re-application, who submits, under-18). Eight items, shortened from running prose. The re-application rule names both live conditions. Who-submits is one line instead of five role bullets. Under-18 is "additional documents" instead of the three named files. Ethnicity/citizenship is not restated here — C1's "of Arab origin, wherever they live" stands for it. |
+| **C9** Selection | Audit tab 2 item 3 | Jury structure in the block label and lead sentence — independent, three members per discipline, changed yearly. The four selection criteria become the list, in the live page's own terms. The live "once results are announced, agreements are sent" line that opens this section is not repeated — C10 starts at the installments. |
+| **C10** Contract terms | Audit tab 2 item 4 | Eight items from one long prose passage: the 70/30 installments with the reports-and-documentation trigger on the second, cancellation if the agreement isn't signed within 45 days, 18-month completion (this was also C3's grant-period card), the one-time extension (six months, one year for cinema, requested 30 days ahead), the IP-rights document, the two co-signing guarantors, cancellation and clawback with the withheld final installment, and the logo and credit obligation. Cancellation, clawback and the withheld installment were three live clauses, merged into one item. Dropped from the live passage: the agreement "details scope, conditions and duration" (generic); extension requests go to awards@ (C12 already has the address); "without citing cause" on refusal; the exact credit phrase; the publicity/news citation line. |
+| **S2** Downloads | Audit tab 1 items 4–5 | Five per-discipline application form previews in the live page's order plus the required-documents list, all PDF. Live puts these on the About tab, above How to apply; the wireframe puts them at the end of Application, after the contract terms. |
 | **S3** Past beneficiaries | — | Round labels become real years (2025, 2024, 2023). **Gap:** beneficiary names and countries stay placeholder rows — they aren't in the audit and come from Network records per spec §B6. Block stays behind the `offered` state, as its own section when shown (decision 153). |
 | **C11** FAQs | Audit tab 3 | Nothing to populate. The live FAQ tab in English carries only a pointer to the Arabic page, so the fill bars stand for content that doesn't exist. Hint sharpened to say so; supplying English FAQs is a client call. Questions render as a plain accordion — no item borders, `text-base font-bold` (decision 142). |
-| **C12** Contact | Audit in-template footer | awards@mawred.org. |
+| **C12** Contact | Audit in-template footer | awards@mawred.org. Live also prints this under the empty FAQ tab; the wireframe has it once, as its own section. |
 
-**C7** remounts at the top of Application (decision 153); `dest` on the config names `apply.mawred.org`, the URL the audit records. Overview is C1–C2–C3–S1–C5; Application is C7–C4–C8–C9–C10–S2; S3 its own section when `offered`; then FAQs / Contact.
+**C7** remounts at the top of Application (decision 153); `dest` on the config names `apply.mawred.org`, the URL the audit records. Overview is C1–C2–S1–C5; Application is C7–C4–C8–C9–C10–S2; S3 its own section when `offered`; then FAQs / Contact.
 
-Checked against the live page after the first pass, and corrected: the re-application rule had been recorded as a gap when the live Guidelines tab states it in full; the amount chips read as fixed grants rather than ceilings; and four items said more than the source did — the reproduction exclusion had gained restaging and re-editing, two selection criteria had gained qualifiers, the second installment was triggered by completion rather than by reports, and the 45-day window had lost its consequence. The C5 coverage lines had also been cut so far back that they understated what the grants fund. Every one is now the live page's own substance.
+### Live page → wireframe (source for a later client note)
+
+The live page is three tabs (About · Application Guidelines · FAQs) plus a footer contact line. The wireframe is four always-on sections (Overview · Application · FAQs · Contact) plus optional Past. Copy is rewritten, not migrated — this table is the move/compress record, not final wording. Live source: [Production Awards](https://mawred.org/artistic-creativity/production-awards/?lang=en).
+
+#### About the Program
+
+| Live passage | Wireframe | Move / compress |
+| --- | --- | --- |
+| Crumb Home / Artistic Creativity / Production Awards | Page-header band | Nav parent is Grants & Opportunities, not Artistic Creativity — IA change, not a copy cut. |
+| H1 "Production Awards" | Page-header band | Same heading, page-level (decision 152). |
+| Inner heading "What is the Production Awards Program?" | — | Dropped (decision 138). The H1 is the heading. |
+| Launch 2004; under 35; born January 1992–December 2011; Arab region or diaspora; five disciplines | C1 paragraph 1 | Birth-year range dropped (changes every round). "Of Arab origin, wherever they live" stands for origin + residence; "regardless of ethnicity and citizenship" is not restated. |
+| Up to 25 / year, five per discipline; ~400 since 2004 | C1 paragraph 2 + C2 | Same facts. C2 is a figures strip the live page does not have. C2's countries rail is a published-data gap (`00`). |
+| "Accepted and evaluated once a year as per the dates below" | S1 (implied) | Not restated as a sentence. |
+| Open call 17 August 2026 · Deadline 19 October 2026, 16:00 Beirut · Results end of March 2027 | S1 | Moved off the About-tab prose headings onto a rail (decision 145). |
+| Five application-form preview PDFs | S2 | Moved from About into Application, after contract terms. |
+| Required-documents PDF | S2 (last file) | Same move. |
+| How to apply — four portal steps | C4 | Moved from About into Application. Arabic-except-English and incomplete-not-reviewed pulled in from Guidelines and attached to steps 3 and 4. |
+| Bold warning: read the guidelines first | C4 `note` | Below the steps, not above. |
+| Five disciplines: coverage + ceiling (€8,500 / €6,500 / €13,000) | C5 ("Available grants") | Stays in Overview. Coverage slightly shortened; ceilings kept as "Up to". |
+| Important notes: no reproductions; websites, workshops, org support, academic/research, TV series | C8 items 1–2 | Moved from About into Application Conditions. |
+| APPLY NOW (About tab) | C7 (+ C4 repeat) | One button at the top of Application, repeated under the steps. Destination named as `apply.mawred.org`. |
+
+#### Application Guidelines
+
+| Live passage | Wireframe | Move / compress |
+| --- | --- | --- |
+| **Who is eligible** (titled section) | C1 one line + C8 bullets | No titled eligibility block. The live section is the largest compression on the page. A later S4 ("Who is eligible") is the reserved shape if the client wants it back as a section. |
+| Born January 1992–December 2011 | — | Omitted. Only implied by C1 "under 35". |
+| Originate from an Arab country regardless of ethnicity and citizenship, resident or abroad | C1 | Compressed to "of Arab origin, wherever they live". |
+| Past recipients: previous grant closed; two rounds passed (eligible for the third) | C8 item 5 | Both conditions kept, one bullet. |
+| Who submits: cinema director · performing-arts director or choreographer · literature writer · music main musician / performer / composer / sound artist / producer who writes their own music · visual-arts main artist or curator | C8 item 7 | One line: "director, choreographer, writer, main musician, or main artist or curator, depending on the discipline." Music's longer role list is the cut. |
+| Application entirely in Arabic except English fields | C4 step 3 | Moved onto the apply step, not restated in C8. |
+| Uploads PDF, JPEG or PNG | C8 item 6 | Kept. |
+| Incomplete applications disregarded | C4 step 4 | Moved onto the apply step. |
+| One project per applicant per round | C8 item 3 | Merged with the no-equipment rule. |
+| Complete within 18 months of signing; extension possible | C10 items 3–4 | Was also C3's "Grant period" card — that card is gone (decision 158). |
+| Grant may not buy machinery or equipment | C8 item 3 | Merged with one-project-per-round. |
+| Funds spent in, or for the benefit of, the Arab region | C8 item 4 | Kept. |
+| Under 18: birth certificate · guardian approval letter · guardian ID/passport | C8 item 8 | Compressed to "supply additional documents." The three files are the cut. |
+| **How are grantees selected** | C9 | Kept as its own block. |
+| Independent jury of three per discipline, new each year | C9 label + lead | Kept. |
+| Criteria: quality and relevance · originality · practicability of the projected budget · feasibility of completion by the deadline | C9 list | Kept in the live page's terms. |
+| **Contractual procedures and obligations** | C10 | Kept as its own block; eight bullets from a long prose passage. |
+| Agreement details scope, conditions, duration | — | Dropped as generic. |
+| IP-rights document | C10 item 5 | Kept. |
+| 70% on signing · 30% after financial and narrative reports and documenting material | C10 item 1 | Kept, including the reports trigger. |
+| Unsigned after 45 days → grant cancelled | C10 item 2 | Kept. |
+| Incomplete on time: extension or cancellation, Mawred decides | C10 item 7 | Merged with clawback and the withheld installment. |
+| Cancellation covers only spend before the cancel date; remainder returned | C10 item 7 | Merged (see above). |
+| Second installment withheld if reports or commitments unmet | C10 item 7 | Merged (see above). |
+| One extension only, requested ≥30 days before the end; 6 months, or 1 year for cinema; email awards@; may refuse without citing cause | C10 item 4 | Duration and 30-day notice kept. Email (already C12) and "without citing cause" dropped. |
+| Two guarantors co-sign; at least one an expert who knows the project | C10 item 6 | Kept. The live "pledge to guarantee implementation" is implied by co-sign. |
+| Logo + exact credit phrase in all outputs; grant cited in all news/publicity | C10 item 8 | Compressed to "logo and the agreed support credit." Exact phrase and the publicity line are the cut. |
+| APPLY NOW (Guidelines tab) | C7 | Same button as the About-tab CTA — not repeated a third time. |
+
+#### FAQs + footer
+
+| Live passage | Wireframe | Move / compress |
+| --- | --- | --- |
+| "AVAILABLE ONLY IN ARABIC" | C11 fill bars | Gap kept visible. Supplying English FAQs is a client call. |
+| "For further questions… awards@mawred.org" (under FAQ) | C12 | Once, as the Contact section. |
+| Same address in the in-template footer | C12 | Not duplicated. |
+
+Checked against the live page after the first pass, and corrected: the re-application rule had been recorded as a gap when the live Guidelines tab states it in full; the amount chips read as fixed grants rather than ceilings; and four items said more than the source did — the reproduction exclusion had gained restaging and re-editing, two selection criteria had gained qualifiers, the second installment was triggered by completion rather than by reports, and the 45-day window had lost its consequence. The C5 coverage lines had also been cut so far back that they understated what the grants fund. Every one is now the live page's own substance. Re-checked 2026-09-06 when C3 left the page (decision 158): the three leftover cards were the only remaining duplicates of C1 / C5 / C10.
 
 ---
 

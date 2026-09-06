@@ -20,7 +20,7 @@ export function Figs({ labels, wide }: FigsProps) {
 
         return (
           <div key={label} className="border border-black p-2.5 text-center">
-            <b className="block text-xl">{value ?? "00"}</b>
+            <b className="block text-4xl">{value ?? "00"}</b>
             <span className="text-xs text-neutral-500">{label}</span>
           </div>
         );
