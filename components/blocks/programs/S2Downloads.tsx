@@ -15,6 +15,7 @@ export function S2Downloads({ files }: S2DownloadsProps) {
       code="S2"
       label="Downloadable forms / files"
       heading="Downloadable forms / files"
+      headingAs="h3"
     >
       {files.map((file) => (
         <div

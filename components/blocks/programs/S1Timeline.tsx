@@ -13,7 +13,7 @@ type S1TimelineProps = {
 
 export function S1Timeline({ stages, lead }: S1TimelineProps) {
   return (
-    <Block code="S1" label="Programme timeline" heading="Programme timeline">
+    <Block code="S1" label="Programme timeline" heading="Programme timeline" headingAs="h3">
       {lead ? <p className="mb-2">{lead}</p> : null}
       <Timeline
         items={stages.map((stage) => ({

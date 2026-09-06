@@ -1,13 +1,17 @@
 import Link from "next/link";
+import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
 import { INDEX_ROUTES } from "@/lib/pages/routes";
 
 export default function WireframesIndexPage() {
   return (
     <>
-      <p>
-        Lo-fi, English-only, black &amp; white. Structure per the project specs;
-        nothing here re-opens a settled decision.
-      </p>
+      <div>
+        <PageHeaderBand />
+        <p>
+          Lo-fi, English-only, black &amp; white. Structure per the project specs;
+          nothing here re-opens a settled decision.
+        </p>
+      </div>
       <div className="my-5 grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-3">
         {INDEX_ROUTES.map((route) => (
           <Link

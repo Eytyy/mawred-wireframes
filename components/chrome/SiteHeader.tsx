@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Logo from '../Logo';
+import { UtilityBar } from './UtilityBar';
 
 type NavLink = {
   href: string;
@@ -71,59 +73,69 @@ const NAV: NavGroup[] = [
 ];
 
 function NavItem({ item }: { item: NavGroup }) {
-  const triggerClass = item.optional ? 'block text-sm no-underline' : 'block text-sm no-underline';
+  const triggerClass = item.optional
+    ? 'block border border-dashed border-black px-1.5 py-0.5 text-sm no-underline'
+    : 'block text-sm no-underline';
+  const hasMenu = Boolean(item.dropdown || item.groups);
+
+  if (!hasMenu) {
+    return (
+      <Link href={item.href} className={triggerClass}>
+        {item.label}
+      </Link>
+    );
+  }
 
   return (
-    <div className="group relative">
-      <Link href={item.href} className={triggerClass}>
-        {item.label} {item.dropdown || item.groups ? '▾' : ''}
-      </Link>
-      {(item.dropdown || item.groups) && (
-        <div className="absolute left-0 top-full z-20 hidden min-w-[200px] border border-black bg-white group-focus-within:block group-hover:block">
-          {item.dropdown?.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="block border-b border-neutral-200 px-2.5 py-1.5 text-sm no-underline last:border-b-0 hover:bg-neutral-200"
-            >
-              {link.label}
-            </Link>
-          ))}
-          {item.groups?.map((group) => (
-            <div key={group.label}>
-              <span className="block border-b border-neutral-200 bg-neutral-200 px-2.5 py-1.5 text-xs uppercase tracking-widest text-neutral-500">
-                {group.label}
-              </span>
-              {group.links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block border-b border-neutral-200 px-2.5 py-1.5 text-sm no-underline last:border-b-0 hover:bg-neutral-200"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    <details name="site-nav">
+      <summary
+        className={`${triggerClass} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}
+      >
+        {item.label} +
+      </summary>
+      <div className="mb-4">
+        {item.dropdown?.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="block px-2.5 py-1.5 text-sm no-underline hover:bg-neutral-200"
+          >
+            {link.label}
+          </Link>
+        ))}
+        {item.groups?.map((group) => (
+          <div key={group.label}>
+            <span className="block bg-neutral-200 px-2.5 py-1.5 text-xs tracking-widest text-neutral-500 uppercase">
+              {group.label}
+            </span>
+            {group.links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block px-2.5 py-1.5 text-sm no-underline hover:bg-neutral-200"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        ))}
+      </div>
+    </details>
   );
 }
 
 export function SiteHeader() {
   return (
-    <header>
-      <div className="mx-auto flex max-w-[1040px] flex-wrap items-center gap-4 px-4 py-3">
-        <Link href="/" className="font-bold no-underline">
-          MAWRED
-        </Link>
-        <nav className="ml-auto flex flex-wrap gap-5">
-          {NAV.map((item) => (
-            <NavItem key={item.href} item={item} />
-          ))}
-        </nav>
-      </div>
+    <header className="flex flex-col gap-4">
+      <Link href="/" className="block font-bold no-underline">
+        <Logo />
+      </Link>
+      <UtilityBar />
+      <nav className="flex flex-col gap-2">
+        {NAV.map((item) => (
+          <NavItem key={item.href} item={item} />
+        ))}
+      </nav>
     </header>
   );
 }

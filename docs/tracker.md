@@ -4,13 +4,115 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
-**Current task:** Polish About — complete. Waiting for the next brief.
+**Current task:** none. State panel cog unit is done.
 
 ---
 
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Chrome — state panel cog (2026-09-06)
+
+**Done:** State panel no longer sits on the page. A 1px cog at `fixed top-3 right-3` opens it below the button; click again closes it. Open state inverts the cog (black fill). Panel contents, `codes` default, and per-page toggles are unchanged. Headless Chrome: Who We Are closed — cog only, no bottom panel, no heading; click — panel below the cog (`top: 50`), Who We Are note present; click again — closed. Production Awards open — Applications closed / offered toggles. `codes` still flips `body.codes-off`.
+
+**Left undone:** Nothing from this brief.
+
+**Decisions:** 155. State panel opens from a top-right cog. 154 revised in place (panel is no longer an always-on overlay).
+
+**Flagged:** None.
+
+### Chrome — in-flow nav dropdowns (2026-09-06)
+
+**Done:** Chrome unit. `NavItem` leaves the left flyout (`absolute right-full top-0`) and the hover/focus-within reveal. Parents with children are `<details>` / `<summary>`: click opens the menu in flow under the parent, full rail width, no panel or row borders, `mb-4` below an open menu, `+` on the trigger. Shared `name="site-nav"` keeps one menu open at a time. Leaf items stay `Link`s. Publications' Library / Series groups and the optional Mawred's 20th item stay. No `overflow-y-auto` on the rail — not added unless a later pass shows a clip.
+
+**Left undone:** Docs/verify units of the same plan if they are still queued. Decision **154** revised in this unit because click + in-flow overturns the hover flyout.
+
+**Decisions:** 154 revised — click, in-flow, not hover flyout.
+
+**Flagged:** Parent hrefs on About Us / Grants & Opportunities / Publications are no longer on the trigger (those destinations stay as the first child link).
+
+### Docs — sticky right rail (2026-09-06)
+
+**Done:** Docs unit of the website shell. Standing constraint 2: global chrome is a sticky right rail (logo, search + EN|AR, vertical nav, newsletter link, social, copyright), not a stacked utility bar / header / newsletter / footer. AGENTS.md chrome line and repo-map chrome row match; the 2px-header-rule note is gone — rail edge is 1px, 2px stays on primary buttons only. Wireframe-passes **154** logged; **57** revised in place (header/footer 2px rules no longer exist); **146**'s parenthetical revised so it no longer says the header rule stays 2px.
+
+**Left undone:** Verify unit of the same plan.
+
+**Decisions:** 154. Global chrome is a sticky right rail.
+
+**Flagged:** None.
+
+### Chrome — sticky right rail (2026-09-06)
+
+**Done:** Chrome unit of the website shell. Layout is a two-column flex: scrolling main (`flex-1`, no max-width) and a sticky right rail (`w-64`, `h-screen`, 1px left border). `SiteHeader` owns the rail top: Logo → UtilityBar (Search + EN|AR, no centering) → vertical nav. Dropdowns stay CSS-only and fly left (`absolute right-full top-0`). Publications' Library / Series groups and the optional Mawred's 20th item stay. `SiteFooter` owns the rail bottom: Newsletter is a link that opens a lo-fi popup (Field + Subscribe + Close); Social is a labelled placeholder; copyright stays. Footer link columns and the inline email row are gone. Logo scales to the rail width.
+
+**Left undone:** Docs unit (standing-constraints §2, AGENTS.md chrome / 2px-header-rule note, wireframe-passes new decision + 57 revised in place) and verify unit of the same plan.
+
+**Decisions:** None this unit — logged with the docs unit.
+
+**Flagged:** None.
+
+### Verify — programme page sections (2026-09-06)
+
+**Done:** Headless Chrome against the running dev server, codes on and `codes-off`, all four programme routes. One H1 in the band on each; Overview h2 is `sr-only` (in the DOM, 1×1px, not `.block-heading`); Application / FAQs / Contact h2s `display: none` in review, `display: block` at 24px `codes-off`; badges `display: none` `codes-off`; H1 stays `inline-block`. C7 first in Application on all four; C4's repeat "Apply now" still there on Production Awards, Stand for Art, Abbara. S3 omitted by default on Production Awards / Wijhat, present when `offered` is on (own section, heading from S3's label); Abbara always has S3 ("Abbara organisations by round"); Stand for Art never has S3 and has no closed toggle — C7 stays open (decision 95). Closed toggle disables C7 on the other three. Titled programme blocks under the sections are h3. Codes: Production Awards C1–C2–C3–S1–C5 then C7–C4–C8–C9–C10–S2 then C11–C12 (S3 only with `offered`); Wijhat C1–C2–S4–S1 then C7–S6–S5–C6–C8–C9–C10 then C11–C12; Stand for Art C1–C5 then C7–C4–C8–C9 then C11–C12; Abbara C1–C2–S4–C3–S1–C5–C6 then C7–C4–C8–C9–C10 then S3 then C11–C12.
+
+**Left undone:** Nothing from this plan.
+
+**Decisions:** None this unit — 153 logged with the docs unit.
+
+**Flagged:** None.
+
+### Docs — programme page sections (2026-09-06)
+
+**Done:** Docs unit of the programme page sections. Wireframe-passes **153** logged; **135** revised (programme block titles are h3 under a section h2; section h2s are `text-2xl`; Overview's h2 is `sr-only` and never uses `.block-heading`); **145** revised (S6 still follows S1, with the Application h2 + C7 between them); **152** revised (C7 remounted at Application, no longer parked). **137** and **139** revised in place so they no longer say C7 is parked. Standing constraint 2: programme pages are four always-on sections plus optional S3; Overview h2 is semantic-only. Content-map: C7 remounts at Application on all four programmes; Stand for Art / Abbara C5 sit in Overview; Abbara C6 in Overview (`section: 'overview'`).
+
+**Left undone:** Verify unit of the same plan — done in the verify entry above.
+
+**Decisions:** 153. C7 is no longer parked.
+
+**Flagged:** None.
+
+### Verify — page-level header band (2026-09-06)
+
+**Done:** Headless Chrome against the running dev server, codes on and `codes-off`. `/` — no crumb, no H1, HM1 first. `/programs/production-awards` — one H1 ("Production Awards") in the band, then C1 overview, no C7 (codes C1–C2–C3–S1–C5–C4–C8–C9–C10–S2–C11–C12); C4's repeat "Apply now" is not C7. `/about/who-we-are` — one H1 ("Who We Are") then AB1's three intro paragraphs. `/about/our-team` — band then three AB7 groups. `/network` — band then MN1. `/news` — band then N1 tabs. `/publications/research` — band inside main (PA1 still behind `slots`). `/contact` — band then stub. `/wireframes` — band then index copy. `codes-off` hides badges (`display: none`); H1 stays (`inline-block`); section headings show.
+
+**Left undone:** Nothing from this plan.
+
+**Decisions:** 152, logged with the docs unit.
+
+**Flagged:** C7 parked, so the programme `closed` panel toggle currently has no consumer. `config.dest` is unused until C7 remounts.
+
+### Docs — page-level header band (2026-09-06)
+
+**Done:** Docs unit of the page-level header band. Standing constraint 2: the band is page-level, not layout; Home is the only omit; `suppressPageHead` is gone; blocks do not own crumb/H1. AGENTS.md chrome line matches. Wireframe-passes **152** logged; **33** restored-and-revised (it was in the missing 1–54 set); **137**, **138**, **139**, **147** revised in place — C1/AB1 no longer own H1; C7 parked off the opening; C1's unused inner `title` slot dropped. Content-map: AB1 / Our Team no longer say the band is suppressed; Wijhat/Abbara S4 order is C1 + C2; Stand for Art C2 no longer claims the rail carries the apply action; C7 `dest` stays on config.
+
+**Left undone:** Verify unit of the same plan — done in the verify entry above.
+
+**Decisions:** 152. C7 stays parked.
+
+**Flagged:** C7 parked, so the programme `closed` panel toggle currently has no consumer. `config.dest` is unused until C7 remounts.
+
+### Blocks — C1 / AB1 drop H1; C7 parked (2026-09-06)
+
+**Done:** Blocks unit of the page-level header band. `C1Overview` drops `crumb` / `pageTitle` and the fragment / `flex-1` wrap that sat beside C7 — overview prose and optional `items` only. `AB1Intro` drops `crumb` / `pageTitle` — the three intro paragraphs only. `ProgramPage` unmounts `C7ApplyButton` from the opening; C1 sits under `PageHeaderBand` with no title-row flex. `usePathname` / `getRouteByPath` leave the shell. The C7 component and `dest` on `ProgramConfig` stay.
+
+**Left undone:** Decision revisions (33, 137, 147) and standing-constraint / AGENTS / content-map catch-up wait on the docs unit — done in the docs entry above. Shells mounting the band was a separate unit, also landed.
+
+**Decisions:** None this unit — logged with the docs unit. C7 is off the opening on purpose; a later programme restructure will place it with the apply / guidelines section.
+
+**Flagged:** C7 parked, so the programme `closed` panel toggle currently has no consumer. `config.dest` is unused until C7 remounts.
+
+**Verified:** Headless Chrome against the running dev server. `/programs/production-awards` — one H1 ("Production Awards") in the band, then C1 overview, no C7, no H1 inside C1; codes list is C1–C2–C3–S1–C5–C4–C8–C9–C10–S2–C11–C12. `/about/who-we-are` — one H1 ("Who We Are") in the band, then AB1's three intro paragraphs, no H1 inside AB1. Wijhat / Stand for Art / Abbara each one H1, C1 present, C7 absent.
+
+### Chrome — lift PageHeaderBand out of layout (2026-09-06)
+
+**Done:** Chrome unit of the page-level header band. `PageHeaderBand` is no longer composed in `app/layout.tsx` — layout keeps utility bar, header, `<main>`, footer, and the state panel. The band is crumb + H1 only (`text-xs text-neutral-500` / `text-4xl font-bold`), sitting inside `main` with no extra max-width or `px-4` wrapper, still a client island that reads `crumb` / `title` from the route registry via `usePathname`. `suppressPageHead` is gone from `RouteEntry` and every route flag. Home simply does not render the band.
+
+**Left undone:** Page shells do not yet mount `<PageHeaderBand />`. C1 / AB1 / Our Team still own crumb + H1. C7 is still on the programme opening. Standing constraints, AGENTS, wireframe-passes, and content-map catch-up wait on the docs unit.
+
+**Decisions:** None this unit — logged with the docs unit.
+
+**Flagged:** Pages that previously inherited the band from layout have no crumb/H1 until the shells unit mounts it.
 
 ### Polish — About Our Team cards (2026-09-06)
 
@@ -405,6 +507,27 @@ Newest first. One entry per page-type completed: what was done, what was left as
 ---
 
 ## Completed tasks
+
+### State panel cog (2026-09-06)
+
+- [x] Hide the always-on panel; 1px cog at top right opens it
+- [x] Docs — wireframe-passes 155 (154 revised), standing-constraints, tracker
+- [x] Verify — closed/open/reclose, Who We Are + Production Awards, `codes` toggle
+
+### Programme page sections (2026-09-06)
+
+- [x] Compose ProgramPage into Overview / Application / optional Past / FAQs / Contact; remount C7; C6 `section` slot
+- [x] `headingAs` on Block; programme titled blocks as h3; C11 / C12 / S3 drop heading
+- [x] Docs — wireframe-passes 153 (135/145/152/137/139 revised), standing-constraints, content-map, tracker
+- [x] Verify — four programme routes, codes on and `codes-off`
+
+### Page-level header band (2026-09-06)
+
+- [x] Chrome — lift `PageHeaderBand` out of layout; `suppressPageHead` gone
+- [x] Shells — every page except Home mounts the band
+- [x] Blocks — C1 / AB1 drop crumb+H1; C7 parked off the programme opening
+- [x] Docs — standing-constraints, AGENTS.md, wireframe-passes 152 (33/137/138/139/147 revised), tracker, content-map
+- [x] Verify — Home, a programme (one H1, no C7), Who We Are, Network, News, library, stub, index
 
 ### Polish — About (2026-09-06)
 

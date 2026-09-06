@@ -18,14 +18,43 @@ import { S3PastBeneficiaries } from "@/components/blocks/programs/S3PastBenefici
 import { S4HeroSummary } from "@/components/blocks/programs/S4HeroSummary";
 import { S5ApplicationPaths } from "@/components/blocks/programs/S5ApplicationPaths";
 import { S6WhichRound } from "@/components/blocks/programs/S6WhichRound";
+import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
 import { Hint } from "@/components/wireframe/Hint";
 import type { ProgramBlockConfig, ProgramConfig } from "@/lib/pages/programs";
-import { getRouteByPath } from "@/lib/pages/routes";
 import { useWireframeState } from "@/lib/wireframe-state";
-import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
-function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
+type S3Block = Extract<ProgramBlockConfig, { type: "S3" }>;
+type ProgramSectionId = "overview" | "application" | "past";
+
+function sectionFor(block: ProgramBlockConfig): ProgramSectionId {
+  switch (block.type) {
+    case "C3flat":
+    case "S1":
+    case "C5":
+      return "overview";
+    case "C6":
+      return block.section ?? "application";
+    case "S3":
+      return "past";
+    case "C4":
+    case "C8":
+    case "C9":
+    case "C10":
+    case "S2":
+    case "S5":
+    case "S6":
+      return "application";
+  }
+}
+
+function SectionHeading({ children }: { children: ReactNode }) {
+  return (
+    <h2 className="block-heading mb-2.5 text-2xl font-bold">{children}</h2>
+  );
+}
+
+function renderBlock(block: ProgramBlockConfig): ReactNode {
   switch (block.type) {
     case "C3flat":
       return <C3AtAGlance key="C3" rows={block.rows} />;
@@ -77,9 +106,6 @@ function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
     case "S2":
       return <S2Downloads key="S2" files={block.files} />;
     case "S3":
-      if (block.offeredOnly && !offered) {
-        return null;
-      }
       return (
         <S3PastBeneficiaries
           key="S3"
@@ -112,41 +138,76 @@ function renderBlock(block: ProgramBlockConfig, offered: boolean): ReactNode {
 
 export function ProgramPage({ config }: { config: ProgramConfig }) {
   const { state } = useWireframeState();
-  const pathname = usePathname();
-  const route = getRouteByPath(pathname);
+  const overview: ProgramBlockConfig[] = [];
+  const application: ProgramBlockConfig[] = [];
+  let past: S3Block | undefined;
+
+  for (const block of config.blocks) {
+    switch (sectionFor(block)) {
+      case "overview":
+        overview.push(block);
+        break;
+      case "application":
+        application.push(block);
+        break;
+      case "past":
+        if (block.type === "S3") past = block;
+        break;
+    }
+  }
+
+  const showPast = past !== undefined && !(past.offeredOnly && !state.offered);
 
   return (
     <>
-      <div className="flex flex-wrap items-start justify-between gap-x-3.5">
+      <PageHeaderBand />
+
+      <section>
+        <h2 className="sr-only">Overview</h2>
         <C1Overview
-          crumb={route?.crumb}
-          pageTitle={route?.title}
           text={config.overview?.text}
           items={config.overview?.items}
         />
-        <div className="shrink-0">
-          <C7ApplyButton
-            dest={config.dest}
-            closed={config.rolling ? false : state.closed}
-          />
-        </div>
-      </div>
+        {config.figs ? (
+          <C2ImpactFigures labels={config.figs} />
+        ) : (
+          <Hint>
+            No impact figures on this programme. By design, not a gap.
+          </Hint>
+        )}
+        {config.hero ? <S4HeroSummary cells={config.hero} /> : null}
+        {overview.map((block, index) => (
+          <div key={`${block.type}-${index}`}>{renderBlock(block)}</div>
+        ))}
+      </section>
 
-      {config.figs ? <C2ImpactFigures labels={config.figs} /> : (
-        <Hint>
-          No impact figures on this programme — the rail carries the apply action
-          alone. By design, not a gap.
-        </Hint>
-      )}
+      <section>
+        <SectionHeading>Application</SectionHeading>
+        <C7ApplyButton
+          dest={config.dest}
+          closed={config.rolling ? false : state.closed}
+        />
+        {application.map((block, index) => (
+          <div key={`${block.type}-${index}`}>{renderBlock(block)}</div>
+        ))}
+      </section>
 
-      {config.hero ? <S4HeroSummary cells={config.hero} /> : null}
+      {showPast && past ? (
+        <section>
+          <SectionHeading>{past.label ?? "Past beneficiaries"}</SectionHeading>
+          {renderBlock(past)}
+        </section>
+      ) : null}
 
-      {config.blocks.map((block, index) => (
-        <div key={`${block.type}-${index}`}>{renderBlock(block, state.offered)}</div>
-      ))}
+      <section>
+        <SectionHeading>Frequently Asked Questions</SectionHeading>
+        <C11Faqs items={config.faqs} />
+      </section>
 
-      <C11Faqs items={config.faqs} />
-      <C12Contact contact={config.contact} />
+      <section>
+        <SectionHeading>Contact</SectionHeading>
+        <C12Contact contact={config.contact} />
+      </section>
     </>
   );
 }

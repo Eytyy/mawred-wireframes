@@ -7,6 +7,7 @@ import { N6FeaturedImage } from "@/components/blocks/news/N6FeaturedImage";
 import { N7PostMeta } from "@/components/blocks/news/N7PostMeta";
 import { N8KeyDetail } from "@/components/blocks/news/N8KeyDetail";
 import { N9Body } from "@/components/blocks/news/N9Body";
+import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
 import { Hint } from "@/components/wireframe/Hint";
 import {
   MADE_WITH_YOUR_MAGIC as POST,
@@ -19,6 +20,9 @@ export function EditorialPostPage() {
 
   return (
     <>
+      <div>
+        <PageHeaderBand />
+      </div>
       <N5PrevNext edge={false} />
       <N6FeaturedImage caption={POST.imageCaption} />
       <N7PostMeta

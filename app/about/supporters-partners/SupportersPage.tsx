@@ -2,6 +2,7 @@
 
 import { AB6SectionIntro } from "@/components/blocks/about/AB6SectionIntro";
 import { AB8LogoBand } from "@/components/blocks/about/AB8LogoBand";
+import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
 import { Hint } from "@/components/wireframe/Hint";
 import { LOGO_BANDS } from "@/lib/pages/about";
 import { useWireframeState } from "@/lib/wireframe-state";
@@ -11,7 +12,10 @@ export function SupportersPage() {
 
   return (
     <>
-      {state.slots ? <AB6SectionIntro optional /> : null}
+      <div>
+        <PageHeaderBand />
+        {state.slots ? <AB6SectionIntro optional /> : null}
+      </div>
       {LOGO_BANDS.map((band) => (
         <AB8LogoBand
           key={band.label}

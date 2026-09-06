@@ -12,6 +12,7 @@ export function C10ContractTerms({ lines = 5, items }: C10ContractTermsProps) {
       code="C10"
       label="Contract terms & obligations"
       heading="Contract terms & obligations"
+      headingAs="h3"
     >
       {items ? (
         <ul className="m-0 list-disc pl-5">

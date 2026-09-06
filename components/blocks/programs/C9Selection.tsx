@@ -19,6 +19,7 @@ export function C9Selection({
       code="C9"
       label="How applicants are selected"
       heading="How applicants are selected"
+      headingAs="h3"
     >
       <strong>{label}</strong>
       <Prose lines={3} text={text} />

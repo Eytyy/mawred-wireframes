@@ -82,7 +82,7 @@ export function C4ApplySteps({
   }
 
   return (
-    <Block code="C4" label="How to apply — steps" heading="How to apply">
+    <Block code="C4" label="How to apply — steps" heading="How to apply" headingAs="h3">
       {inner}
     </Block>
   );

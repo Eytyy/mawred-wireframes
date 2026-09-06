@@ -45,7 +45,7 @@ export function S5ApplicationPaths({
       : active.documents;
 
   return (
-    <Block code="S5" label="Application paths" heading="Application paths">
+    <Block code="S5" label="Application paths" heading="Application paths" headingAs="h3">
       <strong>Shared core</strong>
       <Prose lines={3} text={core} />
       <Tabs

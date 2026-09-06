@@ -12,15 +12,16 @@ A Next.js app styled with Tailwind. Blocks are React components; each page is a 
 - **Clickable end to end.** Nav and dropdowns work; the chrome wraps every page; page-types not yet built render as "not yet wireframed" stubs inside the real chrome.
 - **Routing is the App Router.** Real routes, real URLs. Supersedes the intercepted-click-handler approach the single file needed — see revised decision 17.
 - **A block is one component**, used everywhere that block appears; one edit propagates. Content comes in as props from `lib/pages/`, never hardcoded in the component.
-- **A fixed state panel, bottom right:** "Show review chrome" (key `codes`, on by default for review). Off hides code badges, Block labels, block wrapper borders, and Hint notes; headings that belong to the page stay. Plus a toggle for each meaningful state the current page has. Per page-type — a page contributes only its own states. [10, 134]
+- **A state panel, opened from a cog at top right:** closed by default. The cog is always on the page; click opens the panel below it (`fixed top-3 right-3`). "Show review chrome" (key `codes`, on by default for review). Off hides code badges, Block labels, block wrapper borders, and Hint notes; headings that belong to the page stay. Plus a toggle for each meaningful state the current page has. Per page-type — a page contributes only its own states. [10, 134, 155]
 - **Block codes carry a per-page-type prefix** — C/S (programs), PA/PB/PC (Publications), MN (Network), N (News), HM (Home), AB (About) — so no code can be misread as belonging to another kit. [9, 18, 25, 34, 45]
 - **Delivery is undecided** — possibly a deployed URL signed off as the deliverable, possibly a source for Figma conversion. Keep markup semantic and naming consistent; don't build for either route yet.
 
 ## 2. Language and chrome
 
 - **English only this phase.** RTL is deferred.
-- **Global chrome is drawn once and inherited, never redrawn:** utility bar (search, EN|AR), header nav with dropdowns, breadcrumb + H1 page-header band, newsletter, footer.
-- **The page-header band (breadcrumb + H1) is scaffold, not a block.** A page-type may _suppress_ the band when its opening owns the H1 (Home's HM1; programmes' C1; Who We Are's AB1; Our Team's shell) — that's a router flag, not a change to the chrome. [33, 137, 147]
+- **Global chrome is a sticky right rail, drawn once and inherited:** logo, search + EN|AR, vertical nav, newsletter link (popup), social, copyright. Not a stacked utility bar / header / newsletter / footer. [154]
+- **The page-header band (breadcrumb + H1) is scaffold, not a block.** It is composed in the page shell, not in layout. Home is the only page that omits it — it opens on HM1. Every other page mounts `<PageHeaderBand />`. `suppressPageHead` is gone. Blocks do not render crumb or page title. [33, 137, 147, 152]
+- **Programme pages are four always-on sections plus optional S3.** After the band: Overview, Application, optional Past (S3), FAQs, Contact. Overview's h2 is always in the DOM and visually hidden (`sr-only`) — document outline only, hidden in both views, never `.block-heading`. Visible section h2s use `.block-heading` so review chrome hides them; client view shows them at `text-2xl font-bold`. Programme block titles under those sections are `h3` at `text-lg`. No extra section boxes. [135, 153]
 - **Copy is being rewritten, not migrated.** Lay out for rewritten copy that fits the blocks; don't reproduce today's wrong-tab content or artifacts.
 
 ## 3. Grouping and lists

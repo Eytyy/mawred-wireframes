@@ -25,7 +25,7 @@ export function C5FormsOfSupport({
   );
 
   return (
-    <Block code="C5" label="Forms of support" heading={heading}>
+    <Block code="C5" label="Forms of support" heading={heading} headingAs="h3">
       {records.map((record) => (
         <div
           key={record.label}

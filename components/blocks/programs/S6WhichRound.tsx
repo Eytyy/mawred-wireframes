@@ -22,6 +22,7 @@ export function S6WhichRound({ lead, rows, notes }: S6WhichRoundProps) {
       code="S6"
       label="Which round should I apply to?"
       heading="Which round should I apply to?"
+      headingAs="h3"
     >
       {lead ? <p className="mb-2">{lead}</p> : null}
       {rows

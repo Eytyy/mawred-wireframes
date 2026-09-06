@@ -6,6 +6,7 @@ type BlockProps = {
   children: ReactNode;
   optional?: boolean;
   heading?: string;
+  headingAs?: "h2" | "h3";
 };
 
 export function Block({
@@ -14,6 +15,7 @@ export function Block({
   children,
   optional,
   heading,
+  headingAs: HeadingTag = "h2",
 }: BlockProps) {
   const borderClass = optional
     ? "border border-dashed border-black"
@@ -28,7 +30,9 @@ export function Block({
         <span className="text-xs uppercase tracking-widest">{label}</span>
       </div>
       {heading ? (
-        <h2 className="block-heading mb-2.5 text-lg font-bold">{heading}</h2>
+        <HeadingTag className="block-heading mb-2.5 text-lg font-bold">
+          {heading}
+        </HeadingTag>
       ) : null}
       {children}
     </section>

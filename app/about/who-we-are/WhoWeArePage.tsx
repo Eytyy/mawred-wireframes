@@ -3,6 +3,7 @@ import { AB2Vision } from "@/components/blocks/about/AB2Vision";
 import { AB3Mission } from "@/components/blocks/about/AB3Mission";
 import { AB4Values } from "@/components/blocks/about/AB4Values";
 import { AB5HistoryTimeline } from "@/components/blocks/about/AB5HistoryTimeline";
+import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
 import { Hint } from "@/components/wireframe/Hint";
 import {
   HISTORY_ENTRIES,
@@ -12,18 +13,14 @@ import {
   VISION,
   WHO_WE_ARE_INTRO,
 } from "@/lib/pages/about";
-import { ROUTES_BY_KEY } from "@/lib/pages/routes";
-
-const route = ROUTES_BY_KEY["about-who"];
 
 export function WhoWeArePage() {
   return (
     <>
-      <AB1Intro
-        crumb={route.crumb}
-        pageTitle={route.title}
-        text={WHO_WE_ARE_INTRO}
-      />
+      <div>
+        <PageHeaderBand />
+        <AB1Intro text={WHO_WE_ARE_INTRO} />
+      </div>
       <AB2Vision text={VISION} />
       <AB3Mission points={MISSION_POINTS} />
       <AB4Values values={VALUES} />

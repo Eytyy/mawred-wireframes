@@ -9,6 +9,7 @@ import { N5PrevNext } from "@/components/blocks/news/N5PrevNext";
 import { N6FeaturedImage } from "@/components/blocks/news/N6FeaturedImage";
 import { N7PostMeta } from "@/components/blocks/news/N7PostMeta";
 import { N9Body } from "@/components/blocks/news/N9Body";
+import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
 import { Hint } from "@/components/wireframe/Hint";
 import {
   PRODUCTION_AWARDS_RESULTS as POST,
@@ -21,6 +22,9 @@ export function NewsDetailPage() {
 
   return (
     <>
+      <div>
+        <PageHeaderBand />
+      </div>
       <N5PrevNext edge={state.edge} />
       <N6FeaturedImage caption={POST.imageCaption} />
       <N7PostMeta

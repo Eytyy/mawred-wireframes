@@ -7,22 +7,20 @@ export function PageHeaderBand() {
   const pathname = usePathname();
   const route = getRouteByPath(pathname);
 
-  if (!route || route.suppressPageHead) {
+  if (!route) {
     return null;
   }
 
   return (
-    <div className="border-black py-[18px]">
-      <div className="mx-auto max-w-[1040px] px-4">
-        <div
-          className="mb-2 text-xs text-neutral-500"
-          dangerouslySetInnerHTML={{ __html: route.crumb }}
-        />
-        <h1
-          className="inline-block py-2 text-4xl font-bold"
-          dangerouslySetInnerHTML={{ __html: route.title }}
-        />
-      </div>
+    <div>
+      <div
+        className="mb-2 text-xs text-neutral-500"
+        dangerouslySetInnerHTML={{ __html: route.crumb }}
+      />
+      <h1
+        className="inline-block py-2 text-5xl font-bold"
+        dangerouslySetInnerHTML={{ __html: route.title }}
+      />
     </div>
   );
 }

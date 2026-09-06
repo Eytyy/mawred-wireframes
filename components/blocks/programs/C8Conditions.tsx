@@ -13,6 +13,7 @@ export function C8Conditions({ text, items }: C8ConditionsProps) {
       code="C8"
       label="Conditions / exclusions"
       heading="Conditions / exclusions"
+      headingAs="h3"
     >
       <Prose lines={2} text={text} />
       <ul className="m-0 list-disc pl-5">

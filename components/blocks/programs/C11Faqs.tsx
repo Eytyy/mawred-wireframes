@@ -16,7 +16,7 @@ type C11FaqsProps = {
 export function C11Faqs({ count = 4, items }: C11FaqsProps) {
   if (items) {
     return (
-      <Block code="C11" label="FAQs" heading="FAQs">
+      <Block code="C11" label="FAQs">
         <Accordion
           plain
           items={items.map((item) => ({
@@ -33,7 +33,7 @@ export function C11Faqs({ count = 4, items }: C11FaqsProps) {
   }
 
   return (
-    <Block code="C11" label="FAQs" heading="FAQs">
+    <Block code="C11" label="FAQs">
       <Accordion
         plain
         items={Array.from({ length: count }, (_, index) => ({

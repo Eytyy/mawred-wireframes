@@ -4,6 +4,7 @@ import { PA1IntroLine } from "@/components/blocks/publications/PA1IntroLine";
 import { PA2FilterBar } from "@/components/blocks/publications/PA2FilterBar";
 import { PA3CountRow } from "@/components/blocks/publications/PA3CountRow";
 import { PA4ResultsGrid } from "@/components/blocks/publications/PA4ResultsGrid";
+import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
 import {
   LIBRARY_FACETS,
   LIBRARY_RECORDS,
@@ -16,7 +17,10 @@ export function LibraryPage() {
 
   return (
     <>
-      <PA1IntroLine slots={state.slots} />
+      <div>
+        <PageHeaderBand />
+        <PA1IntroLine slots={state.slots} />
+      </div>
       <PA2FilterBar facets={LIBRARY_FACETS} />
       <PA3CountRow
         empty={state.empty}

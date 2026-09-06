@@ -16,7 +16,7 @@ function FactValue({ value }: { value?: string }) {
 
 export function C3AtAGlance({ rows }: C3AtAGlanceProps) {
   return (
-    <Block code="C3" label="At-a-glance facts" heading="At-a-glance facts">
+    <Block code="C3" label="At-a-glance facts" heading="At-a-glance facts" headingAs="h3">
       <div className="grid grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-2.5">
         {rows.map((row) => (
           <div key={row.label} className="min-w-0 border border-black p-2.5">

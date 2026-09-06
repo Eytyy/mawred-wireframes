@@ -5,6 +5,7 @@ import { N1CategoryFilter } from "@/components/blocks/news/N1CategoryFilter";
 import { N2CountRow } from "@/components/blocks/news/N2CountRow";
 import { N3PostFeed } from "@/components/blocks/news/N3PostFeed";
 import { N4Pagination } from "@/components/blocks/news/N4Pagination";
+import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
 import { Hint } from "@/components/wireframe/Hint";
 import { filterNewsPosts, NEWS_POSTS } from "@/lib/pages/news";
 import { useWireframeState } from "@/lib/wireframe-state";
@@ -23,6 +24,9 @@ export function NewsLandingPage() {
 
   return (
     <>
+      <div>
+        <PageHeaderBand />
+      </div>
       <N1CategoryFilter activeIdx={activeIdx} onSelect={setActiveIdx} />
       <N2CountRow
         activeIdx={activeIdx}

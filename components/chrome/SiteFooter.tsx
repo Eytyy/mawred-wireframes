@@ -1,43 +1,57 @@
+"use client";
+
+import { useState } from "react";
 import { Btn } from "@/components/wireframe/Btn";
 import { Field } from "@/components/wireframe/Field";
-import { Fill } from "@/components/wireframe/Fill";
 
-export function Newsletter() {
+function Newsletter() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="border-b border-black py-[18px]">
-      <div className="mx-auto flex max-w-[1040px] flex-wrap items-center gap-2.5 px-4">
-        <strong>Newsletter</strong>
-        <Field>email address</Field>
-        <Btn>Subscribe</Btn>
-      </div>
-    </div>
+    <>
+      <button
+        type="button"
+        className="cursor-pointer border-0 bg-transparent p-0 text-left text-sm"
+        onClick={() => setOpen(true)}
+      >
+        Newsletter
+      </button>
+      {open && (
+        <div
+          className="fixed inset-0 z-40 flex items-center justify-center"
+          onClick={() => setOpen(false)}
+        >
+          <div
+            className="border border-black bg-white p-4"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <strong>Newsletter</strong>
+              <button
+                type="button"
+                className="cursor-pointer border-0 bg-transparent p-0 text-sm"
+                onClick={() => setOpen(false)}
+              >
+                Close
+              </button>
+            </div>
+            <div className="flex flex-col gap-2">
+              <Field>email address</Field>
+              <Btn>Subscribe</Btn>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
 export function SiteFooter() {
   return (
-    <footer className="mt-12 border-t-2 border-black">
+    <footer className="flex flex-col gap-4">
       <Newsletter />
-      <div className="mx-auto max-w-[1040px] px-4">
-        <div className="flex flex-wrap gap-3 py-[18px]">
-          <div className="min-h-20 min-w-[180px] flex-1 border border-black p-3">
-            Footer links
-          </div>
-          <div className="min-h-20 min-w-[180px] flex-1 border border-black p-3">
-            Footer links
-          </div>
-          <div className="min-h-20 min-w-[180px] flex-1 border border-black p-3">
-            Contact
-            <Fill width={70} />
-          </div>
-          <div className="min-h-20 min-w-[180px] flex-1 border border-black p-3">
-            Social row
-          </div>
-        </div>
-        <div className="border-t border-neutral-200 py-3 text-xs text-neutral-500">
-          &copy; copyright line
-        </div>
-      </div>
+      <div className="border border-black p-3">Social</div>
+      <div className="text-xs text-neutral-500">&copy; copyright line</div>
     </footer>
   );
 }

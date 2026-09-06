@@ -23,7 +23,6 @@ export type RouteEntry = {
   title: string;
   crumb: string;
   statesKey?: StatesKey;
-  suppressPageHead?: boolean;
   stub?: boolean;
   stubMessage?: string;
   indexLabel?: string;
@@ -37,7 +36,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Home",
     crumb: "Home",
     statesKey: "home",
-    suppressPageHead: true,
     indexLabel: "Home",
     indexSublabel: "Curated cross-page summary — wireframed",
   },
@@ -55,7 +53,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Production Awards",
     crumb: "Home &rsaquo; Grants &amp; Opportunities &rsaquo; Production Awards",
     statesKey: "program",
-    suppressPageHead: true,
     indexLabel: "Production Awards",
     indexSublabel: "Programme page — wireframed",
   },
@@ -65,7 +62,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Wijhat",
     crumb: "Home &rsaquo; Grants &amp; Opportunities &rsaquo; Wijhat",
     statesKey: "program",
-    suppressPageHead: true,
     indexLabel: "Wijhat",
     indexSublabel: "Programme page — wireframed",
   },
@@ -75,7 +71,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Stand for Art",
     crumb: "Home &rsaquo; Grants &amp; Opportunities &rsaquo; Stand for Art",
     statesKey: "programRolling",
-    suppressPageHead: true,
     indexLabel: "Stand for Art",
     indexSublabel: "Programme page — wireframed",
   },
@@ -85,7 +80,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Abbara",
     crumb: "Home &rsaquo; Grants &amp; Opportunities &rsaquo; Abbara",
     statesKey: "programDirectory",
-    suppressPageHead: true,
     indexLabel: "Abbara",
     indexSublabel: "Programme page — wireframed",
   },
@@ -190,7 +184,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Who We Are",
     statesKey: "aboutwho",
     crumb: "Home &rsaquo; About Us &rsaquo; Who We Are",
-    suppressPageHead: true,
     indexLabel: "Who We Are",
     indexSublabel: "About — identity + history timeline",
   },
@@ -200,7 +193,6 @@ export const ROUTES: RouteEntry[] = [
     title: "Our Team",
     statesKey: "aboutteam",
     crumb: "Home &rsaquo; About Us &rsaquo; Our Team",
-    suppressPageHead: true,
     indexLabel: "Our Team",
     indexSublabel: "About — team · board · general assembly",
   },

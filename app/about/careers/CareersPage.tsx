@@ -2,6 +2,7 @@
 
 import { AB6SectionIntro } from "@/components/blocks/about/AB6SectionIntro";
 import { AB12OpenPositions } from "@/components/blocks/about/AB12OpenPositions";
+import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
 import { Hint } from "@/components/wireframe/Hint";
 import { useWireframeState } from "@/lib/wireframe-state";
 
@@ -10,7 +11,10 @@ export function CareersPage() {
 
   return (
     <>
-      {state.slots ? <AB6SectionIntro optional /> : null}
+      <div>
+        <PageHeaderBand />
+        {state.slots ? <AB6SectionIntro optional /> : null}
+      </div>
       <AB12OpenPositions
         onejob={state.onejob}
         nopositions={state.nopositions}
