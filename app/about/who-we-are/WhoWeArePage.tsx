@@ -4,6 +4,7 @@ import { AB3Mission } from "@/components/blocks/about/AB3Mission";
 import { AB4Values } from "@/components/blocks/about/AB4Values";
 import { AB5HistoryTimeline } from "@/components/blocks/about/AB5HistoryTimeline";
 import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import { Hint } from "@/components/wireframe/Hint";
 import {
   HISTORY_ENTRIES,
@@ -16,7 +17,7 @@ import {
 
 export function WhoWeArePage() {
   return (
-    <>
+    <PageWidth>
       <div>
         <PageHeaderBand />
         <AB1Intro text={WHO_WE_ARE_INTRO} />
@@ -32,6 +33,6 @@ export function WhoWeArePage() {
         landing page: the dropdown links straight to the five sub-pages and
         Home&rsquo;s identity lead-in routes here (decision 54).
       </Hint>
-    </>
+    </PageWidth>
   );
 }

@@ -19,10 +19,10 @@ A Next.js app styled with Tailwind. Blocks are React components; each page is a 
 ## 2. Language and chrome
 
 - **English only this phase.** RTL is deferred.
-- **Global chrome is a sticky right rail, drawn once and inherited:** logo, search + EN / ع, vertical nav, newsletter link (popup), social, copyright. Not a stacked utility bar / header / newsletter / footer. [154]
+- **Global chrome is a sticky right rail, drawn once and inherited:** logo, search + EN / ع, vertical nav, newsletter link (popup), social, copyright. Not a stacked utility bar / header / newsletter / footer. `main` has a 1px left border and vertical padding only. Page width (`max-w-300`) and horizontal padding live in `<PageWidth />`, which each page shell mounts, so a full-bleed rule can reach the rail. [154, 171]
 - **The page-header band (breadcrumb + H1) is scaffold, not a block.** It is composed in the page shell, not in layout. Home is the only page that omits it — it opens on HM1. Every other page mounts `<PageHeaderBand />`. `suppressPageHead` is gone. Blocks do not render crumb or page title. [33, 137, 147, 152]
 - **Section h2s are `text-2xl font-bold` site-wide.** Client-visible page-level titles — `Block.heading` (default `h2`), AB2 Vision, and programme section titles — share `.block-heading` at that size so review chrome hides them. Programme block titles under those sections are `h3` at `text-lg`. [135]
-- **Programme pages are four always-on sections plus optional S3.** After the band: Overview, Application, optional Past (S3), FAQs, Contact. Overview's h2 is always in the DOM and visually hidden (`sr-only`) — document outline only, hidden in both views, never `.block-heading`. No extra section boxes. [135, 153]
+- **Programme pages are three always-on sections plus optional S3.** After the band: a sticky in-page nav whose arrow tracks the section in view, then About, Application, optional Past (S3), FAQs. About's h2 is `sr-only`; Application, Past and FAQs keep a visible `.block-heading`. Contact is a sentence under FAQs (C12), not its own section. Each section is a full-width rule with inner `PageWidth`. No extra section boxes. [135, 153, 172, 173, 174, 176]
 - **Copy is being rewritten, not migrated.** Lay out for rewritten copy that fits the blocks; don't reproduce today's wrong-tab content or artifacts.
 
 ## 3. Grouping and lists

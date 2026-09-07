@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import { Fill } from "./Fill";
+import type { ReactNode } from 'react';
+import { Fill } from './Fill';
 
 export type TimelineItem = {
   key: string;
@@ -15,15 +15,15 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
       {items.map((item, index) => (
         <li
           key={item.key}
-          className={`relative border-l-2 border-black pb-3.5 pl-3.5 ${
-            index === items.length - 1 ? "border-l-transparent" : ""
+          className={`relative border-l-2 border-black pb-4 pl-3.5 ${
+            index === items.length - 1 ? 'border-l-transparent' : ''
           }`}
         >
           <span
-            className="absolute -left-1.75 top-0.5 h-2.5 w-2.5 bg-black"
+            className="absolute -left-1.5 top-2 h-2.5 w-2.5 bg-black rounded-full"
             aria-hidden
           />
-          <div className="flex justify-between gap-2.5 text-sm">
+          <div className="flex justify-between gap-2.5 text-lg font-bold">
             <span>{item.label}</span>
             {item.meta ? (
               <em className="text-xs not-italic text-neutral-500">{item.meta}</em>

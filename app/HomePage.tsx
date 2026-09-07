@@ -5,6 +5,7 @@ import { HM2ImpactStrip } from "@/components/blocks/home/HM2ImpactStrip";
 import { HM4ProgrammesOverview } from "@/components/blocks/home/HM4ProgrammesOverview";
 import { HM5FeaturedSpotlight } from "@/components/blocks/home/HM5FeaturedSpotlight";
 import { HM6LatestNews } from "@/components/blocks/home/HM6LatestNews";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import { Hint } from "@/components/wireframe/Hint";
 import {
   HOME_ALL_NEWS_HREF,
@@ -22,7 +23,7 @@ export function HomePage() {
   const { state } = useWireframeState();
 
   return (
-    <>
+    <PageWidth>
       <HM1CinematicHero
         staticfb={state.staticfb}
         positioning={HOME_POSITIONING}
@@ -47,6 +48,6 @@ export function HomePage() {
         the HM8 code is not reused. Spec &sect;5&rsquo;s claim that every
         inner section is represented on Home no longer holds.
       </Hint>
-    </>
+    </PageWidth>
   );
 }

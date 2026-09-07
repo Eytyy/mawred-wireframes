@@ -3,6 +3,7 @@
 import { AB6SectionIntro } from "@/components/blocks/about/AB6SectionIntro";
 import { AB12OpenPositions } from "@/components/blocks/about/AB12OpenPositions";
 import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import { Hint } from "@/components/wireframe/Hint";
 import { useWireframeState } from "@/lib/wireframe-state";
 
@@ -10,7 +11,7 @@ export function CareersPage() {
   const { state } = useWireframeState();
 
   return (
-    <>
+    <PageWidth>
       <div>
         <PageHeaderBand />
         {state.slots ? <AB6SectionIntro optional /> : null}
@@ -25,6 +26,6 @@ export function CareersPage() {
         has content to launch with is a <b>client call</b>; all three states are
         laid out so it can ship either way.
       </Hint>
-    </>
+    </PageWidth>
   );
 }

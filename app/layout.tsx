@@ -16,11 +16,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className="codes-off">
         <WireframeStateProvider>
           <div className="flex items-start">
-            <div className="sticky top-0 flex h-screen w-72 shrink-0 flex-col justify-between p-4 pt-15 lg:p-10 lg:pt-15">
+            <div className="sticky top-0 flex h-screen w-80 shrink-0 flex-col justify-between p-4 pt-15 lg:p-10">
               <SiteHeader />
               <SiteFooter />
             </div>
-            <main className="min-w-0 flex-1 p-4 lg:p-10 max-w-300 mx-auto">{children}</main>
+            <main className="min-w-0 flex-1 border-l border-black py-4 lg:py-10">{children}</main>
           </div>
           <StatePanel />
         </WireframeStateProvider>

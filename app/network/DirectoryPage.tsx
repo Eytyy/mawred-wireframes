@@ -7,6 +7,7 @@ import { MN3FilterBank } from "@/components/blocks/network/MN3FilterBank";
 import { MN4CountRow } from "@/components/blocks/network/MN4CountRow";
 import { MN5DirectoryListing } from "@/components/blocks/network/MN5DirectoryListing";
 import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import {
   NETWORK_CORRECTION_CONTACT,
   NETWORK_INTRO,
@@ -22,7 +23,7 @@ export function DirectoryPage() {
   }
 
   return (
-    <>
+    <PageWidth>
       <div>
         <PageHeaderBand />
         <MN1IntroPurpose
@@ -43,6 +44,6 @@ export function DirectoryPage() {
         orgs={orgs}
         onTabSelect={handleTabSelect}
       />
-    </>
+    </PageWidth>
   );
 }

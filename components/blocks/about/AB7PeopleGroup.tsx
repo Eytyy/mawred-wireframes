@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Block } from "@/components/wireframe/Block";
 import { Btn } from "@/components/wireframe/Btn";
+import { CardGrid, Cover } from "@/components/wireframe/Card";
 import { Hint } from "@/components/wireframe/Hint";
 import { Prose } from "@/components/wireframe/Prose";
 import type { PersonRecord } from "@/lib/pages/about";
@@ -12,9 +13,7 @@ function Person({ record }: { record: PersonRecord }) {
 
   return (
     <div>
-      <div className="mb-2.25 flex h-[105px] items-center justify-center border border-black bg-neutral-200 text-xs text-neutral-500">
-        {record.noimg ? "default avatar" : "photo"}
-      </div>
+      <Cover label={record.noimg ? "default avatar" : "photo"} />
       {record.bio ? (
         <button
           type="button"
@@ -55,11 +54,11 @@ export function AB7PeopleGroup({
 }: AB7PeopleGroupProps) {
   return (
     <Block code="AB7" label={`People group — ${label}`} heading={label}>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(165px,1fr))] items-start gap-3">
+      <CardGrid>
         {people.map((record) => (
           <Person key={record.key} record={record} />
         ))}
-      </div>
+      </CardGrid>
       {total ? (
         <div className="mt-3.5 text-center">
           <Btn>{`Show all ${total}`}</Btn>

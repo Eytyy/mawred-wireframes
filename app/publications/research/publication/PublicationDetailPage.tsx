@@ -1,6 +1,7 @@
 import { PC1PublicationRecord } from "@/components/blocks/publications/PC1PublicationRecord";
 import { PC2RelatedPublications } from "@/components/blocks/publications/PC2RelatedPublications";
 import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import {
   PUBLICATION_DETAIL_HREF,
   PUBLICATION_RECORD,
@@ -8,7 +9,7 @@ import {
 
 export function PublicationDetailPage() {
   return (
-    <>
+    <PageWidth>
       <div>
         <PageHeaderBand />
       </div>
@@ -17,6 +18,6 @@ export function PublicationDetailPage() {
         detailHref={PUBLICATION_DETAIL_HREF}
         records={PUBLICATION_RECORD.related}
       />
-    </>
+    </PageWidth>
   );
 }

@@ -4,7 +4,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
-**Current task:** none. Facet panels are anchored combobox dropdowns.
+**Current task:** none.
+
+---
+
+## Programme page — Figma 310:458
+
+- [x] Unit 1 — `main` left border; `PageWidth` wrapper
+- [x] Unit 2 — section rules; About heading; Contact under FAQs
+- [x] Unit 3 — sticky section nav
+- [x] Unit 4 — 3rem block-frame gap
 
 ---
 
@@ -31,6 +40,126 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Programme page section nav tracks the active section (2026-09-07)
+
+**Done:** `SectionNav` is a client component. An IntersectionObserver over the section elements (`rootMargin: '-112px 0px -60% 0px'`) marks the topmost intersecting section in items order. Each link holds a `→` in an always-occupied slot, `invisible` unless active; the active link takes `aria-current="true"`. Default active is the first item. The effect keys off the joined item ids. Decision **174** revised in place; **176** logs the Unit 1 `pt-15` sticky alignment.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 174 revised — IntersectionObserver active state. 176. Sticky nav aligns with the rail's 60px inset.
+
+**Flagged:** As found at the start of this unit, the sticky wrapper includes `PageHeaderBand` and has no `pt-15`. Decision 176 records the Unit 1 alignment (`pt-15`, band scrolls away). Not restored here.
+
+**Verified:** Curl against the four programme routes. Each nav link is `flex items-center gap-2` with an always-present `→` (`invisible` on inactive); About has `aria-current="true"` on first paint. Observer behaviour and the stuck-state arrow left for review in the browser.
+
+### Programme page heading, sticky alignment, section spacing (2026-09-07)
+
+**Done:** About's h2 is `sr-only` again; Application, Past and FAQs keep visible headings. Sticky nav wrapper is `sticky top-0 z-20 bg-white pt-15` so the bar aligns with the rail's 60px inset. Sections take `scroll-mt-28`; C7 is `sticky top-28`. Section padding halved (`py-8` / `pb-8` / `pt-8`). Decision **172** revised in place (About `sr-only`; 2rem section padding); **159** revised (C7 `top-28`); **135** and **153** catch the About heading. Standing constraint 2 catches up.
+
+**Left undone:** Unit 2 — IntersectionObserver active state on the nav (decision 174's set-aside; 176 for the `pt-15` alignment). `.block-frame` 3rem gap (decision 175) unchanged.
+
+**Decisions:** 172 revised — About `sr-only`; section padding 2rem; `scroll-mt-28`. 159 revised — C7 `top-28`. 135 and 153 revised for the About heading.
+
+**Flagged:** The first block in each section still carries its full 3rem top margin, because `.page-width > .block-frame:first-child` in `globals.css` cannot match when a heading is the actual first child. Pre-existing, not caused by this pass — worth a look once the sections are tighter.
+
+**Verified:** Curl against all four programme routes. About is `<h2 class="sr-only">About</h2>` on each; Application / Past / FAQs keep `.block-heading`. Page sections are `scroll-mt-28` with `pb-8` / `py-8` / `pt-8`; C7 wrapper is `sticky top-28`; nav wrapper is `sticky top-0 z-20 bg-white pt-15`. No leftover `scroll-mt-24` or `sticky top-20`. Sticky alignment and C7 offset in the stuck state left for review in the browser.
+
+### Block-frame gap is 3rem (2026-09-07)
+
+**Done:** `body.codes-off .block-frame` `margin-block` is `3rem`. Site-wide. Decision **175** logged; **135** revised in place.
+
+**Left undone:** Knock-on across Home, About, News, Publications and Network left for review in the browser.
+
+**Decisions:** 175. Block-frame gap is 3rem in client view.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### Programme page sticky section nav (2026-09-07)
+
+**Done:** `SectionNav` is a `→` plus About / Application / (Past when shown) / FAQs anchors. Sticky at `top-0` as a direct child of `main`; crumb and H1 scroll away. `html` is `scroll-smooth`; sections take `scroll-mt-24`. C7's sticky offset is `top-20`. Decision **174** logged; **159** revised in place.
+
+**Left undone:** No active-on-scroll tracking — all links sit at the same weight.
+
+**Decisions:** 174. Programme pages have a sticky in-page nav. 159 revised — C7 `top-20`.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### Programme sections are full-bleed rules; Contact folds into FAQs (2026-09-07)
+
+**Done:** Each programme section is a full-width `<section>` with `border-b` and `py-16` (About `pb-16`; FAQs `pt-16`, no border), content in `PageWidth`. Overview's `sr-only` h2 is a visible "About". C12 renders "If you have more questions, email us at {address}" and mounts under C11 inside FAQs. Per-block wrapper divs are gone. Decisions **172** and **173** logged; **135** and **153** revised in place. Standing constraint 2 and content-map C12 rows catch up.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 172. Programme sections are full-bleed rules with inner `PageWidth`. 173. Contact is a sentence under FAQs. 135 and 153 revised.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### Main left border; PageWidth wrapper (2026-09-07)
+
+**Done:** `main` has `border-l border-black` and vertical padding only. `max-w-300` and horizontal padding move to shared `PageWidth`. Every page shell wraps in it; programme pages mount more than one. `.block-frame` first/last-child rules retarget from `main` to `.page-width`. Decision **171** logged; **154** revised in place. Standing constraint 2 and AGENTS.md chrome line catch up.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 171. Main carries a left border; page width lives in `PageWidth`. 154 revised.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### AB7 people groups are four-column CardGrid (2026-09-07)
+
+**Done:** AB7 leaves the local `minmax(165px)` auto-fill for shared `CardGrid`. Four cards fill the row; Team's four sit as one row. Decision **167** revised in place.
+
+**Left undone:** Nothing from this brief.
+
+**Decisions:** 167 revised — AB7 is a CardGrid consumer.
+
+**Flagged:** None.
+
+**Verified:** Curl against `/about/our-team`. Three `grid-cols-4` CardGrids (Team, Board, Assembly), 19 covers, no leftover `minmax(165px)` / `auto-fill`. Not click-tested in a browser — no browser tool in this session.
+
+### AB7 people photos are portrait Cover (2026-09-07)
+
+**Done:** AB7 drops the local `h-[105px]` photo box and uses shared `Cover` with `photo` / `default avatar` labels. Same 3:4 footprint as publication covers and MN6. Decision **166** revised in place.
+
+**Left undone:** Nothing from this brief. AB7's `minmax(165px)` auto-fill grid is unchanged.
+
+**Decisions:** 166 revised — AB7 is a Cover consumer.
+
+**Flagged:** None.
+
+**Verified:** Curl against `/about/our-team`. 19 people cards, 19 `aspect-3/4` covers (15 `photo`, 4 `default avatar`), no leftover `h-[105px]`. Grid still `minmax(165px)`. Not click-tested in a browser — no browser tool in this session.
+
+### C4 step cards are full-width, number and headline inline (2026-09-07)
+
+**Done:** `C4ApplySteps` stacks each step as a full-width card. Index and label sit on one `text-xl font-bold` line; detail stays under them. Nested S5 use picks it up. Decision **170** logged; **141** revised in place. Content-map C4 rows catch up.
+
+**Left undone:** Nothing from this brief.
+
+**Decisions:** 170. C4 step cards are full-width, with index and label on one line. 141 revised.
+
+**Flagged:** None.
+
+**Verified:** Curl against the running dev server. `/programs/production-awards` four C4 cards, each `1 Label` on one `text-xl font-bold` line; `/programs/abbara` three; `/programs/stand-for-art` two; `/programs/wijhat` two nested cards on the Individual path (Group is client-only). No leftover `minmax(210px)` grid. Not click-tested in a browser — no browser tool in this session.
+
+### Network directory sample is twelve per tab (2026-09-07)
+
+**Done:** `NETWORK_ROWS` is twelve individuals and twelve organisations. Names and countries from the live community listing; involvement and discipline authored. The original four stay first so the filtered-state chips still land on a real row. MN5 hint, content-map, and decision **110** catch up; decision **169** logged.
+
+**Left undone:** Still one populated record page (Al Kasaba); every row still links there. Involvement and discipline are not scraped from live records.
+
+**Decisions:** 169. Directory listing sample is twelve rows per entity tab. 110 revised.
+
+**Flagged:** None.
+
+**Verified:** `/network` HTML shows 12 individual rows and “Showing 12 records in Individuals & Groups”. Organizations tab is client-only; its 12 rows are in `NETWORK_ROWS[1]` and were not click-tested (no browser tool in this session).
 
 ### Facet panels are combobox dropdowns (2026-09-07)
 
@@ -847,6 +976,13 @@ Newest first. One entry per page-type completed: what was done, what was left as
 ---
 
 ## Completed tasks
+
+### Programme page — fixes from review (2026-09-07)
+
+- [x] Unit 1 — heading, sticky alignment, section spacing
+- [x] Unit 2 — the arrow tracks the active section
+
+**Plan closed.** About is `sr-only` again; sticky nav aligns with the rail (`pt-15`, decision 176); section padding is 2rem; the in-page arrow tracks the active section (decision 174).
 
 ### Home rework — five blocks, real hierarchy (2026-09-07)
 

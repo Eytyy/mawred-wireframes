@@ -5,6 +5,7 @@ import { PA2FilterBar } from "@/components/blocks/publications/PA2FilterBar";
 import { PA3CountRow } from "@/components/blocks/publications/PA3CountRow";
 import { PA4ResultsGrid } from "@/components/blocks/publications/PA4ResultsGrid";
 import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import {
   LIBRARY_FACETS,
   LIBRARY_RECORDS,
@@ -16,7 +17,7 @@ export function LibraryPage() {
   const { state } = useWireframeState();
 
   return (
-    <>
+    <PageWidth>
       <div>
         <PageHeaderBand />
         <PA1IntroLine slots={state.slots} />
@@ -32,6 +33,6 @@ export function LibraryPage() {
         detailHref={PUBLICATION_DETAIL_HREF}
         records={LIBRARY_RECORDS}
       />
-    </>
+    </PageWidth>
   );
 }

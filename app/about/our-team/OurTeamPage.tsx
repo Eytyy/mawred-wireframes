@@ -1,11 +1,12 @@
 import { AB7PeopleGroup } from "@/components/blocks/about/AB7PeopleGroup";
 import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import { Hint } from "@/components/wireframe/Hint";
 import { PEOPLE_GROUPS } from "@/lib/pages/about";
 
 export function OurTeamPage() {
   return (
-    <>
+    <PageWidth>
       <div>
         <PageHeaderBand />
       </div>
@@ -26,6 +27,6 @@ export function OurTeamPage() {
         supplies it. The page name (&ldquo;Our Team&rdquo; recommended) is a{" "}
         <b>client call</b>.
       </Hint>
-    </>
+    </PageWidth>
   );
 }

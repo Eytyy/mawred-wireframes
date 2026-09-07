@@ -8,6 +8,7 @@ import { N7PostMeta } from "@/components/blocks/news/N7PostMeta";
 import { N8KeyDetail } from "@/components/blocks/news/N8KeyDetail";
 import { N9Body } from "@/components/blocks/news/N9Body";
 import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import { Hint } from "@/components/wireframe/Hint";
 import {
   MADE_WITH_YOUR_MAGIC as POST,
@@ -19,7 +20,7 @@ export function EditorialPostPage() {
   const { state } = useWireframeState();
 
   return (
-    <>
+    <PageWidth>
       <div>
         <PageHeaderBand />
       </div>
@@ -48,6 +49,6 @@ export function EditorialPostPage() {
         fact. The featured image carries no credit, so N6&rsquo;s caption
         renders by omission.
       </Hint>
-    </>
+    </PageWidth>
   );
 }

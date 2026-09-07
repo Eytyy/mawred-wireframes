@@ -10,6 +10,7 @@ import { N6FeaturedImage } from "@/components/blocks/news/N6FeaturedImage";
 import { N7PostMeta } from "@/components/blocks/news/N7PostMeta";
 import { N9Body } from "@/components/blocks/news/N9Body";
 import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import { Hint } from "@/components/wireframe/Hint";
 import {
   PRODUCTION_AWARDS_RESULTS as POST,
@@ -21,7 +22,7 @@ export function NewsDetailPage() {
   const { state } = useWireframeState();
 
   return (
-    <>
+    <PageWidth>
       <div>
         <PageHeaderBand />
       </div>
@@ -59,6 +60,6 @@ export function NewsDetailPage() {
         multi-date programme and a registration form; neither sampled post has
         either.
       </Hint>
-    </>
+    </PageWidth>
   );
 }

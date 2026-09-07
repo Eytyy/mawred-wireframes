@@ -60,7 +60,7 @@ export function MN5DirectoryListing({
             country · involvement · discipline (decision 22) → record detail. A
             record carries one row per entity, not per engagement, so an
             organisation involved twice shows both badges. Load-more rather
-            than a numbered pager (decision 23). Four records are sampled, two
+            than a numbered pager (decision 23). Twelve records are sampled
             per tab; only Al Kasaba has a populated record page, so every row
             links there.
           </Hint>

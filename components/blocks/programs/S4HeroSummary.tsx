@@ -20,10 +20,7 @@ export function S4HeroSummary({ cells }: S4HeroSummaryProps) {
             {cell.lead ? <p className="mb-2.5 font-bold">{cell.lead}</p> : null}
             <div className="flex flex-wrap gap-2.5">
               {cell.items.map((item) => (
-                <div
-                  key={item}
-                  className="w-fit max-w-full shrink-0 border border-black p-2.5"
-                >
+                <div key={item} className="w-fit max-w-full shrink-0 border border-black p-2.5">
                   {item}
                 </div>
               ))}

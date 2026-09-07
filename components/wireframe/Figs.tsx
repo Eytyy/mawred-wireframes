@@ -10,8 +10,8 @@ export function Figs({ labels, wide }: FigsProps) {
     <div
       className={
         wide
-          ? 'grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2.5'
-          : 'grid grid-cols-2 gap-2.5'
+          ? 'grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2.5 py-16'
+          : 'grid grid-cols-2 gap-2.5 py-16'
       }
     >
       {labels.map((item) => {

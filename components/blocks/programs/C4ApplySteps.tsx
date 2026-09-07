@@ -1,6 +1,6 @@
-import { Block } from "@/components/wireframe/Block";
-import { Fill } from "@/components/wireframe/Fill";
-import { Prose } from "@/components/wireframe/Prose";
+import { Block } from '@/components/wireframe/Block';
+import { Fill } from '@/components/wireframe/Fill';
+import { Prose } from '@/components/wireframe/Prose';
 
 export type ApplyStep = {
   label: string;
@@ -20,13 +20,7 @@ type C4ApplyStepsProps = {
   nested?: boolean;
 };
 
-export function C4ApplySteps({
-  steps,
-  documents,
-  note,
-  highlight,
-  nested,
-}: C4ApplyStepsProps) {
+export function C4ApplySteps({ steps, documents, note, highlight, nested }: C4ApplyStepsProps) {
   const inner = (
     <>
       {highlight ? (
@@ -35,16 +29,15 @@ export function C4ApplySteps({
           <Prose lines={2} text={highlight.text} />
         </div>
       ) : null}
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-2.5">
+      <div className="grid grid-cols-1 gap-2.5">
         {steps.map((step, index) => (
-          <div
-            key={`${step.label}-${index}`}
-            className="min-w-0 border border-black p-2.5"
-          >
-            <div className="mb-1 text-xl font-bold">{index + 1}</div>
-            {step.label}
+          <div key={`${step.label}-${index}`} className="w-full min-w-0 border border-black p-2.5">
+            <div className="flex items-baseline gap-2 text-lg font-bold">
+              <span>{index + 1}</span>
+              <span>{step.label}</span>
+            </div>
             {step.detail ? (
-              <div className="mt-1 text-xs text-neutral-500">{step.detail}</div>
+              <div className="mt-1 text-sm text-neutral-500">{step.detail}</div>
             ) : (
               <Fill width={70} />
             )}
@@ -53,9 +46,7 @@ export function C4ApplySteps({
       </div>
       {documents ? (
         <>
-          <span className="mt-3 block text-xs text-neutral-500">
-            Documents to include
-          </span>
+          <span className="mt-3 block text-xs text-neutral-500">Documents to include</span>
           <ul className="m-0 mt-1 list-disc pl-5">
             {documents.map((doc) => (
               <li key={doc} className="mb-1.5 text-xs">

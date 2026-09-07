@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { PageHeaderBand } from "@/components/chrome/PageHeaderBand";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import { INDEX_ROUTES } from "@/lib/pages/routes";
 
 export default function WireframesIndexPage() {
   return (
-    <>
+    <PageWidth>
       <div>
         <PageHeaderBand />
         <p>
@@ -31,6 +32,6 @@ export default function WireframesIndexPage() {
         Use the panel bottom-right to toggle block codes and page-specific
         states.
       </p>
-    </>
+    </PageWidth>
   );
 }
