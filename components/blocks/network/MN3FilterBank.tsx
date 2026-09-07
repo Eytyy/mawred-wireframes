@@ -12,12 +12,12 @@ export function MN3FilterBank() {
         <Field className="min-w-[240px] flex-[1_1_240px]">Search by name…</Field>
         <Btn>Search</Btn>
       </div>
-      <FilterBar facets={NETWORK_FACETS} defaultOpenIdx={1} />
+      <FilterBar facets={NETWORK_FACETS} />
       <Hint>
         Five facets: Involvement · Programme · Discipline · Country · Year.
         Entity Type is not a facet here — the listing tabs own it (decision 20).
-        Programme is shown open to demonstrate the long-facet treatment: over ~12
-        values → search + first six + &ldquo;show all&rdquo; (decision 12) —
+        Each trigger opens an anchored dropdown of every value: over ~12
+        values → type-to-filter and a scrollable list (decision 168) —
         also applies to Discipline (22), Country (55) and Year (21, 2004–2025
         with no 2006). The name search is an addition to the spec (decision 21).
       </Hint>

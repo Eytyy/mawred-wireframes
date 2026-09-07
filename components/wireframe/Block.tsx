@@ -34,7 +34,11 @@ export function Block({
         <span className="text-xs uppercase tracking-widest">{label}</span>
       </div>
       {heading ? (
-        <HeadingTag className="block-heading mb-2.5 text-lg font-bold">
+        <HeadingTag
+          className={`block-heading mb-2.5 font-bold ${
+            HeadingTag === "h3" ? "text-lg" : "text-2xl"
+          }`}
+        >
           {heading}
         </HeadingTag>
       ) : null}

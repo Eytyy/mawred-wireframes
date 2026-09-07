@@ -4,7 +4,7 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
-**Current task:** none. Header chrome updated to Figma 309:392 notes (spacing, Search + EN / ع, +/− and black hover/active). Home rework remains closed.
+**Current task:** none. Facet panels are anchored combobox dropdowns.
 
 ---
 
@@ -31,6 +31,66 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Facet panels are combobox dropdowns (2026-09-07)
+
+**Done:** Shared `FilterBar` opens each facet as an anchored dropdown with type-to-filter (when v > 12), a scrollable list of every value, real checkboxes, and a Clear footer when something is selected. `defaultOpenIdx` is gone — everything closed on first paint. PA2 and MN3 hints rewritten; N1 untouched. Decision **168** logged; **12** and **64** revised in place. Standing constraint 3 rewritten.
+
+**Left undone:** MN3's separate `Search by name…` row is out of scope. Browser review left unverified.
+
+**Decisions:** 168. Facet panels are anchored combobox dropdowns. 12 revised — facet truncation superseded. 64 noted — selection state joins open/close inside the primitive.
+
+**Flagged:** None.
+
+**Verified:** `npx tsc --noEmit` and `npm run lint` both clean. Not in the browser — left for review.
+
+### CardGrid is four columns (2026-09-07)
+
+**Done:** Shared `CardGrid` is `grid-cols-4` instead of `auto-fill` / `minmax(190px)`. Publications, news, initiatives, rosters, related strips, and HM4 follow. PA4's hint drops the reflow line. Decision **167** logged.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 167. CardGrid is four columns.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### Cover is portrait 3:4 (2026-09-07)
+
+**Done:** Shared `Cover` uses `aspect-3/4 w-full` instead of `h-[120px]` / `h-[250px]`. Publication cards, related cards, the detail cover, news and initiative images, and MN6's photo/logo share the ratio. `tall` only drops the card margin. Decision **166** logged; **68** revised in place.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 166. Cover is portrait 3:4. 68 revised — one footprint, now the ratio.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### Publications nav drops Library / Series groups (2026-09-07)
+
+**Done:** Publications in the rail is a flat dropdown like About and Grants: Research & Publications, Mudawanat Podcast, Foundations of Cultural Policies, Mawred Talks. The Library / Series group labels and the `groups` nav shape are gone. Decision **154** revised in place.
+
+**Left undone:** Nothing from this unit. The four destinations stay; only the grouping labels left.
+
+**Decisions:** 154 revised — Publications is a flat list.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### Site-wide h2 matches programme sections (2026-09-07)
+
+**Done:** Client-visible h2s use `.block-heading` at `text-2xl font-bold` everywhere, matching programme section titles (Application, Past, FAQs, Contact). `Block.heading` defaults to that size; AB2 Vision follows. Programme blocks that pass `headingAs="h3"` stay `text-lg`. Decision **135** revised in place; standing constraint 2 names the site-wide scale.
+
+**Left undone:** Nothing from this unit. Stub page titles stay `text-lg` — they are not section headings.
+
+**Decisions:** 135 revised — the About / Home / News / Publications exception is gone.
+
+**Flagged:** None.
+
+**Verified:** Type-check and eslint clean. Curl against the running dev server: Home Programmes / Latest news, Who We Are Vision / Mission / Values / History, Our Team groups, Supporters bands, Careers, news-post Share / Related, publication Related — all `h2` at `text-2xl font-bold`. Wijhat section titles stay `text-2xl`; programme block titles stay `h3` `text-lg`.
 
 ### Header — Figma 309:392 notes (2026-09-07)
 

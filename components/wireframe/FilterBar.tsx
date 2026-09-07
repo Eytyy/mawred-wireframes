@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { Btn } from "@/components/wireframe/Btn";
-import { Field } from "@/components/wireframe/Field";
+import { useEffect, useRef, useState } from "react";
 
 export type Facet = {
   n: string;
@@ -12,69 +10,142 @@ export type Facet = {
 
 type FilterBarProps = {
   facets: Facet[];
-  defaultOpenIdx?: number;
 };
 
-function FacetPanel({ facet, open }: { facet: Facet; open: boolean }) {
-  if (!open) {
-    return null;
-  }
-
-  const long = facet.v > 12;
-  const shown = long ? 6 : facet.v;
-
-  return (
-    <div className="my-2 border border-black p-2.5">
-      {long ? (
-        <Field className="mb-2.25 block w-full">
-          search {facet.n.toLowerCase()}…
-        </Field>
-      ) : null}
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-x-3 gap-y-1.25">
-        {Array.from({ length: shown }, (_, index) => (
-          <span
-            key={index}
-            className="flex items-center gap-1.5 text-xs text-neutral-500"
-          >
-            <i className="inline-block h-[11px] w-[11px] shrink-0 border border-black" />
-            {facet.values?.[index] ?? "value"}
-          </span>
-        ))}
-      </div>
-      {long ? (
-        <Btn className="mt-2.5">Show all {facet.v}</Btn>
-      ) : null}
-    </div>
-  );
+function valuesFor(facet: Facet): string[] {
+  return Array.from({ length: facet.v }, (_, index) => facet.values?.[index] ?? "value");
 }
 
-export function FilterBar({ facets, defaultOpenIdx }: FilterBarProps) {
-  const [openIdx, setOpenIdx] = useState<number | null>(
-    defaultOpenIdx ?? null,
-  );
+export function FilterBar({ facets }: FilterBarProps) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<Record<string, string[]>>({});
+
+  useEffect(() => {
+    if (openIdx === null) {
+      return;
+    }
+
+    function close() {
+      setOpenIdx(null);
+    }
+
+    function onPointerDown(event: PointerEvent) {
+      if (rootRef.current?.contains(event.target as Node)) {
+        return;
+      }
+      close();
+    }
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        close();
+      }
+    }
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [openIdx]);
 
   function toggleFacet(index: number) {
     setOpenIdx((current) => (current === index ? null : index));
+    setQuery("");
+  }
+
+  function toggleValue(facetName: string, value: string) {
+    setSelected((current) => {
+      const currentValues = current[facetName] ?? [];
+      const nextValues = currentValues.includes(value)
+        ? currentValues.filter((item) => item !== value)
+        : [...currentValues, value];
+      return { ...current, [facetName]: nextValues };
+    });
+  }
+
+  function clearFacet(facetName: string) {
+    setSelected((current) => ({ ...current, [facetName]: [] }));
   }
 
   return (
-    <div>
-      <div className="flex flex-wrap gap-2">
-        {facets.map((facet, index) => (
-          <button
-            key={facet.n}
-            type="button"
-            className="flex shrink-0 grow-0 basis-auto cursor-pointer justify-between gap-3.5 border border-black bg-white px-2.5 py-2 text-sm"
-            onClick={() => toggleFacet(index)}
-          >
-            <span>{facet.n}</span>
-            <span>{openIdx === index ? "−" : "+"}</span>
-          </button>
-        ))}
-      </div>
-      {facets.map((facet, index) => (
-        <FacetPanel key={facet.n} facet={facet} open={openIdx === index} />
-      ))}
+    <div ref={rootRef} className="flex flex-wrap gap-2">
+      {facets.map((facet, index) => {
+        const open = openIdx === index;
+        const values = valuesFor(facet);
+        const facetSelected = selected[facet.n] ?? [];
+        const selectedCount = facetSelected.length;
+        const q = query.trim().toLowerCase();
+        const filtered = q
+          ? values.filter((value) => value.toLowerCase().includes(q))
+          : values;
+
+        return (
+          <div key={facet.n} className="relative">
+            <button
+              type="button"
+              className="flex shrink-0 grow-0 basis-auto cursor-pointer justify-between gap-3.5 border border-black bg-white px-2.5 py-2 text-sm"
+              aria-expanded={open}
+              onClick={() => toggleFacet(index)}
+            >
+              <span>
+                {facet.n}
+                {selectedCount > 0 ? ` (${selectedCount})` : ""}
+              </span>
+              <span>{open ? "−" : "+"}</span>
+            </button>
+            {open ? (
+              <div className="absolute top-full left-0 z-40 mt-1 w-[280px] border border-black bg-white">
+                {facet.v > 12 ? (
+                  <input
+                    type="text"
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder={`search ${facet.n.toLowerCase()}…`}
+                    className="w-full border-b border-black px-2.5 py-2 text-sm placeholder:text-neutral-500"
+                  />
+                ) : null}
+                <div className="max-h-[240px] overflow-y-auto">
+                  {filtered.length === 0 ? (
+                    <div className="px-2.5 py-2 text-xs text-neutral-500">
+                      No matches
+                    </div>
+                  ) : (
+                    filtered.map((value, valueIndex) => (
+                      <label
+                        key={`${value}-${valueIndex}`}
+                        className="flex cursor-pointer items-center gap-1.5 px-2.5 py-1.5 text-sm"
+                      >
+                        <input
+                          type="checkbox"
+                          className="h-[11px] w-[11px] shrink-0 appearance-none border border-black checked:bg-black"
+                          checked={facetSelected.includes(value)}
+                          onChange={() => toggleValue(facet.n, value)}
+                        />
+                        {value}
+                      </label>
+                    ))
+                  )}
+                </div>
+                {selectedCount > 0 ? (
+                  <div className="border-t border-black">
+                    <button
+                      type="button"
+                      className="w-full cursor-pointer px-2.5 py-2 text-left text-sm"
+                      onClick={() => clearFacet(facet.n)}
+                    >
+                      Clear
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
     </div>
   );
 }

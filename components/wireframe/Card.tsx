@@ -9,8 +9,8 @@ type CoverProps = {
 export function Cover({ tall, label = "cover" }: CoverProps) {
   return (
     <div
-      className={`flex items-center justify-center border border-black bg-neutral-200 text-xs text-neutral-500 ${
-        tall ? "h-[250px]" : "mb-2.25 h-[120px]"
+      className={`flex aspect-3/4 w-full items-center justify-center border border-black bg-neutral-200 text-xs text-neutral-500 ${
+        tall ? "" : "mb-2.25"
       }`}
     >
       {label}
@@ -41,7 +41,7 @@ export function Card({ href, title, subtitle, children, footer }: CardProps) {
 
 export function CardGrid({ children }: { children: ReactNode }) {
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-3">
+    <div className="grid grid-cols-4 gap-3">
       {children}
     </div>
   );

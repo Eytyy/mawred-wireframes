@@ -14,7 +14,6 @@ type NavGroup = {
   href: string;
   label: string;
   dropdown?: NavLink[];
-  groups?: { label: string; links: NavLink[] }[];
 };
 
 const NAV: NavGroup[] = [
@@ -46,27 +45,14 @@ const NAV: NavGroup[] = [
   {
     href: '/publications/research',
     label: 'Publications',
-    groups: [
+    dropdown: [
+      { href: '/publications/research', label: 'Research & Publications' },
+      { href: '/publications/mudawanat', label: 'Mudawanat Podcast' },
       {
-        label: 'Library',
-        links: [
-          {
-            href: '/publications/research',
-            label: 'Research & Publications',
-          },
-        ],
+        href: '/publications/foundations-of-cultural-policies',
+        label: 'Foundations of Cultural Policies',
       },
-      {
-        label: 'Series',
-        links: [
-          { href: '/publications/mudawanat', label: 'Mudawanat Podcast' },
-          {
-            href: '/publications/foundations-of-cultural-policies',
-            label: 'Foundations of Cultural Policies',
-          },
-          { href: '/publications/mawred-talks', label: 'Mawred Talks' },
-        ],
-      },
+      { href: '/publications/mawred-talks', label: 'Mawred Talks' },
     ],
   },
   { href: '/news', label: 'News' },
@@ -78,11 +64,7 @@ function pathMatches(pathname: string, href: string) {
 }
 
 function childHrefs(item: NavGroup): string[] {
-  return [
-    ...(item.dropdown?.map((link) => link.href) ?? []),
-    ...(item.groups?.flatMap((group) => group.links.map((link) => link.href)) ??
-      []),
-  ];
+  return item.dropdown?.map((link) => link.href) ?? [];
 }
 
 function navItemClass(active: boolean) {
@@ -95,7 +77,7 @@ function navItemClass(active: boolean) {
 function NavItem({ item, pathname }: { item: NavGroup; pathname: string }) {
   const hrefs = [item.href, ...childHrefs(item)];
   const isSectionActive = hrefs.some((href) => pathMatches(pathname, href));
-  const hasMenu = Boolean(item.dropdown || item.groups);
+  const hasMenu = Boolean(item.dropdown);
 
   if (!hasMenu) {
     return (
@@ -123,22 +105,6 @@ function NavItem({ item, pathname }: { item: NavGroup; pathname: string }) {
           >
             {link.label}
           </Link>
-        ))}
-        {item.groups?.map((group) => (
-          <div key={group.label} className="flex flex-col gap-3">
-            <span className="bg-neutral-200 px-2 py-1 text-xs tracking-widest text-neutral-500 uppercase">
-              {group.label}
-            </span>
-            {group.links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={navItemClass(pathMatches(pathname, link.href))}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
         ))}
       </div>
     </details>

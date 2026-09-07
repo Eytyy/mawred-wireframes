@@ -10,12 +10,13 @@ type PA2FilterBarProps = {
 export function PA2FilterBar({ facets = LIBRARY_FACETS }: PA2FilterBarProps) {
   return (
     <Block code="PA2" label="Filter bar">
-      <FilterBar facets={facets} defaultOpenIdx={0} />
+      <FilterBar facets={facets} />
       <Hint>
         Six facets kept as-is: Author · Country · Theme · Language · Type ·
-        Year. Author is shown open to demonstrate the long-facet treatment
-        (decision 12): a facet over ~12 values gets a search field, the first
-        six values and a &ldquo;show all&rdquo;; short facets list every value.
+        Year. Each trigger opens an anchored dropdown of every value
+        (decision 168): a facet over ~12 values gets a type-to-filter input
+        and a scrollable list; short facets list every value. Scroll replaces
+        truncation; there is no &ldquo;show all&rdquo;.
       </Hint>
     </Block>
   );

@@ -56,8 +56,8 @@ export function PA4ResultsGrid({
             </div>
           ) : null}
           <Hint>
-            Card = cover · title · language line → publication detail. Reflows;
-            no fixed column count. Nine sampled cards; the overflow line is the
+            Card = cover · title · language line → publication detail. Four
+            columns (decision 167). Nine sampled cards; the overflow line is the
             rest of the library.
           </Hint>
         </>
