@@ -30,7 +30,7 @@ export function PA3CountRow({
             <>
               <Chip>Language: Arabic ×</Chip>
               <Chip>Year: 2016 ×</Chip>
-              <Btn>Clear all</Btn>
+              <Btn compact>Clear all</Btn>
             </>
           ) : (
             <span className="text-neutral-500">no filters applied</span>

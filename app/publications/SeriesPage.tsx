@@ -18,6 +18,7 @@ export function SeriesPage({ config }: { config: SeriesConfig }) {
       </div>
       <PB2MediaListing
         kind={config.kind}
+        layout={config.kind === "video" ? "grid" : "row"}
         total={config.total}
         slots={state.slots}
       />

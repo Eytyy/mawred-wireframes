@@ -24,7 +24,7 @@ export function S6WhichRound({ lead, rows, notes }: S6WhichRoundProps) {
       heading="Which round should I apply to?"
       headingAs="h3"
     >
-      {lead ? <p className="mb-2">{lead}</p> : null}
+      {lead ? <p className="mb-4">{lead}</p> : null}
       {rows
         ? rows.map((row) => (
             <KV key={row.label} label={row.label} value={row.value} fill={false} />
@@ -33,13 +33,15 @@ export function S6WhichRound({ lead, rows, notes }: S6WhichRoundProps) {
             <KV key={`${label}-${index}`} label={label} />
           ))}
       {notes ? (
-        <ul className="m-0 mt-2 list-disc pl-5">
-          {notes.map((note) => (
-            <li key={note} className="mb-1.5 text-xs">
-              {note}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-4 bg-neutral-200 p-3.5">
+          <ul className="m-0 list-disc pl-5">
+            {notes.map((note) => (
+              <li key={note} className="mb-1.5 last:mb-0">
+                {note}
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : null}
       <Hint>
         Static guide, not an interactive date picker (decision 7).

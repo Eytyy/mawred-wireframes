@@ -14,7 +14,7 @@ export function InitiativeCard({ href = PAST_INITIATIVE_DETAIL_HREF }: { href?: 
 export function AB9InitiativeDirectory() {
   return (
     <Block code="AB9" label="Initiative directory">
-      <CardGrid>
+      <CardGrid cols={3}>
         {Array.from({ length: 12 }, (_, index) => (
           <InitiativeCard key={index} />
         ))}

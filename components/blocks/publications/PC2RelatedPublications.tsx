@@ -23,7 +23,7 @@ export function PC2RelatedPublications({
       label="Related publications"
       heading="Related publications"
     >
-      <CardGrid>
+      <CardGrid cols={3}>
         {records.map((record, index) => (
           <Card
             key={`${record.title}-${index}`}

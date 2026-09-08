@@ -56,6 +56,22 @@ body.codes-off .block-frame.block-flush {
   margin-block: 0;
 }
 
+body.codes-off .block-frame.block-flush-top {
+  margin-top: 0;
+}
+
+body.codes-off .block-frame.block-tight-below {
+  margin-bottom: 1rem;
+}
+
+body.codes-off .block-frame.block-tight-below + .block-frame {
+  margin-top: 0;
+}
+
+body.codes-off .block-frame.block-loose-above {
+  margin-top: 5rem;
+}
+
 .page-width > .block-frame:first-child {
   margin-top: 0;
   padding-block: 0;

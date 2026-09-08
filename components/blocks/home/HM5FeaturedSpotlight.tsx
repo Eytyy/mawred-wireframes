@@ -1,63 +1,41 @@
-import { Block } from "@/components/wireframe/Block";
-import { Banner } from "@/components/wireframe/Banner";
-import { Btn } from "@/components/wireframe/Btn";
-import { Fill } from "@/components/wireframe/Fill";
-import { Hint } from "@/components/wireframe/Hint";
-import { Prose } from "@/components/wireframe/Prose";
-import type { HomeFeature } from "@/lib/pages/home";
+import { Block } from '@/components/wireframe/Block';
+import { Banner } from '@/components/wireframe/Banner';
+import { Btn } from '@/components/wireframe/Btn';
+import { Fill } from '@/components/wireframe/Fill';
+import { Hint } from '@/components/wireframe/Hint';
+import { SectionHeading } from '@/components/wireframe/SectionHeading';
+import type { HomeSpotlight } from '@/lib/pages/home';
 
 type HM5FeaturedSpotlightProps = {
-  twentieth: boolean;
-  feature: HomeFeature;
+  spotlight: HomeSpotlight;
 };
 
-export function HM5FeaturedSpotlight({
-  twentieth,
-  feature,
-}: HM5FeaturedSpotlightProps) {
+export function HM5FeaturedSpotlight({ spotlight }: HM5FeaturedSpotlightProps) {
   return (
-    <Block code="HM5" label="Featured / spotlight">
-      <div className="flex flex-wrap gap-4">
+    <Block code="HM5" label="Featured / spotlight" looseAbove>
+      <div className="flex flex-wrap gap-5 xl:gap-10">
         <div className="min-w-[320px] flex-[2_1_320px]">
           <Banner label="feature image" />
         </div>
-        <div className="min-w-[240px] flex-[1_1_240px]">
-          <span className="text-xs uppercase tracking-widest text-neutral-500">
-            {twentieth ? "Mawred's 20th" : "Featured"}
-          </span>
-          <strong className="my-1.75 block text-sm">
-            {twentieth
-              ? "Twenty years of Mawred — campaign title"
-              : feature.title}
-          </strong>
-          {twentieth ? (
-            <>
-              <Fill width={94} />
-              <Fill width={70} />
-            </>
-          ) : (
-            <Prose text={feature.text} />
-          )}
-          <div className="mt-2.75">
-            <Btn primary href={twentieth ? "/mawreds-20th" : feature.href}>
-              Read more
-            </Btn>
+        <div className="flex min-w-60 flex-[1_1_240px] flex-col gap-6">
+          <SectionHeading className="mb-0">{spotlight.title}</SectionHeading>
+          <div>
+            <Fill width={94} />
+            <Fill width={70} />
           </div>
+          <Btn primary href={spotlight.href} className="self-start">
+            Read more
+          </Btn>
         </div>
       </div>
       <Hint>
-        The homepage&rsquo;s one curation lever: an editor chooses what leads.
-        Default feature is Made With Your Magic, Beirut &mdash; two sentences
-        from that post&rsquo;s body, linking to{" "}
-        <code>/news/editorial-post</code>. Two-column, image left, following
-        decision 15. The &ldquo;Mawred&rsquo;s 20th&rdquo; campaign is a{" "}
-        <b>state on this block, not a block of its own</b> (decision 44), and
-        this slot is now its only home &mdash; the rail item is gone (decision
-        44 revised). <code>/mawreds-20th</code> is still a stub and no
-        campaign content is sourced, so the title and fills in that branch are
-        a <b>gap</b>, not unpublished copy. Whether the 20th is a temporary
-        campaign or something else is still a <b>client call</b>; the
-        structure no longer depends on the answer. Toggle the 20th state.
+        The homepage&rsquo;s one curation lever: an editor chooses what leads. This slot&rsquo;s
+        current occupant is Mawred&rsquo;s 20th, linking to <code>/mawreds-20th</code>. The slot is
+        still one block; swapping later is a config change on <code>HOME_SPOTLIGHT</code>, not a
+        state (decision 44 / 133 revised). Campaign body is fill bars &mdash; no campaign copy is
+        sourced, so that is a <b>gap</b>, not unpublished copy. <code>/mawreds-20th</code> remains a
+        stub. Whether the 20th is a temporary campaign or something else is still a{' '}
+        <b>client call</b>; the structure no longer depends on the answer.
       </Hint>
     </Block>
   );

@@ -37,12 +37,12 @@ export function DirectoryPage() {
         empty={state.empty}
         filtered={state.filtered}
         orgs={orgs}
+        onTabSelect={handleTabSelect}
       />
       <MN5DirectoryListing
         empty={state.empty}
         filtered={state.filtered}
         orgs={orgs}
-        onTabSelect={handleTabSelect}
       />
     </PageWidth>
   );

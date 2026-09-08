@@ -12,11 +12,11 @@ export type NewsPost = {
   href: string;
 };
 
-export const NEWS_CATEGORIES = [
-  { label: "All" },
-  { label: "Announcements" },
-  { label: "News & Events" },
-];
+export const NEWS_CATEGORY_FACET: Facet = {
+  n: "Category",
+  v: 2,
+  values: ["Announcements", "News & Events"],
+};
 
 export const NEWS_PROGRAMME_FACET: Facet = {
   n: "Programme",
@@ -272,7 +272,6 @@ export const MADE_WITH_YOUR_MAGIC: NewsPostDetail = {
 
 export function filterNewsPosts(
   posts: NewsPost[],
-  activeIdx: number,
   filtered: boolean,
   empty: boolean,
 ): NewsPost[] {
@@ -280,17 +279,9 @@ export function filterNewsPosts(
     return [];
   }
 
-  let result = posts;
-
-  if (activeIdx === 1) {
-    result = result.filter((post) => post.category === "Announcements");
-  } else if (activeIdx === 2) {
-    result = result.filter((post) => post.category === "News & Events");
-  }
-
   if (filtered) {
-    result = result.filter((post) => post.programme === "Wijhat");
+    return posts.filter((post) => post.programme === "Wijhat");
   }
 
-  return result;
+  return posts;
 }

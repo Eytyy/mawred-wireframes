@@ -13,7 +13,7 @@ type N13RelatedPostsProps = {
 export function N13RelatedPosts({ posts }: N13RelatedPostsProps) {
   return (
     <Block code="N13" label="Related posts" heading="Related posts">
-      <CardGrid>
+      <CardGrid cols={3}>
         {posts
           ? posts.map((post) => (
               <NewsCard key={post.title} post={post} bare />

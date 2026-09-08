@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { PageWidth } from "@/components/chrome/PageWidth";
 import { Btn } from "@/components/wireframe/Btn";
 import { Field } from "@/components/wireframe/Field";
 
@@ -48,10 +49,12 @@ function Newsletter() {
 
 export function SiteFooter() {
   return (
-    <footer className="flex flex-col gap-4">
-      <Newsletter />
-      <div className="border border-black p-3">Social</div>
-      <div className="text-xs text-neutral-500">&copy; copyright line</div>
+    <footer className="border-t border-black">
+      <PageWidth className="flex items-center justify-between gap-4 py-8">
+        <Newsletter />
+        <div className="border border-black p-3">Social</div>
+        <div className="text-xs text-neutral-500">&copy; copyright line</div>
+      </PageWidth>
     </footer>
   );
 }

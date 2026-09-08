@@ -1,3 +1,4 @@
+import { cn } from "cn";
 import Link from "next/link";
 import { Block } from "@/components/wireframe/Block";
 import { Hint } from "@/components/wireframe/Hint";
@@ -24,9 +25,10 @@ export function N5PrevNext({ edge }: N5PrevNextProps) {
         ) : null}
         <Link
           href={NEWS_DETAIL_HREF}
-          className={`block max-w-[46%] flex-[0_1_46%] border border-black px-2.5 py-2 text-sm no-underline ${
-            edge ? "ml-auto text-right" : "ml-auto text-right"
-          }`}
+          className={cn(
+            "block max-w-[46%] flex-[0_1_46%] border border-black px-2.5 py-2 text-sm no-underline",
+            edge ? "ml-auto text-right" : "ml-auto text-right",
+          )}
         >
           <small className="mb-0.75 block text-xs text-neutral-500">
             Next post &rarr;

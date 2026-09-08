@@ -1,3 +1,4 @@
+import { cn } from 'cn';
 import type { ReactNode } from 'react';
 import { Fill } from './Fill';
 
@@ -15,9 +16,10 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
       {items.map((item, index) => (
         <li
           key={item.key}
-          className={`relative border-l-2 border-black pb-4 pl-3.5 ${
-            index === items.length - 1 ? 'border-l-transparent' : ''
-          }`}
+          className={cn(
+            'relative border-l-2 border-black pb-4 pl-3.5',
+            index === items.length - 1 && 'border-l-transparent',
+          )}
         >
           <span
             className="absolute -left-1.5 top-2 h-2.5 w-2.5 bg-black rounded-full"

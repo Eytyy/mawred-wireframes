@@ -67,12 +67,9 @@ export const STATES: Record<StatesKey, StateConfig> = {
       "Slot = the optional card excerpt. The category tabs switch in the page itself — navigation, not a state.",
   },
   home: {
-    list: [
-      { key: "twentieth", label: "Feature slot = Mawred's 20th" },
-      { key: "staticfb", label: "Static fallback (no motion)" },
-    ],
+    list: [{ key: "staticfb", label: "Static fallback (no motion)" }],
     note:
-      "nocalls is retired — with status on the HM4 card, nothing open is four cards with no chips (decision 130 revised). twentieth keeps the campaign slot; no campaign copy is sourced and /mawreds-20th is still a stub. Static is hero-only: it switches HM1's frame note to the no-motion label if motion is cut at build. The mosaic that used to share this toggle is gone.",
+      "nocalls is retired — Stand for Art is open all year, so an empty HM4 is unreachable (decision 130). Closed programmes are not listed (decision 40 revised). twentieth is retired — the 20th is HOME_SPOTLIGHT, not a state; no campaign copy is sourced and /mawreds-20th is still a stub. Static is hero-only: it switches HM1's frame note to the no-motion label if motion is cut at build. The mosaic that used to share this toggle is gone.",
   },
   aboutwho: {
     list: [],

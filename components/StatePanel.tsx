@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "cn";
 import { useId, useState } from "react";
 import { usePathname } from "next/navigation";
 import { getRouteByPath } from "@/lib/pages/routes";
@@ -16,7 +17,6 @@ const BOOLEAN_KEYS = new Set<keyof WireframeState>([
   "orgs",
   "byline",
   "edge",
-  "twentieth",
   "staticfb",
   "onejob",
   "nopositions",
@@ -51,9 +51,10 @@ export function StatePanel() {
     <div className="fixed top-3 right-3 z-50 flex flex-col items-end gap-2">
       <button
         type="button"
-        className={`cursor-pointer border border-black p-1.5 ${
-          open ? "bg-black text-white" : "bg-white text-black"
-        }`}
+        className={cn(
+          "cursor-pointer border border-black p-1.5",
+          open ? "bg-black text-white" : "bg-white text-black",
+        )}
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={open ? "Hide wireframe states" : "Show wireframe states"}

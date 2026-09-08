@@ -1,17 +1,19 @@
-import Link from "next/link";
-import type { ReactNode } from "react";
+import { cn } from 'cn';
+import Link from 'next/link';
+import type { ReactNode } from 'react';
 
 type CoverProps = {
   tall?: boolean;
   label?: string;
 };
 
-export function Cover({ tall, label = "cover" }: CoverProps) {
+export function Cover({ tall, label = 'cover' }: CoverProps) {
   return (
     <div
-      className={`flex aspect-3/4 w-full items-center justify-center border border-black bg-neutral-200 text-xs text-neutral-500 ${
-        tall ? "" : "mb-2.25"
-      }`}
+      className={cn(
+        'flex aspect-3/4 w-full items-center justify-center border border-black bg-neutral-200 text-xs text-neutral-500',
+        !tall && 'mb-2.25',
+      )}
     >
       {label}
     </div>
@@ -26,11 +28,17 @@ type CardProps = {
   footer?: ReactNode;
 };
 
-export function Card({ href, title, subtitle, children, footer }: CardProps) {
+export function Card({
+  href,
+  title,
+  subtitle,
+  children,
+  footer,
+}: CardProps) {
   return (
-    <Link href={href} className="block border border-black p-2.5 no-underline">
-      {children ?? <Cover />}
-      <strong className="text-sm">{title}</strong>
+    <Link href={href} className="block no-underline">
+      {children ?? (footer != null ? null : <Cover />)}
+      <h2 className="text-2xl font-bold">{title}</h2>
       {subtitle ? (
         <small className="mt-1.25 block text-xs text-neutral-500">{subtitle}</small>
       ) : null}
@@ -39,9 +47,21 @@ export function Card({ href, title, subtitle, children, footer }: CardProps) {
   );
 }
 
-export function CardGrid({ children }: { children: ReactNode }) {
+type CardGridProps = {
+  children: ReactNode;
+  cols?: 3 | 4;
+  className?: string;
+};
+
+export function CardGrid({ children, cols = 4, className }: CardGridProps) {
   return (
-    <div className="grid grid-cols-4 gap-3">
+    <div
+      className={cn(
+        'grid gap-5 xl:gap-10',
+        cols === 3 ? 'grid-cols-3' : 'grid-cols-4',
+        className,
+      )}
+    >
       {children}
     </div>
   );

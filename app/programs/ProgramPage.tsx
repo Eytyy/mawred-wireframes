@@ -20,6 +20,7 @@ import { S6WhichRound } from '@/components/blocks/programs/S6WhichRound';
 import { PageHeaderBand } from '@/components/chrome/PageHeaderBand';
 import { PageWidth } from '@/components/chrome/PageWidth';
 import { Hint } from '@/components/wireframe/Hint';
+import { SectionHeading } from '@/components/wireframe/SectionHeading';
 import { SectionNav } from '@/components/wireframe/SectionNav';
 import type { ProgramBlockConfig, ProgramConfig } from '@/lib/pages/programs';
 import { useWireframeState } from '@/lib/wireframe-state';
@@ -48,11 +49,7 @@ function sectionFor(block: ProgramBlockConfig): ProgramSectionId {
   }
 }
 
-function SectionHeading({ children }: { children: ReactNode }) {
-  return <h2 className="block-heading mb-2.5 text-4xl font-bold">{children}</h2>;
-}
-
-function renderBlock(block: ProgramBlockConfig): ReactNode {
+function renderBlock(block: ProgramBlockConfig, tightBelow = false): ReactNode {
   switch (block.type) {
     case 'C4':
       return (
@@ -96,7 +93,15 @@ function renderBlock(block: ProgramBlockConfig): ReactNode {
         />
       );
     case 'S5':
-      return <S5ApplicationPaths key="S5" paths={block.paths} core={block.core} />;
+      return (
+        <S5ApplicationPaths
+          key="S5"
+          paths={block.paths}
+          core={block.core}
+          highlight={block.highlight}
+          tightBelow={tightBelow}
+        />
+      );
     case 'S6':
       return <S6WhichRound key="S6" lead={block.lead} rows={block.rows} notes={block.notes} />;
     default:
@@ -138,8 +143,15 @@ export function ProgramPage({ config }: { config: ProgramConfig }) {
     <>
       <div className="sticky top-0 z-20 -mt-4 bg-white pt-4 lg:-mt-10 lg:pt-10">
         <PageWidth className="pb-3">
-          <PageHeaderBand />
-          <SectionNav items={navItems} />
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0 flex-1">
+              <PageHeaderBand />
+              <SectionNav items={navItems} />
+            </div>
+            <div className="shrink-0 self-center">
+              <C7ApplyButton dest={config.dest} closed={config.rolling ? false : state.closed} />
+            </div>
+          </div>
         </PageWidth>
       </div>
 
@@ -160,11 +172,10 @@ export function ProgramPage({ config }: { config: ProgramConfig }) {
 
       <section id="application" className="scroll-mt-(--band-h) border-b border-black py-8">
         <PageWidth>
-          <div className="sticky top-(--band-h) z-10 float-right ml-4 bg-white">
-            <C7ApplyButton dest={config.dest} closed={config.rolling ? false : state.closed} />
-          </div>
           <SectionHeading>Application</SectionHeading>
-          {application.map((block) => renderBlock(block))}
+          {application.map((block, index) =>
+            renderBlock(block, block.type === 'S5' && application[index + 1]?.type === 'C6'),
+          )}
         </PageWidth>
       </section>
 

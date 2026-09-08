@@ -1,7 +1,9 @@
 'use client';
 
+import { cn } from 'cn';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useId, useState } from 'react';
 import Logo from '../Logo';
 import { UtilityBar } from './UtilityBar';
 
@@ -68,10 +70,10 @@ function childHrefs(item: NavGroup): string[] {
 }
 
 function navItemClass(active: boolean) {
-  return [
+  return cn(
     'inline-block w-fit px-2 py-1 text-sm no-underline',
     active ? 'bg-black text-white' : 'hover:bg-black hover:text-white',
-  ].join(' ');
+  );
 }
 
 function NavItem({ item, pathname }: { item: NavGroup; pathname: string }) {
@@ -90,7 +92,10 @@ function NavItem({ item, pathname }: { item: NavGroup; pathname: string }) {
   return (
     <details className="group" name="site-nav">
       <summary
-        className={`${navItemClass(isSectionActive)} cursor-pointer list-none group-open:bg-black group-open:text-white [&::-webkit-details-marker]:hidden`}
+        className={cn(
+          navItemClass(isSectionActive),
+          'cursor-pointer list-none group-open:bg-black group-open:text-white [&::-webkit-details-marker]:hidden',
+        )}
       >
         <span className="font-bold group-open:hidden">+ </span>
         <span className="hidden font-bold group-open:inline">- </span>
@@ -111,22 +116,74 @@ function NavItem({ item, pathname }: { item: NavGroup; pathname: string }) {
   );
 }
 
+function NavList({ pathname }: { pathname: string }) {
+  return (
+    <nav className="mt-15 flex flex-col gap-7">
+      {NAV.map((item) => (
+        <NavItem key={item.href} item={item} pathname={pathname} />
+      ))}
+    </nav>
+  );
+}
+
+function BurgerIcon() {
+  return (
+    <>
+      <span className="block h-px w-5 bg-current" />
+      <span className="block h-px w-5 bg-current" />
+      <span className="block h-px w-5 bg-current" />
+    </>
+  );
+}
+
 export function SiteHeader() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const menuId = useId();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') setOpen(false);
+    }
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open]);
 
   return (
     <header className="flex flex-col">
-      <Link href="/" className="block font-bold no-underline">
-        <Logo />
-      </Link>
-      <div className="mt-10">
-        <UtilityBar />
+      <div className="flex items-center justify-between gap-4 lg:block">
+        <Link href="/" className="block w-40 font-bold no-underline lg:w-full">
+          <Logo />
+        </Link>
+        <button
+          type="button"
+          className={cn(
+            'inline-flex size-10 flex-col items-center justify-center gap-1 border border-black lg:hidden',
+            open ? 'bg-black text-white' : 'bg-white text-black',
+          )}
+          aria-expanded={open}
+          aria-controls={menuId}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen((current) => !current)}
+        >
+          <BurgerIcon />
+        </button>
       </div>
-      <nav className="mt-15 flex flex-col gap-7">
-        {NAV.map((item) => (
-          <NavItem key={item.href} item={item} pathname={pathname} />
-        ))}
-      </nav>
+      <div id={menuId} className={cn(open ? 'block' : 'hidden', 'lg:block')}>
+        <div className="mt-10">
+          <UtilityBar />
+        </div>
+        <NavList pathname={pathname} />
+      </div>
     </header>
   );
 }

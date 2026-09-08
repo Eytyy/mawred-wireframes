@@ -16,7 +16,7 @@ export function S4HeroSummary({ cells }: S4HeroSummaryProps) {
       <div className="flex flex-col gap-8">
         {cells.map((cell) => (
           <div key={cell.label}>
-            <h3 className="mb-2.5 text-lg font-bold">{cell.label}</h3>
+            <h3 className="mb-4 text-xl xl:text-2xl font-bold">{cell.label}</h3>
             {cell.lead ? <p className="mb-2.5 font-bold">{cell.lead}</p> : null}
             <div className="flex flex-wrap gap-2.5">
               {cell.items.map((item) => (

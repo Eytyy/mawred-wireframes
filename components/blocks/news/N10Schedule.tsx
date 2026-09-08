@@ -1,3 +1,4 @@
+import { cn } from "cn";
 import { Block } from "@/components/wireframe/Block";
 import { Hint } from "@/components/wireframe/Hint";
 
@@ -10,9 +11,10 @@ export function N10Schedule() {
         {Array.from({ length: SCHEDULE_ROWS }, (_, index) => (
           <div
             key={index}
-            className={`flex flex-wrap gap-3 px-2.5 py-2.25 ${
-              index < SCHEDULE_ROWS - 1 ? "border-b border-neutral-200" : ""
-            }`}
+            className={cn(
+              "flex flex-wrap gap-3 px-2.5 py-2.25",
+              index < SCHEDULE_ROWS - 1 && "border-b border-neutral-200",
+            )}
           >
             <span className="w-[100px] shrink-0 text-xs font-bold">Date</span>
             <span className="min-w-[180px] flex-1 text-xs text-neutral-500">

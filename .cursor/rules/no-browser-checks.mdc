@@ -1,0 +1,10 @@
+---
+description: Do not run browser or render checks; the user reviews pages themselves
+alwaysApply: true
+---
+
+# No agent render checks
+
+Do not open the app in a browser, take screenshots, curl local routes to verify UI, or add a render-check step to a plan or tracker entry.
+
+The user reviews pages in the browser. After a unit, type-check/lint if needed, log the tracker, and stop.

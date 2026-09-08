@@ -3,21 +3,18 @@ import { Btn } from "@/components/wireframe/Btn";
 import { Badge, DirRow } from "@/components/wireframe/DirRow";
 import { EmptyState } from "@/components/wireframe/EmptyState";
 import { Hint } from "@/components/wireframe/Hint";
-import { Tabs } from "@/components/wireframe/Tabs";
-import { ENTITY_TABS, NETWORK_ROWS, RECORD_HREF } from "@/lib/pages/network";
+import { NETWORK_ROWS, RECORD_HREF } from "@/lib/pages/network";
 
 type MN5DirectoryListingProps = {
   empty: boolean;
   filtered: boolean;
   orgs: boolean;
-  onTabSelect: (idx: number) => void;
 };
 
 export function MN5DirectoryListing({
   empty,
   filtered,
   orgs,
-  onTabSelect,
 }: MN5DirectoryListingProps) {
   const activeIdx = orgs ? 1 : 0;
   const rows = filtered
@@ -26,7 +23,6 @@ export function MN5DirectoryListing({
 
   return (
     <Block code="MN5" label="Directory listing — split by entity type">
-      <Tabs items={ENTITY_TABS} activeIdx={activeIdx} onSelect={onTabSelect} />
       {empty ? (
         <>
           <EmptyState
@@ -34,8 +30,8 @@ export function MN5DirectoryListing({
             line="Remove a filter, or check the other tab — filters apply to one entity type at a time."
           />
           <Hint>
-            Empty state sits inside the listing slot — tabs, count row and
-            filter bank stay put.
+            Empty state sits inside the listing slot — the toolbar above it
+            (filter bank, tabs, count row) stays put.
           </Hint>
         </>
       ) : (
@@ -55,8 +51,9 @@ export function MN5DirectoryListing({
             <Btn>Load more records</Btn>
           </div>
           <Hint>
-            Two tabs, not stacked sections: each group runs to hundreds of rows,
-            so stacking would bury the second one (decision 19). Row = name ·
+            Two tabs — in MN4 above — not stacked sections: each group runs to
+            hundreds of rows, so stacking would bury the second one (decision
+            19). Row = name ·
             country · involvement · discipline (decision 22) → record detail. A
             record carries one row per entity, not per engagement, so an
             organisation involved twice shows both badges. Load-more rather

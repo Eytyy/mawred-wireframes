@@ -5,10 +5,10 @@ import type { ValueRecord } from '@/lib/pages/about';
 export function AB4Values({ values }: { values: ValueRecord[] }) {
   return (
     <Block code="AB4" label="Values" heading="Values">
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {values.map((value) => (
           <div key={value.label} className="border border-black p-2.75">
-            <strong className="mb-1.5 block text-sm">{value.label}</strong>
+            <strong className="mb-1.5 block text-xl xl:text-2xl">{value.label}</strong>
             {value.text}
           </div>
         ))}

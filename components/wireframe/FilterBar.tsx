@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 export type Facet = {
   n: string;
@@ -10,13 +10,14 @@ export type Facet = {
 
 type FilterBarProps = {
   facets: Facet[];
+  lead?: ReactNode;
 };
 
 function valuesFor(facet: Facet): string[] {
   return Array.from({ length: facet.v }, (_, index) => facet.values?.[index] ?? "value");
 }
 
-export function FilterBar({ facets }: FilterBarProps) {
+export function FilterBar({ facets, lead }: FilterBarProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [query, setQuery] = useState("");
@@ -72,7 +73,8 @@ export function FilterBar({ facets }: FilterBarProps) {
   }
 
   return (
-    <div ref={rootRef} className="flex flex-wrap gap-2">
+    <div ref={rootRef} className="flex flex-wrap items-center gap-2">
+      {lead}
       {facets.map((facet, index) => {
         const open = openIdx === index;
         const values = valuesFor(facet);
@@ -87,7 +89,7 @@ export function FilterBar({ facets }: FilterBarProps) {
           <div key={facet.n} className="relative">
             <button
               type="button"
-              className="flex shrink-0 grow-0 basis-auto cursor-pointer justify-between gap-3.5 border border-black bg-white px-2.5 py-2 text-sm"
+              className="flex shrink-0 grow-0 basis-auto cursor-pointer justify-between gap-2 border border-black bg-white px-2.5 py-1 text-sm"
               aria-expanded={open}
               onClick={() => toggleFacet(index)}
             >

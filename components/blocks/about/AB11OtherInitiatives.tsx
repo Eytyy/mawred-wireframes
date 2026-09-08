@@ -10,7 +10,7 @@ export function AB11OtherInitiatives() {
       label="Other past initiatives"
       heading="Other past initiatives"
     >
-      <CardGrid>
+      <CardGrid cols={3}>
         {Array.from({ length: 3 }, (_, index) => (
           <InitiativeCard key={index} />
         ))}

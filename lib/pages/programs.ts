@@ -57,7 +57,7 @@ export type ProgramBlockConfig =
       offered?: boolean;
       offeredOnly?: boolean;
     }
-  | { type: 'S5'; paths: ApplicationPath[]; core?: string | string[] }
+  | { type: 'S5'; paths: ApplicationPath[]; core?: string | string[]; highlight?: string }
   | { type: 'S6'; lead?: string; rows?: WhichRoundRow[]; notes?: string[] };
 
 export type ProgramConfig = {
@@ -256,13 +256,7 @@ export const WIJHAT: ProgramConfig = {
         {
           label: 'Travel grant',
           amount: 'Up to €7,000',
-          items: [
-            'Travel tickets',
-            'Visa costs',
-            'Accommodation',
-            'Partial living expenses',
-            'Internal transport',
-          ],
+          body: 'Travel tickets, visa costs, accommodation, partial living expenses, internal transport.',
         },
       ],
     },
@@ -294,10 +288,9 @@ export const WIJHAT: ProgramConfig = {
     },
     {
       type: 'S5',
-      core: [
-        'Register on the applications platform, activate your account from the link sent to the address you registered, log in and select Wijhat. Both tracks apply through the same portal.',
+      core: 'Register on the applications platform, activate your account from the link sent to the address you registered, log in and select Wijhat. Both tracks apply through the same portal.',
+      highlight:
         "The form can be saved and reopened before you submit. State the purpose of the intended travel and how it fits the programme's aims.",
-      ],
       paths: [
         {
           label: 'Individual',

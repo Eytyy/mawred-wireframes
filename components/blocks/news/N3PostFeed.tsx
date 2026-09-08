@@ -76,16 +76,16 @@ export function N3PostFeed({ empty, slots, posts }: N3PostFeedProps) {
         <>
           <EmptyState
             heading="No posts match this filter"
-            line="Clear the programme filter, or switch back to All."
+            line="Clear the filters."
           />
           <Hint>
-            Empty state sits inside the feed slot &mdash; tabs and count row
-            stay put; the pager drops out entirely.
+            Empty state sits inside the feed slot &mdash; filter bar and count
+            row stay put; the pager drops out entirely.
           </Hint>
         </>
       ) : (
         <>
-          <CardGrid>
+          <CardGrid cols={3}>
             {posts
               ? posts.map((post) => (
                   <NewsCard key={post.title} post={post} slots={slots} />

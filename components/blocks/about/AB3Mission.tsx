@@ -4,10 +4,10 @@ import { Hint } from '@/components/wireframe/Hint';
 export function AB3Mission({ points }: { points: string[] }) {
   return (
     <Block code="AB3" label="Mission" heading="Mission">
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
         {points.map((point, index) => (
           <div key={point} className="border border-black p-2.75">
-            <span className="mb-1.5 block text-xs text-neutral-500">{`0${index + 1}`}</span>
+            <span className="mb-1.5 block text-xl xl:text-2xl text-neutral-500">{`0${index + 1}`}</span>
             {point}
           </div>
         ))}

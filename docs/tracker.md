@@ -8,6 +8,151 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
+## News N1: category as a filter, not tabs
+
+- [x] N1 drops the All / Announcements / News & Events tab row; Category and Programme are two FilterBar facets
+- [x] Remove tab index from `NewsLandingPage`, `filterNewsPosts`, and N2
+- [x] Decision 190; revise 27, 28, 78, 115, 116, 124; standing-constraints, content-map, tracker
+
+---
+
+## Listing cards: h2 titles, three columns
+
+- [x] `Card` title is `h2` at `text-2xl font-bold`; drop `titleClassName` (and HM4 override)
+- [x] Pass `cols={3}` on N3, AB9, PC2, N13, AB11; update PA4 hint
+- [x] Decision 189; revise 167; standing-constraints, content-map, tracker
+
+---
+
+## Home HM4 / HM5 / HM6 gap
+
+- [x] `looseAbove` on HM5 and HM6 — client view 5rem between the three strips
+- [x] Decision 188; 175 noted; standing-constraints, tracker
+
+---
+
+## HM6 Latest news heading
+
+- [x] HM6 uses `SectionHeading` like HM4 / HM5
+- [x] Revise decision 135; standing-constraints, content-map, tracker
+
+---
+
+## Home strip headings and HM5 as one spotlight
+
+- [x] Extract `SectionHeading`; use it on ProgramPage, HM4, and HM5
+- [x] HM5 takes one `HOME_SPOTLIGHT` (Mawred's 20th); retire `twentieth` state
+- [x] Revise decisions 44, 82, 133, 135; standing-constraints, content-map, tracker
+
+---
+
+## AB2 Vision as headline + sentence
+
+- [x] Drop grey fill; `heading="Vision"` at Mission/Values size; body is the sentence
+- [x] Revise decision 148 (57, 134, 135, 144); standing-constraints, AGENTS, content-map
+
+---
+
+## Home impact figures and action buttons
+
+- [x] Drop years-since-2003; grants rail takes placeholder `~1,200`
+- [x] HM4 heading-to-cards gap is 2rem
+- [x] HM5 / HM6 action buttons hug their label
+
+---
+
+## HM1 positioning copy
+
+- [x] Identity line as supplied; three phrases link to PA, Network, Who We Are
+
+---
+
+## HM1 wayfinding in the positioning line
+
+- [x] Rewrite the identity sentence so the three destinations sit in the prose
+- [x] Mark them with a 2px underline; drop the button row
+
+---
+
+## Home hero and button refinements
+
+- [x] HM1 wayfinding sits in the positioning plate; row under the frame gone
+- [x] HM1 full-bleed to the content column (`flushTop`, outside `PageWidth`)
+- [x] HM5 / HM6 action buttons take a 1.5rem gap from the copy above
+
+---
+
+## HM4 card layout
+
+- [x] Status chips under the descriptor; titles `text-2xl`; 3-col grid
+
+---
+
+## HM4 as open grants and opportunities
+
+- [x] HM4 is the open-calls strip; Abbara dropped; `HOME_OPPORTUNITIES`
+- [x] Revise decisions 39, 40, 132; content-map, states note, tracker
+
+---
+
+## In-flow mobile menu
+
+- [x] SiteHeader: burger toggles UtilityBar + nav in flow; drop overlay
+- [x] Revise decision 183, standing constraint 2, AGENTS chrome line, tracker
+
+---
+
+## Mobile site chrome
+
+- [x] Below `lg`: stacked header → main → footer, no sticky rail
+- [x] Burger toggles UtilityBar + nav in flow under the header
+
+---
+
+## PB2 video grid
+
+- [x] Video series use a 2-col grid (1 col on mobile); Mudawanat stays stacked rows
+
+---
+
+## `cn` for className merging
+
+- [x] `cn` replaces hand-rolled template-literal and array-join class strings
+
+---
+
+## Network browse toolbar
+
+- [x] Search, facets, tabs, count and sort compact into one toolbar
+
+---
+
+## C7 in the sticky band
+
+- [x] Apply now sits next to the page title and section nav
+
+---
+
+## Page-end site footer
+
+- [x] Footer moves from the rail to under main
+
+---
+
+## Wijhat C5 covered costs as text
+
+- [x] Travel grant costs as comma-separated body, not a list
+
+---
+
+## Wijhat Application highlights
+
+- [x] S6 lead/KV gap; S6 notes and S5 save-and-return as grey highlights
+- [x] Application highlights sit last in their parent
+- [x] S5–C6 highlight stack uses the in-block 1rem gap
+
+---
+
 ## Programme page — Figma 310:458
 
 - [x] Unit 1 — `main` left border; `PageWidth` wrapper
@@ -40,6 +185,270 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### News N1: category as a filter, not tabs (2026-09-08)
+
+**Done:** N1 drops the All / Announcements / News & Events tab row. Category and Programme sit as two FilterBar facets; “All” is gone because unfiltered is the default. `NewsLandingPage` no longer owns a category index; `filterNewsPosts` no longer cuts by tab. N2 reads “Showing N posts” with no tab scope, chips any applied filter, and says “no filters applied” when none are. N3 empty copy drops “switch back to All”. Decision **190** logged; **27** and **28** restored-and-revised; **78**, **115**, **116** and **124** revised in place.
+
+**Left undone:** Nothing from this unit. FilterBar selection still does not drive the listing — the `filtered` / `empty` panel toggles do, same as Programme did before.
+
+**Decisions:** 190. News category is a facet, not a tab row.
+
+**Flagged:** The Announcements / News & Events list and the tagging model remain a client call.
+
+**Verified:** Type-check. No render-check — left for review in the browser.
+
+### Listing cards: h2 titles, three columns (2026-09-08)
+
+**Done:** Shared `Card` titles are `<h2 className="text-2xl font-bold">` — Block's h3 visual, not Block's h2 and not `SectionHeading`. `titleClassName` is gone; HM4 drops its override. Listing and related `CardGrid`s (PA4, N3, AB9, PC2, N13, AB11) pass `cols={3}`; HM4 already did. AB7 and N14 stay four — they use `CardGrid` without `Card`. Related-strip Block headings stay `h2` at `text-3xl`, so card titles sit at the same rank as "Related posts" / "Related publications" / "Other past initiatives". No `titleAs` variant — standing constraint 4. Decision **189** logged; **167** revised in place; **182** caught up.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 189. Listing Card titles are h2 at Block-h3 size; listing grids are three columns.
+
+**Flagged:** Card titles as `h2` match the related-strip heading rank. Verbatim reuse costs that collision; a fork would be the bug.
+
+**Verified:** Type-check. No render-check — left for review in the browser.
+
+### Home HM4 / HM5 / HM6 gap (2026-09-08)
+
+**Done:** `Block` gains `looseAbove`. Client view raises HM5 and HM6's top frame margin from 3rem to 5rem, so the gaps HM4→HM5 and HM5→HM6 collapse to 5rem. HM2→HM4 stays 3rem. Review view is unchanged. Decision **188** logged; **175** noted.
+
+**Left undone:** Nothing from this unit. Say if 5rem should go further.
+
+**Decisions:** 188. Home HM4 / HM5 / HM6 sit 5rem apart.
+
+**Flagged:** None.
+
+**Verified:** Type-check. No render-check — left for review in the browser.
+
+### HM6 Latest news heading (2026-09-08)
+
+**Done:** HM6 drops `Block.heading` and renders `<SectionHeading>Latest news</SectionHeading>` as the first child, same helper as ProgramPage, HM4 and HM5. The inner `gap-6` column still owns rows-to-button. Decision **135** revised in place.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 135 revised — Home HM4 / HM5 / HM6 are `text-4xl` via `SectionHeading`.
+
+**Flagged:** None.
+
+**Verified:** Type-check. No render-check — left for review in the browser.
+
+### Home strip headings and HM5 as one spotlight (2026-09-08)
+
+**Done:** `SectionHeading` (`h2` + `.block-heading mb-2.5 text-4xl font-bold`) lives in `components/wireframe/SectionHeading.tsx`. ProgramPage drops its local helper. HM4 drops `Block.heading` and renders the helper as the first child (`mt-8` on CardGrid still collapses to a 2rem gap). HM5's title is a copy-column h2 with no kicker; inside `flex-col gap-6` the helper's bottom margin is omitted. HM5 takes one `HOME_SPOTLIGHT` — title Mawred's 20th, href `/mawreds-20th` — and drops `twentieth` / `HOME_FEATURE`. Campaign body stays fill bars. Home review toggle `twentieth` is gone from `states.ts`, `wireframe-state.tsx` and `StatePanel`; `staticfb` stays. The `/mawreds-20th` route stays as the stub destination. Decisions **44**, **82**, **133** and **135** revised in place.
+
+**Left undone:** Nothing from this unit. Campaign copy is still not sourced.
+
+**Decisions:** 44, 82, 133, 135 revised — the 20th is spotlight content, not a state; Home still reads `staticfb` only; programme section titles and Home HM4 / HM5 are `text-4xl`.
+
+**Flagged:** Whether the 20th is a temporary campaign or something else stays a client call.
+
+**Verified:** Type-check. No render-check — left for review in the browser.
+
+### Home impact figures and action buttons (2026-09-08)
+
+**Done:** HM2 drops the years-since-2003 rail and puts `~1,200` on grants awarded since 2003, leading the strip (`55` countries · `38` programmes & initiatives follow). HM4's heading-to-cards gap is 2rem (`mt-8` on `CardGrid`). HM5 Read more and HM6 All news take `self-start` so they hug the label instead of stretching in the flex column. Decision **187** logged; **131**, **37** and **185** revised in place.
+
+**Left undone:** Nothing from this unit. The grant total is still not sourced.
+
+**Decisions:** 187. Home action buttons hug their label; HM4's heading sits clear of the cards. 131 revised — placeholder `~1,200`, years rail gone.
+
+**Flagged:** `~1,200` is invented for the wireframe. Replace it with a real Mawred-wide total when one exists.
+
+**Verified:** Type-check. No render-check — left for review in the browser.
+
+### HM1 positioning copy (2026-09-08)
+
+**Done:** The hero line is the supplied copy: Culture Resource (Al-Mawred Al-Thaqafy) as a regional non-profit founded in 2003; "support artistic creativity" → Production Awards; "encourage cultural exchange" → Network; "More about us →" → Who We Are. Decision **186** revised in place; **42** caught up. The freedom-of-expression clause and the Grants vs Programs label leave this surface.
+
+**Left undone:** Nothing from this unit. "Support artistic creativity" still lands on `/programs/production-awards` because there is no programmes index.
+
+**Decisions:** 186 revised — linked phrases are now the supplied verbs and More about us.
+
+**Flagged:** The creativity phrase is broader than Production Awards; same missing-index issue as before, now on a phrase that reads as the whole grants offer.
+
+**Verified:** Type-check. No render-check — left for review in the browser.
+
+### HM1 wayfinding in the positioning line (2026-09-08)
+
+**Done:** The hero identity sentence is rewritten so Who we are, Grants & Opportunities and Mawred Network sit in the prose, each a 2px-underlined link at the same `text-2xl` as the rest of the line. `HOME_POSITIONING` is an array of text/link parts; `HOME_WAYFINDING` and the `Btn` row are gone. Decision **186** logged; **36**, **42**, **129** and **164** revised in place.
+
+**Left undone:** Nothing from this unit. Graduating the line further stays a copy call; "Grants & Opportunities" vs "Programs" stays a client call. The first link still points at `/programs/production-awards` because there is no programmes index.
+
+**Decisions:** 186. HM1 wayfinding sits in the positioning sentence.
+
+**Flagged:** None.
+
+**Verified:** Type-check clean. Eslint errors in SiteHeader and SectionNav are pre-existing. No render-check — left for review in the browser.
+
+### Home hero and button refinements (2026-09-08)
+
+**Done:** HM1 wayfinding moves into the positioning plate under the identity sentence; the row under the frame is gone. Home mounts HM1 outside `PageWidth` and pulls it into `main`'s top padding, so the frame fills the content column. `Block` gains `flushTop` to keep the 3rem gap to HM2. HM5 Read more and HM6 All news sit in `gap-6` columns so they cannot sit on the copy. Decision **185** logged; **164** revised in place; **36** and **42** caught up.
+
+**Left undone:** Nothing from this unit. Real imagery and motion stay deferred.
+
+**Decisions:** 185. HM1 is full-bleed to the content column. 164 revised — plate is sentence plus wayfinding. 36 and 42 revised so they do not still describe an empty corner and a row under the frame.
+
+**Flagged:** None.
+
+**Verified:** Type-check and eslint. No render-check — left for review in the browser.
+
+### HM4 card layout (2026-09-08)
+
+**Done:** Status `Badge` moves under the descriptor so a wrapping chip does not push titles out of line. `Badge` is `inline-block max-w-full` so a two-line chip is one box. Programme names are `text-2xl` like HM6's `DirRow`. `CardGrid` takes optional `cols`; HM4 passes `3` so the three open calls fill the row. Decision **184** logged; **40** and **167** revised in place.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 184. HM4 chips sit under the descriptor; three cards fill the row. 40 revised — empty fourth column set aside. 167 revised — `cols` optional; listings stay four.
+
+**Flagged:** None.
+
+**Verified:** Type-check and eslint. No render-check — left for review in the browser.
+
+### HM4 as open grants and opportunities (2026-09-08)
+
+**Done:** HM4 leaves the all-four programmes overview and becomes spec §3C's open-calls strip. `HM4ProgrammesOverview` is renamed `HM4OpenOpportunities`; heading is Grants & opportunities. `HOME_PROGRAMMES` / `ProgrammeOverview` become `HOME_OPPORTUNITIES` / `HomeOpportunity` with required `status`. Abbara drops off — call closed July 2025 — so the grid is Production Awards, Wijhat and Stand for Art. Shared `Card` + `CardGrid` stay; the fourth column is empty until another call opens. Spec §3D stays dropped. `nocalls` stays retired. Jobs stay on About. Decisions **39**, **40** and **132** revised in place; **130** caught up so it does not still describe four chipless cards as the empty.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 39 revised — impact still sits above HM4; the ask is the open grants. 40 revised — HM4 is the open-calls strip, not the all-four overview. 132 revised — `HOME_OPPORTUNITIES` is the only surface; closed programmes are not listed. 130 caught up.
+
+**Flagged:** HM1's first wayfinding link still points at `/programs/production-awards` because there is no programmes index. With HM4 now the grants-and-opportunities strip, that link still wants an in-page target or a real index route — its own unit, carried forward.
+
+**Verified:** Type-check and eslint. No render-check — left for review in the browser.
+
+### In-flow mobile menu (2026-09-08)
+
+**Done:** Below `lg`, the burger toggles one UtilityBar + `NavList` block in flow under the logo/burger row. Invert fill when open (same as the cog); no separate Close. Dropped the `fixed inset-0` overlay, body scroll lock, and overlay `pr-14`. Escape and pathname-change close stay. Header wrapper's bottom rule still divides header from main. `layout.tsx` unchanged. Decision **183** revised in place (overlay set aside); **154** pointer updated. Standing constraint 2 and the AGENTS chrome line catch up.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 183 revised — in-flow expand; overlay set aside.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### Mobile site chrome (2026-09-08)
+
+**Done:** Below `lg` the shell is stacked header → main → footer: no two-column flex, no sticky header, no rail-edge left border (header takes a 1px bottom rule). From `lg` the sticky rail stands. The bar is logo + burger; Search and EN / ع live in a full-screen overlay that reuses UtilityBar and the existing `<details>` nav. Close on Close, Escape, and pathname change. Header and overlay take `pr-14` so they clear the state-panel cog. Decision **183** logged; **154** revised in place; 167 and 182 noted that CardGrid / listings do not reflow. Standing constraint 2 and the AGENTS chrome line catch up.
+
+**Left undone:** Footer row, `PageWidth` padding, and CardGrid stay as they are — chrome only.
+
+**Decisions:** 183 — mobile chrome is a stacked header and a burger overlay. 154 revised — sticky rail from `lg`; stacked header below.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### PB2 video grid (2026-09-08)
+
+**Done:** PB2 takes a `layout` prop (`row` | `grid`). Mudawanat stays four stacked audio embeds; Foundations of Cultural Policies and Mawred Talks render eight video embeds in a local two-column grid (`grid-cols-1 md:grid-cols-2`), not `CardGrid`. Video `Embed` is `aspect-video` (16:9); audio stays `h-[58px]`. `SeriesPage` derives layout from `kind`. Working loop: agents no longer render-check — logged in `AGENTS.md` and `.cursor/rules/no-browser-checks.mdc`. Decision **182** logged, then revised in place from four columns to two (one on mobile). Decision **65** revised in place.
+
+**Left undone:** Nothing from this unit. Browser review of the three series pages is yours.
+
+**Decisions:** 182 — PB2 video series are a two-column grid, one column on mobile. 65 revised — video is 16:9; audio stays a fixed height.
+
+**Flagged:** None.
+
+**Verified:** Not in this session — left for review in the browser.
+
+### `cn` for className merging (2026-09-08)
+
+**Done:** `cn` (the `tailwind-merge` + `clsx` replacement) is a dependency, imported directly as `import { cn } from 'cn'` — no `lib/utils.ts` wrapper, since this isn't a shadcn/ui project and the package is the helper. Eleven files drop hand-rolled class joining for it: `PageWidth` and `Field` (optional-`className` concat), `Btn` (array + `filter(Boolean)` + `join`), `SiteHeader` (`navItemClass` join, plus the summary's template wrap), `Block`, `Card`'s `Cover`, `Embed`, `Timeline`, `StatePanel`, `N5PrevNext` and `N10Schedule`. Static `className="…"` strings and whole-string ternaries that pick one list or the other — `Accordion`, `Tabs`, `Figs` — are left alone; those aren't joins.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** None — tooling, not a layout call, so nothing appended to Wireframe Passes.
+
+**Flagged:** Conflict resolution changes two rendered outputs, both toward what the code already intended. A **disabled `Btn`** emitted `cursor-pointer` and `cursor-not-allowed` together, and `.cursor-pointer` is defined later in the compiled sheet, so the pointer cursor won; `cn` now drops it and the not-allowed cursor applies (visible on N4's ellipsis and on C7 in the `closed` state). A **primary `Btn`** emitted `border` and `border-2` together; `cn` keeps only `border-2`, which is what already rendered — `.border-2` is defined after `.border` — so decision 57's 2px is unchanged. Also noticed in passing: `N10Schedule` has no consumer anywhere in the app.
+
+**Verified:** `tsc --noEmit` clean, no lint errors, and every route in the registry still returns 200 with the converted class strings intact in the rendered HTML. **Not checked in a browser** — the visual pass is the reviewer's.
+
+### Network browse toolbar (2026-09-08)
+
+**Done:** The Network directory's browse chrome collapses from roughly 250px to one toolbar. MN3's search field no longer takes a row of its own — `FilterBar` gained an optional `lead` slot, so the field, the Search button and the five facet triggers sit on one wrapping row at `px-2.5 py-1`, still at `text-sm`. `Btn` and `Field` take an opt-in `compact`; the facet trigger is compact unconditionally, so PA2 and N1 tighten with it, and Sort / Clear all in MN4, PA3 and N2 take `compact` too. `CountRow` is untouched. The entity tabs move from MN5 into MN4, which is now the listing header — tabs, then count · chips · sort — with `onTabSelect` rewired in `DirectoryPage`. Block gaps stay at the site-wide 3rem — the plan's `tightBelow` on MN3 and MN4 was tried and dropped, since the saving is in the control row and the tab move, and 1rem gaps crowded the three blocks into one slab. Decisions **180** and **181** logged; 19, 20, 175 and 178 noted, none revised. Content-map MN3 / MN4 / MN5 rows and the MN3 / MN5 hints catch up.
+
+**Left undone:** Nothing from this unit. The content-map MN3 row still describes the pre-168 "six plus Show all N" facet panel — stale from an earlier pass, not touched here.
+
+**Decisions:** 180 — browse controls are one compact row. 181 — entity tabs sit in MN4, above the count they scope.
+
+**Flagged:** None.
+
+**Verified:** Type-check and lint only (`tsc --noEmit` clean; the remaining Tailwind warnings on `FilterBar` and `Field` are pre-existing arbitrary values). **Not checked in a browser** — the visual pass is the reviewer's.
+
+### C7 in the sticky band (2026-09-07)
+
+**Done:** C7 leaves the Application heading row and sits in the sticky page-header band, right of the H1 and section nav (`flex` / `self-center`). Apply now is visible from the first paint and stays there through About / Application / Past / FAQs. Same on all four programmes. C7 no longer has a `float-right` / `top-(--band-h)` offset of its own. Decision **159** revised in place; **137**, **141**, **139**, **145**, **152**, **153**, **174**, **176** catch up. Standing constraint 2 and content-map placement lines catch up.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 159 revised — C7 sits in the sticky band, not on the Application heading.
+
+**Flagged:** None.
+
+**Verified:** Headless Chrome, 1440×900, all four programme routes, codes-off. One "Apply now" on each, in the sticky band (before `#about`, not inside `#application`). Button sits right of the H1 and overlaps the title/nav cluster (`top: 74px`); after scrolling ~2000px the button, H1 and nav stay at the same viewport positions while the Application heading has scrolled away. Home and Who We Are have no Apply now.
+
+### Page-end site footer (2026-09-07)
+
+**Done:** `SiteFooter` leaves the sticky rail and mounts after `main` in the content column. The column wrapper carries the 1px left border so it runs through the footer; the rail is header only (logo, search, nav). Footer is a full-bleed top rule with inner `PageWidth`: Newsletter popup, Social placeholder, copyright, as a row. Short pages still close at the bottom of the column. Decision **179** logged; **154** revised in place. Standing constraint 2 and AGENTS chrome lines catch up.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 179. Site footer sits under main, not in the rail. 154 revised.
+
+**Flagged:** None.
+
+**Verified:** Curl against `/` and `/programs/wijhat`. Footer is a sibling of `main` in the content column; the rail contains only `SiteHeader`.
+
+### Wijhat C5 covered costs as text (2026-09-07)
+
+**Done:** Wijhat's Travel grant C5 record drops its five-item bullet list. The costs render as comma-separated `body` under the label — same C5 shape as Production Awards' grant descriptions. Abbara and Stand for Art keep `items` for longer provisions. Decision **86** revised in place.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 86 revised — five short cost types are a sentence, not a list.
+
+**Flagged:** None.
+
+**Verified:** Curl against `/programs/wijhat`.
+
+### S5–C6 highlight stack gap is 1rem (2026-09-07)
+
+**Done:** When S5 closes on a highlight and C6 follows, S5 takes `tightBelow` so client view uses 1rem between the two grey fills — the same `mt-4` as tabs-to-highlight — instead of the 3rem block-frame gap. C6 stays its own block. Abbara's C6 (after C5) is untouched. Decision **178** logged; **175** and **177** noted.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 178. Stacked application highlights share the in-block 1rem gap.
+
+**Flagged:** None.
+
+**Verified:** Curl against `/programs/wijhat` (S5 carries `block-tight-below`) and `/programs/abbara` (C6 not preceded by S5).
+
+### Wijhat Application highlights sit last (2026-09-07)
+
+**Done:** S5's save-and-return highlight moves after the tabs, immediately before C6. C4's confidentiality highlight moves after the steps, documents and `note`. S6's notes were already last in the block. Decision **177** revised in place as the placement rule; **88** and **91** catch up. Standing constraint 2 records it.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 177 revised — in-block application highlights sit last in their parent. 88 and 91 revised.
+
+**Flagged:** None.
+
+**Verified:** Curl against `/programs/wijhat` and `/programs/stand-for-art`.
+
+### Wijhat Application highlights (2026-09-07)
+
+**Done:** S6's lead takes `mb-4` so it sits clear of the KV rows. S6's three schedule notes wrap in the same `bg-neutral-200` padded band as C6, at body size. S5's save-and-return / purpose sentence leaves `core` for an optional `highlight` in that same treatment, still above the tabs and before C6. Decision **177** logged; **88** and **89** revised in place.
+
+**Left undone:** Nothing from this unit.
+
+**Decisions:** 177. S6 notes and S5's save-and-return line are in-block grey highlights. 88 and 89 revised.
+
+**Flagged:** None.
+
+**Verified:** Curl against `/programs/wijhat` Application section.
 
 ### Programme page section nav tracks the active section (2026-09-07)
 

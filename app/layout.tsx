@@ -15,12 +15,14 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="en">
       <body className="codes-off">
         <WireframeStateProvider>
-          <div className="flex items-start">
-            <div className="sticky top-0 flex h-screen w-80 shrink-0 flex-col justify-between p-4 pt-15 lg:p-10">
+          <div className="lg:flex lg:items-start">
+            <div className="border-b border-black p-4 pr-14 lg:sticky lg:top-0 lg:h-screen lg:w-80 lg:shrink-0 lg:border-0 lg:p-10 lg:pt-15">
               <SiteHeader />
+            </div>
+            <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:border-l lg:border-black">
+              <main className="flex-1 py-4 lg:py-10">{children}</main>
               <SiteFooter />
             </div>
-            <main className="min-w-0 flex-1 border-l border-black py-4 lg:py-10">{children}</main>
           </div>
           <StatePanel />
         </WireframeStateProvider>

@@ -22,7 +22,7 @@ This repo is the source of truth. The Notion workspace it came from is a client-
 | Path                             | What it is                                                                           | When to read it                                                   |
 | -------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
 | `app/`                           | Routes. Each route directory has a thin `page.tsx` wrapper and a co-located `<Name>Page.tsx` shell that composes blocks from config. Shared shells (`ProgramPage`, `SeriesPage`) sit at the route-group level (`app/programs/`, `app/publications/`). | The route for the page in hand — read `page.tsx` and the co-located shell. |
-| `components/chrome/`             | Sticky right rail (logo, search + EN / ع, nav, newsletter popup, social, copyright) and the page-header band. Shared by every page. | Only when changing global chrome.                                 |
+| `components/chrome/`             | Sticky rail (logo, search + EN / ع, nav), page-end footer (newsletter popup, social, copyright), and the page-header band. Shared by every page. | Only when changing global chrome.                                 |
 | `components/blocks/<page-type>/` | Block components. One file per block.                                                | The blocks for the page in hand.                                  |
 | `components/StatePanel.tsx`      | The wireframe state panel.                                                           | Only when adding or changing states.                              |
 | `lib/pages/`                     | Per-page config — which blocks, in what order, with what content.                    | The config for the page in hand.                                  |
@@ -55,6 +55,8 @@ After a unit is built:
 - Append any new decisions to `docs/wireframe-passes.md`.
 - Stop. Don't start the next unit.
 
+**Do not render-check.** Don't open the app in a browser, take screenshots, curl local routes to verify UI, or put a render-check step in a plan. Browser review is the user's.
+
 When the current task is finished, move it to Completed tasks in the tracker and ask what the next task should be. Don't invent one.
 
 ## Tailwind — the lo-fi constraint is enforceable here
@@ -64,7 +66,7 @@ These are wireframes, not a design. Tailwind makes it very easy to accidentally 
 **Allowed**
 
 - Layout and spacing: flex, grid, gap, padding, margin, width, max-width, aspect
-- Borders: `border`, `border-dashed`, `border-black` — 1px default; **1px** on the rail edge; **2px** on primary buttons only; **3px** on callout blocks (N8, N15); **2px dashed** on stubs and the state panel (decision 57). Active tabs are 1px `border-neutral-200` on a light strip (decision 146). C6 and AB2 highlights are `bg-neutral-200` padding, no border (decisions 144, 148)
+- Borders: `border`, `border-dashed`, `border-black` — 1px default; **1px** on the rail edge; **2px** on primary buttons only; **3px** on callout blocks (N8, N15); **2px dashed** on stubs and the state panel (decision 57). Active tabs are 1px `border-neutral-200` on a light strip (decision 146). C6 highlights are `bg-neutral-200` padding, no border (decision 144)
 - Colour: `black`, `white`, `neutral-200` (placeholder fill), `neutral-500` (secondary text). Nothing else.
 - Type: one font stack for the whole app; `text-xs` through `text-2xl`; `font-normal` and `font-bold` only
 - Interaction states where they carry meaning (open/closed, active tab)
@@ -89,7 +91,7 @@ Solid 1px borders mark fixed/always-present elements; dashed marks optional/cond
 - **A block is one component**, used by every page that has that block. A block that looks different on two pages is a bug, not a variant — unless a logged decision says otherwise.
 - **Content lives in `lib/pages/`, not in components.** A block component takes props; it does not hardcode a program's grant amount.
 - **Block codes stay.** Each component carries its code (C1, PA3, MN2, HM5, AB7) in its name or a constant, and the state panel's "show block codes" toggle renders them as badges. The prefixes are per page-type and can't be reused across kits.
-- **Chrome is composed once** in `app/layout.tsx` as a sticky right rail (logo, search + EN / ع, vertical nav, newsletter link, social, copyright). `main` has a 1px left border; page width lives in `<PageWidth />`, which each page shell mounts. The page-header band is page-level: every shell except Home mounts `<PageHeaderBand />`. Blocks do not own crumb or H1.
+- **Chrome is composed once** in `app/layout.tsx` as a sticky rail from `lg` (logo, search + EN / ع, vertical nav) and a stacked header below that (logo + burger; burger toggles search, lang and nav in flow). A page-end footer sits under `main` (newsletter, social, copyright). The content column carries the 1px left border from `lg` so it runs through the footer; page width lives in `<PageWidth />`, which each page shell mounts, so a full-bleed block can reach the rail. Home mounts HM1 outside `PageWidth`; every other Home block stays inside it. The page-header band is page-level: every shell except Home mounts `<PageHeaderBand />`. Blocks do not own crumb or H1.
 
 ## Content sources by page-type
 
