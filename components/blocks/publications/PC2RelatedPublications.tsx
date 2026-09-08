@@ -1,5 +1,5 @@
+import { LibraryRow } from "@/components/blocks/publications/PA4ResultsGrid";
 import { Block } from "@/components/wireframe/Block";
-import { Card, CardGrid } from "@/components/wireframe/Card";
 import { Hint } from "@/components/wireframe/Hint";
 import type { LibraryRecord } from "@/lib/pages/publications";
 
@@ -23,18 +23,19 @@ export function PC2RelatedPublications({
       label="Related publications"
       heading="Related publications"
     >
-      <CardGrid cols={3}>
+      <div>
         {records.map((record, index) => (
-          <Card
+          <LibraryRow
             key={`${record.title}-${index}`}
             href={detailHref}
             title={record.title}
-            subtitle={record.languages}
+            languages={record.languages}
+            author={record.author}
           />
         ))}
-      </CardGrid>
+      </div>
       <Hint>
-        Reuses the library card exactly. Which records count as related is a
+        Reuses the library row exactly. Which records count as related is a
         client/build call — the structure reserves the slot.
       </Hint>
     </Block>

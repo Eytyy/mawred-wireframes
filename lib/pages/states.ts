@@ -61,10 +61,9 @@ export const STATES: Record<StatesKey, StateConfig> = {
     list: [
       { key: "filtered", label: "Programme filter applied" },
       { key: "empty", label: "Filtered to no results" },
-      { key: "slots", label: "Show available-but-unused slots" },
     ],
     note:
-      "Slot = the optional card excerpt. The category tabs switch in the page itself — navigation, not a state.",
+      "The unused excerpt has no home on a row, so slots left the landing (decision 192 revised). Category and Programme switch in the page itself — navigation, not a state.",
   },
   home: {
     list: [{ key: "staticfb", label: "Static fallback (no motion)" }],

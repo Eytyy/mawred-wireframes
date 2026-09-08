@@ -31,7 +31,7 @@ export function NewsLandingPage() {
         filtered={state.filtered}
         shown={visiblePosts.length}
       />
-      <N3PostFeed empty={noResults} slots={state.slots} posts={visiblePosts} />
+      <N3PostFeed empty={noResults} posts={visiblePosts} />
       {!noResults ? <N4Pagination /> : null}
       <Hint>
         Landing and post detail are two views of one content type &mdash; the

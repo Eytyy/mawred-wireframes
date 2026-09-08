@@ -3,6 +3,7 @@ import type { Facet } from "@/components/wireframe/FilterBar";
 export type LibraryRecord = {
   title: string;
   languages: string;
+  author?: string;
 };
 
 export type PublicationRecord = {

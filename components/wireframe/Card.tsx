@@ -4,15 +4,17 @@ import type { ReactNode } from 'react';
 
 type CoverProps = {
   tall?: boolean;
+  compact?: boolean;
   label?: string;
 };
 
-export function Cover({ tall, label = 'cover' }: CoverProps) {
+export function Cover({ tall, compact, label = 'cover' }: CoverProps) {
   return (
     <div
       className={cn(
-        'flex aspect-3/4 w-full items-center justify-center border border-black bg-neutral-200 text-xs text-neutral-500',
-        !tall && 'mb-2.25',
+        'flex aspect-3/4 items-center justify-center border border-black bg-neutral-200 text-xs text-neutral-500',
+        compact ? 'w-24 shrink-0' : 'w-full',
+        !tall && !compact && 'mb-2.25',
       )}
     >
       {label}

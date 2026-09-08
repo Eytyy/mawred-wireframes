@@ -8,6 +8,59 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
+## News rows: PA4 stack (date / title / category)
+
+- [x] `NewsCard` matches `LibraryRow`: compact Cover, date above, title, category below
+- [x] Leaves `DirRow`; N13 reuses the row; HM6 unchanged
+- [x] Revise decision 192; standing-constraints §4, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## News feed: all rows, no featured lead
+
+- [x] N3: every post is a thumb `DirRow`; drop `NewsFeatured`
+- [x] Drop `slots` from N3, the landing, and the `newslanding` panel
+- [x] N13 hint drops “not the landing lead”
+- [x] Revise decision 192; standing-constraints §4, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## News listing rows + featured lead (N3 / N13)
+
+- [x] N3: first visible post as HM5-style lead (`Banner` · title · badges · Read more); rest as thumb `DirRow`s
+- [x] `NewsCard` is the thumb row; excerpt `slots` caption on the lead only
+- [x] N13 reuses `NewsCard`, not the lead; drop `CardGrid`
+- [x] Decision 192; revise 43, 189, 191; standing-constraints §4, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Publications listing rows (PA4 / PC2)
+
+- [x] PA4: nine sampled `LibraryRow`s (compact Cover · author · title · languages); overflow line stays
+- [x] PC2: same `LibraryRow` as PA4; drop `CardGrid`
+- [x] Stack author above / languages below the title; compact Cover `w-24`; leave `DirRow`
+- [x] Decision 191; revise 104, 108, 166, 189; standing-constraints §4, content-map, tracker
+
+Left undone: nothing from this unit. N3 / N13 followed in the news listing-rows unit (decision 192).
+
+---
+
+## Listing-row primitives
+
+- [x] `DirRow` optional `leading` before the title; MN5, AB12 and HM6 omit it
+- [x] `Cover` optional `compact` — `aspect-3/4`, `w-24`, no `w-full` / `mb-2.25`
+- [x] Revise decisions 67, 166; tracker
+
+---
+
+---
+
 ## News N1: category as a filter, not tabs
 
 - [x] N1 drops the All / Announcements / News & Events tab row; Category and Programme are two FilterBar facets
@@ -185,6 +238,18 @@ Records what's been done. Task definitions are not kept here — a task is given
 ## Log
 
 Newest first. One entry per page-type completed: what was done, what was left as a gap, decisions taken, anything flagged.
+
+### Publications listing rows — PA4 / PC2 (2026-09-09)
+
+**Done:** PA4 drops the three-column `CardGrid`. Each record is a `LibraryRow` — compact Cover (`w-24`) beside a stacked column: author and languages as muted `text-xs`, title as `h2` between them. It leaves `DirRow`. Nine sampled rows and the overflow line stay. PC2 imports `LibraryRow` and drops `CardGrid`, so related titles match the library. Decision **191** logged and revised; **104**, **108**, **166** and **189** revised in place.
+
+**Left undone:** N3 / N13 still use `CardGrid`. The N3 featured lead is a later unit. Author names are a stand-in — the live listing and detail do not publish them (decision 105).
+
+**Decisions:** 191. Publications library listings are thumb LibraryRows (author · title · languages).
+
+**Flagged:** Author on the library row is a reserved line, not live copy. Same gap as PC1's Author fill bar.
+
+**Verified:** Type-check. No render-check — left for review in the browser.
 
 ### News N1: category as a filter, not tabs (2026-09-08)
 
