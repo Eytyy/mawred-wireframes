@@ -8,6 +8,56 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
+## MN6 engagement gap
+
+- [x] `gap-8` between engagement records
+- [x] Tracker only — no new decision
+
+Left undone: nothing from this unit.
+
+---
+
+## MN6 drops the back button
+
+- [x] ← Back to the directory leaves the record; crumb is the way back
+- [x] Decision 212; tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## MN6 engagement title and involvement row
+
+- [x] Involvement badge on its own line; programme · track · year wrap below
+- [x] Badge hugs its label (`items-start`) — column flex was stretching it full width
+- [x] Project title `h2` `text-2xl font-bold`, matching PC2 related rows
+- [x] Decision 211; tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## MN6 record reflows by breakpoint
+
+- [x] Cover, meta, title, description and engagements are separate grid items
+- [x] Mobile: title → cover → meta → description → records; tablet: compact cover beside title, then the same stack; desktop: sticky identity column + reading column
+- [x] Band is crumb only; MN6 renders the H1 from `record.name`
+- [x] Decision 210; revise 152, 201, 208; standing-constraints, AGENTS, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Client handover pack
+
+- [x] `deliverables/wireframes-companion.md` — what the wireframes are, what they settle, structural changes, content findings, decisions for the client, the 20th
+- [x] `deliverables/email.md` — placeholder salutation, the live link, one deliverable instead of two, the 20th owned and a session proposed, feedback asked for in one pass
+- [x] `/deliverables` in `.gitignore`; nothing inside is tracked
+
+Left undone: nothing from this unit. No wireframe decisions taken, so `wireframe-passes.md` is untouched. The 20th section stays inside the companion doc rather than splitting into its own note — that's the user's call if it should drive its own meeting.
+
+---
+
 ## Editorial post closes on prev/next
 
 - [x] Drop N13 from `/news/editorial-post`; announcement keeps it

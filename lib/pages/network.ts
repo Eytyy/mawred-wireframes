@@ -354,6 +354,7 @@ export type NetworkEngagement = {
 };
 
 export type NetworkRecord = {
+  name: string;
   descriptor?: string;
   countries: string;
   disciplines: string;
@@ -362,6 +363,7 @@ export type NetworkRecord = {
 };
 
 export const NETWORK_RECORD: NetworkRecord = {
+  name: "Al Kasaba Theatre and Cinematheque",
   countries: "Palestine",
   disciplines: "Performing Arts, Cinema",
   body: [

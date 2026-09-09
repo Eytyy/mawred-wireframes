@@ -7,9 +7,11 @@ export function NetworkRecordPage() {
   return (
     <PageWidth>
       <div>
-        <PageHeaderBand />
+        <PageHeaderBand hideTitle />
       </div>
-      <MN6Record record={NETWORK_RECORD} />
+      <div className="mt-6 md:mt-8">
+        <MN6Record flush record={NETWORK_RECORD} />
+      </div>
     </PageWidth>
   );
 }
