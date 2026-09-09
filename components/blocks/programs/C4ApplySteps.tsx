@@ -50,7 +50,7 @@ export function C4ApplySteps({ steps, documents, note, highlight, nested }: C4Ap
           </ul>
         </>
       ) : null}
-      {note ? <p className="mt-3 font-bold">{note}</p> : null}
+      {note ? <div className="mt-3 bg-neutral-200 p-3.5">{note}</div> : null}
       {highlight ? (
         <div className="mt-3 bg-neutral-200 p-3.5">
           <strong>{highlight.label}</strong>

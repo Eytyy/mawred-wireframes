@@ -8,6 +8,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
+## C4 note is a highlight
+
+- [x] C4 `note` is `bg-neutral-200 p-3.5`, same inner treatment as `highlight` / C6 / S5 / S6
+- [x] Fields stay split — Stand for Art still has caution then labelled confidentiality
+- [x] Decision 213; revise 91; standing-constraints, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
 ## MN6 engagement gap
 
 - [x] `gap-8` between engagement records
