@@ -20,7 +20,6 @@ export type WireframeState = {
   orgs: boolean;
   cat: number;
   byline: boolean;
-  edge: boolean;
   staticfb: boolean;
   onejob: boolean;
   nopositions: boolean;
@@ -36,7 +35,6 @@ const DEFAULT_STATE: WireframeState = {
   orgs: false,
   cat: 0,
   byline: false,
-  edge: false,
   staticfb: false,
   onejob: false,
   nopositions: false,

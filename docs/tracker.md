@@ -8,6 +8,166 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
+## Editorial post closes on prev/next
+
+- [x] Drop N13 from `/news/editorial-post`; announcement keeps it
+- [x] Page-level ← prev / next → at the bottom of the shell, `flex justify-between`; editorial `PageWidth` is min viewport height so the pair sits at the bottom on a short post
+- [x] Decision 209; revise 198, 199, 200, 203, 205; standing-constraints, AGENTS, content-map, tracker
+- [x] Rolled back column-flex `main` — `mx-auto` on `PageWidth` shrink-to-fit and narrowed the news landing (and every other page)
+
+Left undone: neighbour titles still unpopulated (decision 123); both labels link to the announcement route. The announcement post still closes on N13.
+
+---
+
+## Publication detail reflows by breakpoint
+
+- [x] Cover, meta, downloads, title, abstract and related are separate grid items
+- [x] Mobile: cover → title → meta → abstract → downloads → related; tablet: compact cover beside title, then the same stack; desktop unchanged
+- [x] Decision 208; revise 201, 202, 203; standing-constraints, AGENTS, content-map, tracker
+
+Left undone: the editorial post still stacks as the desktop columns below `lg`.
+
+---
+
+## PC1 drops Country and Theme
+
+- [x] Those two KV rows leave the publication record; Author and Type stay as fill bars
+- [x] Decision 207; revise 105; content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Editorial N7 wraps the H1
+
+- [x] Category above the title, date below; left column is N6 only
+- [x] Announcement N7 stays the inline strip
+- [x] Decision 206; revise 199, 205; standing-constraints, AGENTS, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Editorial post matches the publication reading column
+
+- [x] `/news/editorial-post`: sticky left is N7 + N6; H1, N9 and N13 in the right column
+- [x] N13 omits the compact Cover (announcement N13 too — one block); N3 unchanged
+- [x] Decision 205; revise 199, 192, 152, 203; standing-constraints, AGENTS, content-map, tracker
+
+Left undone: the announcement post stays a stacked full-width layout.
+
+---
+
+## PC2 drops the compact Cover
+
+- [x] Related rows keep author · title · languages; thumbs off. PA4 unchanged
+- [x] Decision 204; revise 191, 203; standing-constraints, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Related publications in the reading column
+
+- [x] PC2 moves under the abstract in the right column; still stacked `LibraryRow`s
+- [x] Decision 203; revise 201; content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Publication title sits with the abstract
+
+- [x] H1 moves to the right column, above the abstract; left is cover + metadata + downloads
+- [x] Decision 202; revise 201, 152; standing-constraints, AGENTS, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Publication detail two-column
+
+- [x] `/publications/research/publication`: crumb in the band; sticky left column (H1, portrait cover, PC1 metadata + downloads); abstract right; PC2 full-width below
+- [x] Decision 201; revise 152; standing-constraints, AGENTS, content-map, MN6 hint, tracker
+
+Left undone: nothing from this unit. MN6 keeps photo-left / fields-right.
+
+---
+
+## Editorial post two-column; drop N5 and N8
+
+- [x] `/news/editorial-post`: crumb in the band; sticky left column (H1, category · date, square N6); N9 right; N13 full-width below
+- [x] Delete `N5PrevNext` and `N8KeyDetail`; drop from both post shells and the block catalog; `edge` and `keyDetail` leave with them
+- [x] Decisions 199, 200; revise 57, 119, 122, 123, 134, 144, 148, 152, 193; standing-constraints, AGENTS, content-map, tracker
+
+Left undone: the 30 July 6:00–9:00 pm time left with N8; the body still names Beirut Art Center. The announcement post stays a stacked full-width layout.
+
+---
+
+## Footer socials are network names
+
+- [x] Instagram and Facebook as link text; handles off the page, stay in the href
+- [x] Decision 197 revised in place; tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Drop N12 Share
+
+- [x] Delete `N12Share`; drop it from both post shells and the block catalog
+- [x] Drop `NEWS_SHARE_TARGETS`; catalog omits N12 with other retired codes
+- [x] Decision 198; revise 193; content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Footer form + socials
+
+- [x] Newsletter Field + Subscribe in the footer row; drop the popup
+- [x] Label is "Subscribe to our newsletter" on its own line above the field
+- [x] Social flex: Instagram `@culture_resource`, Facebook `CultureResource`
+- [x] `SiteFooter` is a server component again
+- [x] Decision 197; revise 179; standing-constraints §2, AGENTS chrome, tracker
+
+Left undone: nothing from this unit. Further networks (YouTube / X) stay out until handles are named.
+
+---
+
+## Two-up listing rows (PA4 / AB9)
+
+- [x] PA4: same `LibraryRow`; two per line from `lg`
+- [x] AB9: same `InitiativeCard`; two per line from `lg`
+- [x] PC2, AB11, N3, N13 stay stacked
+- [x] Decision 196; revise 191, 194; standing-constraints §4, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## Past Initiatives rows + nav parent
+
+- [x] AB9: twelve thumb rows (compact Cover · title · teaser); drop `CardGrid`
+- [x] AB11 reuses `InitiativeCard`; drop `CardGrid`
+- [x] Rail: Past Initiatives under Grants & Opportunities, after Abbara; crumbs follow; URL stays `/about/past-initiatives`
+- [x] Decision 194, 195; revise 189; standing-constraints §4, tracker
+
+Left undone: nothing from this unit. Relocating the route under `/programs/` is set aside (decision 195).
+
+---
+
+## Block catalog gallery
+
+- [x] Route `/wireframes/blocks` + `BlockCatalogPage`; card on `/wireframes`; crumb Home › Wireframe index › Block catalog; no `statesKey`
+- [x] `lib/pages/blocks.ts` — 64 live codes, kit groups, usage links; N10/N11 unused; C3/HM3/HM7/HM8 omitted
+- [x] One sample per code from live configs; always-visible catalog chrome; jump row
+- [x] Docs — decision 193, standing-constraints §1, tracker
+
+Left undone: nothing from this unit.
+
+---
+
 ## News rows: PA4 stack (date / title / category)
 
 - [x] `NewsCard` matches `LibraryRow`: compact Cover, date above, title, category below

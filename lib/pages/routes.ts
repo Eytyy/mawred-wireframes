@@ -48,6 +48,15 @@ export const ROUTES: RouteEntry[] = [
     indexSublabel: "All wireframed screens",
   },
   {
+    key: "block-catalog",
+    path: "/wireframes/blocks",
+    title: "Block catalog",
+    crumb:
+      'Home &rsaquo; <a href="/wireframes">Wireframe index</a> &rsaquo; Block catalog',
+    indexLabel: "Block catalog",
+    indexSublabel: "Every live block — review tool",
+  },
+  {
     key: "pa",
     path: "/programs/production-awards",
     title: "Production Awards",
@@ -176,7 +185,7 @@ export const ROUTES: RouteEntry[] = [
     crumb:
       'Home &rsaquo; <a href="/news">News</a> &rsaquo; Opening of Made With Your Magic Exhibition in Beirut',
     indexLabel: "News post — event",
-    indexSublabel: "News — post detail, prose and one key detail",
+    indexSublabel: "News — post detail, two-column editorial",
   },
   {
     key: "about-who",
@@ -210,18 +219,18 @@ export const ROUTES: RouteEntry[] = [
     path: "/about/past-initiatives",
     title: "Past Initiatives",
     statesKey: "pastlisting",
-    crumb: "Home &rsaquo; About Us &rsaquo; Past Initiatives",
+    crumb: "Home &rsaquo; Grants &amp; Opportunities &rsaquo; Past Initiatives",
     indexLabel: "Past Initiatives",
-    indexSublabel: "About — initiative directory",
+    indexSublabel: "Grants & Opportunities — past initiative directory",
   },
   {
     key: "about-past-detail",
     path: "/about/past-initiatives/initiative",
     title: "Initiative title",
     crumb:
-      'Home &rsaquo; About Us &rsaquo; <a href="/about/past-initiatives">Past Initiatives</a> &rsaquo; Initiative title',
+      'Home &rsaquo; Grants &amp; Opportunities &rsaquo; <a href="/about/past-initiatives">Past Initiatives</a> &rsaquo; Initiative title',
     indexLabel: "Past initiative",
-    indexSublabel: "About — initiative detail",
+    indexSublabel: "Grants & Opportunities — initiative detail",
   },
   {
     key: "about-careers",

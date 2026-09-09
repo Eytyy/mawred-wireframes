@@ -83,7 +83,9 @@ export function MN6Record({ record }: MN6RecordProps) {
       </div>
       <Hint>
         Name comes from the page-header band — no title block. Photo left,
-        fields right, following the publication-detail precedent (decision 15).
+        fields right (decision 15). Publication detail later moved to the
+        editorial two-column (decision 201); this record keeps the original
+        split.
         A record carries one <em>or more</em> engagements, each with its own
         involvement, programme, round or track, year and project — this
         organisation took part in All Around Culture twice, so the group

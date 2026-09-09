@@ -97,16 +97,13 @@ export const STATES: Record<StatesKey, StateConfig> = {
       "Careers content-readiness is a client call — laid out empty, single and multiple.",
   },
   newsdetail: {
-    list: [
-      { key: "byline", label: "Show author byline" },
-      { key: "edge", label: "First post in the archive (no previous)" },
-    ],
+    list: [{ key: "byline", label: "Show author byline" }],
     note:
-      "No structured toggle: the rosters and quotes are this post's published content, not a state. The archive edge is still a toggle — prev/next come from the whole 26-page archive, which the three-post sample can't reach.",
+      "No structured toggle: the rosters and quotes are this post's published content, not a state. Prev/next retired with N5 (decision 200), so the archive-edge toggle went with it.",
   },
   newseditorial: {
     list: [{ key: "byline", label: "Show author byline" }],
     note:
-      "An event post is prose plus its one key detail — no roster, no schedule, no CTA. Byline is a client call, and every live post is authored \u201cMawred\u201d.",
+      "An event post is prose in a two-column layout — no roster, no schedule, no CTA. Byline is a client call, and every live post is authored \u201cMawred\u201d.",
   },
 };

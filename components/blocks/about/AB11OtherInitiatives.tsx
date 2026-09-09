@@ -1,6 +1,5 @@
 import { InitiativeCard } from "@/components/blocks/about/AB9InitiativeDirectory";
 import { Block } from "@/components/wireframe/Block";
-import { CardGrid } from "@/components/wireframe/Card";
 import { Hint } from "@/components/wireframe/Hint";
 
 export function AB11OtherInitiatives() {
@@ -10,13 +9,13 @@ export function AB11OtherInitiatives() {
       label="Other past initiatives"
       heading="Other past initiatives"
     >
-      <CardGrid cols={3}>
+      <div>
         {Array.from({ length: 3 }, (_, index) => (
           <InitiativeCard key={index} />
         ))}
-      </CardGrid>
+      </div>
       <Hint>
-        Reuses the directory card exactly. Which siblings count as related is a
+        Reuses the directory row exactly. Which siblings count as related is a
         client/build call — the structure reserves the slot, following the
         publication-detail precedent (PC2).
       </Hint>

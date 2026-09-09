@@ -6,6 +6,7 @@ import type { LibraryRecord } from "@/lib/pages/publications";
 type PC2RelatedPublicationsProps = {
   detailHref?: string;
   records?: LibraryRecord[];
+  flush?: boolean;
 };
 
 const PLACEHOLDERS: LibraryRecord[] = Array.from({ length: 3 }, () => ({
@@ -16,12 +17,14 @@ const PLACEHOLDERS: LibraryRecord[] = Array.from({ length: 3 }, () => ({
 export function PC2RelatedPublications({
   detailHref = "/publications/research/publication",
   records = PLACEHOLDERS,
+  flush,
 }: PC2RelatedPublicationsProps) {
   return (
     <Block
       code="PC2"
       label="Related publications"
       heading="Related publications"
+      flush={flush}
     >
       <div>
         {records.map((record, index) => (
@@ -31,12 +34,14 @@ export function PC2RelatedPublications({
             title={record.title}
             languages={record.languages}
             author={record.author}
+            cover={false}
           />
         ))}
       </div>
       <Hint>
-        Reuses the library row exactly. Which records count as related is a
-        client/build call — the structure reserves the slot.
+        Same library row, without the compact Cover (decision 204). Which
+        records count as related is a client/build call — the structure
+        reserves the slot.
       </Hint>
     </Block>
   );

@@ -7,22 +7,28 @@ const PLACEHOLDER_ROWS = 3;
 
 type N13RelatedPostsProps = {
   posts?: NewsPost[];
+  flush?: boolean;
 };
 
-export function N13RelatedPosts({ posts }: N13RelatedPostsProps) {
+export function N13RelatedPosts({ posts, flush }: N13RelatedPostsProps) {
   return (
-    <Block code="N13" label="Related posts" heading="Related posts">
+    <Block
+      code="N13"
+      label="Related posts"
+      heading="Related posts"
+      flush={flush}
+    >
       <div>
         {posts
           ? posts.map((post) => (
-              <NewsCard key={post.title} post={post} />
+              <NewsCard key={post.title} post={post} cover={false} />
             ))
           : Array.from({ length: PLACEHOLDER_ROWS }, (_, index) => (
-              <NewsCard key={index} />
+              <NewsCard key={index} cover={false} />
             ))}
       </div>
       <Hint>
-        Reuses the feed row exactly.{" "}
+        Same feed row, without the compact Cover (decision 205).{" "}
         <strong>Related, not most-recent</strong>: by tag (same category /
         programme) where tags exist, falling back to posts published near this
         post&rsquo;s own date &mdash; so an old post surfaces its

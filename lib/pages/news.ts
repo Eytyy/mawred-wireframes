@@ -54,8 +54,6 @@ export const NEWS_LANDING_HREF = "/news";
 export const NEWS_DETAIL_HREF = "/news/post";
 export const NEWS_EDITORIAL_HREF = "/news/editorial-post";
 
-export const NEWS_SHARE_TARGETS = 4;
-
 export function relatedNewsPosts(title: string): NewsPost[] {
   return NEWS_POSTS.filter((post) => post.title !== title);
 }
@@ -74,7 +72,6 @@ export type NewsPostDetail = {
   category: NewsCategory;
   byline: string;
   imageCaption?: string;
-  keyDetail?: { detail: string; aside: string };
   body: string[];
   rosters?: RosterSection[];
 };
@@ -257,10 +254,6 @@ export const MADE_WITH_YOUR_MAGIC: NewsPostDetail = {
   date: "27 July 2026",
   category: "News & Events",
   byline: "Mawred",
-  keyDetail: {
-    detail: "Thursday 30 July, 6:00–9:00 pm",
-    aside: "Beirut Art Center",
-  },
   body: [
     "Mawred and Beirut Art Center are pleased to announce the opening of Made With Your Magic – Beirut, curated by Tarek Abou El Fetouh.",
     "The exhibition is one chapter of an ongoing artistic project unfolding across several Arab cities. The first launched in Tunis in the autumn of 2025 with Dream City, the festival organised by L'Art Rue; Beirut now follows with an exhibition and a public programme developed for the city, before new chapters in Damascus (with Ettijahat – Independent Culture), Jeddah (with Art Jameel) and Baghdad.",

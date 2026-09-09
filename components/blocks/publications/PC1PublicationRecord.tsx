@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Block } from "@/components/wireframe/Block";
 import { Btn } from "@/components/wireframe/Btn";
 import { Cover } from "@/components/wireframe/Card";
@@ -6,46 +7,105 @@ import { KV } from "@/components/wireframe/KV";
 import { Prose } from "@/components/wireframe/Prose";
 import type { PublicationRecord } from "@/lib/pages/publications";
 
-type PC1PublicationRecordProps = {
+type PartProps = {
   record?: PublicationRecord;
+  flush?: boolean;
 };
 
-export function PC1PublicationRecord({ record }: PC1PublicationRecordProps) {
+function RecordCover() {
+  return <Cover tall />;
+}
+
+function RecordMeta({ record }: { record?: PublicationRecord }) {
+  return (
+    <div>
+      <KV label="Author" />
+      <KV label="Type" />
+      <KV label="Language" value={record?.language} />
+      <KV label="Year" value={record?.year} />
+    </div>
+  );
+}
+
+function RecordDownloads({ record }: { record?: PublicationRecord }) {
+  return record?.downloads ? (
+    <div className="flex flex-wrap gap-1.5">
+      {record.downloads.map((label) => (
+        <Btn key={label} primary>
+          ↓ {label}
+        </Btn>
+      ))}
+    </div>
+  ) : (
+    <Btn primary>↓ Open the document</Btn>
+  );
+}
+
+function RecordAbstract({ record }: { record?: PublicationRecord }) {
+  return record?.abstract ? (
+    <Prose text={record.abstract} />
+  ) : (
+    <Prose lines={4} />
+  );
+}
+
+function Part({ flush, children }: { flush?: boolean; children: ReactNode }) {
+  return (
+    <Block code="PC1" label="Publication record" flush={flush}>
+      {children}
+    </Block>
+  );
+}
+
+export function PC1Cover({ flush }: Omit<PartProps, "record">) {
+  return (
+    <Part flush={flush}>
+      <RecordCover />
+    </Part>
+  );
+}
+
+export function PC1Meta({ record, flush }: PartProps) {
+  return (
+    <Part flush={flush}>
+      <RecordMeta record={record} />
+    </Part>
+  );
+}
+
+export function PC1Downloads({ record, flush }: PartProps) {
+  return (
+    <Part flush={flush}>
+      <RecordDownloads record={record} />
+    </Part>
+  );
+}
+
+export function PC1Abstract({ record, flush }: PartProps) {
+  return (
+    <Part flush={flush}>
+      <RecordAbstract record={record} />
+    </Part>
+  );
+}
+
+export function PC1PublicationRecord({ record }: { record?: PublicationRecord }) {
   return (
     <Block code="PC1" label="Publication record">
-      <div className="flex flex-wrap gap-4">
-        <div className="shrink-0 grow-0 basis-[190px]">
-          <Cover tall />
+      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="flex flex-col gap-4">
+          <RecordCover />
+          <RecordMeta record={record} />
+          <RecordDownloads record={record} />
         </div>
-        <div className="min-w-[340px] flex-1">
-          <KV label="Author" />
-          <KV label="Country" />
-          <KV label="Theme" />
-          <KV label="Type" />
-          <KV label="Language" value={record?.language} />
-          <KV label="Year" value={record?.year} />
-          <div className="my-3.5">
-            <Prose lines={4} text={record?.abstract} />
-          </div>
-          {record?.downloads ? (
-            <div className="flex flex-wrap gap-1.5">
-              {record.downloads.map((label) => (
-                <Btn key={label} primary>
-                  ↓ {label}
-                </Btn>
-              ))}
-            </div>
-          ) : (
-            <Btn primary>↓ Open the document</Btn>
-          )}
-        </div>
+        <RecordAbstract record={record} />
       </div>
       <Hint>
-        Title comes from the page-header band — no title block. Cover left,
-        metadata + abstract right (decision 15). This record publishes Language
-        and Year only; Author, Country, Theme and Type stay as fill bars because
-        the live detail page does not tag them — the library filters on taxonomy
-        this page does not show.
+        Cover, metadata, downloads and abstract are separate slots the detail
+        page grids (decision 208). This record publishes Language and Year
+        only; Author and Type stay as fill bars because the live detail page
+        does not tag them. Country and Theme leave (decision 207) — they are
+        library facets, not fields this page shows.
       </Hint>
     </Block>
   );

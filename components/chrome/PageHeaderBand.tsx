@@ -3,7 +3,11 @@
 import { usePathname } from 'next/navigation';
 import { getRouteByPath } from '@/lib/pages/routes';
 
-export function PageHeaderBand() {
+type PageHeaderBandProps = {
+  hideTitle?: boolean;
+};
+
+export function PageHeaderBand({ hideTitle = false }: PageHeaderBandProps) {
   const pathname = usePathname();
   const route = getRouteByPath(pathname);
 
@@ -17,10 +21,12 @@ export function PageHeaderBand() {
         className="mb-2 text-xs text-neutral-500"
         dangerouslySetInnerHTML={{ __html: route.crumb }}
       />
-      <h1
-        className="inline-block py-2 text-5xl font-bold"
-        dangerouslySetInnerHTML={{ __html: route.title }}
-      />
+      {hideTitle ? null : (
+        <h1
+          className="inline-block py-2 text-5xl font-bold"
+          dangerouslySetInnerHTML={{ __html: route.title }}
+        />
+      )}
     </div>
   );
 }

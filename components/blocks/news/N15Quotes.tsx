@@ -41,10 +41,9 @@ export function N15Quotes({ label = "Quotes", quotes }: N15QuotesProps) {
             ))}
       </div>
       <Hint>
-        One or more quotes, each with its own attribution line, at 3px to match
-        N8&rsquo;s callout weight (decision 57). Attached to the roster above
-        rather than to the post, because the jury that speaks is the jury for
-        that discipline.
+        One or more quotes, each with its own attribution line, at 3px
+        (decision 57). Attached to the roster above rather than to the post,
+        because the jury that speaks is the jury for that discipline.
       </Hint>
     </Block>
   );

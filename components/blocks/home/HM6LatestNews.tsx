@@ -34,7 +34,8 @@ export function HM6LatestNews({ posts, allHref }: HM6LatestNewsProps) {
         real posts from the News sample (decision 115): Made With Your Magic
         (27 July), Wijhat second-round grantees (20 July), Production Awards
         2026 results (6 May). The full archive and its pager live on the News
-        landing; N13 still reuses the feed card verbatim.
+        landing; N13 reuses the feed row without the compact Cover
+        (decision 205).
       </Hint>
     </Block>
   );

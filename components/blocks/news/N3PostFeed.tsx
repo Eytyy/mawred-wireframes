@@ -13,18 +13,20 @@ import {
 type NewsCardProps = {
   post?: NewsPost;
   href?: string;
+  cover?: boolean;
 };
 
 export function NewsCard({
   post,
   href = NEWS_DETAIL_HREF,
+  cover = true,
 }: NewsCardProps) {
   return (
     <Link
       href={post?.href ?? href}
       className="flex items-center gap-4 border-b border-neutral-200 px-0.5 py-3 no-underline"
     >
-      <Cover compact label="image" />
+      {cover ? <Cover compact label="image" /> : null}
       <span className="flex min-w-0 flex-1 flex-col">
         <span className="text-xs text-neutral-500">
           {post?.date ?? "12 March 2026"}
@@ -80,7 +82,8 @@ export function N3PostFeed({ empty, posts }: N3PostFeedProps) {
             &mdash; same stack as PA4, date above / category below (decision
             192 revised). It leaves <code>DirRow</code>, whose single-line
             name + trailing badges cannot hold that stack. N13 reuses the
-            row. HM6 stays the image-less <code>DirRow</code> (decision 43).
+            row without the compact Cover (decision 205). HM6 stays the
+            image-less <code>DirRow</code> (decision 43).
             Excerpt is an available field with no home on a row, so the{" "}
             <code>slots</code> toggle left the landing. The overflow line is
             the rest of the archive (decision 108).

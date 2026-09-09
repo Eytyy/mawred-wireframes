@@ -1,11 +1,9 @@
 "use client";
 
 import { Fragment } from "react";
-import { N12Share } from "@/components/blocks/news/N12Share";
 import { N13RelatedPosts } from "@/components/blocks/news/N13RelatedPosts";
 import { N14Roster } from "@/components/blocks/news/N14Roster";
 import { N15Quotes } from "@/components/blocks/news/N15Quotes";
-import { N5PrevNext } from "@/components/blocks/news/N5PrevNext";
 import { N6FeaturedImage } from "@/components/blocks/news/N6FeaturedImage";
 import { N7PostMeta } from "@/components/blocks/news/N7PostMeta";
 import { N9Body } from "@/components/blocks/news/N9Body";
@@ -26,7 +24,6 @@ export function NewsDetailPage() {
       <div>
         <PageHeaderBand />
       </div>
-      <N5PrevNext edge={state.edge} />
       <N6FeaturedImage caption={POST.imageCaption} />
       <N7PostMeta
         byline={state.byline}
@@ -47,7 +44,6 @@ export function NewsDetailPage() {
           ) : null}
         </Fragment>
       ))}
-      <N12Share />
       <N13RelatedPosts posts={relatedNewsPosts(POST.title)} />
       <Hint>
         An announcement post: prose, then the rosters and quotes the results of
