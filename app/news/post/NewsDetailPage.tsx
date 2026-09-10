@@ -47,7 +47,9 @@ export function NewsDetailPage() {
         <section
           key={group.discipline}
           className={
-            index < rosters.length - 1 ? "border-b border-black py-8" : "py-8"
+            index === 0
+              ? "mt-8 border-t border-black py-8"
+              : "border-t border-black py-8"
           }
         >
           <PageWidth>
@@ -81,7 +83,8 @@ export function NewsDetailPage() {
           An announcement post: the same sticky two-column as the editorial
           post — image left; category, H1, date and body right — then the
           rosters and quotes the results of a round consist of. Each discipline
-          is a full-width section; a content-column rule sits between them.
+          is a full-width section; a content-column rule sits above the first
+          and between them, with the same gap as the opening-to-roster space.
           Grantees and Jury are h3s under the discipline h2; quotes sit in the
           jury section with no heading of their own. Cinema is populated in
           full and literature carries its roster without quotes, so the

@@ -8,6 +8,15 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
+## First roster gets a top rule
+
+- [x] Each discipline `section` is `border-t`; first also `mt-8` so opening-to-roster matches roster-to-roster
+- [x] Decision 217 revised in place; content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
 ## Publication reading column; two-column from 1440
 
 - [x] From `wide` (1440): sticky cover left; title, meta, abstract, downloads in the reading column; PC2 full-span below
