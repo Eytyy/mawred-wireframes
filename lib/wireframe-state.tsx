@@ -25,6 +25,8 @@ export type WireframeState = {
   nopositions: boolean;
 };
 
+export const REVIEW_CHROME_TOGGLE = process.env.NODE_ENV === "development";
+
 const DEFAULT_STATE: WireframeState = {
   codes: false,
   closed: false,
@@ -57,6 +59,10 @@ export function WireframeStateProvider({ children }: { children: ReactNode }) {
   }, [state.codes]);
 
   const setToggle = useCallback((key: keyof WireframeState, value: boolean) => {
+    if (key === "codes" && !REVIEW_CHROME_TOGGLE) {
+      return;
+    }
+
     setState((current) => {
       const next = { ...current, [key]: value };
 

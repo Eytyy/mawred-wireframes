@@ -8,6 +8,16 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
+## Review chrome is development-only
+
+- [x] "Show review chrome" mounts only in `next dev`; production omits it and stays `codes-off`
+- [x] Page-specific states stay on the live panel
+- [x] Decision 219; revise 134, 155, 156, 193; standing-constraints, AGENTS, tracker
+
+Left undone: nothing from this unit.
+
+---
+
 ## First roster gets a top rule
 
 - [x] Each discipline `section` is `border-t`; first also `mt-8` so opening-to-roster matches roster-to-roster

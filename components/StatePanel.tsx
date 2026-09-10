@@ -5,7 +5,11 @@ import { useId, useState } from "react";
 import { usePathname } from "next/navigation";
 import { getRouteByPath } from "@/lib/pages/routes";
 import { STATES } from "@/lib/pages/states";
-import { useWireframeState, type WireframeState } from "@/lib/wireframe-state";
+import {
+  REVIEW_CHROME_TOGGLE,
+  useWireframeState,
+  type WireframeState,
+} from "@/lib/wireframe-state";
 
 const BOOLEAN_KEYS = new Set<keyof WireframeState>([
   "codes",
@@ -69,15 +73,17 @@ export function StatePanel() {
           <h5 className="mb-2 text-xs uppercase tracking-widest">
             Wireframe states
           </h5>
-          <label className="mb-1 block cursor-pointer">
-            <input
-              type="checkbox"
-              className="mr-1.5"
-              checked={state.codes}
-              onChange={(event) => setToggle("codes", event.target.checked)}
-            />
-            Show review chrome
-          </label>
+          {REVIEW_CHROME_TOGGLE ? (
+            <label className="mb-1 block cursor-pointer">
+              <input
+                type="checkbox"
+                className="mr-1.5"
+                checked={state.codes}
+                onChange={(event) => setToggle("codes", event.target.checked)}
+              />
+              Show review chrome
+            </label>
+          ) : null}
           {config?.list.map((toggle) => {
             const key = toggle.key as keyof WireframeState;
 
