@@ -20,11 +20,10 @@ export function N6FeaturedImage({
       {caption ? <Caption>{caption}</Caption> : null}
       <Hint>
         The current site repeats the title as an H2 under the image; dropped
-        &mdash; the page H1 carries the title. Square on the editorial column
-        (decision 199); aspect-video on the full-width announcement. The caption
-        slot below carries the image credit, which the live posts print as a
-        trailing italic line at the very end of the body, far from the image it
-        describes.
+        &mdash; the page H1 carries the title. Square in the sticky column on
+        both post kinds (decision 199, 217). The caption slot below carries
+        the image credit, which the live posts print as a trailing italic line
+        at the very end of the body, far from the image it describes.
       </Hint>
     </Block>
   );

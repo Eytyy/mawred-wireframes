@@ -58,11 +58,11 @@ export function relatedNewsPosts(title: string): NewsPost[] {
   return NEWS_POSTS.filter((post) => post.title !== title);
 }
 
-export type RosterSection = {
-  label: string;
-  records: RosterRecord[];
+export type RosterDiscipline = {
+  discipline: string;
+  grantees: RosterRecord[];
+  jury: RosterRecord[];
   overflow?: string;
-  quotesLabel?: string;
   quotes?: PostQuote[];
 };
 
@@ -73,7 +73,7 @@ export type NewsPostDetail = {
   byline: string;
   imageCaption?: string;
   body: string[];
-  rosters?: RosterSection[];
+  rosters?: RosterDiscipline[];
 };
 
 export const PRODUCTION_AWARDS_RESULTS: NewsPostDetail = {
@@ -90,8 +90,8 @@ export const PRODUCTION_AWARDS_RESULTS: NewsPostDetail = {
   ],
   rosters: [
     {
-      label: "Cinema — grantees",
-      records: [
+      discipline: "Cinema",
+      grantees: [
         {
           name: "Alayham Ali",
           country: "Syria",
@@ -138,10 +138,7 @@ export const PRODUCTION_AWARDS_RESULTS: NewsPostDetail = {
             "An essay film tracing interweaving notions of return through a series of vignettes: a return to a refugee camp, to revolutionary memory, of the dead.",
         },
       ],
-    },
-    {
-      label: "Cinema — jury",
-      records: [
+      jury: [
         {
           name: "Halah Alabdalla",
           country: "Syria",
@@ -158,7 +155,6 @@ export const PRODUCTION_AWARDS_RESULTS: NewsPostDetail = {
           role: "Director and producer",
         },
       ],
-      quotesLabel: "Cinema — jury quotes",
       quotes: [
         {
           text: [
@@ -177,8 +173,8 @@ export const PRODUCTION_AWARDS_RESULTS: NewsPostDetail = {
       ],
     },
     {
-      label: "Literature — grantees",
-      records: [
+      discipline: "Literature",
+      grantees: [
         {
           name: "Ahmed Nageeb",
           country: "Egypt",
@@ -231,10 +227,7 @@ export const PRODUCTION_AWARDS_RESULTS: NewsPostDetail = {
             "Journalistic testimonies from former conscripts in the Syrian army, told with a literary narrative approach.",
         },
       ],
-    },
-    {
-      label: "Literature — jury",
-      records: [
+      jury: [
         {
           name: "Asmaa Azaizeh",
           country: "Palestine",

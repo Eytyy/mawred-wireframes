@@ -42,12 +42,11 @@ export function N7PostMeta({
         </div>
       )}
       <Hint>
-        On the editorial post, category sits above the H1 and date below it
-        (decision 206). On the announcement it stays a single strip &mdash;
-        category then date, no tag and no rule. Replaces the trailing
-        &ldquo;Mawred News, SliderEN, Comments Off&rdquo; line. The author
-        byline is a <strong>client call</strong> &mdash; laid out both ways; the
-        line reads fine without it. Every live post is authored
+        On both post kinds, category sits above the H1 and date below it
+        (decisions 206, 217). Replaces the trailing &ldquo;Mawred News,
+        SliderEN, Comments Off&rdquo; line. The author byline is a{" "}
+        <strong>client call</strong> &mdash; laid out both ways; the line
+        reads fine without it. Every live post is authored
         &ldquo;Mawred&rdquo;, so a byline as it stands adds nothing a reader
         doesn&rsquo;t already know.
       </Hint>

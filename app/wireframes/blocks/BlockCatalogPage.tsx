@@ -178,7 +178,7 @@ const SAMPLE_N14 = required(
   "N14 sample missing announcement roster",
 );
 const SAMPLE_N15 = required(
-  PRODUCTION_AWARDS_RESULTS.rosters?.find((section) => section.quotes),
+  PRODUCTION_AWARDS_RESULTS.rosters?.find((group) => group.quotes),
   "N15 sample missing announcement quotes",
 );
 const SAMPLE_AB7 = required(PEOPLE_GROUPS[0], "AB7 sample missing people group");
@@ -402,14 +402,17 @@ function renderCatalogSample(code: string): ReactNode {
     case "N14":
       return (
         <N14Roster
-          label={SAMPLE_N14.label}
-          records={SAMPLE_N14.records}
-          overflow={SAMPLE_N14.overflow}
+          label={`${SAMPLE_N14.discipline} — grantees`}
+          heading="Grantees"
+          records={SAMPLE_N14.grantees}
         />
       );
     case "N15":
       return (
-        <N15Quotes label={SAMPLE_N15.quotesLabel} quotes={SAMPLE_N15.quotes} />
+        <N15Quotes
+          label={`${SAMPLE_N15.discipline} — jury quotes`}
+          quotes={SAMPLE_N15.quotes}
+        />
       );
     case "AB1":
       return <AB1Intro text={WHO_WE_ARE_INTRO} />;

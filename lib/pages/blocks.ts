@@ -317,7 +317,7 @@ export const BLOCKS: BlockCatalogEntry[] = [
     code: "N13",
     label: "Related posts",
     kit: "news",
-    usedOn: usedOn("news-detail"),
+    usedOn: [],
   },
   {
     code: "N14",

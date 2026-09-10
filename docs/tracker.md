@@ -8,6 +8,50 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
+## Announcement post matches the editorial column
+
+- [x] Sticky left image; category, H1, date and body in the reading column
+- [x] N13 leaves; page-level ← prev / next → closes, linking to the editorial route
+- [x] Roster sections sit full-width below; `border-b` between disciplines spans the content column
+- [x] Decision 217; revise 152, 198, 199, 203, 205, 206, 209; AGENTS, standing-constraints, content-map, tracker
+
+Left undone: N13 now renders on no page — catalog still mounts it. Neighbour titles still unpopulated (decision 123).
+
+---
+
+## Announcement rosters nest under the discipline
+
+- [x] Cinema / Literature are page-level h2s; N14 headings are h3 Grantees / Jury
+- [x] N15 drops its heading and sits in the jury group (`tightBelow`)
+- [x] Config is `RosterDiscipline`; catalog samples follow
+- [x] Decision 216; revise 117, 118, 135; standing-constraints, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## N15 returns; quotes leave the juror card
+
+- [x] Cinema quotes sit in N15 after the jury roster, 3px attributed blockquotes
+- [x] N14 cards are name · country · role (and project on grantees); three columns stand
+- [x] Catalog, blocks list, announcement shell remount N15
+- [x] Decision 215; revise 57, 117, 118, 120, 134, 144, 148, 193, 214; AGENTS, content-map, tracker
+
+Left undone: nothing from this unit.
+
+---
+
+## N14 is three columns; quotes live on the juror card
+
+- [x] N14 `CardGrid` is `cols={3}` — grantees and jury
+- [x] Cinema jury quotes sit on Mohamed Ismail Louati and Mostafa Youssef, same `mt-1.75 text-sm` as the project title
+- [x] N15 deleted; catalog, blocks list, announcement shell drop the mount
+- [x] Decision 214; revise 57, 117, 118, 120, 134, 144, 148, 167, 189, 193; standing-constraints, AGENTS, content-map, tracker
+
+Left undone: nothing from this unit. AB7 stays four.
+
+---
+
 ## C4 note is a highlight
 
 - [x] C4 `note` is `bg-neutral-200 p-3.5`, same inner treatment as `highlight` / C6 / S5 / S6

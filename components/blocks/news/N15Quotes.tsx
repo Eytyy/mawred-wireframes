@@ -16,7 +16,7 @@ const PLACEHOLDER_QUOTES = 1;
 
 export function N15Quotes({ label = "Quotes", quotes }: N15QuotesProps) {
   return (
-    <Block code="N15" label={label} heading={label} optional>
+    <Block code="N15" label={label} optional>
       <div className="flex flex-col gap-3">
         {quotes
           ? quotes.map((quote) => (
@@ -42,8 +42,8 @@ export function N15Quotes({ label = "Quotes", quotes }: N15QuotesProps) {
       </div>
       <Hint>
         One or more quotes, each with its own attribution line, at 3px
-        (decision 57). Attached to the roster above rather than to the post,
-        because the jury that speaks is the jury for that discipline.
+        (decision 57). No heading — they sit in the jury section they come
+        from, not as a titled block of their own.
       </Hint>
     </Block>
   );

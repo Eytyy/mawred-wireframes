@@ -13,16 +13,34 @@ export type RosterRecord = {
 
 type N14RosterProps = {
   label: string;
+  heading: string;
   records?: RosterRecord[];
   overflow?: string;
+  flushTop?: boolean;
+  tightBelow?: boolean;
 };
 
 const PLACEHOLDER_CARDS = 3;
 
-export function N14Roster({ label, records, overflow }: N14RosterProps) {
+export function N14Roster({
+  label,
+  heading,
+  records,
+  overflow,
+  flushTop,
+  tightBelow,
+}: N14RosterProps) {
   return (
-    <Block code="N14" label={label} heading={label} optional>
-      <CardGrid>
+    <Block
+      code="N14"
+      label={label}
+      heading={heading}
+      headingAs="h3"
+      optional
+      flushTop={flushTop}
+      tightBelow={tightBelow}
+    >
+      <CardGrid cols={3}>
         {records
           ? records.map((record) => (
               <div key={record.name} className="border border-black p-2.5">
@@ -59,6 +77,8 @@ export function N14Roster({ label, records, overflow }: N14RosterProps) {
       <Hint>
         Grantees and jury are one block. A jury entry has no project, so the
         title and description rows render by omission (standing constraint 3).
+        Three columns so a three-member jury fills the row. Headings are h3
+        under the discipline h2.
       </Hint>
     </Block>
   );
