@@ -19,40 +19,42 @@ export function PublicationDetailPage() {
       <div>
         <PageHeaderBand hideTitle />
       </div>
-      <div className="mt-6 grid grid-cols-1 items-start gap-4 md:mt-8 md:grid-cols-[6rem_minmax(0,1fr)] md:gap-6 lg:mt-8 lg:grid-cols-2 lg:gap-12">
-        <div className="contents lg:sticky lg:top-10 lg:flex lg:flex-col lg:gap-4 lg:self-start">
+      <div className="mt-6 grid grid-cols-1 items-start gap-4 md:mt-8 md:max-wide:grid-cols-[6rem_minmax(0,1fr)] md:max-wide:gap-6 wide:grid-cols-2 wide:gap-12">
+        <div className="contents wide:sticky wide:top-10 wide:flex wide:flex-col wide:gap-4 wide:self-start">
           <div className="order-1 md:col-start-1 md:row-start-1">
             <PC1Cover flush />
           </div>
+        </div>
+        <div className="contents wide:flex wide:flex-col wide:gap-4">
+          <h1 className="order-2 min-w-0 text-5xl font-bold md:col-start-2 md:row-start-1">
+            {PUBLICATION_RECORD.title}
+          </h1>
           <div className="order-3 md:col-span-2">
             <PC1Meta flush record={PUBLICATION_RECORD} />
+          </div>
+          <div className="order-4 md:col-span-2">
+            <PC1Abstract flush record={PUBLICATION_RECORD} />
           </div>
           <div className="order-5 md:col-span-2">
             <PC1Downloads flush record={PUBLICATION_RECORD} />
           </div>
         </div>
-        <div className="contents lg:flex lg:flex-col lg:gap-4">
-          <h1 className="order-2 min-w-0 text-5xl font-bold md:col-start-2 md:row-start-1">
-            {PUBLICATION_RECORD.title}
-          </h1>
-          <div className="order-4 md:col-span-2">
-            <PC1Abstract flush record={PUBLICATION_RECORD} />
-          </div>
-          <div className="order-6 md:col-span-2">
-            <PC2RelatedPublications
-              flush
-              detailHref={PUBLICATION_DETAIL_HREF}
-              records={PUBLICATION_RECORD.related}
-            />
-          </div>
+        <div className="order-6 md:col-span-2 wide:col-span-2">
+          <PC2RelatedPublications
+            flush
+            detailHref={PUBLICATION_DETAIL_HREF}
+            records={PUBLICATION_RECORD.related}
+          />
         </div>
       </div>
       <Hint>
         Cover, meta, downloads, title, abstract and related are separate grid
         items. Mobile stacks cover, then title, then meta, then abstract,
-        then downloads, then related. On tablet a compact portrait sits
-        beside the title and the rest stay stacked. Desktop keeps the sticky
-        identity column and the reading column. The cover stays portrait, not
+        then downloads, then related. From <code>md</code> a compact
+        portrait sits beside the title and the rest stay stacked. From
+        <code>wide</code> (1440) the sticky cover sits left; title, meta,
+        abstract and downloads are the reading column; related is a
+        full-span row under that split. The cover stays portrait, not
         square &mdash; it is a publication, not a featured image.
       </Hint>
     </PageWidth>

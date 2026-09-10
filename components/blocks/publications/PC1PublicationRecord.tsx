@@ -92,20 +92,22 @@ export function PC1Abstract({ record, flush }: PartProps) {
 export function PC1PublicationRecord({ record }: { record?: PublicationRecord }) {
   return (
     <Block code="PC1" label="Publication record">
-      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-12">
+      <div className="grid grid-cols-1 items-start gap-8 wide:grid-cols-2 wide:gap-12">
+        <RecordCover />
         <div className="flex flex-col gap-4">
-          <RecordCover />
           <RecordMeta record={record} />
+          <RecordAbstract record={record} />
           <RecordDownloads record={record} />
         </div>
-        <RecordAbstract record={record} />
       </div>
       <Hint>
         Cover, metadata, downloads and abstract are separate slots the detail
-        page grids (decision 208). This record publishes Language and Year
-        only; Author and Type stay as fill bars because the live detail page
-        does not tag them. Country and Theme leave (decision 207) — they are
-        library facets, not fields this page shows.
+        page grids (decisions 208, 218). From <code>wide</code> (1440)
+        the cover is sticky left; meta sits under the title, downloads
+        under the abstract. This record publishes Language and Year only;
+        Author and Type stay as fill bars because the live detail page
+        does not tag them. Country and Theme leave (decision 207) — they
+        are library facets, not fields this page shows.
       </Hint>
     </Block>
   );

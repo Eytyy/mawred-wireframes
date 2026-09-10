@@ -39,9 +39,10 @@ export function PC2RelatedPublications({
         ))}
       </div>
       <Hint>
-        Same library row, without the compact Cover (decision 204). Which
-        records count as related is a client/build call — the structure
-        reserves the slot.
+        Same library row, without the compact Cover (decision 204). From
+        <code>wide</code> the strip is a full-span row under the record
+        (decision 218). Which records count as related is a client/build
+        call — the structure reserves the slot.
       </Hint>
     </Block>
   );

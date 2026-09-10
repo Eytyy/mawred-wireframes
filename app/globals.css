@@ -3,6 +3,7 @@
 @theme {
   --text-sm: 1rem;
   --text-sm--line-height: 1.45;
+  --breakpoint-wide: 90rem;
 }
 
 @layer base {

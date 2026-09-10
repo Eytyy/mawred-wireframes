@@ -8,6 +8,17 @@ Records what's been done. Task definitions are not kept here — a task is given
 
 ---
 
+## Publication reading column; two-column from 1440
+
+- [x] From `wide` (1440): sticky cover left; title, meta, abstract, downloads in the reading column; PC2 full-span below
+- [x] Mobile / tablet order unchanged; tablet pair holds through the `lg` rail range
+- [x] `--breakpoint-wide: 90rem` (1440) in `globals.css` — rem so it sorts after `md`
+- [x] Decision 218; revise 201, 202, 203, 204, 205, 208; AGENTS, standing-constraints, content-map, tracker
+
+Left undone: MN6 and both news posts still split from `lg`.
+
+---
+
 ## Announcement post matches the editorial column
 
 - [x] Sticky left image; category, H1, date and body in the reading column
